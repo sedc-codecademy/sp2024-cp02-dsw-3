@@ -9,7 +9,12 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="./home.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Playpen+Sans:wght@300;700&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="./home.css">
 </head>
 
 <body>
@@ -20,7 +25,7 @@
                 <div class="d-flex justify-content-start align-items-center" id="searchLogo">
                     <div class="d-flex justify-content-around align-items-center">
                         <a class="navbar-brand" href="#">
-                            <img src="./images/art.png" class="logo" alt="Logo" width="30" height="24"
+                            <img src="./images/art.jpg" class="logo" alt="Logo" width="30" height="24"
                                 class="d-inline-block align-text-top">
                             AIArt 
                         </a>
@@ -93,36 +98,91 @@
         </nav>
     </div>
     <!--------- Home Page ---------------->
-    
-
-        <!-- Image Slider -->
-        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <!-- Top cards -->
+    <div>
+        <h1 class="headers" style="font-weight: 700;">Sell your artwork with AI ART</h1>
+        <h4 class="headers" style="margin-top: 15px;">Just tell us about your art and we'll do the rest.</h4>
+        <button class="firstButton">SELL YOUR ART</button>
+        <div class="sellYourArtContainer">
+            <h1 class="headers" style="font-weight: bold;">Minimum effort, maximum profit.</h1>
+            <div class="cardContainer">
+                <div class="card" style="width: 15rem;">
+                    <img src="https://www.mutualart.com/img/sellwithMAPage/auction.png" class="cardPictures" alt="...">
+                    <div class="card-body ">
+                        <p class="card-title">Consign with <b>multiple auction houses</b></p>
+                    </div>
+                </div>
+                <div class="card" style="width: 15rem;">
+                    <img src="https://www.mutualart.com/img/sellwithMAPage/handshakeicon.png" class="cardPictures"
+                        alt="...">
+                    <div class="card-body ">
+                        <p class="card-title">Negotiate the <b>best terms</b></p>
+                    </div>
+                </div>
+            </div>
+            <div class="cardContainer">
+                <div class="card" style="width: 15rem;">
+                    <img src="https://www.mutualart.com/img/sellwithMAPage/advice.png" class="cardPictures" alt="...">
+                    <div class="card-body ">
+                        <p class="card-title">Receive <b>advice and guidance</b> on the full process</p>
+                    </div>
+                </div>
+                <div class="card" style="width: 15rem;">
+                    <img src="https://www.mutualart.com/img/sellwithMAPage/bestcontact.png" class="cardPictures"
+                        alt="...">
+                    <div class="card-body ">
+                        <p class="card-title">Directly reach <b>the best contact</b> at each auction house</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Image Slider -->
+    <div style="background-color:rgb(252, 245, 237)">
+        <h1 class="headers" style="margin-top: 50px;margin-bottom: 30px;">Sold With Our Service</h1>
+        <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
             <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="images/image1.jpg" class="rounded mx-auto d-block" alt="...">
+              <div class="carousel-item active" data-bs-interval="10000">
+                <img src="images/image1.jpg" class="d-block mx-auto" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>First slide label</h5>
+                  <p>Some representative placeholder content for the first slide.</p>
+                </div>
+              </div>
+              <div class="carousel-item" data-bs-interval="2000">
+                <img src="images/image2.jpg" class="d-block mx-auto" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Second slide label</h5>
+                  <p>Some representative placeholder content for the second slide.</p>
+                </div>
               </div>
               <div class="carousel-item">
-                <img src="images/image2.jpg" class="rounded mx-auto d-block" alt="...">
-              </div>
-              <div class="carousel-item">
-                <img src="images/image3.jpg" class="rounded mx-auto d-block" alt="...">
+                <img src="images/image3.jpg" class="d-block mx-auto" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                  <h5>Third slide label</h5>
+                  <p>Some representative placeholder content for the third slide.</p>
+                </div>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
           </div>
-        <!----------------------------------------->
+    </div>
+    <!----------------------------------------->
+    <!-- Bottom cards -->
+    
+    <!------------>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

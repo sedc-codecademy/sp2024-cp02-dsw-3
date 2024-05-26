@@ -45,8 +45,6 @@
 @media only screen and (max-width: 1370px){
 .carousel-inner img{
     border: 1px solid none;
-    border-left: inset;
-    border-bottom: inset;
     width: 800px;
     height: 450px;
 }
@@ -54,8 +52,6 @@
 @media only screen and (max-width: 500px){
     .carousel-inner img{
         border: 1px solid none;
-        border-left: inset;
-        border-bottom: inset;
         width: 700px;
         height: 390px;
     }
@@ -63,13 +59,58 @@
 @media only screen and (max-width: 320px){
     .carousel-inner img{
         border: 1px solid none;
-        border-left: inset;
-        border-bottom: inset;
         width: 500px;
         height: 300px;
     }
 }
+/* Raki  */
+.headers {
+    text-align: center;
+    font-family: "Libre Baskerville", serif;
+    font-weight: 400;
+    font-style: normal;
+}
 
+.firstButton {
+    text-align: center;
+    padding: 25px;
+    width: 250px;
+    margin-top: 5rem;
+    margin-bottom: 10rem;
+    background-color: rgb(197, 105, 105);
+    color: white;
+    border: 1px solid rgb(197, 105, 105);
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.cardPictures{
+    width: 7rem;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.card-title{
+    text-align: center;
+}
+
+.cardContainer{
+    margin-top: 25px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.sellYourArtContainer{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    background-color: rgb(252, 245, 237);
+    padding: 10px;
+    border-radius: 15px;
+}
+/* ------------------------------------------- */
 
 @media only screen and (max-width: 1370px){
     #first-nav, #second-nav{
