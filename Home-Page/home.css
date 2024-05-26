@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    
+}
+
+.logo{
+    width: 60px;
+    height: 45px;
+}
+
+.hr-nav{
+    margin: 0px 60px 0px 60px;
+    padding: 0px;
+    background-color: black;
+}
+
+
+#first-nav, #second-nav{
+    padding-right: 250px;
+    padding-left: 250px;
+    background-color: rgb(223, 220, 220);
+}
+
+#searchInput{
+    width: 500px;
+    height: 40px;
+   
+} 
+
+#first-nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+   
+}
+.cart-gif{
+    width: 30px;
+    border: 10px rgb(74, 71, 71);
+}
+
+#second-nav{
+    padding-top: 0px;
+}
+
+
+@media only screen and (max-width: 1370px){
+    #first-nav, #second-nav{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    #first-nav{
+        padding-top: 10px;
+        padding-bottom: 0px;
+        
+    }
+    #searchInput{
+        width: 350px;
+    } 
+}
+@media only screen and (max-width: 500px){
+    #first-nav{
+        padding-top: 5px;
+        padding-bottom: 0px;
+        
+    }
+    #searchInput{
+        width: 100px;
+    } 
+}
+@media only screen and (max-width: 320px){
+    
+    #searchInput{
+        width: 80px;
+    } 
+    
+}
+
