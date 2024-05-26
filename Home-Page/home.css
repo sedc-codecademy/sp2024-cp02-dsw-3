@@ -74,6 +74,7 @@
 .firstButton {
     text-align: center;
     padding: 25px;
+    border-radius: 15px;
     width: 250px;
     margin-top: 5rem;
     margin-bottom: 10rem;
@@ -106,9 +107,48 @@
 .sellYourArtContainer{
     margin-left: 1rem;
     margin-right: 1rem;
-    background-color: rgb(252, 245, 237);
+    background-color: rgb(197, 105, 105, 0.5);
     padding: 10px;
     border-radius: 15px;
+}
+
+.artworkProgress{
+    display: flex;
+    justify-content: space-around;
+}
+
+.artwork{
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 3rem;
+    background-color: rgb(197, 105, 105, 0.5);
+    padding: 10px;
+    border-radius: 15px;
+}
+
+.card{
+    padding: 10px;
+    border: 1px solid rgb(197, 105, 105, 0.5);
+}
+
+.secondButton {
+    text-align: center;
+    padding: 25px;
+    width: 250px;
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+    background-color: rgb(197, 105, 105);
+    color: white;
+    border: 1px solid rgb(197, 105, 105);
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    border-radius: 15px;
+}
+
+.headerLink{
+    text-decoration: none;
 }
 /* ------------------------------------------- */
 
