@@ -645,8 +645,9 @@ h3 {
 	margin-left: -7px;
 }
 .logo {
+
 	width: 45px;
-	margin-bottom: .4em;
+	margin-bottom: 1rem;
 	cursor: pointer;
 }
 .button {
