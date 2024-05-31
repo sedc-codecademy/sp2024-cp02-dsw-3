@@ -10,6 +10,9 @@
     height: 45px;
 }
 
+.navigation-bar{
+  position: relative;
+}
 .hr-nav{
     margin: 0px 60px 0px 60px;
     padding: 0px;
@@ -32,7 +35,7 @@
 #first-nav{
     padding-top: 5px;
     padding-bottom: 5px;
-  
+    
    
 }
 .cart-gif{
@@ -44,47 +47,101 @@
     padding-top: 0px;
 }
 
+/* Carousel  and  Select input for categories*/
+body {
+  display: flex;
+  flex-flow: column wrap;
+}
+
+
+.img-carousel{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  place-content: center;
+  background-color: white;
+  gap: 0px;
+  width: 100%;
+
+}
+.test{
+  display: flex;
+  justify-content: center;
+  align-content: flex-end;
+  width: 400px;
+
+  
+} 
+.slide{
+  display: flex;
+  justify-content: center;
+}  
+
 /* Categories inputs */
 .input-group{
-    display: flex;
-    flex-direction: column;
-    padding: 20px 250px;
-    justify-content: center;
-    align-content: center;
+  display: flex;
+  flex-direction: column;
+  padding: 20px ;
+  justify-content: center;
+  align-content: flex-start;
   background-color: rgb(197, 105, 105, 0.2) ; 
+ 
 }
 .select-div{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  justify-content: center;
+  align-content: flex-start;
     
 }
 .btn{
-    height: 40px;
-    background-color: white;
+  height: 40px;
+  background-color: white;
 }
 
 .sort-buttons{
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
   
 }
 
 .form-select{
-    width: 600px;
-    padding-bottom: 10px;
-    margin-bottom: 10px;
+  width: 300px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
 }
 
+/* Image with prompt */
+.createImagePrompt{
+  position: relative;
+}
+.imgPrompt{
+  width: 420px;
+  height: auto;
+}
+.prompt{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  position: absolute;
+  top: 70%;
+  bottom: 30%;
+  left: 10%;
+  width: 80%;
+}
+.promptInput{
+  width: 50px;
+  height: 40px;
+}
 
 /* Image cards */
 .card-img{
-    padding-top: 20px;
-    display: grid;
-    grid-template-columns:  1fr 1fr ;
-    gap: 10px;
-    place-items: center;
-    padding: 20px 250px 50px 250px;
+  padding-top: 20px;
+  display: grid;
+  grid-template-columns:  1fr 1fr 1fr ;
+  gap: 40px;
+  place-items: center;
+  
     
 }
 
@@ -108,14 +165,14 @@
 }
 
 /* Remove default margin */
-body,
+main,
 h2,
 p {
   margin: 0;
 }
 
 /* GLOBAL STYLES */
-body {
+main {
   display: grid;
   place-items: center;
   height: 100vh;

@@ -55,7 +55,7 @@ const createCardsService = {
             `;
         }
         
-        
+        popUpImagesService.addEventsImgButtons()
     }
 }
 
@@ -89,6 +89,20 @@ const categoriesService = {
         })
     }
     
+}
+
+
+const popUpImagesService = {
+    imgButtons : document.getElementsByClassName("card__button"),
+    addEventsImgButtons: function (){
+        for(let button of this.imgButtons){
+            button.addEventListener("click", function(event){
+                event.preventDefault()
+            console.log("clicked")
+            })
+        }
+        
+    }
 }
 
 
