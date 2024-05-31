@@ -34,24 +34,25 @@ const createCardsService = {
     },
     createCards: function(data){
         createCardsService.divShowingCards.innerHTML = " ";
-        for(let i = 0; i< data.length; i++){
+        for (let i = 0; i < data.length; i++) {
             this.divShowingCards.innerHTML += `
-            <div id="card">
-            <img src=${data[i].imageUrl} alt=${data[i].type} srcset="" class="image">
-            <div class="text">
-                <p>${data[i].description}</p>
-                <hr>
-
-                <div class="img-details">
-                <p>Price: ${data[i].price}$</p> 
-                <img src="../icons/icon-cart-img.png" title="add to cart icons" class="addToCart">
-                </div>
-                
-                
-                
-            </div>
-            </div>
-            `
+             <article class="card">
+                <img
+                class="card__background"
+                src=${data[i].imageUrl}
+                alt=${data[i].type}
+                width="1920"
+                height="2193"/>
+                    <div class="card__content | flow">
+                        <div class="card__content--container | flow">
+                            <p class="card__description">${data[i].category}</p>
+                            <button class="card__button">Add to cart</button>
+                        </div>
+                        
+                    </div>
+            </article> 
+           
+            `;
         }
         
         
