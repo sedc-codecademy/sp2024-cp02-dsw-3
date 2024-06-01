@@ -106,7 +106,7 @@ html {
   scroll-snap-type: x proximity;
   scroll-padding: 0 0 0 55px;
   scroll-behavior: smooth;
-  scrollbar-color:  rgb(204, 133, 133) #444343;
+  scrollbar-color: rgb(204, 133, 133) #444343;
   scrollbar-width: auto;
   animation: background 400s linear infinite;
 }
@@ -118,14 +118,15 @@ html {
   transform: translateY(-50%);
   width: 35px;
   height: 40px;
-  background-color:transparent;
+  background-color: transparent;
   color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   z-index: 2;
 }
-.scrollButton :hover{
+
+.scrollButton :hover {
   width: 30px;
   height: 35px;
 }
@@ -501,16 +502,6 @@ html {
   text-align: center;
 }
 
-.cardContainer {
-  margin-top: 25px;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-gap: 50px;
-  margin: 0 auto;
-  max-width: max-content;
-}
-
 .card:hover {
   border-color: rgb(197, 105, 105);
   box-shadow: 0 0 10px rgb(197, 105, 105);
@@ -642,9 +633,9 @@ html {
 
 .bottomCardsContainer {
   font-family: "Libre Baskerville", serif;
-	color: #373737;
-	background: #eaeaea;
-	margin: 0;
+  color: #373737;
+  background: #eaeaea;
+  margin: 0;
 }
 
 .bottomCardsContainer a {
@@ -713,9 +704,9 @@ h3 {
 }
 
 .logo {
-	width: 45px;
-	margin-bottom: 1rem;
-	cursor: pointer;
+  width: 45px;
+  margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .button {
@@ -783,7 +774,7 @@ h3 {
 }
 
 .photo-cube {
-  transition: transform 2s ease-in-out; 
+  transition: transform 2s ease-in-out;
   width: 220px;
   height: 200px;
   transform-style: preserve-3d;
@@ -936,4 +927,136 @@ ul {
   position: sticky;
   top: 0;
   z-index: 999;
+}
+
+
+/* Cards */
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap");
+
+.card {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  margin: 10px 0;
+  transition: ease all 2.3s;
+  perspective: 1200px;
+  background-color: transparent;
+}
+
+.card:hover .cover {
+  transform: rotateX(0deg) rotateY(-180deg);
+}
+
+.card:hover .cover:before {
+  transform: translateZ(30px);
+}
+
+.card:hover .cover:after {
+  background-color: rgb(216, 170, 170);
+  filter: blur(40px);
+}
+
+.card:hover .cover h1 {
+  transform: translateZ(100px);
+  color: transparent;
+}
+
+.card:hover .cover p {
+  transform: translateZ(-60px) rotatey(-180deg);
+  color: black;
+  font-weight: bold;
+}
+
+.card .cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: ease all 2.3s;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.card .cover:before {
+  content: "";
+  position: absolute;
+  border: 5px solid rgba(255, 255, 255, 0.749);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.056);
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  transition: ease all 2.3s;
+  transform-style: preserve-3d;
+  transform: translateZ(0px);
+}
+
+.card .cover:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 2;
+  transition: ease all 1.3s;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.card .cover.item-a {
+  background-image: url(images/handshakeicon.png);
+  background-size: 30%;
+  text-align: start;
+}
+
+.card .cover.item-b {
+  background-image: url(images/adviceicon.png);
+  background-size: 30%;
+  text-align: start;
+}
+
+.card .cover.item-c {
+  background-image: url(images/bestcontacticon.png);
+  background-size: 30%;
+  text-align: start;
+}
+
+.card .cover.item-d {
+  background-image: url(images/stockicon.png);
+  background-size: 30%;
+  text-align: start;
+}
+
+.card .cover h1 {
+  font-weight: 600;
+  position: absolute;
+  bottom: 55px;
+  left: 50px;
+  color: black;
+  transform-style: preserve-3d;
+  transition: ease all 2.3s;
+  z-index: 3;
+  font-size: 3em;
+  transform: translateZ(0px);
+}
+
+.card-text {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  transform-style: preserve-3d;
+  transition: ease all 2.3s;
+  transform: translateZ(-1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text p {
+  padding: 14px 32px;
+  outline: none;
+  color: transparent;
 }
