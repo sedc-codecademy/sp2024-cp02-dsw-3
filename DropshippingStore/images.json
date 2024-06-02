@@ -1090,7 +1090,7 @@
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
     "price": 45,
     "onDiscount": true,
-    "discPrice": 4,
+    "discPrice": 3,
     "stock": true,
     "imageUrl": "../images/landscapes/84.jpg"
 },
