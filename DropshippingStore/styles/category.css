@@ -56,18 +56,18 @@ body {
 
 .img-carousel{
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: auto auto ;
   place-content: center;
   background-color: white;
-  gap: 0px;
+  gap: 20px;
   width: 100%;
-
+  padding-top: 30px;
 }
-.test{
+.carouselContainer{
   display: flex;
   justify-content: center;
   align-content: flex-end;
-  width: 400px;
+  width: 200px;
 
   
 } 
@@ -75,49 +75,13 @@ body {
   display: flex;
   justify-content: center;
 }  
-
-/* Categories inputs */
-.input-group{
-  display: flex;
-  flex-direction: column;
-  padding: 20px ;
-  justify-content: center;
-  align-content: flex-start;
-  background-color: rgb(197, 105, 105, 0.2) ; 
- 
-}
-.select-div{
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: row;
-  justify-content: center;
-  align-content: flex-start;
-    
-}
-.btn{
-  height: 40px;
-  background-color: white;
-}
-
-.sort-buttons{
-  display: flex;
-  justify-content: space-evenly;
-  
-}
-
-.form-select{
-  width: 300px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
 /* Image with prompt */
 .createImagePrompt{
   position: relative;
 }
 .imgPrompt{
-  width: 420px;
-  height: auto;
+  width: 500px;
+  height: 300px;
 }
 .prompt{
   display: flex;
@@ -134,12 +98,48 @@ body {
   height: 40px;
 }
 
+/* Categories inputs */
+.input-group{
+  display: flex;
+  flex-direction: row;
+  padding: 5px ;
+  justify-content: space-around;
+  align-content: center;
+  background-color: rgb(197, 105, 105, 0.2) ; 
+ 
+}
+.select-div{
+  display: flex;
+  justify-content: flex-start;
+  flex-flow: row wrap;
+  
+  align-content: center;
+    
+}
+.btn{
+  height: 40px;
+  background-color: white;
+}
+
+.sort-buttons{
+  display: flex;
+  
+  
+}
+
+.form-select{
+  width: 250px;
+  
+}
+
+
+
 /* Image cards */
 .card-img{
-  padding-top: 20px;
+  padding: 50px 150px;
   display: grid;
-  grid-template-columns:  1fr 1fr 1fr ;
-  gap: 40px;
+  grid-template-columns:  1fr 1fr 1fr 1fr;
+  gap: 20px;
   place-items: center;
   
     
@@ -175,7 +175,7 @@ p {
 main {
   display: grid;
   place-items: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 h2 {
@@ -202,7 +202,8 @@ p {
 
   display: grid;
   place-items: center;
-  width: 30vw;
+  width: 90%;
+  height: 20vh;
   max-width: 21.575rem;
   height: 28.025rem;
   overflow: hidden;

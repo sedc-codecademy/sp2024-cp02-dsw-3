@@ -94,11 +94,45 @@
         </nav>
     </div>
 
+
+    <!-- Category options -->
+    <div class="input-group">
+        <div class="select-div">
+            <select class="form-select" id="categorySelect" >
+                <option value="default">All categories</option>
+                <option value="Acrylic painting">Acrylic</option>
+                <option value="Art & Designs">Art & Design</option>
+                <option value="Black & White">Black & White</option>
+                <option value="4">Pastel, Chalk & Charcoals</option>
+                <option value="5">Abstract</option>
+                <option value="6">Nature</option>
+                <option value="Portraits">Portraits</option>
+                <option value="Landscapes">Landscapes</option>
+                <option value="Astrophoto">Astrophoto</option>
+
+            </select>
+
+            <select class="form-select" id="filterStock" >
+                <option value="default">See all</option>
+                <option value="stock">See available</option>
+                
+            </select>
+
+            <button class="btn btn-outline-secondary" type="button" id="submit">Submit</button>
+
+        </div>
+
+        <div class="sort-buttons">
+            <button class="btn btn-outline-secondary" type="button" id="lowToHigh">Lowest price↑</button>
+            <button class="btn btn-outline-secondary" type="button" id="highToLow">Highest price↑</button>
+        </div>
+
+    </div>
     
     <!-- Carousel -->
     
     <div class="img-carousel">
-        <div class="test">
+        <div class="carouselContainer">
             <div id="carouselExampleCaptions" class="carousel slide">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
@@ -151,37 +185,12 @@
 
         </div>
 
-        <!-- Category options -->
-        <div class="input-group">
-            <div class="select-div">
-                <select class="form-select" id="categorySelect" >
-                    <option value="default">All categories</option>
-                    <option value="Acrylic painting">Acrylic</option>
-                    <option value="Art & Designs">Art & Design</option>
-                    <option value="Black & White">Black & White</option>
-                    <option value="4">Pastel, Chalk & Charcoals</option>
-                    <option value="5">Abstract</option>
-                    <option value="6">Nature</option>
-                    <option value="Portraits">Portraits</option>
-                    <option value="Landscapes">Landscapes</option>
-                    <option value="Astrophoto">Astrophoto</option>
-
-                </select>
-                <button class="btn btn-outline-secondary" type="button" id="submit">Submit</button>
-    
-            </div>
-    
-            <div class="sort-buttons">
-                <button class="btn btn-outline-secondary" type="button" id="lowToHigh">Low to high </button>
-                <button class="btn btn-outline-secondary" type="button" id="highToLow">High to low</button>
-            </div>
-    
-        </div>
+        
         
         <!-- Image with prompt -->
 
         <div class="createImagePrompt">
-            <img src="../images/art-prompt.jpg" alt="" srcset="" class="imgPrompt">
+            <img src="../images/promptImage.jpg" alt="" srcset="" class="imgPrompt">
             <div class="input-group mb-3 prompt">
                 <input type="text" class="form-control promptInput" id="promptInput" placeholder="Create your art by text" aria-describedby="button-addon2">
                 <button class="btn btn-outline-secondary" type="button" id="button-addon2">Button</button>
