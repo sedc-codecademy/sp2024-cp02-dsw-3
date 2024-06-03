@@ -8,7 +8,7 @@
     "price": 20,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/6.png"
     
 
@@ -23,7 +23,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/1.jpg"
 },
 {
@@ -36,7 +36,7 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 15,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/2.jpg"
 },
 {
@@ -49,7 +49,7 @@
     "price": 25,
     "onDiscount": true,
     "discPrice": 22,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/3.jpg"
 },
 {
@@ -62,7 +62,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/4.jpg"
 },
 {
@@ -75,7 +75,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/5.jpg"
 },
 {
@@ -88,7 +88,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 23,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/0.jpg"
 },
 {
@@ -101,7 +101,7 @@
     "price": 8,
     "onDiscount": true,
     "discPrice": 6,
-    "stock": 1,
+    "stock":false,
     "imageUrl": "../images/acrylic/7.jpg"
 },
 {
@@ -114,7 +114,7 @@
     "price": 8,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/8.jpg"
 },
 {
@@ -127,7 +127,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/9.png"
 },
 {
@@ -140,7 +140,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 20,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/10.png"
 },
 {
@@ -153,7 +153,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/11.jpg"
 },
 {
@@ -166,7 +166,7 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 17,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/12.png"
 },
 {
@@ -179,7 +179,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 27,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/13.jpg"
 },
 {
@@ -192,7 +192,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": false,
     "imageUrl": "../images/acrylic/14.jpg"
 },
 {
@@ -205,7 +205,7 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 17,
-    "stock": 1,
+    "stock": false,
     "imageUrl": "../images/acrylic/15.jpg"
 },
 {
@@ -218,7 +218,7 @@
     "price": 10,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": false,
     "imageUrl": "../images/acrylic/16.png"
 },
 {
@@ -231,7 +231,7 @@
     "price": 10,
     "onDiscount": true,
     "discPrice": 7,
-    "stock": 1,
+    "stock": false,
     "imageUrl": "../images/acrylic/17.jpg"
 },
 {
@@ -244,7 +244,7 @@
     "price": 10,
     "onDiscount": true,
     "discPrice": 7,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/18.jpg"
 },
 {
@@ -257,7 +257,7 @@
     "price": 20,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/19.jpg"
 },
 {
@@ -270,7 +270,7 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 14,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/20.png"
 },
 {
@@ -283,20 +283,20 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 13,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/21.png"
 },
 {
     "id": 22,
     "type": "photo",
-    "description": "Artistic live in fala",
+    "description": "Artistic live in flat",
     "tags":["artistic", "flat"],
     "category": "Art & Designs",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/22.png"
 },
 {
@@ -309,7 +309,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/23.jpg"
 },
 {
@@ -322,7 +322,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/24.jpg"
 },
 {
@@ -335,7 +335,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 22,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/25.jpg"
 },
 {
@@ -348,7 +348,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/26.jpg"
     
 },
@@ -362,7 +362,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 24,
-    "stock": 1,
+    "stock": true,
     "imageUrl":"../images/acrylic/28.jpg"
 },
 {
@@ -375,7 +375,7 @@
     "price": 15,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl":"../images/acrylic/29.jpg"
 },
 {
@@ -388,7 +388,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 24,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/30.jpg"
 },
 {
@@ -401,7 +401,7 @@
     "price": 40,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/31.jpg"
 },
 {
@@ -414,7 +414,7 @@
     "price": 40,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/32.jpg"
 },
 {
@@ -427,7 +427,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/33.jpg"
 },
 {
@@ -440,7 +440,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/34.jpg"
 },
 {
@@ -453,7 +453,7 @@
     "price": 15,
     "onDiscount": true,
     "discPrice": 11,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/35.jpg"
 },
 {
@@ -466,7 +466,7 @@
     "price": 25,
     "onDiscount": true,
     "discPrice": 21,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/36.jpg"
 },
 {
@@ -479,7 +479,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/37.jpg"
 },
 {
@@ -492,7 +492,7 @@
     "price": 40,
     "onDiscount": true,
     "discPrice": 37,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/38.jpg"
 },
 {
@@ -505,7 +505,7 @@
     "price": 20,
     "onDiscount": true,
     "discPrice": 14,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/39.jpeg"
 },
 {
@@ -518,7 +518,7 @@
     "price": 8,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/acrylic/40.jpg"
 },
 {
@@ -531,7 +531,7 @@
     "price": 8,
     "onDiscount": true,
     "discPrice": 5,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/acrylic/41.jpg"
 },
 {
@@ -544,7 +544,7 @@
     "price": 15,
     "onDiscount": true,
     "discPrice": 13,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/42.jpg"
 },
 {
@@ -557,7 +557,7 @@
     "price": 10,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/Art&Designs/43.png"
 },
 {
@@ -570,7 +570,7 @@
     "price": 10,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/44.webp"
 },
 {
@@ -583,7 +583,7 @@
     "price": 8,
     "onDiscount": true,
     "discPrice": 5,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/45.webp"
 },
 {
@@ -596,7 +596,7 @@
     "price": 30,
     "onDiscount": true,
     "discPrice": 27,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/46.png"
 },
 {
@@ -609,7 +609,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/Art&Designs/47.jpg"
 },
 {
@@ -622,7 +622,7 @@
     "price": 35,
     "onDiscount": true,
     "discPrice": 32,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/Art&Designs/48.jpg"
 },
 {
@@ -635,7 +635,7 @@
     "price": 25,
     "onDiscount": true,
     "discPrice": 19,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/black&white/49.jpg"
 },
 {
@@ -648,7 +648,7 @@
     "price": 40,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/black&white/50.jpg"
 },
 {
@@ -661,7 +661,7 @@
     "price": 30,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/black&white/51.jpg"
 },
 {
@@ -674,7 +674,7 @@
     "price": 25,
     "onDiscount": true,
     "discPrice": 21,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/black&white/52.jpg"
 },
 {
@@ -687,7 +687,7 @@
     "price": 35,
     "onDiscount": true,
     "discPrice": 29,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/black&white/53.jpg"
 },
 {
@@ -700,7 +700,7 @@
     "price": 35,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock":true,
     "imageUrl": "../images/black&white/54.jpg"
 },
 {
@@ -713,7 +713,7 @@
     "price": 25,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/black&white/55.jpg"
 },
 {
@@ -726,7 +726,7 @@
     "price": 20,
     "onDiscount": false,
     "discPrice": null,
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/black&white/56.jpg"
 },
 {
@@ -739,7 +739,7 @@
     "price": 25,
     "onDiscount": true,
     "discPrice": "",
-    "stock": 1,
+    "stock": true,
     "imageUrl": "../images/black&white/57.jpg"
 }
 ,
@@ -772,7 +772,7 @@
 {
     "id": 60,
     "type": "photo",
-    "description": "A beatiful woman with pink background",
+    "description": "A beautiful woman with pink background",
     "tags":["youth", "nose-earing", "pink background", "detailed"],
     "category": "Portraits",
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
