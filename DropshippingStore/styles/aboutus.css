@@ -1,0 +1,288 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+*{
+    box-sizing: border-box;
+    font-family: "Lato", sans-serif;
+    
+}
+
+.logo{
+    width: 60px;
+    height: 45px;
+}
+
+.hr-nav{
+    margin: 0px 60px 0px 60px;
+    padding: 0px;
+    background-color: black;
+}
+
+
+#first-nav, #second-nav{
+    padding-right: 250px;
+    padding-left: 250px;
+    background-color: rgb(223, 220, 220);
+}
+
+#searchInput{
+    width: 500px;
+    height: 40px;
+   
+} 
+
+#first-nav{
+    padding-top: 5px;
+    padding-bottom: 5px;
+   
+}
+.cart-gif{
+    width: 30px;
+    border: 10px rgb(74, 71, 71);
+}
+
+#second-nav{
+    padding-top: 0px;
+}
+
+
+@media only screen and (max-width: 1370px){
+    #first-nav, #second-nav{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    #first-nav{
+        padding-top: 10px;
+        padding-bottom: 0px;
+        
+    }
+    #searchInput{
+        width: 350px;
+    } 
+}
+@media only screen and (max-width: 500px){
+    #first-nav{
+        padding-top: 5px;
+        padding-bottom: 0px;
+        
+    }
+    #searchInput{
+        width: 100px;
+    } 
+}
+@media only screen and (max-width: 320px){
+    
+    #searchInput{
+        width: 80px;
+    } 
+    
+}
+
+.about-section{
+    background: url(../images/aboutus/sky.jpg) no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 150px;
+}
+
+.inner-container h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text{
+    font-size: 15px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.skills{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .about-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .about-section{
+        padding: 0;
+    }
+    .inner-container{
+        padding: 60px;
+    }
+}
+
+.ourmission-section{
+    background: url(../images/aboutus/slika2.png) no-repeat right;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container2{
+    width: 55%;
+    float: left;
+    background-color: #fdfdfd;
+    padding: 150px;
+}
+
+.inner-container2 h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text2{
+    font-size: 15px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.skills2{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container2{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .ourmission-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container2{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .ourmission-section{
+        padding: 0;
+    }
+    .inner-container2{
+        padding: 60px;
+    }
+}
+
+.whatweoffer-section{
+    background: url(../images/aboutus/sky2.jpg) no-repeat left;
+    background-size: 55%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+    padding: 100px 0;
+}
+
+.inner-container3{
+    width: 55%;
+    float: right;
+    background-color: #fdfdfd;
+    padding: 150px;
+}
+
+.inner-container3 h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.text3{
+    font-size: 15px;
+    color: #545454;
+    line-height: 30px;
+    text-align: justify;
+    margin-bottom: 40px;
+}
+
+.skills3{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    font-size: 13px;
+    text-decoration: none;
+}
+
+@media screen and (max-width:1200px){
+    .inner-container3{
+        padding: 80px;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .whatweoffer-section{
+        background-size: 100%;
+        padding: 100px 40px;
+    }
+    .inner-container3{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:600px){
+    .whatweoffer-section{
+        padding: 0;
+    }
+    .inner-container3{
+        padding: 60px;
+    }
+}
+
+.contact-button {
+    display: none; 
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: gray;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.contact-button:hover {
+    background-color: darkgray;
+}
+
+.contact-logo {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
