@@ -120,6 +120,6 @@ const localStr = {
 
 localStr.addEvent();
 
-const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/TN/MK/AS-develop-category-page-ui/DropshippingStore/images.json'
+const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/development/DropshippingStore/images.json'
 createCardsService.cardsDefault(url) //presenting all images
 categoriesService.addSubmitEvent()
