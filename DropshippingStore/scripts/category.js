@@ -119,8 +119,7 @@ const popUpImagesService = {
 //         })
 //     }
 // }
-
-localStr.addEvent();
+// localStr.addEvent();
 
 const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/development/DropshippingStore/images.json'
 createCardsService.cardsDefault(url) //presenting all images
