@@ -104,19 +104,21 @@ const popUpImagesService = {
         
     }
 }
-const localStr = {
-    btn: document.getElementById("test"),
-    test: {
-        1: "sddd",
-        2: "sddfd"
-    },
-    addEvent: function(){
-        this.btn.addEventListener("click", function(){
-            localStorage.setItem("key", JSON.stringify(localStr.test));
-            console.log("test")
-        })
-    }
-}
+
+// TEST LOCAL STORAGE
+// const localStr = {
+//     btn: document.getElementById("test"),
+//     test: {
+//         1: "sddd",
+//         2: "sddfd"
+//     },
+//     addEvent: function(){
+//         this.btn.addEventListener("click", function(){
+//             localStorage.setItem("key", JSON.stringify(localStr.test));
+//             console.log("test")
+//         })
+//     }
+// }
 
 localStr.addEvent();
 
