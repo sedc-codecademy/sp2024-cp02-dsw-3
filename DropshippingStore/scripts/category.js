@@ -104,7 +104,19 @@ const popUpImagesService = {
         
     }
 }
-
+const localStr = {
+    btn: document.getElementById("test"),
+    test: {
+        1: "sddd",
+        2: "sddfd"
+    },
+    addEvent: function(){
+        this.btn.addEventListener("click", function(){
+            localStorage.setItem("key", JSON.stringify(localStr.test));
+            console.log("test")
+        })
+    }
+}
 
 const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/TN/MK/AS-develop-category-page-ui/DropshippingStore/images.json'
 createCardsService.cardsDefault(url) //presenting all images
