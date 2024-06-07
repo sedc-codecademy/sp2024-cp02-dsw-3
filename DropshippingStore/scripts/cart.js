@@ -1,9 +1,19 @@
 
+// function setToLocalStorage(key, value) {
+//     localStorage.setItem(key, JSON.stringify(value));
+// };
+
+function getFromLocalStorage(key){
+    const item = localStorage.getItem(key);
+    return item ? JSON.parse(item) : null;
+};
+
 async function fetchAndDisplayProducts() {
     try {
         const response = await fetch('../products.json');
         const data = await response.json();
         const products = data.products;
+        // setToLocalStorage("shooping-cart", products)
         displayCart(products);
         displayAmount(products);
     } catch (error) {
