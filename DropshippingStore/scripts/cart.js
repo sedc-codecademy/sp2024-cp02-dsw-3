@@ -20,7 +20,8 @@ async function fetchAndDisplayProducts() {
         console.error('Error fetching products:', error);
     }
 }
-
+const header = document.getElementById("test123");
+header.innerHTML = getFromLocalStorage("key");
 fetchAndDisplayProducts();
 getFromLocalStorage("key");
 
