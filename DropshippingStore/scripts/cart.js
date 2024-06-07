@@ -22,7 +22,7 @@ async function fetchAndDisplayProducts() {
 }
 
 fetchAndDisplayProducts();
-
+getFromLocalStorage("key");
 
 let cart = [];
 
