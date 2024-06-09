@@ -121,6 +121,6 @@ const popUpImagesService = {
 // }
 // localStr.addEvent();
 
-const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
+const url = 'fake'
 createCardsService.cardsDefault(url) //presenting all images
 categoriesService.addSubmitEvent()
