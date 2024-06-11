@@ -1,50 +1,54 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');;
-*{
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-    
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.logo{
-    width: 60px;
-    height: 45px;
+.logo {
+  width: 60px;
+  height: 45px;
 }
 
-.navigation-bar{
+.navigation-bar {
   position: relative;
 }
-.hr-nav{
-    margin: 0px 60px 0px 60px;
-    padding: 0px;
-    background-color: black;
+.hr-nav {
+  margin: 0px 60px 0px 60px;
+  padding: 0px;
+  background-color: white;
 }
 
-
-#first-nav, #second-nav{
-    padding-right: 250px;
-    padding-left: 250px;
-    background-color: rgb(223, 220, 220);
+#first-nav,
+#second-nav {
+  padding-right: 250px;
+  padding-left: 250px;
 }
 
-#searchInput{
-    width: 500px;
-    height: 40px;
-   
-} 
-
-#first-nav{
-    padding-top: 5px;
-    padding-bottom: 5px;
-    
-   
+.div-search {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
-.cart-gif{
-    width: 30px;
-    border: 10px rgb(74, 71, 71);
+.searchInput {
+  width: 500px;
+  height: 40px;
+  border-radius: 5px;
+}
+.searchInput:hover {
+  border: 2px double rgb(98, 0, 255);
+}
+#first-nav {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.cart-gif {
+  width: 30px;
+  border: 10px rgb(74, 71, 71);
 }
 
-#second-nav{
-    padding-top: 0px;
+#second-nav {
+  padding-top: 0px;
+  background-color: black;
 }
 
 /* Carousel  and  Select input for categories*/
@@ -53,37 +57,53 @@ body {
   flex-flow: column wrap;
 }
 
-
-.img-carousel{
+.img-carousel {
   display: grid;
-  grid-template-columns: auto auto ;
+  grid-template-columns: auto auto;
   place-content: center;
-  background-color: white;
-  gap: 20px;
+  background-color: rgb(197, 105, 105, 0.2);
+  gap: 100px;
   width: 100%;
-  padding-top: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
-.carouselContainer{
+.carouselContainer {
   display: flex;
   justify-content: center;
   align-content: flex-end;
   width: 200px;
-
-  
-} 
-.slide{
+}
+.slide {
   display: flex;
   justify-content: center;
-}  
-/* Image with prompt */
-.createImagePrompt{
-  position: relative;
 }
-.imgPrompt{
-  width: 500px;
+
+.carousel-item {
+  width: 250px;
+}
+
+/* Prompt and select inputs for categories */
+.prompt-categories-container {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 30px;
+  justify-content: flex-start;
+  padding-top: 0%;
+  align-content: flex-start;
+}
+
+/* Image with prompt */
+.createImagePrompt {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: flex-start;
+}
+.imgPrompt {
+  width: 700px;
   height: 300px;
 }
-.prompt{
+.prompt {
   display: flex;
   flex-flow: row;
   justify-content: center;
@@ -91,58 +111,63 @@ body {
   top: 70%;
   bottom: 30%;
   left: 10%;
-  width: 80%;
+  width: 70%;
 }
-.promptInput{
+.promptInput {
   width: 50px;
   height: 40px;
 }
 
 /* Categories inputs */
-.input-group{
+.categories {
   display: flex;
   flex-direction: row;
-  padding: 5px ;
-  justify-content: space-around;
+  padding: 5px;
+  justify-content: space-between;
   align-content: center;
-  background-color: rgb(197, 105, 105, 0.2) ; 
- 
+  background-color: rgb(197, 105, 105, 0.2);
 }
-.select-div{
+.select-div {
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;
-  
+  /* justify-content: center; */
   align-content: center;
-    
 }
-.btn{
+.btn {
   height: 40px;
   background-color: white;
 }
 
-.sort-buttons{
+.sort-buttons {
   display: flex;
-  
-  
+  justify-content: flex-end;
+  width: 30px;
+  height: 20px;
+  padding: 0px;
+  /* flex-flow: column wrap; */
 }
 
-.form-select{
+.form-select {
   width: 250px;
-  
+
+  /* padding-bottom: 10px;
+  margin-bottom: 10px; */
 }
 
-
+/* Animation if no items to show */
+.noItems {
+  width: 300px;
+  height: 300px;
+}
 
 /* Image cards */
-.card-img{
+.card-img {
   padding: 50px 150px;
   display: grid;
-  grid-template-columns:  1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px;
   place-items: center;
-  
-    
 }
 
 :root {
@@ -175,7 +200,7 @@ p {
 main {
   display: grid;
   place-items: center;
-  /* height: 100vh; */
+  /* height: 80vh; */
 }
 
 h2 {
@@ -199,7 +224,6 @@ p {
 /* CARD COMPONENT */
 
 .card {
-
   display: grid;
   place-items: center;
   width: 90%;
@@ -212,9 +236,8 @@ p {
 }
 
 .card > * {
-  grid-column: 1 / 1; 
+  grid-column: 1 / 1;
   grid-row: 1 / 1;
-  
 }
 
 .card__background {
@@ -247,9 +270,9 @@ p {
 .card__title {
   position: relative;
   width: fit-content;
-  width: -moz-fit-content;  
+  width: -moz-fit-content;
 }
- 
+
 .card__title::after {
   content: "";
   position: absolute;
@@ -261,9 +284,9 @@ p {
 }
 
 .card__button {
-  padding: 0.75em 1.6em;
+  padding: 0.1em 0.1em;
   width: fit-content;
-  width: -moz-fit-content; 
+  width: -moz-fit-content;
   font-variant: small-caps;
   font-weight: bold;
   border-radius: 0.45em;
@@ -275,7 +298,7 @@ p {
 }
 
 .card__button:focus {
-  outline: 2px solid black;
+  outline: 1px solid black;
   outline-offset: -5px;
 }
 
@@ -302,7 +325,6 @@ p {
   .card__button {
     opacity: 0;
     transition: transform 500ms ease-out, opacity 500ms ease-out;
-    
   }
 
   .card:hover,
@@ -343,37 +365,287 @@ p {
     transition: opacity 500ms ease-in, transform 500ms ease-in;
     transition-delay: 500ms;
   }
-} 
-
-
-@media only screen and (max-width: 1370px){
-    #first-nav, #second-nav{
-        padding-right: 0px;
-        padding-left: 0px;
-    }
-    #first-nav{
-        padding-top: 10px;
-        padding-bottom: 0px;
-        
-    }
-    #searchInput{
-        width: 350px;
-    } 
 }
-@media only screen and (max-width: 500px){
-    #first-nav{
-        padding-top: 5px;
-        padding-bottom: 0px;
-        
-    }
-    #searchInput{
-        width: 100px;
-    } 
+
+#noItemsFound {
+  display: none;
 }
-@media only screen and (max-width: 320px){
-    
-    #searchInput{
-        width: 80px;
-    } 
-    
+
+@media only screen and (max-width: 1300px) {
+  .hr-nav {
+    margin: 0px 0px 0px 0px;
+  }
+
+  #first-nav,
+  #second-nav {
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+
+  .navbar-togler{
+    display:flex;
+    justify-content: flex-start;
+  }
+
+  .div-search {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .searchInput {
+    width: 300px;
+  }
+  .cart-gif {
+    width: 25px;
+  }
+
+  /* Carousel  and  Select input for categories*/
+
+  .img-carousel {
+    gap: 40px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .carouselContainer {
+    flex-wrap: wrap;
+    align-content: center;
+  }
+
+  .carousel-item {
+    width: 100%;
+  }
+
+  /* Prompt and select inputs for categories */
+  .prompt-categories-container {
+    gap: 10px;
+  }
+
+  /* Image with prompt */
+  .imgPrompt {
+    width: 550px;
+    height: 250px;
+  }
+  .prompt {
+    width: 60%;
+  }
+
+  /* Categories inputs */
+  .categories {
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    height: 40px;
+  }
+
+  .sort-buttons {
+    width: 20px;
+  }
+
+  .form-select {
+    width: 185px;
+  }
+
+  /* Animation that shows up if no items are found from search bar  */
+  .noItems {
+    width: 250px;
+    height: 250px;
+  }
+
+  /* Image cards */
+  .card-img {
+    padding: 40px 100px;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* Paragraph in image cards */
+  p {
+    font-size: 1rem;
+  }
+}
+@media only screen and (max-width: 800px) {
+  #first-nav,
+  #second-nav {
+    padding: 0px;
+  }
+
+  
+  .container-fluid {
+    flex-flow: column wrap;
+  }
+
+  .searchInput {
+    width: 300px;
+  }
+  .cart-gif {
+    width: 25px;
+  }
+
+  /* Carousel  and  Select input for categories*/
+
+  .img-carousel {
+    grid-template-columns: auto;
+    place-content: center;
+    gap: 0px;
+    padding-top: 15px;
+    padding-bottom: 5px;
+  }
+  .carouselContainer {
+    justify-content: center;
+  }
+
+  .slide {
+    display: none;
+  }
+
+  /* Image with prompt */
+  .imgPrompt {
+    width: 550px;
+    height: 220px;
+    /* max-width: 550px; */
+  }
+
+  .sort-buttons {
+    width: 10px;
+  }
+
+  .form-select {
+    width: 160px;
+  }
+
+  /* Image cards */
+  .card-img {
+    padding: 20px 15px;
+    gap: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .searchInput {
+    width: 140px;
+  }
+
+  #first-nav {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .cart-gif {
+    width: 20px;
+  }
+
+  .img-carousel {
+    grid-template-columns: auto;
+    place-content: center;
+    gap: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .carouselContainer {
+    display: none;
+  }
+
+  /* Prompt and select inputs for categories */
+  .prompt-categories-container {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    padding-top: 0%;
+    align-content: flex-start;
+  }
+
+  /* Image with prompt */
+  .createImagePrompt {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: flex-start;
+  }
+  .imgPrompt {
+    width: 300px;
+    height: 150px;
+    place-content: center;
+  }
+  .prompt {
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    position: absolute;
+    top: 70%;
+    bottom: 30%;
+    left: 10%;
+    width: 70%;
+  }
+  .promptInput {
+    width: 50px;
+    height: 40px;
+  }
+
+  /* Categories inputs */
+  .categories {
+    display: flex;
+    flex-flow: column wrap;
+    padding: 5px;
+    justify-content: center;
+    align-content: center;
+  }
+  .select-div {
+    display: flex;
+    flex-flow: row wrap;
+    align-content: center;
+  }
+  .btn {
+    height: 40px;
+    background-color: white;
+  }
+
+  .sort-buttons {
+    width: 300px;
+    height: 40px;
+    padding: 0px;
+    flex-flow: row wrap;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-evenly;
+  }
+
+  .form-select {
+    width: 170px;
+  }
+
+  /* Animation if no items to show */
+  .noItems {
+    width: 200px;
+    height: 200px;
+  }
+
+  /* Image cards */
+  .card-img {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: auto;
+    gap: 15px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  
+  .select-div {
+    justify-content: center;
+  }
+
+  .sort-buttons {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .form-select {
+    width: 180px;
+  }
+  
 }

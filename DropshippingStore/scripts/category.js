@@ -3,7 +3,7 @@ let fetchDataService = {
         try {
             let res = await fetch(add)
             let data = await res.json()
-            console.log(data)
+            
             return [...data]
 
         } catch (error) {
@@ -46,7 +46,8 @@ const createCardsService = {
                     <div class="card__content | flow">
                         <div class="card__content--container | flow">
                             <p class="card__description">${data[i].category}</p>
-                            <button class="card__button">Add to cart</button>
+                            <p class="img-price">${data[i].price}$</p>
+                            <button class="card__button" id=${data[i].id}>Add to cart</button>
                         </div>
                         
                     </div>
@@ -55,7 +56,10 @@ const createCardsService = {
             `;
         }
         
-        popUpImagesService.addEventsImgButtons()
+        addToCartService.addEventsAddToCart()
+        const arrayToBeSorted = [...data]
+        categoriesService.addAscEvent(arrayToBeSorted)
+        categoriesService.addDescEvent(arrayToBeSorted)
     }
 }
 
@@ -92,35 +96,85 @@ const categoriesService = {
 }
 
 
-const popUpImagesService = {
-    imgButtons : document.getElementsByClassName("card__button"),
-    addEventsImgButtons: function (){
-        for(let button of this.imgButtons){
+
+const searchInputService = {
+    searchInput: document.getElementById("searchInput"),
+      addSearchEvent: this.searchInput.addEventListener("keydown",async function(event){
+            if(event.code === 'Enter'){
+                const searchedItems= await searchInputService.searchDB(url)
+                searchInputService.searchInput.value = '';
+                if(searchedItems.length==0){
+                    const divNoItems = document.getElementById("noItemsFound")
+                    divNoItems.style.display = "block"
+                    setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
+                    await createCardsService.cardsDefault(url)
+                }else{
+                  createCardsService.createCards(searchedItems)
+                }
+            }
+        }),
+    searchDB: async function(URl){
+        const data = await fetchDataService.getImg(URl)
+        const result = data.filter(item=>{
+              if(item.tags.find(str=> str==searchInputService.searchInput.value)){
+                  return item
+              }
+        })
+        return result
+    }
+  
+}
+
+
+const addToCartService = {
+    addToCartBtn : document.getElementsByClassName("card__button"),
+    addEventsAddToCart: function (){
+        for(let button of this.addToCartBtn){
             button.addEventListener("click", function(event){
                 event.preventDefault()
-            console.log("clicked")
+                localStorageService.imageID.ids.push(button.getAttribute('id'))
+                localStorageService.addToLocalStorage()
+                
             })
         }
         
     }
 }
 
-// TEST LOCAL STORAGE
-// const localStr = {
-//     btn: document.getElementById("test"),
-//     test: {
-//         1: "sddd",
-//         2: "sddfd"
-//     },
-//     addEvent: function(){
-//         this.btn.addEventListener("click", function(){
-//             localStorage.setItem("key", JSON.stringify(localStr.test));
-//             console.log("test")
-//         })
+const localStorageService = {
+    imageID: {ids:[]},
+    addToLocalStorage: function(){
+        localStorage.setItem("imageID", JSON.stringify(this.imageID))
+    }
+}
+
+const promptInputService = {
+    prompt: document.getElementById("promptInput"),
+    addPromptEvent: function(){
+        this.prompt.addEventListener("click", function(){
+            document.location.href = "./singUp.html"
+        })
+    }
+}
+
+//TO DO 
+// const popUpImagesService = {
+//     imgButtons : document.getElementsByClassName("card__button"),
+//     addEventsImgButtons: function (){
+//         for(let button of this.imgButtons){
+//             button.addEventListener("click", function(event){
+//                 event.preventDefault()
+//             console.log("clicked")
+//             })
+//         }
+        
 //     }
 // }
-// localStr.addEvent();
+
+
+
 
 const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
 createCardsService.cardsDefault(url) //presenting all images
 categoriesService.addSubmitEvent()
+promptInputService.addPromptEvent() //redirect to singUp page
