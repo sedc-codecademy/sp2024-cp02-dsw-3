@@ -508,6 +508,12 @@ html {
   transition: 500ms;
 }
 
+.card:hover {
+  border-color: rgb(197, 105, 105);
+  box-shadow: 0 0 10px rgb(197, 105, 105);
+  transition: 500ms;
+}
+
 .sellYourArtContainer {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -530,9 +536,15 @@ html {
   border-radius: 15px;
 }
 
-.card {
+.card2 {
   padding: 10px;
   border: 1px solid rgb(197, 105, 105, 0.5);
+}
+
+.card2:hover {
+  border-color: rgb(197, 105, 105);
+  box-shadow: 0 0 10px rgb(197, 105, 105);
+  transition: 500ms;
 }
 
 .secondButton {
@@ -922,6 +934,9 @@ ul {
   }
 }
 
+
+
+
 .navigation-bar {
   position: sticky;
   top: 0;
@@ -942,6 +957,7 @@ ul {
   background-color: transparent;
 }
 
+
 .card:hover .cover {
   transform: rotateX(0deg) rotateY(-180deg);
 }
@@ -955,10 +971,10 @@ ul {
   filter: blur(40px);
 }
 
-.card:hover .cover h1 {
+/* .card:hover .cover h1 {
   transform: translateZ(100px);
   color: transparent;
-}
+} */
 
 .card:hover .cover p {
   transform: translateZ(-60px) rotatey(-180deg);
@@ -981,7 +997,7 @@ ul {
   content: "";
   position: absolute;
   border: 5px solid rgba(255, 255, 255, 0.749);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.056);
+  /* box-shadow: 0 0 12px rgba(0, 0, 0, 0.056); */
   top: 20px;
   left: 20px;
   right: 20px;
@@ -1001,7 +1017,7 @@ ul {
   bottom: 0px;
   z-index: 2;
   transition: ease all 1.3s;
-  background: rgba(0, 0, 0, 0.4);
+  /* background: rgba(0, 0, 0, 0.4); */
 }
 
 .card .cover.item-a {
@@ -1028,7 +1044,7 @@ ul {
   text-align: start;
 }
 
-.card .cover h1 {
+/* .card .cover h1 {
   font-weight: 600;
   position: absolute;
   bottom: 55px;
@@ -1039,7 +1055,7 @@ ul {
   z-index: 3;
   font-size: 3em;
   transform: translateZ(0px);
-}
+} */
 
 .card-text {
   position: absolute;
