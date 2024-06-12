@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
+body {
+  background-color: wheat
+}
 * {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
@@ -70,7 +73,7 @@ html {
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  background: white;
+  background-color: wheat;
   margin: 0;
 }
 
@@ -90,24 +93,24 @@ html {
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  width: calc(100% - 70px);
+  width: calc(100% - 5px);
   height: calc(100% - 50px);
   max-height: 670px;
   max-width: 1900px;
   margin: 35px 0px;
-  background-color: white;
-  background-image: radial-gradient(rgb(197, 105, 105) 1px, white 1px);
+  background-color: rgb(197, 105, 105);
+  background-image: radial-gradient(wheat 1px, rgb(197, 105, 105) 1px);
   background-size: 40px 40px;
-  border-radius: 2px;
+  border-radius: 5px;
   outline: 1px solid rgb(197, 105, 105);
-  outline-offset: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
+  outline-offset: 0;
+  overflow-x:auto;
+  /* overflow-y: auto;
   scroll-snap-type: x proximity;
   scroll-padding: 0 0 0 55px;
   scroll-behavior: smooth;
-  scrollbar-color: rgb(204, 133, 133) #444343;
-  scrollbar-width: auto;
+  scrollbar-color:  rgb(204, 133, 133) #444343;
+  scrollbar-width: auto; */
   animation: background 400s linear infinite;
 }
 
@@ -118,26 +121,38 @@ html {
   transform: translateY(-50%);
   width: 35px;
   height: 40px;
-  background-color: transparent;
+  background-color:transparent;
   color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   z-index: 2;
-}
-
-.scrollButton :hover {
-  width: 30px;
-  height: 35px;
-}
-
+} 
 #scrollLeftButton {
-  left: 10px;
+  border: 1px solid black;
+  height: 8%;
+  left: 2px;
   margin-right: 15px;
+}
+#scrollLeftButton:hover {
+  height: 9%;
+  background-color: rgb(197, 105, 105);
+  box-shadow: 0 0 10px rgb(197, 105, 105);
+  color: rgb(197, 105, 105);
+  transition: 500ms;
 }
 
 #scrollRightButton {
-  right: 10px;
+  right: 2px;
+  border: 1px solid black;
+  height: 8%;
+}
+#scrollRightButton:hover {
+  height: 9%;
+  background-color: rgb(197, 105, 105);
+  box-shadow: 0 0 10px rgb(197, 105, 105);
+  color: rgb(197, 105, 105);
+  transition: 500ms;
 }
 
 @keyframes background {
@@ -156,6 +171,7 @@ html {
 
 #mz-gallery::-webkit-scrollbar-track {
   background: transparent;
+  display: none;
 }
 
 #mz-gallery::-webkit-scrollbar-thumb {
@@ -173,7 +189,7 @@ html {
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:decrement {
   height: 25px;
   width: 80px;
-  background-color: lawngreen;
+  background-color: rgb(197, 105, 105);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-box-arrow-left' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z'/%3E%3Cpath fill-rule='evenodd' d='M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z'/%3E%3C/svg%3E");
   background-size: 20px;
   background-position: center;
@@ -183,7 +199,7 @@ html {
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:increment {
   height: 25px;
   width: 80px;
-  background-color: lawngreen;
+  background-color: rgb(197, 105, 105);
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-box-arrow-right' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z'/%3E%3Cpath fill-rule='evenodd' d='M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z'/%3E%3C/svg%3E");
   background-size: 20px;
   background-position: center;
@@ -192,12 +208,12 @@ html {
 
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:decrement:hover,
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
-  background-color: #59b500;
+  background-color: rgb(197, 105, 105);
 }
 
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:decrement:active,
 #mz-gallery::-webkit-scrollbar-button:single-button:horizontal:increment:active {
-  background-color: #3d7d00;
+  background-color: rgb(197, 105, 105);
 }
 
 #mz-gallery figure {
@@ -207,10 +223,10 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80%;
+  height: 95%;
   width: auto;
   min-height: 100px;
-  margin-right: 60px;
+  margin-right: 5px;
   scroll-snap-align: start;
   transition: all 0.3s ease-in-out;
 }
@@ -472,8 +488,8 @@ html {
   padding: 25px;
   border-radius: 15px;
   width: 250px;
-  margin-top: 5rem;
-  margin-bottom: 7rem;
+  margin-top: 40px;
+  margin-bottom: 40px;
   background-color: rgb(197, 105, 105);
   color: white;
   border: 1px solid rgb(197, 105, 105);
@@ -502,6 +518,16 @@ html {
   text-align: center;
 }
 
+.cardContainer {
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-gap: 50px;
+  margin: 0 auto;
+  max-width: max-content;
+}
+
 .card:hover {
   border-color: rgb(197, 105, 105);
   box-shadow: 0 0 10px rgb(197, 105, 105);
@@ -511,6 +537,7 @@ html {
 .sellYourArtContainer {
   margin-left: 1rem;
   margin-right: 1rem;
+  margin-bottom: 25px;
   background-color: rgb(197, 105, 105, 0.2);
   padding: 10px;
   border-radius: 15px;
@@ -533,6 +560,15 @@ html {
 .card {
   padding: 10px;
   border: 1px solid rgb(197, 105, 105, 0.5);
+}
+.card .text-on-hover{
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .cardContainer {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 20px;
+  }
 }
 
 .secondButton {
@@ -633,9 +669,10 @@ html {
 
 .bottomCardsContainer {
   font-family: "Libre Baskerville", serif;
-  color: #373737;
-  background: #eaeaea;
-  margin: 0;
+	color: #373737;
+	background: #eaeaea;
+	margin: 0;
+  border-radius: 5px;
 }
 
 .bottomCardsContainer a {
@@ -689,6 +726,8 @@ h3 {
   max-width: 200px;
   text-align: center;
   margin: 0 auto 4.5em;
+  box-shadow: 0 18px 40px 5px rgb(197, 105, 105);
+  perspective: 800px;
 }
 
 .name {
@@ -704,9 +743,9 @@ h3 {
 }
 
 .logo {
-  width: 45px;
-  margin-bottom: 1rem;
-  cursor: pointer;
+	width: 45px;
+	margin-bottom: 1rem;
+	cursor: pointer;
 }
 
 .button {
@@ -724,8 +763,8 @@ h3 {
   margin: auto;
 }
 
-/* ---- Photo Overlay ---- */
 .photo-desc {
+
   font-size: .85em;
   color: #fff;
   padding: 1.1em 1em 0;
@@ -768,13 +807,8 @@ h3 {
   background: rgba(74, 137, 202, 1);
 }
 
-.cube-container {
-  box-shadow: 0 18px 40px 5px rgba(0, 0, 0, .4);
-  perspective: 800px;
-}
-
 .photo-cube {
-  transition: transform 2s ease-in-out;
+  transition: transform 2s ease-in-out; 
   width: 220px;
   height: 200px;
   transform-style: preserve-3d;
@@ -842,9 +876,26 @@ ul {
 }
 
 .footer {
-  background-color: #24262b;
+  border-top: 1px solid none;
+  border-radius: 5px;
+  background-color: rgb(197, 105, 105);
+  transition: background-color 1s ease-in-out;
   padding: 40px 0;
 }
+.footer:hover{
+  ul li a{
+    color: wheat;
+  }
+  h4{
+    color: wheat;
+  }
+  h4::before {
+    background-color: wheat;
+  }
+
+  background-color: rgb(52, 46, 46);
+}
+
 .footer-col {
   width: 25%;
   padding: 0 15px;
@@ -852,11 +903,12 @@ ul {
 
 .footer-col h4 {
   font-size: 18px;
-  color: #ffffff;
+  color: black;
   text-transform: capitalize;
   margin-bottom: 35px;
   font-weight: 500;
   position: relative;
+  transition: all 0.5s ease;
 }
 
 .footer-col h4::before {
@@ -864,10 +916,10 @@ ul {
   position: absolute;
   left: 0;
   bottom: -10px;
-  background-color: rgb(197, 105, 105, 0.2);
+  background-color: black;
   height: 2px;
   box-sizing: border-box;
-  width: 50px;
+  width: 80px;
 }
 
 .footer-col ul li:not(:last-child) {
@@ -877,37 +929,28 @@ ul {
 .footer-col ul li a {
   font-size: 16px;
   text-transform: capitalize;
-  color: #ffffff;
+  color: black;
   text-decoration: none;
   font-weight: 300;
-  color: #bbbbbb;
   display: block;
-  transition: all 0.3s ease;
-}
-
-.footer-col ul li a:hover {
-  color: #ffffff;
-  padding-left: 8px;
-}
-
-.footer-col .social-links a {
-  display: inline-block;
-  height: 40px;
-  width: 40px;
-  background-color: rgba(255, 255, 255, 0.2);
-  margin: 0 10px 10px 0;
-  text-align: center;
-  line-height: 40px;
-  border-radius: 50%;
-  color: #ffffff;
   transition: all 0.5s ease;
 }
 
-.footer-col .social-links a:hover {
-  color: #24262b;
-  background-color: #ffffff;
+.footer-col ul li a:hover {
+  color:  rgb(197, 105, 105);;
+  padding-left: 8px;
 }
 
+.footer-col .social-links img{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  transition: all 0.5s ease;
+}
+
+.footer-col .social-links img:hover {
+    border-radius: 50%;
+}
 /*responsive*/
 @media(max-width: 767px) {
   .footer-col {
@@ -926,136 +969,4 @@ ul {
   position: sticky;
   top: 0;
   z-index: 999;
-}
-
-
-/* Cards */
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap");
-
-.card {
-  position: relative;
-  height: 250px;
-  width: 100%;
-  margin: 10px 0;
-  transition: ease all 2.3s;
-  perspective: 1200px;
-  background-color: transparent;
-}
-
-.card:hover .cover {
-  transform: rotateX(0deg) rotateY(-180deg);
-}
-
-.card:hover .cover:before {
-  transform: translateZ(30px);
-}
-
-.card:hover .cover:after {
-  background-color: rgb(216, 170, 170);
-  filter: blur(40px);
-}
-
-.card:hover .cover h1 {
-  transform: translateZ(100px);
-  color: transparent;
-}
-
-.card:hover .cover p {
-  transform: translateZ(-60px) rotatey(-180deg);
-  color: black;
-  font-weight: bold;
-}
-
-.card .cover {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: ease all 2.3s;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.card .cover:before {
-  content: "";
-  position: absolute;
-  border: 5px solid rgba(255, 255, 255, 0.749);
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.056);
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2;
-  transition: ease all 2.3s;
-  transform-style: preserve-3d;
-  transform: translateZ(0px);
-}
-
-.card .cover:after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 2;
-  transition: ease all 1.3s;
-  background: rgba(0, 0, 0, 0.4);
-}
-
-.card .cover.item-a {
-  background-image: url(images/handshakeicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-b {
-  background-image: url(images/adviceicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-c {
-  background-image: url(images/bestcontacticon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-d {
-  background-image: url(images/stockicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover h1 {
-  font-weight: 600;
-  position: absolute;
-  bottom: 55px;
-  left: 50px;
-  color: black;
-  transform-style: preserve-3d;
-  transition: ease all 2.3s;
-  z-index: 3;
-  font-size: 3em;
-  transform: translateZ(0px);
-}
-
-.card-text {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  transform-style: preserve-3d;
-  transition: ease all 2.3s;
-  transform: translateZ(-1px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-text p {
-  padding: 14px 32px;
-  outline: none;
-  color: transparent;
 }
