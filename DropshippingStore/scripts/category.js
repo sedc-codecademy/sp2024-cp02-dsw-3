@@ -63,21 +63,79 @@ const createCardsService = {
     }
 }
 
+const imageFilterService = {
+    categoryFilter: document.getElementById("categorySelect"),
+    stockFilter: document.getElementById("filterStock"),
+
+    listenToCategoryFilter: () => {
+        imageFilterService.categoryFilter.addEventListener("change", imageFilterService.filterImages)
+    },
+    listenToStockFilter: () => {
+        imageFilterService.stockFilter.addEventListener("change", imageFilterService.filterImages)
+    },
+
+    displayImages: (data) => {
+        console.log("display filtered images: ", data)
+        document.getElementById("cardContainer").innerHTML = "";
+        for (let i = 0; i < data.length; i++) {
+            document.getElementById("cardContainer").innerHTML += `
+             <article class="card">
+                <img
+                class="card__background"
+                src=${data[i].imageUrl}
+                alt=${data[i].type}
+                width="1920"
+                height="2193"/>
+                    <div class="card__content | flow">
+                        <div class="card__content--container | flow">
+                            <p class="card__description">${data[i].category}</p>
+                            <button class="card__button">Add to cart</button>
+                        </div>
+                        
+                    </div>
+            </article> 
+           
+            `;
+        }
+    },
+
+    filterImages: async () => {
+
+        const images = await fetchDataService.getImg(url);
+        const categoryFilter = imageFilterService.categoryFilter.value;
+        const stockFilter = imageFilterService.stockFilter.value;
+
+        let filteredImages = images;
+
+        if (categoryFilter !== "default") {
+            filteredImages = filteredImages.filter(image => image.category === categoryFilter);
+
+        }
+
+        if (stockFilter === "available") {
+            filteredImages = filteredImages.filter(image => image.stock === true);
+        }
+
+        imageFilterService.displayImages(filteredImages);
+    }
+};
+
+
 const categoriesService = {
     categorySelect: document.getElementById("categorySelect"),
-    submitBtn: document.getElementById("submit"),
-    addSubmitEvent: function(){
-        this.submitBtn.addEventListener("click",function(){
-            createCardsService.divShowingCards.innerHTML = ""
-            if(categoriesService.categorySelect.value === "default"){
-                createCardsService.cardsDefault(url)
-            }else{
-                console.log(categoriesService.categorySelect.value)
-                createCardsService.filterImages(url, categoriesService.categorySelect.value)
-            }
-        })
+    //submitBtn: document.getElementById("submit"),
+    //addSubmitEvent: function(){
+        // this.submitBtn.addEventListener("click",function(){
+        //     createCardsService.divShowingCards.innerHTML = ""
+        //     if(categoriesService.categorySelect.value === "default"){
+        //         createCardsService.cardsDefault(url)
+        //     }else{
+        //         console.log(categoriesService.categorySelect.value)
+        //         createCardsService.filterImages(url, categoriesService.categorySelect.value)
+        //     }
+        // })
         
-    },
+    //},
     ascendingBtn: document.getElementById("lowToHigh"),
     descendingBtn: document.getElementById("highToLow"),
     addAscEvent: function(data){
@@ -176,5 +234,7 @@ const promptInputService = {
 
 const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
 createCardsService.cardsDefault(url) //presenting all images
-categoriesService.addSubmitEvent()
+//categoriesService.addSubmitEvent()
 promptInputService.addPromptEvent() //redirect to singUp page
+imageFilterService.listenToCategoryFilter();
+imageFilterService.listenToStockFilter();
