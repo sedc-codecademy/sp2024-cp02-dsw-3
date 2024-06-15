@@ -43,19 +43,16 @@ document.addEventListener("DOMContentLoaded", function() {
             const inputEmail = emailInput.value;
             const inputPassword = passwordInput.value;
             const hashedInputPassword = CryptoJS.SHA256(inputPassword).toString();
-
-            // Read data from local storage
             const storedCreds = localStorage.getItem('user-creds-check');
             if (storedCreds) {
                 const storedUser = JSON.parse(storedCreds);
-
-                // Compare input data with stored data (excluding password)
                 if (inputEmail === storedUser.email && hashedInputPassword === storedUser.password) {
                     localStorage.setItem('user-creds', JSON.stringify({
                         email: storedUser.email,
                         fullName: storedUser.fullName,
                         age: storedUser.age
                     }));
+                    localStorage.removeItem('user-creds-check');
                     window.location.href = "./salePage.html";
                 } else {
                     alert("Invalid email or password.");

@@ -1,9 +1,12 @@
 document.addEventListener("DOMContentLoaded", function() {
     function isAuthenticated() {
-        return localStorage.getItem("user-creds") !== null;
+        const userCreds = localStorage.getItem("user-creds");
+        console.log("Checking authentication: ", userCreds);  // Debugging log
+        return userCreds !== null;
     }
 
     if (!isAuthenticated()) {
+        console.log("User is not authenticated. Redirecting to login page.");  // Debugging log
         document.location.href = "./loginPage.html";
         return;
     }
@@ -161,8 +164,10 @@ document.addEventListener("DOMContentLoaded", function() {
     function displayUserCreds() {
         const userCreds = document.getElementById("userCreds");
         const storedData = JSON.parse(localStorage.getItem("user-creds"));
-        console.log(storedData);
-        userCreds.innerHTML += " " + storedData.fullName;
+        console.log("Displaying user credentials: ", storedData);  // Debugging log
+        if (storedData) {
+            userCreds.innerHTML += " " + storedData.fullName;
+        }
     }
 
     function logOut() {

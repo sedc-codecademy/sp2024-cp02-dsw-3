@@ -94,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
             alert("Form submitted successfully!");
             clearForm();
             form.submit();
+            window.location="./loginPage.html"
         } else {
             alert("Please fix the errors in the form before submitting.");
         }
