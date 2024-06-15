@@ -7,8 +7,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const emailError = document.getElementById("email-error");
     const passwordError = document.getElementById("password-error");
 
-    const apiUrl = "https://api.json-generator.com/templates/vb7CIuRtdogD/data?access_token=pi1rmg2aimvoswzppnnyp322m4pm5xw7v9kj3fqq";
-
     function validateEmail() {
         const email = emailInput.value;
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -42,26 +40,29 @@ document.addEventListener("DOMContentLoaded", function() {
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isPasswordValid) {
-            const userData = {
-                email: emailInput.value,
-                password: passwordInput.value
-            };
+            const inputEmail = emailInput.value;
+            const inputPassword = passwordInput.value;
+            const hashedInputPassword = CryptoJS.SHA256(inputPassword).toString();
 
-            fetch(apiUrl)
-                .then(response => response.json())
-                .then(data => {
-                    const user = data.find(user => user.email === userData.email && user.password === userData.password);
+            // Read data from local storage
+            const storedCreds = localStorage.getItem('user-creds-check');
+            if (storedCreds) {
+                const storedUser = JSON.parse(storedCreds);
 
-                    if (user) {
-                        localStorage.setItem('user-creds', JSON.stringify({email: user.email, fullName: user.fullName}));
-                        window.location.href="./salePage.html"
-                    } else {
-                        alert("Invalid email or password.");
-                    }
-                })
-                .catch(error => {
-                    console.error("Error fetching API data:", error);
-                });
+                // Compare input data with stored data (excluding password)
+                if (inputEmail === storedUser.email && hashedInputPassword === storedUser.password) {
+                    localStorage.setItem('user-creds', JSON.stringify({
+                        email: storedUser.email,
+                        fullName: storedUser.fullName,
+                        age: storedUser.age
+                    }));
+                    window.location.href = "./salePage.html";
+                } else {
+                    alert("Invalid email or password.");
+                }
+            } else {
+                alert("No user data found. Please register first.");
+            }
         } else {
             alert("Please fix the errors in the form before submitting.");
         }
