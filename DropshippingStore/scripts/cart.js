@@ -88,6 +88,7 @@ function displayAmount(cart) {
   const total = subtotal + shipping;
 
   const amountHTML = `
+        <div class = "amount">
         <div class="summary-item">
             <span>Subtotal:</span>
             <span>$${subtotal.toFixed(2)}</span>
@@ -99,6 +100,7 @@ function displayAmount(cart) {
         <div class="summary-item">
             <span>Total:</span>
             <span>$${total.toFixed(2)}</span>
+        </div>
         </div>
     `;
 
