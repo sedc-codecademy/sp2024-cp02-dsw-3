@@ -81,7 +81,22 @@ body {
 .carousel-item {
   width: 250px;
 }
+/* Page numbers */
+.page-numbers button{
+  background-color: rgb(197, 105, 105, 0.2);
+  margin: 50px 0px;
+  width: 40px;
+  border: none;
+  border-radius: 35%;
+}
 
+
+
+.page-numbers button:hover{
+  background-color: rgb(197, 105, 105);
+  width: 50px;
+
+}
 /* Prompt and select inputs for categories */
 .prompt-categories-container {
   display: flex;

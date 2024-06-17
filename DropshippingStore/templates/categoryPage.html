@@ -35,11 +35,16 @@
                 <div class="nav justify-content-end">
                     <ul class="nav justify-content-end align-items-center">
                         <li class="nav-item">
+
                             <a href="../templates/cartPage.html" class="nav-link" id="cart">
+                                <img src="../icons/shopping-cart (1).png" alt="Shopping cart logo" srcset="">
+                                <small id="cart-count" class="text-xs  w-4 h-4  rounded-full cart-count">0</small>
+                            </a>
+                            <!-- <a href="../templates/cartPage.html" class="nav-link" id="cart">
                                 <lord-icon src="https://cdn.lordicon.com/eiekfffz.json" trigger="loop" delay="1000"
                                     stroke="bold" state="in-reveal" style="width: 40px; height: 50px">
                                 </lord-icon>
-                            </a>
+                            </a> -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="../templates/loginPage.html">Log In</a>
@@ -191,12 +196,8 @@
 
         <!-- Cards -->
         <div class="card-img" id="cardContainer"></div>
-
-        <!-- TO DO -->
-        <!-- <div class="pages-buttons">
-            <button class="nextPage" id="nextPage">Next page</button>
-            <button class="previousPage" id="previousPage">Previous Page</button>
-        </div> -->
+        <!-- Page Numbers -->
+        <div class="page-numbers" id="pagination"></div>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -210,7 +211,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <script src="../scripts/category.js"></script>
+    <script type="module" src="../scripts/category.js"></script>
 </body>
 
 </html>
