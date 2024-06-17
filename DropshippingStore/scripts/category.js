@@ -159,7 +159,7 @@ const searchInputService = {
                         setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
                         await createCardsService.cardsDefault(url)
                     }else{
-                      createCardsService.createCards(searchedItems)
+                      createCardsService.createCards(searchedItems,items, currentPage)
                     }
                 }
             })
