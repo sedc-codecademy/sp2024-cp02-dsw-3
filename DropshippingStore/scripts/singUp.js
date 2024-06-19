@@ -59,6 +59,23 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
+    function saveToLocalStorage() {
+        const userCreds = {
+            email: emailInput.value,
+            fullName: fullNameInput.value,
+            age: ageInput.value,
+            password: CryptoJS.SHA256(passwordInput.value).toString() 
+        };
+        localStorage.setItem('user-creds-check', JSON.stringify(userCreds));
+    }
+
+    function clearForm() {
+        emailInput.value = "";
+        fullNameInput.value = "";
+        ageInput.value = "";
+        passwordInput.value = "";
+    }
+
     emailInput.addEventListener("input", validateEmail);
     fullNameInput.addEventListener("input", validateFullName);
     ageInput.addEventListener("input", validateAge);
@@ -66,18 +83,19 @@ document.addEventListener("DOMContentLoaded", function() {
 
     form.addEventListener("submit", function(event) {
         event.preventDefault();
-        
+
         const isEmailValid = validateEmail();
         const isFullNameValid = validateFullName();
         const isAgeValid = validateAge();
         const isPasswordValid = validatePassword();
 
         if (isEmailValid && isFullNameValid && isAgeValid && isPasswordValid) {
+            saveToLocalStorage();
             alert("Form submitted successfully!");
+            clearForm();
             form.submit();
         } else {
             alert("Please fix the errors in the form before submitting.");
         }
     });
 });
-    
