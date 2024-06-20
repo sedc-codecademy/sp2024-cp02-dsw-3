@@ -1,9 +1,18 @@
 import { LocalStorageService } from "./classLS.js"
 
+document.addEventListener("DOMContentLoaded", function(){
+    createCardsService.cardsDefault() 
+    imageFilterService.listenToCategoryFilter();
+    imageFilterService.listenToStockFilter();
+    searchInputService.addSearchEvent()
+    itemsInCart.displayItems()
+})
+
 let fetchDataService = {
-    getImg: async function(add){
+    getImg: async function(){
         try {
-            let res = await fetch(add)
+            let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
+            let res = await fetch(url)
             let data = await res.json()
             
             return [...data]
@@ -18,8 +27,10 @@ let items = 12
 const createCardsService = {
     divShowingCards : document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
-    cardsDefault: async function(add){
-        const data = await fetchDataService.getImg(add)
+    cardsDefault: async function(){
+        const data = await fetchDataService.getImg()
+        const copyData = [...data]
+        gallery.addImagesInGallery(copyData)
         console.log(data)
         await this.createCards(data, items,currentPage)
         categoriesService.addAscEvent(data)
@@ -104,7 +115,7 @@ const imageFilterService = {
 
     filterImages: async () => {
 
-        const images = await fetchDataService.getImg(url);
+        const images = await fetchDataService.getImg();
         const categoryFilter = imageFilterService.categoryFilter.value;
         const stockFilter = imageFilterService.stockFilter.value;
 
@@ -165,8 +176,8 @@ const searchInputService = {
             })
         }
         },
-    searchDB: async function(URl){
-        const data = await fetchDataService.getImg(URl)
+    searchDB: async function(){
+        const data = await fetchDataService.getImg()
         const result = data.filter(item=>{
               if(item.tags.find(str=> str==searchInputService.searchInput.value)){
                   return item
@@ -196,14 +207,14 @@ const addToCartService = {
 }
 
 
-const promptInputService = {
-    prompt: document.getElementById("promptInput"),
-    addPromptEvent: function(){
-        this.prompt.addEventListener("click", function(){
-            document.location.href = "./singUp.html"
-        })
-    }
-}
+// const promptInputService = {
+//     prompt: document.getElementById("promptInput"),
+//     addPromptEvent: function(){
+//         this.prompt.addEventListener("click", function(){
+//             document.location.href = "./singUp.html"
+//         })
+//     }
+// }
 
 const itemsInCart = {
     cart: document.getElementById("cart-count"),
@@ -212,10 +223,22 @@ const itemsInCart = {
     }
 }
 
-const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
-createCardsService.cardsDefault(url) //presenting all images
-promptInputService.addPromptEvent() //redirect to singUp page
-imageFilterService.listenToCategoryFilter();
-imageFilterService.listenToStockFilter();
-searchInputService.addSearchEvent()
-itemsInCart.displayItems()
+// const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
+// createCardsService.cardsDefault(url) //presenting all images
+// promptInputService.addPromptEvent() //redirect to singUp page
+// imageFilterService.listenToCategoryFilter();
+// imageFilterService.listenToStockFilter();
+// searchInputService.addSearchEvent()
+// itemsInCart.displayItems()
+const gallery = {
+    galleryElement: document.getElementById("gallery"),
+    addImagesInGallery: function(images){
+        
+        const arraySorted = images.sort(function(a,b){return b.price-a.price})
+        
+        for(let i = 0; i< arraySorted.length ; i++){
+            this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="350" height="500"</div>`
+            if(i==9){break}
+        }
+    }
+}
