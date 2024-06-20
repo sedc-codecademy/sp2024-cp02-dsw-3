@@ -872,11 +872,11 @@ ul {
 .footer {
   border-top: 1px solid none;
   border-radius: 5px;
-  background-color: rgb(197, 105, 105);
+  background-color: rgb(52, 46, 46);
   transition: background-color 1s ease-in-out;
   padding: 40px 0;
 }
-.footer:hover{
+/* .footer:hover{
   ul li a{
     color: wheat;
   }
@@ -888,7 +888,7 @@ ul {
   }
 
   background-color: rgb(52, 46, 46);
-}
+} */
 
 .footer-col {
   width: 25%;
@@ -897,7 +897,7 @@ ul {
 
 .footer-col h4 {
   font-size: 18px;
-  color: black;
+  color: rgb(255, 255, 255);
   text-transform: capitalize;
   margin-bottom: 35px;
   font-weight: 500;
@@ -923,7 +923,7 @@ ul {
 .footer-col ul li a {
   font-size: 16px;
   text-transform: capitalize;
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: 300;
   display: block;
