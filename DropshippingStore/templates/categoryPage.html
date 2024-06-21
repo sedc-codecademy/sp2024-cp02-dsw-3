@@ -15,62 +15,81 @@
 
 <body>
     <!-- Nav Bar -->
-    <div class="navigation-bar">
-        <nav class="navbar bg-body-tertiary navigation-bar m-0 b-0" id="first-nav">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-start align-items-center" id="searchLogo">
-                    <div class="d-flex justify-content-around align-items-center">
-                        <a class="navbar-brand" href="#">
-                            <img src="../icons/art.jpg" class="logo" alt="Logo" width="30" height="24"
-                                class="d-inline-block align-text-top" />
-                            AIArt
+    <div class="navigation-bar ">
+        <nav class="navbar  navigation-bar first-nav">
+            <div class="first-nav-container">
+                <div class="searchLogo">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="../icons/art-icon-1091.png" class="logoImg" alt="Logo">
+
                         </a>
-                        <div class="div-search">
-                            <input class="searchInput" id="searchInput" type="text" placeholder="&#xF002; Search"
-                                style="font-family: Arial, FontAwesome" />
-                        </div>
+                        <h4>AIArt</h4>
                     </div>
+
+                    <div class="div-search">
+                        <input class="searchInput" id="searchInput" type="search" placeholder="&#xF002; Search..."
+                            style="font-family:Poppins, FontAwesome">
+
+                    </div>
+
                 </div>
 
-                <div class="nav justify-content-end">
-                    <ul class="nav justify-content-end align-items-center">
-                        <li class="nav-item">
-
-                            <a href="../templates/cartPage.html" class="nav-link" id="cart">
-                                <img src="../icons/shopping-cart (1).png" alt="Shopping cart logo" srcset="">
-                                <small id="cart-count" class="text-xs  w-4 h-4  rounded-full cart-count">0</small>
+                <div class="cart-navItems">
+                    <ul class="navList">
+                        <li class="nav-item ">
+                            <a href="../templates/cartPage.html" class="nav-link cart-icon" id="cart">
+                                <img src="../icons/icons8-cart-48.png" alt="Shopping cart logo" srcset=""
+                                    class="cart-icon">
+                                <small id="cart-count" class=" cart-count">0</small>
                             </a>
-                           
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="../templates/loginPage.html">Log In</a>
+                            <a class="nav-link" aria-current="page" href="#"><img src="../icons/icons8-log-in-32.png"
+                                    alt="Login icon" width="25" height="23" srcset=""><span> Log In</span></a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="../templates/singUp.html">Sing Up</a>
+                            <a class="nav-link" href="#"><img src="../icons/icons8-account-32.png" alt="Sing up icon"
+                                    srcset="" width="25" height="23"><span> Sing up</span></a>
                         </li>
+
                     </ul>
                 </div>
             </div>
-        </nav>
-        <hr class="hr-nav" />
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="second-nav">
-            <div class="container-fluid d-flex" id="items">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+        </nav>
+
+    </div>
+    <hr>
+
+    <div class="navigation-bar">
+        <nav class="navbar navigation-bar navbar-expand-lg second-nav">
+            <div class="second-nav-container">
+
+                <button class="navbar-toggler btn-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="../index.html">Home</a>
-                        <a class="nav-link" href="../templates/categoryPage.html">Categories</a>
-                        <a class="nav-link" href="../templates/salePage.html">Discount</a>
-                        <a class="nav-link" href="#">About us</a>
-                        <a class="nav-link" href="#">Contact</a>
+                    <div class="navbar-nav navPages">
+                        <a class="nav-link second-nav-links" href="#">Home</a>
+                        <a class="nav-link second-nav-links" href="#">Categories</a>
+                        <a class="nav-link second-nav-links" href="#">Sale</a>
+                        <a class="nav-link second-nav-links" href="#">About us</a>
+                        <a class="nav-link second-nav-links" href="#">Contact</a>
+
                     </div>
+
+
                 </div>
+
+
+
             </div>
+
+
         </nav>
     </div>
 
@@ -78,47 +97,47 @@
     <div class="galleryWrapper">
         <div class="gallery-container">
             <h1>Gallery</h1>
-          
+
             <div class="gallery-wrap" id="gallery">
-              
+
             </div>
         </div>
 
-            <!-- Category options -->
-            <div class="input-group categories">
-                <div class="select-div">
-                    <select class="form-select" id="categorySelect">
-                        <option value="default">All categories</option>
-                        <option value="Acrylic painting">Acrylic</option>
-                        <option value="Art & Designs">Art & Design</option>
-                        <option value="Black & White">Black & White</option>
-                        <option value="Charcoal & Chalk & Pastel">
-                            Charcoal, Chalk & Pastel
-                        </option>
-                        <option value="Abstract painting">Abstract</option>
-                        <option value="Canvas painting">Canvas</option>
-                        <option value="Portraits">Portraits</option>
-                        <option value="Landscapes">Landscapes</option>
-                        <option value="Astrophoto">Astrophoto</option>
-                    </select>
+        <!-- Category options -->
+        <div class="input-group categories">
+            <div class="select-div">
+                <select class="form-select" id="categorySelect">
+                    <option value="default">All categories</option>
+                    <option value="Acrylic painting">Acrylic</option>
+                    <option value="Art & Designs">Art & Design</option>
+                    <option value="Black & White">Black & White</option>
+                    <option value="Charcoal & Chalk & Pastel">
+                        Charcoal, Chalk & Pastel
+                    </option>
+                    <option value="Abstract painting">Abstract</option>
+                    <option value="Canvas painting">Canvas</option>
+                    <option value="Portraits">Portraits</option>
+                    <option value="Landscapes">Landscapes</option>
+                    <option value="Astrophoto">Astrophoto</option>
+                </select>
 
-                    <select class="form-select" id="filterStock">
-                        <option value="default">See all</option>
-                        <option value="available">See available</option>
-                    </select>
+                <select class="form-select" id="filterStock">
+                    <option value="default">See all</option>
+                    <option value="available">See available</option>
+                </select>
 
-                </div>
+            </div>
 
-                <div class="sort-buttons">
-                    <button class="btn btn-outline-secondary" type="button" id="lowToHigh">
-                        Lowest↑
-                    </button>
-                    <button class="btn btn-outline-secondary" type="button" id="highToLow">
-                        Highest↑
-                    </button>
-                </div>
+            <div class="sort-buttons">
+                <button class="btn btn-outline-secondary" type="button" id="lowToHigh">
+                    Lowest↑
+                </button>
+                <button class="btn btn-outline-secondary" type="button" id="highToLow">
+                    Highest↑
+                </button>
             </div>
         </div>
+    </div>
     </div>
 
 
@@ -137,16 +156,26 @@
         <!-- Page Numbers -->
         <div class="page-numbers" id="pagination"></div>
 
-         <!-- POP UP -->
-    <div id="image-container"></div>
-    <div id="popup" class="hidden">
-        <div id="popup-content">
-            <img id="popup-image" src="" alt="Popup Image" class="popup-image">
-            <span id="popup-close">&times;</span>
-            <p id="popup-text">Hello</p>
-            
-        </div>
-    </div>
+        <!-- POP UP -->
+
+        <div class="popup-container">
+            <div id="image-container"></div>
+            <div id="popup" class="hidden">
+                <div id="popup-content">
+                    <div class="imageDiv">
+                        <img id="popup-image" src="" alt="Popup Image" class="popup-image">
+                    </div>
+                    <hr>
+                    <div class="txtDiv" id="txtDiv">
+
+                        <p id="popup-text"></p>
+                        <div id="btnDiv">
+
+                        </div>
+                    </div>
+                    <span id="popup-close">&times;</span>
+                </div>
+            </div>
     </main>
 
 

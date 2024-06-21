@@ -58,7 +58,7 @@ const createCardsService = {
                             <p class="card__description">${pagginatedItems[i].category}</p>
                             <p class="img-price">${pagginatedItems[i].price}$</p>
                             <button class="card__button" id=${pagginatedItems[i].id}>Add to cart</button>
-                               <button class="details__button" id="${data[i].id}">Details</button>//Pop UP
+                            <button class="details__button" id="${pagginatedItems[i].id}">Details</button>
                         </div>
                         
                     </div>
@@ -72,7 +72,7 @@ const createCardsService = {
         categoriesService.addAscEvent(arrayToBeSorted)
         categoriesService.addDescEvent(arrayToBeSorted)
         this.setupPagination(images,this.pageNumber, items)
-        popUpImagesService.addEventsImgButtons(data)//POP UP
+        popUpImagesService.addEventsImgButtons(images)//POP UP
 
     }, setupPagination(images, wrapper, numOfImagesPerPage){
         wrapper.innerHTML = ""
@@ -197,25 +197,25 @@ const addToCartService = {
         for(let button of this.addToCartBtn){
             button.addEventListener("click", function(event){
                 event.preventDefault()
-                addToCartService.imageID.ids.push(button.getAttribute('id'))
-                storage.setToLocalStorage("imageID", addToCartService.imageID)
-                itemsInCart.cart.innerText = `${storage.itemsInCart("imageID")}`
-                button.disabled = true                
+                let id = button.getAttribute('id')
+                addToCartService.cartEvent(id)
+                button.disabled = true               
             })
+        }
+        
+    }, cartEvent: function(id){
+        let str = storage.getFromLocalStorage("imageID")
+        console.log(str.ids)
+        if(!str.ids.find(i=> i == id)){
+            addToCartService.imageID.ids.push(id)
+            storage.setToLocalStorage("imageID", addToCartService.imageID)
+            itemsInCart.displayItems()
         }
         
     }
 }
 
 
-// const promptInputService = {
-//     prompt: document.getElementById("promptInput"),
-//     addPromptEvent: function(){
-//         this.prompt.addEventListener("click", function(){
-//             document.location.href = "./singUp.html"
-//         })
-//     }
-// }
 
 const itemsInCart = {
     cart: document.getElementById("cart-count"),
@@ -224,13 +224,7 @@ const itemsInCart = {
     }
 }
 
-// const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
-// createCardsService.cardsDefault(url) //presenting all images
-// promptInputService.addPromptEvent() //redirect to singUp page
-// imageFilterService.listenToCategoryFilter();
-// imageFilterService.listenToStockFilter();
-// searchInputService.addSearchEvent()
-// itemsInCart.displayItems()
+
 const gallery = {
     galleryElement: document.getElementById("gallery"),
     addImagesInGallery: function(images){
@@ -265,31 +259,30 @@ function showPopup(imageData) {
     const popup = document.getElementById('popup');
     const popupText = document.getElementById('popup-text');
     const popupClose = document.getElementById('popup-close');
- const popupImage = document.getElementById('popup-image');
-    // Ensure price is a number
-    const price = parseFloat(imageData.price);
-
-    // Check if the item is on discount and calculate the discounted price
-    let discountedPriceText = '';
-    if (imageData.onDiscount) {
-        const discountPercentage = 0.20;
-        const discountAmount = price * discountPercentage;
-        const newDiscountedPrice = price - discountAmount;
-        discountedPriceText = `<strong>■ New Discount Price (20% off):</strong> $${newDiscountedPrice}<br>`;
-    }
+    const popupImage = document.getElementById('popup-image');
+    const btnDiv = document.getElementById('btnDiv')
 
     const stockStatus = imageData.stock ? 'Yes' : 'No';
+    
 
     // Update the popup content
     popupText.innerHTML = `
-        <strong>■ Type:</strong> ${imageData.type}<br><hr>
+        <strong>■ Category:</strong> ${imageData.category}<br><hr>
         <strong>■ Description:</strong> ${imageData.description}<br><hr>
         <strong>■ Artist:</strong> ${imageData.artist.userName}<br><hr>
-        <strong>■ Price:</strong> $${price}<br><hr>
+        <strong>■ Price:</strong> $${imageData.price}<br><hr>
            <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
-        <strong>■ Discount:</strong> ${imageData.onDiscount ? 'Yes' : 'No'}<br><hr> ${discountedPriceText}
     `;
-   
+
+
+    btnDiv.innerHTML = '<button class="add" id="add" >Add to cart</button>'
+
+    document.getElementById('add').addEventListener("click", function(event){
+        event.preventDefault()
+        addToCartService.cartEvent(String(imageData.id))
+        this.disabled = true
+    })
+
     // Update the popup image
     popupImage.src = imageData.imageUrl;
     popupImage.alt = imageData.type;
