@@ -654,6 +654,91 @@ p {
     gap: 15px;
   }
 }
+/* Pop up */
+#image-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image-card {
+  margin: 10px;
+  cursor: pointer;
+}
+
+#popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 140%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px); /* Adds a slight blur to the background */
+  justify-content: center;
+  align-items: center;
+  z-index: 9; /* Make sure it's above the overlay */
+}
+
+#popup-content {
+  background:#555;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  font-family: cursive;
+  color: white;
+  font-size: 20px;
+  
+  
+}
+
+.popup-image {
+  height: 380px;
+  width: 300px; /* Adjust as needed */
+ 
+  float: right;
+  position: absolute;
+  right: 1300px;
+}
+
+#popup-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+.details__button {
+  padding: 0.75em 1.6em;
+  width: fit-content;
+  width: -moz-fit-content; 
+  font-variant: small-caps;
+  font-weight: bold;
+  border-radius: 0.45em;
+  border: none;
+  background-color: var(--brand-color);
+  font-family: var(--font-title);
+  font-size: 1.125rem;
+  color: var(--black);
+}
+
+.details__button:focus {
+  outline: 2px solid black;
+  outline-offset: -5px;
+}
+.card__description{
+  color: white;
+  font-family: cursive;
+}
+
 
 @media only screen and (max-width: 350px) {
   

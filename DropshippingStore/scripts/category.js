@@ -58,6 +58,7 @@ const createCardsService = {
                             <p class="card__description">${pagginatedItems[i].category}</p>
                             <p class="img-price">${pagginatedItems[i].price}$</p>
                             <button class="card__button" id=${pagginatedItems[i].id}>Add to cart</button>
+                               <button class="details__button" id="${data[i].id}">Details</button>//Pop UP
                         </div>
                         
                     </div>
@@ -71,7 +72,7 @@ const createCardsService = {
         categoriesService.addAscEvent(arrayToBeSorted)
         categoriesService.addDescEvent(arrayToBeSorted)
         this.setupPagination(images,this.pageNumber, items)
-
+        popUpImagesService.addEventsImgButtons(data)//POP UP
 
     }, setupPagination(images, wrapper, numOfImagesPerPage){
         wrapper.innerHTML = ""
@@ -241,4 +242,71 @@ const gallery = {
             if(i==9){break}
         }
     }
+}
+
+//For PopUp
+const popUpImagesService = {
+    addEventsImgButtons: function(data) {
+        const buttons = document.getElementsByClassName("details__button");
+        for (let button of buttons) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const id = this.id;
+                const imageData = data.find(item => item.id == id);
+                if (imageData) {
+                    showPopup(imageData);
+                }
+            });
+        }
+    }
+};
+//Pop up
+function showPopup(imageData) {
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+    const popupClose = document.getElementById('popup-close');
+ const popupImage = document.getElementById('popup-image');
+    // Ensure price is a number
+    const price = parseFloat(imageData.price);
+
+    // Check if the item is on discount and calculate the discounted price
+    let discountedPriceText = '';
+    if (imageData.onDiscount) {
+        const discountPercentage = 0.20;
+        const discountAmount = price * discountPercentage;
+        const newDiscountedPrice = price - discountAmount;
+        discountedPriceText = `<strong>■ New Discount Price (20% off):</strong> $${newDiscountedPrice}<br>`;
+    }
+
+    const stockStatus = imageData.stock ? 'Yes' : 'No';
+
+    // Update the popup content
+    popupText.innerHTML = `
+        <strong>■ Type:</strong> ${imageData.type}<br><hr>
+        <strong>■ Description:</strong> ${imageData.description}<br><hr>
+        <strong>■ Artist:</strong> ${imageData.artist.userName}<br><hr>
+        <strong>■ Price:</strong> $${price}<br><hr>
+           <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
+        <strong>■ Discount:</strong> ${imageData.onDiscount ? 'Yes' : 'No'}<br><hr> ${discountedPriceText}
+    `;
+   
+    // Update the popup image
+    popupImage.src = imageData.imageUrl;
+    popupImage.alt = imageData.type;
+
+    popup.classList.remove('hidden');
+    popup.style.display = 'flex';
+
+    popupClose.addEventListener('click', () => {
+        popup.classList.add('hidden');
+        popup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.classList.add('hidden');
+            popup.style.display = 'none';
+        }
+    });
+    
 }
