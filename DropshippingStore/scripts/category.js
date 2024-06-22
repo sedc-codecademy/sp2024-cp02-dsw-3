@@ -54,17 +54,21 @@ const createCardsService = {
                 width="1920"
                 height="2193"/>
                     <div class="card__content | flow">
-                        <div class="card__content--container | flow">
+                        <div class="card__content--container | flow"  id="${pagginatedItems[i].id}">
                             <p class="card__description">${pagginatedItems[i].category}</p>
                             <p class="img-price">${pagginatedItems[i].price}$</p>
-                            <button class="card__button" id=${pagginatedItems[i].id}>Add to cart</button>
-                            <button class="details__button" id="${pagginatedItems[i].id}">Details</button>
+                            <button class="details__button" >Details</button>
                         </div>
                         
                     </div>
             </article> 
            
             `;
+
+            if(pagginatedItems[i].stock == true){
+                let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
+                parentDiv.innerHTML += `<button class="card__button">Add to cart</button>`
+            }
         }
         
         addToCartService.addEventsAddToCart()
@@ -163,13 +167,13 @@ const searchInputService = {
         if(this.searchInput){
             searchInputService.searchInput.addEventListener("keydown",async function(event){
                 if(event.code === 'Enter'){
-                    const searchedItems= await searchInputService.searchDB(url)
+                    const searchedItems= await searchInputService.searchDB()
                     searchInputService.searchInput.value = '';
                     if(searchedItems.length==0){
                         const divNoItems = document.getElementById("noItemsFound")
                         divNoItems.style.display = "block"
                         setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
-                        await createCardsService.cardsDefault(url)
+                        await createCardsService.cardsDefault()
                     }else{
                       createCardsService.createCards(searchedItems,items, currentPage)
                     }
@@ -197,15 +201,16 @@ const addToCartService = {
         for(let button of this.addToCartBtn){
             button.addEventListener("click", function(event){
                 event.preventDefault()
-                let id = button.getAttribute('id')
+                let id = button.parentElement.getAttribute('id')
                 addToCartService.cartEvent(id)
-                button.disabled = true               
+                button.disabled = true 
+                button.style.backgroundColor= "gray"              
             })
         }
         
     }, cartEvent: function(id){
         let str = storage.getFromLocalStorage("imageID")
-        console.log(str.ids)
+        
         if(!str.ids.find(i=> i == id)){
             addToCartService.imageID.ids.push(id)
             storage.setToLocalStorage("imageID", addToCartService.imageID)
@@ -231,9 +236,9 @@ const gallery = {
         
         const arraySorted = images.sort(function(a,b){return b.price-a.price})
         
-        for(let i = 0; i< arraySorted.length ; i++){
+        for(let i = 0; i< arraySorted.length && i<11; i++){
             this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="300" height="410"</div>`
-            if(i==11){break}
+            
         }
     }
 }
@@ -245,7 +250,7 @@ const popUpImagesService = {
         for (let button of buttons) {
             button.addEventListener("click", function(event) {
                 event.preventDefault();
-                const id = this.id;
+                const id = button.parentElement.getAttribute('id')
                 const imageData = data.find(item => item.id == id);
                 if (imageData) {
                     showPopup(imageData);
@@ -275,13 +280,15 @@ function showPopup(imageData) {
     `;
 
 
-    btnDiv.innerHTML = '<button class="add" id="add" >Add to cart</button>'
-
-    document.getElementById('add').addEventListener("click", function(event){
-        event.preventDefault()
-        addToCartService.cartEvent(String(imageData.id))
-        this.disabled = true
-    })
+    if(imageData.stock == true){
+        btnDiv.innerHTML = '<button class="add" id="add" >Add to cart</button>'
+        document.getElementById('add').addEventListener("click", function(event){
+            event.preventDefault()
+            addToCartService.cartEvent(String(imageData.id))
+            this.disabled = true
+            this.style.backgroundColor = "gray"
+        })
+    }
 
     // Update the popup image
     popupImage.src = imageData.imageUrl;
