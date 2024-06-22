@@ -180,9 +180,9 @@ const searchInputService = {
     searchDB: async function(){
         const data = await fetchDataService.getImg()
         const result = data.filter(item=>{
-              if(item.tags.find(str=> str==searchInputService.searchInput.value)){
-                  return item
-              }
+            if(item.tags.find(str=> str == searchInputService.searchInput.value.toLowerCase() || str.includes(searchInputService.searchInput.value.toLowerCase()))){
+                return item
+            }
         })
         return result
     }
@@ -232,8 +232,8 @@ const gallery = {
         const arraySorted = images.sort(function(a,b){return b.price-a.price})
         
         for(let i = 0; i< arraySorted.length ; i++){
-            this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="350" height="500"</div>`
-            if(i==9){break}
+            this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="300" height="410"</div>`
+            if(i==11){break}
         }
     }
 }
@@ -262,7 +262,7 @@ function showPopup(imageData) {
     const popupImage = document.getElementById('popup-image');
     const btnDiv = document.getElementById('btnDiv')
 
-    const stockStatus = imageData.stock ? 'Yes' : 'No';
+    const stockStatus = imageData.stock ? ' ✓' : ' ✘';
     
 
     // Update the popup content
@@ -271,7 +271,7 @@ function showPopup(imageData) {
         <strong>■ Description:</strong> ${imageData.description}<br><hr>
         <strong>■ Artist:</strong> ${imageData.artist.userName}<br><hr>
         <strong>■ Price:</strong> $${imageData.price}<br><hr>
-           <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
+        <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
     `;
 
 
