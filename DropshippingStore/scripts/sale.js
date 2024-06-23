@@ -46,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <p class="card__description">${data[i].category}</p>
                                 <p class="img-price">${data[i].price}$</p>
                                 <button class="card__button" id=${data[i].id}>Add to cart</button>
+                                 <button class="details__button" id="${data[i].id}">Details</button>//Pop UP
                             </div>
                         </div>
                     </article> 
@@ -56,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
         addEventsAddToCart();
         AscBtn(data);
         DscBtn(data);
+        popUpImagesService.addEventsImgButtons(data)//POP UP
     }
 
     async function showDefaultCards(add) {
@@ -177,6 +179,74 @@ document.addEventListener("DOMContentLoaded", function() {
             document.location.href = "./loginPage.html";
         });
     }
+
+//For PopUp
+const popUpImagesService = {
+    addEventsImgButtons: function(data) {
+        const buttons = document.getElementsByClassName("details__button");
+        for (let button of buttons) {
+            button.addEventListener("click", function(event) {
+                event.preventDefault();
+                const id = this.id;
+                const imageData = data.find(item => item.id == id);
+                if (imageData) {
+                    showPopup(imageData);
+                }
+            });
+        }
+    }
+};
+//Pop up
+function showPopup(imageData) {
+    const popup = document.getElementById('popup');
+    const popupText = document.getElementById('popup-text');
+    const popupClose = document.getElementById('popup-close');
+ const popupImage = document.getElementById('popup-image');
+    // Ensure price is a number
+    const price = parseFloat(imageData.price);
+
+    // Check if the item is on discount and calculate the discounted price
+    let discountedPriceText = '';
+    if (imageData.onDiscount) {
+        const discountPercentage = 0.20;
+        const discountAmount = price * discountPercentage;
+        const newDiscountedPrice = price - discountAmount;
+        discountedPriceText = `<strong>■ New Discount Price (20% off):</strong> $${newDiscountedPrice}<br>`;
+    }
+
+    const stockStatus = imageData.stock ? 'Yes' : 'No';
+
+    // Update the popup content
+    popupText.innerHTML = `
+        <strong>■ Type:</strong> ${imageData.type}<br><hr>
+        <strong>■ Description:</strong> ${imageData.description}<br><hr>
+        <strong>■ Artist:</strong> ${imageData.artist.userName}<br><hr>
+        <strong>■ Price:</strong> $${price}<br><hr>
+           <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
+        <strong>■ Discount:</strong> ${imageData.onDiscount ? 'Yes' : 'No'}<br><hr> ${discountedPriceText}
+    `;
+   
+    // Update the popup image
+    popupImage.src = imageData.imageUrl;
+    popupImage.alt = imageData.type;
+
+    popup.classList.remove('hidden');
+    popup.style.display = 'flex';
+
+    popupClose.addEventListener('click', () => {
+        popup.classList.add('hidden');
+        popup.style.display = 'none';
+    });
+
+    popup.addEventListener('click', (event) => {
+        if (event.target === popup) {
+            popup.classList.add('hidden');
+            popup.style.display = 'none';
+        }
+    });
+    
+}
+
 
     const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json';
     logOut();
