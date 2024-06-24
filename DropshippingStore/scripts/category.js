@@ -216,7 +216,7 @@ const addToCartService = {
     }, cartEvent: function(img){
         let itemsinStorsge = storage.getFromLocalStorage("category-cart")
         
-        if(itemsinStorsge==null || !itemsinStorsge.find(i=> i == img)){
+        if(itemsinStorsge==null || !this.key.find(i=> i==img)){
             addToCartService.key.push(img)
             storage.setToLocalStorage("category-cart", addToCartService.key)
             itemsInCart.displayItems()
@@ -260,14 +260,19 @@ const popUpImagesService = {
                 if (imageData) {
                     showPopup(imageData);
                 }
-                if (imageData.stock === true) {
-                    document.getElementById('add').style.display = "flex"
-                    document.getElementById('add').addEventListener("click", function (event) {
+                if (imageData.stock === true && !document.getElementById(`${imageData.id}`).children[3].disabled) {
+                    let btn = document.getElementById('add')
+                    btn.style.display = "flex"
+                    btn.addEventListener("click", function (event) {
                         event.preventDefault()
-            
+                        const btn = event.currentTarget
+                        btn.classList.add("activeBtn")
                         addToCartService.cartEvent(imageData)
-                        this.disabled = true
-                        this.style.backgroundColor = "gray"
+                        let parentElement = document.getElementById(`${imageData.id}`)
+                        let btnOnCard = parentElement.children[3]
+                        btnOnCard.disabled = true
+                        btnOnCard.style.backgroundColor = 'gray'
+                        btn.style.display = 'none'
                         
                     })
                 } else {
