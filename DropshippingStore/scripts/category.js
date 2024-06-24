@@ -177,7 +177,6 @@ const searchInputService = {
                         const divNoItems = document.getElementById("noItemsFound")
                         divNoItems.style.display = "block"
                         setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
-                        
                         await createCardsService.cardsDefault(data)
                     }else{
                       createCardsService.createCards(searchedItems,items, currentPage)
