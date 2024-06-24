@@ -1,10 +1,13 @@
 import { LocalStorageService } from "./classLS.js"
 
-document.addEventListener("DOMContentLoaded", function(){
-    createCardsService.cardsDefault() 
-    imageFilterService.listenToCategoryFilter();
-    imageFilterService.listenToStockFilter();
-    searchInputService.addSearchEvent()
+document.addEventListener("DOMContentLoaded", async function(){
+    let data = await fetchDataService.getImg()
+    const copyData = [...data]
+    gallery.addImagesInGallery(copyData)
+    await createCardsService.cardsDefault(data)
+    imageFilterService.listenToCategoryFilter(data);
+    imageFilterService.listenToStockFilter(data);
+    searchInputService.addSearchEvent(data)
     itemsInCart.displayItems()
 })
 
@@ -22,15 +25,13 @@ let fetchDataService = {
         }
     }
 }
+const storage = new LocalStorageService()
 let currentPage = 1
 let items = 12
 const createCardsService = {
     divShowingCards : document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
-    cardsDefault: async function(){
-        const data = await fetchDataService.getImg()
-        const copyData = [...data]
-        gallery.addImagesInGallery(copyData)
+    cardsDefault: async function(data){
         console.log(data)
         await this.createCards(data, items,currentPage)
         categoriesService.addAscEvent(data)
@@ -110,17 +111,20 @@ const imageFilterService = {
     categoryFilter: document.getElementById("categorySelect"),
     stockFilter: document.getElementById("filterStock"),
 
-    listenToCategoryFilter: () => {
-        imageFilterService.categoryFilter.addEventListener("change", imageFilterService.filterImages)
+    listenToCategoryFilter: (data) => {
+        imageFilterService.categoryFilter.addEventListener("change", function () {
+            imageFilterService.filterImages(data)
+        })
     },
-    listenToStockFilter: () => {
-        imageFilterService.stockFilter.addEventListener("change", imageFilterService.filterImages)
+    listenToStockFilter: (data) => {
+        imageFilterService.stockFilter.addEventListener("change", function () {
+            imageFilterService.filterImages(data)
+        })
     },
 
 
-    filterImages: async () => {
+    filterImages: async (images) => {
 
-        const images = await fetchDataService.getImg();
         const categoryFilter = imageFilterService.categoryFilter.value;
         const stockFilter = imageFilterService.stockFilter.value;
 
@@ -163,17 +167,18 @@ const categoriesService = {
 
 const searchInputService = {
     searchInput: document.getElementById("searchInput"),
-      addSearchEvent: function (){
+      addSearchEvent: async function (data){
         if(this.searchInput){
             searchInputService.searchInput.addEventListener("keydown",async function(event){
                 if(event.code === 'Enter'){
-                    const searchedItems= await searchInputService.searchDB()
+                    const searchedItems= searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
                     if(searchedItems.length==0){
                         const divNoItems = document.getElementById("noItemsFound")
                         divNoItems.style.display = "block"
                         setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
-                        await createCardsService.cardsDefault()
+                        
+                        await createCardsService.cardsDefault(data)
                     }else{
                       createCardsService.createCards(searchedItems,items, currentPage)
                     }
@@ -181,8 +186,8 @@ const searchInputService = {
             })
         }
         },
-    searchDB: async function(){
-        const data = await fetchDataService.getImg()
+    searchDB: function(data){
+
         const result = data.filter(item=>{
             if(item.tags.find(str=> str == searchInputService.searchInput.value.toLowerCase() || str.includes(searchInputService.searchInput.value.toLowerCase()))){
                 return item
@@ -192,7 +197,7 @@ const searchInputService = {
     }
   
 }
-const storage = new LocalStorageService()
+
 
 const addToCartService = {
     imageID: {ids:[]},
@@ -255,6 +260,18 @@ const popUpImagesService = {
                 if (imageData) {
                     showPopup(imageData);
                 }
+                if (imageData.stock === true) {
+                    document.getElementById('add').style.display = "flex"
+                    document.getElementById('add').addEventListener("click", function (event) {
+                        event.preventDefault()
+            
+                        addToCartService.cartEvent(String(imageData.id))
+                        this.disabled = true
+                        this.style.backgroundColor = "gray"
+                    })
+                } else {
+                    document.getElementById('add').style.display = "none"
+                }
             });
         }
     }
@@ -269,6 +286,10 @@ function showPopup(imageData) {
 
     const stockStatus = imageData.stock ? ' ✓' : ' ✘';
     
+    
+    // Update the popup image
+    popupImage.src = imageData.imageUrl;
+    popupImage.alt = imageData.type;
 
     // Update the popup content
     popupText.innerHTML = `
@@ -278,21 +299,6 @@ function showPopup(imageData) {
         <strong>■ Price:</strong> $${imageData.price}<br><hr>
         <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
     `;
-
-
-    if(imageData.stock == true){
-        btnDiv.innerHTML = '<button class="add" id="add" >Add to cart</button>'
-        document.getElementById('add').addEventListener("click", function(event){
-            event.preventDefault()
-            addToCartService.cartEvent(String(imageData.id))
-            this.disabled = true
-            this.style.backgroundColor = "gray"
-        })
-    }
-
-    // Update the popup image
-    popupImage.src = imageData.imageUrl;
-    popupImage.alt = imageData.type;
 
     popup.classList.remove('hidden');
     popup.style.display = 'flex';
