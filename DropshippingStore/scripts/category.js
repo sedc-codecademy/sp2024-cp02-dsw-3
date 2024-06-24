@@ -32,7 +32,7 @@ const createCardsService = {
     divShowingCards : document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
     cardsDefault: async function(data){
-        console.log(data)
+        // console.log(data)
         await this.createCards(data, items,currentPage)
         categoriesService.addAscEvent(data)
         categoriesService.addDescEvent(data)
@@ -72,7 +72,7 @@ const createCardsService = {
             }
         }
         
-        addToCartService.addEventsAddToCart()
+        addToCartService.addEventsAddToCart(images)
         const arrayToBeSorted = [...images]
         categoriesService.addAscEvent(arrayToBeSorted)
         categoriesService.addDescEvent(arrayToBeSorted)
@@ -199,25 +199,26 @@ const searchInputService = {
 
 
 const addToCartService = {
-    imageID: {ids:[]},
+    key: [],
     addToCartBtn : document.getElementsByClassName("card__button"),
-    addEventsAddToCart: function (){
+    addEventsAddToCart: function (data){
         for(let button of this.addToCartBtn){
             button.addEventListener("click", function(event){
                 event.preventDefault()
                 let id = button.parentElement.getAttribute('id')
-                addToCartService.cartEvent(id)
+                let img= data.find(i=> i.id == id)
+                addToCartService.cartEvent(img)
                 button.disabled = true 
                 button.style.backgroundColor= "gray"              
             })
         }
         
-    }, cartEvent: function(id){
-        let str = storage.getFromLocalStorage("imageID")
+    }, cartEvent: function(img){
+        let itemsinStorsge = storage.getFromLocalStorage("category-cart")
         
-        if(!str.ids.find(i=> i == id)){
-            addToCartService.imageID.ids.push(id)
-            storage.setToLocalStorage("imageID", addToCartService.imageID)
+        if(itemsinStorsge==null || !itemsinStorsge.find(i=> i == img)){
+            addToCartService.key.push(img)
+            storage.setToLocalStorage("category-cart", addToCartService.key)
             itemsInCart.displayItems()
         }
         
@@ -229,7 +230,7 @@ const addToCartService = {
 const itemsInCart = {
     cart: document.getElementById("cart-count"),
     displayItems: function(){
-        this.cart.innerText = `${storage.itemsInCart("imageID")}`
+        this.cart.innerText = `${storage.itemsInCart("category-cart")}`
     }
 }
 
@@ -264,7 +265,7 @@ const popUpImagesService = {
                     document.getElementById('add').addEventListener("click", function (event) {
                         event.preventDefault()
             
-                        addToCartService.cartEvent(String(imageData.id))
+                        addToCartService.cartEvent(imageData)
                         this.disabled = true
                         this.style.backgroundColor = "gray"
                     })

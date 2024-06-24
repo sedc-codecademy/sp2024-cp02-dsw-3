@@ -15,7 +15,9 @@ class LocalStorageService {
     itemsInCart(key){
         const res = this.getFromLocalStorage(key)
         if(res){
-            return res.ids.length
+            return res.length
+        }else{
+            return "";
         }
         
     }
