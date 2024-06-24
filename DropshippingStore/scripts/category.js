@@ -2,8 +2,8 @@ import { LocalStorageService } from "./classLS.js"
 
 document.addEventListener("DOMContentLoaded", async function(){
     let data = await fetchDataService.getImg()
-    const copyData = [...data]
-    gallery.addImagesInGallery(copyData)
+    // const copyData = [...data]
+    // gallery.addImagesInGallery(copyData)
     await createCardsService.cardsDefault(data)
     imageFilterService.listenToCategoryFilter(data);
     imageFilterService.listenToStockFilter(data);
@@ -235,18 +235,18 @@ const itemsInCart = {
 }
 
 
-const gallery = {
-    galleryElement: document.getElementById("gallery"),
-    addImagesInGallery: function(images){
+// const gallery = {
+//     galleryElement: document.getElementById("gallery"),
+//     addImagesInGallery: function(images){
         
-        const arraySorted = images.sort(function(a,b){return b.price-a.price})
+//         const arraySorted = images.sort(function(a,b){return b.price-a.price})
         
-        for(let i = 0; i< arraySorted.length && i<11; i++){
-            this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="300" height="410"</div>`
+//         for(let i = 0; i< arraySorted.length && i<11; i++){
+//             this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="300" height="410"</div>`
             
-        }
-    }
-}
+//         }
+//     }
+// }
 
 //For PopUp
 const popUpImagesService = {
@@ -268,6 +268,7 @@ const popUpImagesService = {
                         addToCartService.cartEvent(imageData)
                         this.disabled = true
                         this.style.backgroundColor = "gray"
+                        
                     })
                 } else {
                     document.getElementById('add').style.display = "none"
