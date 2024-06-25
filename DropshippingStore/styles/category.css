@@ -42,6 +42,11 @@ body {
     width: 100%;
 }
 
+#first-nav, #second-nav{
+    padding-right: 250px;
+    padding-left: 250px;
+    background-color: rgb(223, 220, 220);
+
 .searchLogo {
     display: flex;
     justify-content: space-between;
