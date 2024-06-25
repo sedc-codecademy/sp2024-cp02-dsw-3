@@ -19,6 +19,7 @@
       href="https://unicons.iconscout.com/release/v4.0.8/css/line.css"
     />
     <link rel="stylesheet" href="../styles/cart.css" />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -27,66 +28,83 @@
   <body>
     <!-- Nav Bar -->
     <div class="navigation-bar">
-      <nav
-        class="navbar bg-body-tertiary navigation-bar m-0 b-0"
-        id="first-nav"
-      >
-        <div class="container-fluid">
-          <div
-            class="d-flex justify-content-start align-items-center"
-            id="searchLogo"
-          >
-            <div class="d-flex justify-content-around align-items-center">
-              <a class="navbar-brand" href="#">
+      <nav class="navbar navigation-bar first-nav">
+        <div class="first-nav-container">
+          <div class="searchLogo">
+            <div class="logo">
+              <a href="#">
                 <img
-                  src="../images/art.jpg"
-                  class="logo"
+                  src="../images/art-icon-1091.png"
+                  class="logoImg"
                   alt="Logo"
-                  width="30"
-                  height="24"
-                  class="d-inline-block align-text-top"
                 />
-                AIArt
               </a>
+              <h4>AIArt</h4>
+            </div>
+
+            <div class="div-search">
+              <input
+                class="searchInput"
+                id="searchInput"
+                type="search"
+                placeholder="&#xF002; Search..."
+                style="font-family: Poppins, FontAwesome"
+              />
             </div>
           </div>
 
-          <div class="nav justify-content-end">
-            <ul class="nav justify-content-end align-items-center">
+          <div class="cart-navItems">
+            <ul class="navList">
               <li class="nav-item">
-                <a href="../templates/cartPage.html" class="nav-link" id="cart">
-                  <lord-icon
-                    src="https://cdn.lordicon.com/eiekfffz.json"
-                    trigger="loop"
-                    delay="1000"
-                    stroke="bold"
-                    state="in-reveal"
-                    style="width: 40px; height: 50px"
-                  >
-                  </lord-icon>
+                <a
+                  href="../templates/cartPage.html"
+                  class="nav-link cart-icon"
+                  id="cart"
+                >
+                  <img
+                    src="../images/icons8-cart-48.png"
+                    alt="Shopping cart logo"
+                    srcset=""
+                    class="cart-icon"
+                  />
+                  <small id="cart-count" class="cart-count">0</small>
                 </a>
               </li>
               <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="../templates/loginPage.html"
-                  >Log In</a
+                <a class="nav-link" aria-current="page" href="#"
+                  ><img
+                    src="../images/icons8-log-in-32.png"
+                    alt="Login icon"
+                    width="25"
+                    height="23"
+                    srcset=""
+                  /><span> Log In</span></a
                 >
               </li>
+
               <li class="nav-item">
-                <a class="nav-link" href="../templates/singUp.html">Sing Up</a>
+                <a class="nav-link" href="#"
+                  ><img
+                    src="../images/icons8-account-32.png"
+                    alt="Sing up icon"
+                    srcset=""
+                    width="25"
+                    height="23"
+                  /><span> Sing up</span></a
+                >
               </li>
             </ul>
           </div>
         </div>
       </nav>
-      <hr class="hr-nav" />
+    </div>
+    <hr />
 
-      <nav class="navbar navbar-expand-lg bg-body-tertiary" id="second-nav">
-        <div class="container-fluid d-flex" id="items">
+    <div class="navigation-bar">
+      <nav class="navbar navigation-bar navbar-expand-lg second-nav">
+        <div class="second-nav-container">
           <button
-            class="navbar-toggler"
+            class="navbar-toggler btn-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarNavAltMarkup"
@@ -97,36 +115,25 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a
-                class="nav-link active"
-                aria-current="page"
-                href="../index.html"
-                >Home</a
-              >
-              <a class="nav-link" href="../templates/categoryPage.html"
-                >Categories</a
-              >
-              <a class="nav-link" href="../templates/salePage.html">Discount</a>
-              <a class="nav-link" href="#">About us</a>
-              <a class="nav-link" href="#">Contact</a>
+            <div class="navbar-nav navPages">
+              <a class="nav-link second-nav-links" href="#">Home</a>
+              <a class="nav-link second-nav-links" href="#">Categories</a>
+              <a class="nav-link second-nav-links" href="#">Sale</a>
+              <a class="nav-link second-nav-links" href="#">About us</a>
+              <a class="nav-link second-nav-links" href="#">Contact</a>
             </div>
           </div>
         </div>
       </nav>
     </div>
 
-    <!--FORM-->
-
     <div class="container">
       <h2>Cart Items</h2>
-      <div class="cart-items">
-        <!-- Product items will be dynamically added here -->
-      </div>
+      <div class="cart-items"></div>
 
       <h1>Start Your Order Here</h1>
       <div class="form-container">
-        <form action="#">
+        <form id="orderForm">
           <div class="form-group">
             <label for="name">Name</label>
             <input
@@ -136,17 +143,9 @@
               placeholder="Enter your name"
               required
             />
+            <span id="nameError" class="error"></span>
           </div>
-          <div class="form-group">
-            <label for="street">Street</label>
-            <input
-              type="text"
-              id="street"
-              name="street"
-              placeholder="Enter your street"
-              required
-            />
-          </div>
+
           <div class="form-group">
             <label for="phone">Phone Number</label>
             <input
@@ -156,7 +155,9 @@
               placeholder="Enter your phone number"
               required
             />
+            <span id="phoneError" class="error"></span>
           </div>
+
           <div class="form-group">
             <label for="email">Email</label>
             <input
@@ -166,12 +167,15 @@
               placeholder="Enter your email"
               required
             />
+            <span id="emailError" class="error"></span>
           </div>
+
           <div class="form-group">
-            <label for="delivery-day">Prefered Day for Delivery</label>
+            <label for="delivery-day">Preferred Day for Delivery</label>
             <input type="date" id="delivery-day" name="delivery-day" />
+            <span id="deliveryError" class="error"></span>
           </div>
-          <button type="submit">Place Order</button>
+          <button type="button" id="checkoutBtn">Checkout</button>
         </form>
       </div>
     </div>

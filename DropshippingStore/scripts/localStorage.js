@@ -7,6 +7,10 @@ class LocalStorageService {
   setToLocalStorage(key, value) {
     localStorage.setItem(key, JSON.stringify(value));
   }
+
+  isLoggedIn() {
+    return this.getFromLocalStorage(key) !== null;
+  }
 }
 
 export default LocalStorageService;

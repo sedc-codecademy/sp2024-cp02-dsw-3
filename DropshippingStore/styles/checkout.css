@@ -1,0 +1,262 @@
+body {
+  background: linear-gradient(0deg, #ceaaaa79 0%, #ffffff 100%);
+}
+
+.row {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+}
+
+.col-25 {
+  -ms-flex: 25%;
+  flex: 25%;
+  padding: 0 8px;
+}
+
+.col-50 {
+  -ms-flex: 50%;
+  flex: 50%;
+  padding: 0 8px;
+}
+
+.col-75 {
+  -ms-flex: 75%;
+  flex: 75%;
+  padding: 0 8px;
+}
+
+h3 {
+  font-family: Poppins;
+}
+
+.container {
+  background-color: #f3dddd6d;
+  padding: 10px;
+  border: 5px solid rgba(206, 171, 171, 0.969);
+  border-radius: 3px;
+  margin: 0 auto;
+  max-width: 600px;
+  box-shadow: -6px -3px 36px 5px #000000;
+}
+
+.container,
+.btn {
+  animation: myAnim 2s ease 0s 1 normal forwards;
+}
+@keyframes myAnim {
+  0% {
+    animation-timing-function: ease-in;
+    opacity: 0;
+    transform: translateX(-250px);
+  }
+
+  38% {
+    animation-timing-function: ease-out;
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  55% {
+    animation-timing-function: ease-in;
+    transform: translateX(-68px);
+  }
+
+  72% {
+    animation-timing-function: ease-out;
+    transform: translateX(0);
+  }
+
+  81% {
+    animation-timing-function: ease-in;
+    transform: translateX(-28px);
+  }
+
+  90% {
+    animation-timing-function: ease-out;
+    transform: translateX(0);
+  }
+
+  95% {
+    animation-timing-function: ease-in;
+    transform: translateX(-8px);
+  }
+
+  100% {
+    animation-timing-function: ease-out;
+    transform: translateX(0);
+  }
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+  width: 500px;
+  margin-bottom: 6px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 14px;
+  font-family: Poppins;
+}
+
+label {
+  margin-bottom: 6px;
+  display: block;
+  font-size: 14px;
+  font-family: Poppins;
+  margin-top: 7px;
+}
+
+.icon-container {
+  margin-bottom: 6px;
+  font-size: 12px;
+}
+
+img {
+  width: 80px;
+}
+
+.cartImg {
+  height: 40px;
+  width: 85px;
+}
+
+.btn {
+  background-color: rgba(206, 171, 171, 0.969);
+  color: white;
+  padding: 10px;
+  margin: 30px auto;
+  border: none;
+  width: 50%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 16px;
+  display: block;
+}
+
+.btn:hover {
+  background-color: #cbb1bb;
+}
+
+@media only screen and (max-width: 1370px) {
+  .container {
+    padding: 20px;
+    max-width: 80%;
+  }
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 350px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+  .col-25,
+  .col-50,
+  .col-75 {
+    padding: 10px;
+    width: 80%;
+  }
+  .container {
+    padding: 20px;
+    max-width: 90%;
+  }
+  .btn {
+    width: 80%;
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .container {
+    padding: 15px;
+    max-width: 95%;
+  }
+  .btn {
+    width: 90%;
+    font-size: 14px;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 100px;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  input[type="text"],
+  input[type="password"],
+  input[type="email"] {
+    width: 80px;
+  }
+}
+
+.window {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.window-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #b59ca5;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #8e878d;
+}
+
+.error {
+  color: red;
+  font-size: 0.6em;
+  margin-top: 2px;
+}

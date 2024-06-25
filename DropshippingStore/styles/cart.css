@@ -4,134 +4,303 @@
   font-family: "Poppins", sans-serif;
 }
 
-.logo {
-  width: 60px;
-  height: 45px;
-}
-
-.hr-nav {
-  margin: 0px 60px 0px 60px;
-  padding: 0px;
-  background-color: black;
-}
-
-#first-nav,
-#second-nav {
-  padding-right: 250px;
-  padding-left: 250px;
-  background-color: rgb(223, 220, 220);
-}
-
-#searchInput {
-  width: 500px;
-  height: 40px;
-}
-
-#first-nav {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.cart-gif {
-  width: 30px;
-  border: 10px rgb(74, 71, 71);
-}
-
-#second-nav {
-  padding-top: 0px;
-}
-.banner {
+/* NAVBAR */
+.navigation-bar {
   display: flex;
-  width: auto;
-  justify-content: center;
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  padding-top: 20px;
-  justify-content: center;
-  align-content: center;
-}
-.select-div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
-#submit {
-  height: 40px;
-}
-
-.sort-buttons {
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.form-select {
-  width: 600px;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-}
-
-.card-img {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding: 20px 250px 50px 250px;
-}
-
-#card {
-  display: flex;
-  width: 300px;
-  height: auto;
-  flex-flow: column wrap;
-  justify-content: center;
-  align-content: center;
-  background-color: rgb(255, 255, 255);
-  margin-bottom: 10px;
-}
-.image {
-  display: flex;
-  justify-content: center;
-  align-content: center;
   width: 100%;
 }
-.text {
+
+.first-nav-container,
+.second-nav-container {
+  margin: 5px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.searchLogo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
+}
+
+.logo {
+  display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-brand {
+  width: 80px;
+  height: 65px;
+}
+
+.logoImg {
+  width: 53px;
+  height: 40px;
+  /* border-radius: 40% 40% 30%; */
+}
+
+h4 {
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  text-shadow: #474747 3px 5px 2px;
+  font-size: 1.7em;
+  margin: 0px 5px;
+}
+
+hr {
+  margin: 0px;
+}
+
+.first-nav {
+  padding: 8px 0px;
+}
+
+.div-search {
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+}
+
+.searchInput {
+  width: 450px;
+  padding: 2px;
+  font-size: 1.1em;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  background-color: #474747;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+}
+
+.btn-toggler {
+  background-color: #474747;
+}
+
+.searchInput::placeholder {
+  color: #ffffff;
+  padding-left: 15px;
+}
+
+.searchInput:hover {
+  cursor: pointer;
+}
+
+.first-nav,
+.second-nav {
+  background-color: #2d2f33;
+  color: whitesmoke;
+}
+
+.cart-navItems {
+  display: flex;
   flex-wrap: wrap;
 }
 
-.img-details {
+.navList {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-content: center;
+  color: whitesmoke;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
 }
 
+.nav-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+  padding: 4px 13px;
+  background-color: #474747;
+  border-radius: 10px;
+}
+
+.cart-icon {
+  display: flex;
+  gap: 1px;
+  width: 35px;
+  height: 30px;
+}
+
+.second-nav {
+  padding: 0px;
+  display: flex;
+}
+
+.navPages {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link,
+.second-nav-links {
+  color: whitesmoke;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;
+}
+
+.second-nav-links:hover {
+  color: whitesmoke;
+  font-weight: 450;
+  background-color: #474747;
+  border-radius: 10px;
+}
+
+/* END NAVBAR */
+
 @media only screen and (max-width: 1370px) {
-  #first-nav,
-  #second-nav {
-    padding-right: 0px;
-    padding-left: 0px;
+  .navigation-bar {
+    flex-wrap: wrap;
   }
-  #first-nav {
-    padding-top: 10px;
-    padding-bottom: 0px;
+
+  .first-nav-container,
+  .second-nav-container {
+    margin: 5px 30px;
   }
-  #searchInput {
+
+  .searchLogo {
+    gap: 60px;
+  }
+
+  .logo {
+    gap: 15px;
+  }
+
+  .navbar-brand {
+    width: 75px;
+    height: 60px;
+  }
+
+  .logoImg {
+    width: 70px;
+    height: 60px;
+    border-radius: 30% 30% 20%;
+  }
+
+  h4 {
+    font-size: 1.7em;
+  }
+
+  .first-nav {
+    padding: 8px 0px;
+  }
+
+  .div-search {
+    width: 500px;
+  }
+
+  .searchInput {
     width: 350px;
+    font-size: 1em;
+    height: 40px;
+  }
+
+  .navList {
+    gap: 20px;
   }
 }
-@media only screen and (max-width: 500px) {
-  #first-nav {
-    padding-top: 5px;
-    padding-bottom: 0px;
+
+@media only screen and (max-width: 1100px) {
+  .searchLogo {
+    gap: 40px;
   }
-  #searchInput {
-    width: 100px;
+
+  .logo {
+    gap: 10px;
+  }
+
+  .navbar-brand {
+    width: 75px;
+    height: 60px;
+  }
+
+  .logoImg {
+    width: 60px;
+    height: 50px;
+    border-radius: 20% 20% 10%;
+  }
+
+  h4 {
+    font-size: 1.7em;
+  }
+
+  .div-search {
+    width: 300px;
+  }
+
+  .searchInput {
+    width: 250px;
+  }
+
+  .navList {
+    gap: 10px;
   }
 }
-@media only screen and (max-width: 320px) {
-  #searchInput {
-    width: 80px;
+
+@media only screen and (max-width: 841px) {
+  .searchLogo {
+    gap: 20px;
+  }
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  .div-search {
+    width: 200px;
+  }
+
+  .searchInput {
+    width: 200px;
+  }
+
+  .navList {
+    padding-top: 10px;
+    gap: 15px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .searchLogo {
+    flex-flow: column wrap;
+    gap: 10px;
+  }
+
+  .logoImg {
+    width: 50px;
+    height: 40px;
+    border-radius: 20% 20% 10%;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  .div-search {
+    flex-wrap: wrap;
+    width: 200px;
+  }
+
+  .searchInput {
+    width: 200px;
+  }
+
+  .navList {
+    gap: 5px;
+  }
+
+  .nav-item span {
+    display: none;
   }
 }
 
@@ -167,6 +336,12 @@ h2 {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+}
+
+.error {
+  color: red;
+  font-size: 0.6em;
+  margin-top: 3px;
 }
 
 .form-container {

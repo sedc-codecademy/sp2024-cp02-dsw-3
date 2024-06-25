@@ -38,6 +38,26 @@ async function fetchAndDisplayProducts() {
       displayCart([]);
       displayAmount([]);
     }
+
+    //   if (localSt.isLoggedIn()) {
+    //     cart = products.filter(
+    //       (product) =>
+    //         savedIds.includes(product.id.toString()) ||
+    //         saleSavedIds.includes(product.id.toString())
+    //     );
+    //   } else {
+    //     cart = products.filter((product) =>
+    //       savedIds.includes(product.id.toString())
+    //     );
+    //   }
+
+    //   console.log(cart);
+    //   displayCart(cart);
+    //   displayAmount(cart);
+    // } else {
+    //   displayCart([]);
+    //   displayAmount([]);
+    // }
   } catch (error) {
     console.log("Error fetching products", error);
   }
@@ -108,4 +128,57 @@ function displayAmount(cart) {
   amountContainer.insertAdjacentHTML("beforeend", amountHTML);
 }
 
+//VALIDATE FORM
+
+function redirectToCheckoutIfValid() {
+  document
+    .getElementById("checkoutBtn")
+    .addEventListener("click", function (event) {
+      event.preventDefault();
+
+      if (validateForm()) {
+        window.location.href = "../templates/checkout.html";
+      }
+    });
+}
+
+function validateForm() {
+  const name = document.getElementById("name");
+  const phone = document.getElementById("phone");
+  const email = document.getElementById("email");
+
+  document
+    .querySelectorAll(".error")
+    .forEach((error) => (error.innerHTML = ""));
+
+  let isValid = true;
+
+  if (!name.value) {
+    document.getElementById("nameError").innerHTML = "Name is required";
+    isValid = false;
+  }
+
+  if (!phone.value) {
+    document.getElementById("phoneError").innerHTML =
+      "Phone Number is required";
+    isValid = false;
+  }
+
+  if (!email.value) {
+    document.getElementById("emailError").innerHTML = "Email is required";
+    isValid = false;
+  } else if (!isValidEmail(email.value)) {
+    document.getElementById("emailError").innerHTML =
+      "Enter a valid email address";
+    isValid = false;
+  }
+
+  return isValid;
+}
+
+function isValidEmail(email) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 fetchAndDisplayProducts();
+redirectToCheckoutIfValid();
