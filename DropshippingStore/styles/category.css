@@ -813,9 +813,7 @@ p {
 @media only screen and (max-width: 564px) {
 
     .popup-image {
-        /* display: flex;
-        justify-content: center;
-        align-items: center; */
+       
         max-width: 400px;
         max-height: 350px;
         /* border: 5px double whitesmoke;
