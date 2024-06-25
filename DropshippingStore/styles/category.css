@@ -570,7 +570,7 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     gap: 20px;
     background: #060606b3;
     margin: 5px;
@@ -596,8 +596,8 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 500px;
-    max-height: 350px;
+    max-width: 600px;
+    max-height: 450px;
     border: 5px double whitesmoke;
     padding: 10px;
 }
@@ -611,7 +611,7 @@ p {
 .txtDiv {
     display: flex;
     flex-flow: row wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 50px;
 }
@@ -812,6 +812,18 @@ p {
 
 @media only screen and (max-width: 564px) {
 
+    .popup-image {
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        max-width: 400px;
+        max-height: 350px;
+        /* border: 5px double whitesmoke;
+        padding: 10px; */
+    }
+    #popup-content {
+        flex-wrap: wrap;
+    }
     .card-img {
         
         grid-template-columns: 1fr ;
