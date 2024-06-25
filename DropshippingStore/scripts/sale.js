@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     <div class="card__content | flow">
                         <div class="card__content--container | flow">
                             <p class="card__description">${item.category}</p>
-                            <p class="img-price">${item.price}$</p>
+                            <p class="img-price">${item.discPrice}$</p>
                             <button class="card__button" data-item='${JSON.stringify(item)}'>Add to cart</button>
                         </div>
                     </div>
