@@ -4,10 +4,27 @@
   font-family: "Poppins", sans-serif;
 }
 
-.logo {
+.logo { 
   width: 60px;
   height: 45px;
 }
+.badge {
+position: absolute;
+top: 10px;
+right: 5px;
+background-color: red;
+color: white;
+border-radius: 50%;
+padding: 5px 10px;
+font-size: 12px;
+font-weight: bold;
+display: none;
+}
+
+.nav-item {
+position: relative;
+}
+
 
 .navigation-bar {
   position: relative;
@@ -300,6 +317,23 @@ p {
 .card__button:focus {
   outline: 1px solid black;
   outline-offset: -5px;
+}
+
+.page-numbers button {
+  background-color: rgb(52, 46, 46);
+  color: white;
+  margin: 50px 0px;
+  width: 40px;
+  border: none;
+  border-radius: 35%;
+  margin-left: 5px;
+}
+
+.page-numbers button:hover {
+color: rgb(52, 46, 46);
+background-color: rgb(197, 105, 105);
+  width: 50px;
+
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
@@ -636,6 +670,7 @@ div.first {
   height: 100%;
   background: #fff;
 }
+
 
 div.second {
   position: relative;

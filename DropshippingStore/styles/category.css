@@ -1,651 +1,828 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-* {
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
-.logo {
-  width: 60px;
-  height: 45px;
-}
-
-.navigation-bar {
-  position: relative;
-}
-.hr-nav {
-  margin: 0px 60px 0px 60px;
-  padding: 0px;
-  background-color: white;
-}
-
-#first-nav,
-#second-nav {
-  padding-right: 250px;
-  padding-left: 250px;
-}
-
-.div-search {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.searchInput {
-  width: 500px;
-  height: 40px;
-  border-radius: 5px;
-}
-.searchInput:hover {
-  border: 2px double rgb(98, 0, 255);
-}
-#first-nav {
-  padding-top: 5px;
-  padding-bottom: 5px;
-}
-.cart-gif {
-  width: 30px;
-  border: 10px rgb(74, 71, 71);
-}
-
-#second-nav {
-  padding-top: 0px;
-  background-color: black;
-}
-
-/* Carousel  and  Select input for categories*/
-body {
-  display: flex;
-  flex-flow: column wrap;
-}
-
-.img-carousel {
-  display: grid;
-  grid-template-columns: auto auto;
-  place-content: center;
-  background-color: rgb(197, 105, 105, 0.2);
-  gap: 100px;
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-}
-.carouselContainer {
-  display: flex;
-  justify-content: center;
-  align-content: flex-end;
-  width: 200px;
-}
-.slide {
-  display: flex;
-  justify-content: center;
-}
-
-.carousel-item {
-  width: 250px;
-}
-
-/* Prompt and select inputs for categories */
-.prompt-categories-container {
-  display: flex;
-  flex-flow: column wrap;
-  gap: 30px;
-  justify-content: flex-start;
-  padding-top: 0%;
-  align-content: flex-start;
-}
-
-/* Image with prompt */
-.createImagePrompt {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-content: flex-start;
-}
-.imgPrompt {
-  width: 700px;
-  height: 300px;
-}
-.prompt {
-  display: flex;
-  flex-flow: row;
-  justify-content: center;
-  position: absolute;
-  top: 70%;
-  bottom: 30%;
-  left: 10%;
-  width: 70%;
-}
-.promptInput {
-  width: 50px;
-  height: 40px;
-}
-
-/* Categories inputs */
-.categories {
-  display: flex;
-  flex-direction: row;
-  padding: 5px;
-  justify-content: space-between;
-  align-content: center;
-  background-color: rgb(197, 105, 105, 0.2);
-}
-.select-div {
-  display: flex;
-  justify-content: flex-start;
-  flex-flow: row wrap;
-  /* justify-content: center; */
-  align-content: center;
-}
-.btn {
-  height: 40px;
-  background-color: white;
-}
-
-.sort-buttons {
-  display: flex;
-  justify-content: flex-end;
-  width: 30px;
-  height: 20px;
-  padding: 0px;
-  /* flex-flow: column wrap; */
-}
-
-.form-select {
-  width: 250px;
-
-  /* padding-bottom: 10px;
-  margin-bottom: 10px; */
-}
-
-/* Animation if no items to show */
-.noItems {
-  width: 300px;
-  height: 300px;
-}
-
-/* Image cards */
-.card-img {
-  padding: 50px 150px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  place-items: center;
-}
-
-:root {
-  /* Colors */
-  --brand-color: rgba(197, 105, 105, 0.842);
-  --black: hsl(0, 0%, 0%);
-  --white: hsl(0, 0%, 100%);
-  /* Fonts */
-  --font-title: "Poppins", sans-serif;
-  --font-text: "Poppins", sans-serif;
-}
-
-/* RESET */
 
 /* Box sizing rules */
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
 }
 
 /* Remove default margin */
 main,
 h2,
 p {
-  margin: 0;
+    margin: 0;
 }
 
-/* GLOBAL STYLES */
-main {
-  display: grid;
-  place-items: center;
-  /* height: 80vh; */
+/* BODY */
+body {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
-h2 {
-  font-size: 2.25rem;
-  font-family: var(--font-title);
-  color: var(--white);
-  line-height: 1.1;
+
+/* NAVBAR */
+.navigation-bar {
+    display: flex;
+    width: 100%;
 }
 
-p {
-  font-family: var(--font-text);
-  font-size: 1rem;
-  line-height: 1.5;
-  color: var(--white);
+.first-nav-container,
+.second-nav-container {
+
+    margin: 5px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 
-.flow > * + * {
-  margin-top: var(--flow-space, 1em);
+.searchLogo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
 }
 
-/* CARD COMPONENT */
-
-.card {
-  display: grid;
-  place-items: center;
-  width: 90%;
-  height: 20vh;
-  max-width: 21.575rem;
-  height: 28.025rem;
-  overflow: hidden;
-  border-radius: 0.625rem;
-  box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
 
-.card > * {
-  grid-column: 1 / 1;
-  grid-row: 1 / 1;
+.navbar-brand {
+    width: 80px;
+    height: 65px;
 }
 
-.card__background {
-  object-fit: cover;
-  max-width: 100%;
-  height: 100%;
+.logoImg {
+    width: 53px;
+    height: 40px;
+    /* border-radius: 40% 40% 30%; */
 }
 
-.card__content {
-  --flow-space: 0.9375rem;
+h4 {
+    color: #FFFFFF;
+    font-family: "Poppins", sans-serif;
+    text-shadow: #474747 3px 5px 2px;
+    font-size: 1.7em;
+    margin: 0px 5px;
+}
+
+hr {
+    margin: 0px;
+}
+
+.first-nav {
+    padding: 8px 0px;
+}
+
+.div-search {
+    display: flex;
+    justify-content: flex-start;
+    width: 600px;
+}
+
+.searchInput {
+    width: 450px;
+    padding: 2px;
+    font-size: 1.1em;
+    font-family: "Poppins", sans-serif;
+    color: rgb(255, 255, 255);
+    background-color: #474747;
+    height: 40px;
+    border-radius: 10px;
+    border: none;
+
+}
+
+.btn-toggler {
+    background-color: #474747;
+}
+
+.searchInput::placeholder {
+    color: #FFFFFF;
+    padding-left: 15px;
+}
+
+.searchInput:hover {
+    cursor: pointer;
+}
+
+.first-nav,
+.second-nav {
+    background-color: rgb(52, 46, 46);
+    color: whitesmoke;
+}
+
+.cart-navItems {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+.navList {
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    color: whitesmoke;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    list-style: none;
+    padding: 4px 13px;
+    background-color: #474747;
+    border-radius: 10px;
+}
+
+
+.cart-icon {
+    display: flex;
+    gap: 1px;
+    width: 35px;
+    height: 30px;
+}
+
+.second-nav {
+    padding: 0px;
+    display: flex;
+
+}
+
+.navPages {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-link,
+.second-nav-links {
+    color: whitesmoke;
+    font-size: 1em;
+    font-family: "Poppins", sans-serif;
+}
+
+.second-nav-links:hover {
+    color: whitesmoke;
+    font-weight: 450;
+    background-color: #474747;
+    border-radius: 10px;
+
+}
+
+/* END NAVBAR */
+
+
+/* GALLERY */
+section{
+  padding-top: 50px;
+  background-color: rgb(197, 105, 105, 0.2);
+    width: 100%;
+    height: fit-content;
+}
+.galleryWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+    height: 520px;
+}
+
+.gallery-container {
+    display: flex;
+    flex-direction: column;
+    width: 1100px;
+    max-height: 80vh;
+}
+
+h1 {
+    position: relative;
+    margin-bottom: 20px;
+    font-family: "Poppins", sans-serif;
+    text-shadow: #474747 2px 2px 1px;
+    font-size: 2.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #424242;
+}
+
+.gallery-wrap {
+    display: flex;
+    flex-direction: row;
+    width: 800px;
+    height: 95vh;
+    justify-content: center;
+}
+
+.item {
+    flex: 1;
+    height: 60px;
+    width: 50px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: none;
+    transition: flex 0.8s ease;
+
+    &:hover {
+        flex: 5;
+    }
+}
+
+/* END GALLERY */
+
+
+/* SELECT INPUTS */
+
+.offcanvas-header{
+  background-color: rgb(197, 105, 105, 0.2);
+}
+.offcanvas-body {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 20px;
+    justify-content: space-between;
+    background-color: rgb(197, 105, 105, 0.2);
+
+}
+.offcanvasHeading{
+  margin-bottom:  10px;;
+  padding-top: 40px;
+  font-size: 2em;
+  color: #474747;
+}
+
+.categories{
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
-  align-self: flex-end;
-  height: 70%;
-  width: 100%;
-  padding: 12% 1.25rem 1.875rem;
-  background: linear-gradient(
-    180deg,
-    hsla(0, 0%, 0%, 0) 0%,
-    hsla(0, 0%, 0%, 0.3) 10%,
-    hsl(0, 0%, 0%) 100%
-  );
+  gap:30px
+}
+.select-div {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+    align-content: center;
+    font-size: 1.1em;
+}
+select{
+  height: 45px;
+  font-family: var(--font-text);
+}
+option{
+  margin-top: 3px;
+  font-size: 1.1em;
+}
+.logoOC{
+  padding-bottom: 40px;
+  
+}
+/* END SELECTS AND OFFCANVAS */
+
+
+/* BUTTONS(SORT AND FILTER) */
+.filterOptions{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between ;
+  margin: 0px 40px;
+
+}
+.btn {
+    height: 45px;
+    font-size: 1.1em;
+    
 }
 
-.card__content--container {
-  --flow-space: 1.25rem;
+.sort-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  
 }
 
-.card__title {
-  position: relative;
-  width: fit-content;
-  width: -moz-fit-content;
+.btn:hover{
+  border: 2px solid #4747475c;
+}
+/* END  BUTTONS(SORT AND FILTER)*/
+
+
+
+
+/* PAGE NUMBERS */
+.page-numbers button {
+    background-color: rgb(52, 46, 46);
+    color: white;
+    margin: 50px 0px;
+    width: 40px;
+    border: none;
+    border-radius: 35%;
 }
 
-.card__title::after {
-  content: "";
-  position: absolute;
-  height: 0.3125rem;
-  width: calc(100% + 1.25rem);
-  bottom: calc((1.25rem - 0.5rem) * -1);
-  left: -1.25rem;
-  background-color: var(--brand-color);
+.page-numbers button:hover {
+  color: rgb(52, 46, 46);
+  background-color: rgb(197, 105, 105);
+    width: 50px;
+
 }
+/* END PAGE NUMBERS */
 
-.card__button {
-  padding: 0.1em 0.1em;
-  width: fit-content;
-  width: -moz-fit-content;
-  font-variant: small-caps;
-  font-weight: bold;
-  border-radius: 0.45em;
-  border: none;
-  background-color: var(--brand-color);
-  font-family: var(--font-title);
-  font-size: 1.125rem;
-  color: var(--black);
-}
 
-.card__button:focus {
-  outline: 1px solid black;
-  outline-offset: -5px;
-}
 
-@media (any-hover: hover) and (any-pointer: fine) {
-  .card__content {
-    transform: translateY(62%);
-    transition: transform 500ms ease-out;
-    transition-delay: 500ms;
-  }
 
-  .card__title::after {
-    opacity: 0;
-    transform: scaleX(0);
-    transition: opacity 1000ms ease-in, transform 500ms ease-out;
-    transition-delay: 500ms;
-    transform-origin: right;
-  }
-
-  .card__background {
-    transition: transform 500ms ease-in;
-  }
-
-  .card__content--container > :not(.card__title),
-  .card__button {
-    opacity: 0;
-    transition: transform 500ms ease-out, opacity 500ms ease-out;
-  }
-
-  .card:hover,
-  .card:focus-within {
-    transform: scale(1.05);
-    transition: transform 500ms ease-in;
-  }
-
-  .card:hover .card__content,
-  .card:focus-within .card__content {
-    transform: translateY(0);
-    transition: transform 500ms ease-in;
-  }
-
-  .card:focus-within .card__content {
-    transition-duration: 0ms;
-  }
-
-  .card:hover .card__background,
-  .card:focus-within .card__background {
-    transform: scale(1.3);
-  }
-
-  .card:hover .card__content--container > :not(.card__title),
-  .card:hover .card__button,
-  .card:focus-within .card__content--container > :not(.card__title),
-  .card:focus-within .card__button {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-    transition-delay: 1000ms;
-  }
-
-  .card:hover .card__title::after,
-  .card:focus-within .card__title::after {
-    opacity: 1;
-    transform: scaleX(1);
-    transform-origin: left;
-    transition: opacity 500ms ease-in, transform 500ms ease-in;
-    transition-delay: 500ms;
-  }
+/* ANIMATION IF NO ITEMS FOUND FROM SEARCH INPUT*/
+.noItems {
+    width: 300px;
+    height: 300px;
 }
 
 #noItemsFound {
-  display: none;
-}
-
-@media only screen and (max-width: 1300px) {
-  .hr-nav {
-    margin: 0px 0px 0px 0px;
-  }
-
-  #first-nav,
-  #second-nav {
-    padding-right: 50px;
-    padding-left: 50px;
-  }
-
-  .navbar-togler{
-    display:flex;
-    justify-content: flex-start;
-  }
-
-  .div-search {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
-  .searchInput {
-    width: 300px;
-  }
-  .cart-gif {
-    width: 25px;
-  }
-
-  /* Carousel  and  Select input for categories*/
-
-  .img-carousel {
-    gap: 40px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .carouselContainer {
-    flex-wrap: wrap;
-    align-content: center;
-  }
-
-  .carousel-item {
-    width: 100%;
-  }
-
-  /* Prompt and select inputs for categories */
-  .prompt-categories-container {
-    gap: 10px;
-  }
-
-  /* Image with prompt */
-  .imgPrompt {
-    width: 550px;
-    height: 250px;
-  }
-  .prompt {
-    width: 60%;
-  }
-
-  /* Categories inputs */
-  .categories {
-    flex-wrap: wrap;
-  }
-
-  .btn {
-    height: 40px;
-  }
-
-  .sort-buttons {
-    width: 20px;
-  }
-
-  .form-select {
-    width: 185px;
-  }
-
-  /* Animation that shows up if no items are found from search bar  */
-  .noItems {
-    width: 250px;
-    height: 250px;
-  }
-
-  /* Image cards */
-  .card-img {
-    padding: 40px 100px;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-  }
-
-  /* Paragraph in image cards */
-  p {
-    font-size: 1rem;
-  }
-}
-@media only screen and (max-width: 800px) {
-  #first-nav,
-  #second-nav {
-    padding: 0px;
-  }
-
-  
-  .container-fluid {
-    flex-flow: column wrap;
-  }
-
-  .searchInput {
-    width: 300px;
-  }
-  .cart-gif {
-    width: 25px;
-  }
-
-  /* Carousel  and  Select input for categories*/
-
-  .img-carousel {
-    grid-template-columns: auto;
-    place-content: center;
-    gap: 0px;
-    padding-top: 15px;
-    padding-bottom: 5px;
-  }
-  .carouselContainer {
-    justify-content: center;
-  }
-
-  .slide {
     display: none;
-  }
+}
 
-  /* Image with prompt */
-  .imgPrompt {
-    width: 550px;
-    height: 220px;
-    /* max-width: 550px; */
-  }
 
-  .sort-buttons {
-    width: 10px;
-  }
 
-  .form-select {
-    width: 160px;
-  }
-
-  /* Image cards */
-  .card-img {
-    padding: 20px 15px;
+/* CARDS-IMAGES */
+.card-img {
+    padding: 50px 150px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 20px;
-  }
-
-  .card {
-    width: 100%;
-  }
+    place-items: center;
 }
 
-@media only screen and (max-width: 550px) {
-  .searchInput {
-    width: 140px;
-  }
+:root {
+    --brand-color: rgba(197, 105, 105, 0.842);
+    --black: hsl(0, 0%, 0%);
+    --white: hsl(0, 0%, 100%);
+    --font-title: "Poppins", sans-serif;
+    --font-text: "Poppins", sans-serif;
+}
 
-  #first-nav {
-    padding-top: 5px;
-    padding-bottom: 5px;
-  }
-  .cart-gif {
-    width: 20px;
-  }
+main {
+    display: grid;
+    place-items: center;
+}
 
-  .img-carousel {
-    grid-template-columns: auto;
-    place-content: center;
-    gap: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-  .carouselContainer {
-    display: none;
-  }
+h2 {
+    font-size: 2.25rem;
+    font-family: var(--font-title);
+    color: var(--white);
+    line-height: 1.1;
+}
 
-  /* Prompt and select inputs for categories */
-  .prompt-categories-container {
-    display: flex;
-    flex-flow: column wrap;
-    gap: 10px;
-    justify-content: flex-start;
-    padding-top: 0%;
-    align-content: flex-start;
-  }
+p {
+    font-family: var(--font-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    color: var(--white);
+}
 
-  /* Image with prompt */
-  .createImagePrompt {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-content: flex-start;
-  }
-  .imgPrompt {
-    width: 300px;
-    height: 150px;
-    place-content: center;
-  }
-  .prompt {
-    display: flex;
-    flex-flow: row;
-    justify-content: center;
-    position: absolute;
-    top: 70%;
-    bottom: 30%;
-    left: 10%;
-    width: 70%;
-  }
-  .promptInput {
-    width: 50px;
-    height: 40px;
-  }
+.flow>*+* {
+    margin-top: var(--flow-space, 1em);
+}
 
-  /* Categories inputs */
-  .categories {
-    display: flex;
-    flex-flow: column wrap;
-    padding: 5px;
-    justify-content: center;
-    align-content: center;
-  }
-  .select-div {
-    display: flex;
-    flex-flow: row wrap;
-    align-content: center;
-  }
-  .btn {
-    height: 40px;
-    background-color: white;
-  }
+.card {
+    display: grid;
+    place-items: center;
+    width: 90%;
+    height: 20vh;
+    max-width: 21.575rem;
+    height: 28.025rem;
+    overflow: hidden;
+    border-radius: 0.625rem;
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 0, 0, 0.25);
+}
 
-  .sort-buttons {
-    width: 300px;
-    height: 40px;
-    padding: 0px;
-    flex-flow: row wrap;
+.card>* {
+    grid-column: 1 / 1;
+    grid-row: 1 / 1;
+}
+
+.card__background {
+    object-fit: cover;
+    max-width: 100%;
+    height: 100%;
+}
+
+.card__content {
+    --flow-space: 0.9375rem;
     display: flex;
-    flex-flow: row nowrap;
+    flex-direction: column;
     justify-content: space-evenly;
-  }
+    align-self: flex-end;
+    height: 70%;
+    width: 100%;
+    padding: 12% 1.25rem 1.875rem;
+    background: linear-gradient(180deg,
+            hsla(0, 0%, 0%, 0) 0%,
+            hsla(0, 0%, 0%, 0.3) 10%,
+            hsl(0, 0%, 0%) 100%);
+}
 
-  .form-select {
-    width: 170px;
-  }
+.card__content--container {
+    --flow-space: 1.25rem;
+}
 
-  /* Animation if no items to show */
-  .noItems {
-    width: 200px;
-    height: 200px;
-  }
+.card__title {
+    position: relative;
+    width: fit-content;
+    width: -moz-fit-content;
+}
 
-  /* Image cards */
-  .card-img {
-    padding: 15px;
+.card__title::after {
+    content: "";
+    position: absolute;
+    height: 0.3125rem;
+    width: calc(100% + 1.25rem);
+    bottom: calc((1.25rem - 0.5rem) * -1);
+    left: -1.25rem;
+    background-color: var(--brand-color);
+}
+
+.card__button,
+.details__button {
+    padding: 0.1em 0.1em;
+    width: fit-content;
+    width: -moz-fit-content;
+    font-variant: small-caps;
+    font-weight: bold;
+    border-radius: 0.45em;
+    border: none;
+    background-color: var(--brand-color);
+    font-family: var(--font-title);
+    font-size: 1.125rem;
+    color: var(--black);
+}
+
+.card__button:focus,
+.details__button:focus {
+    outline: 1px solid black;
+    outline-offset: -5px;
+}
+
+@media (any-hover: hover) and (any-pointer: fine) {
+    .card__content {
+        transform: translateY(62%);
+        transition: transform 500ms ease-out;
+        transition-delay: 500ms;
+    }
+
+    .card__title::after {
+        opacity: 0;
+        transform: scaleX(0);
+        transition: opacity 1000ms ease-in, transform 500ms ease-out;
+        transition-delay: 500ms;
+        transform-origin: right;
+    }
+
+    .card__background {
+        transition: transform 500ms ease-in;
+    }
+
+    .card__content--container> :not(.card__title),
+    .card__button {
+        opacity: 0;
+        transition: transform 500ms ease-out, opacity 500ms ease-out;
+    }
+
+    .card:hover,
+    .card:focus-within {
+        transform: scale(1.05);
+        transition: transform 500ms ease-in;
+    }
+
+    .card:hover .card__content,
+    .card:focus-within .card__content {
+        transform: translateY(0);
+        transition: transform 500ms ease-in;
+    }
+
+    .card:focus-within .card__content {
+        transition-duration: 0ms;
+    }
+
+    .card:hover .card__background,
+    .card:focus-within .card__background {
+        transform: scale(1.3);
+    }
+
+    .card:hover .card__content--container> :not(.card__title),
+    .card:hover .card__button,
+    .card:focus-within .card__content--container> :not(.card__title),
+    .card:focus-within .card__button {
+        opacity: 1;
+        transition: opacity 500ms ease-in;
+        transition-delay: 1000ms;
+    }
+
+    .card:hover .card__title::after,
+    .card:focus-within .card__title::after {
+        opacity: 1;
+        transform: scaleX(1);
+        transform-origin: left;
+        transition: opacity 500ms ease-in, transform 500ms ease-in;
+        transition-delay: 500ms;
+    }
+}
+
+/* END OF CARDS-IMAGES */
+
+
+/* POP UP */
+#image-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.image-card {
+    margin: 10px;
+    cursor: pointer;
+}
+
+#popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(250, 250, 250, 0.5);
+    backdrop-filter: blur(5px);
+    justify-content: center;
+    align-items: center;
+    z-index: 9;
+}
+
+#popup-content {
     display: grid;
     grid-template-columns: auto;
-    gap: 15px;
-  }
+    place-content: center;
+    gap: 20px;
+    background: #06060686;
+    margin: 10px;
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    max-height: 700px;
+    filter: blur(0px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-family: "Poppins", sans-serif;
+    color: white;
+    font-size: 1.4em;
 }
 
-@media only screen and (max-width: 350px) {
-  
-  .select-div {
+.imageDiv {
+    display: flex;
     justify-content: center;
-  }
+    align-content: center;
+}
 
-  .sort-buttons {
+.popup-image {
+    display: flex;
     justify-content: center;
     align-items: center;
-  }
+    max-width: 500px;
+    max-height: 350px;
+}
+.infoPopup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .form-select {
-    width: 180px;
-  }
-  
+
+.txtDiv {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+#popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+.add {
+    margin-top: 10px;
+    padding: 7px;
+    width: fit-content;
+    width: -moz-fit-content;
+    font-variant: small-caps;
+    font-weight: bold;
+    border-radius: 0.45em;
+    border: none;
+    background-color: var(--brand-color);
+    font-family: var(--font-title);
+    font-size: 1.125rem;
+    color: var(--black);
+}
+
+.add :focus {
+    outline: 1px solid black;
+    outline-offset: -5px;
+}
+
+.card__description {
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+/* END POP UP */
+
+
+
+/* NEWEST MEDIA QUERIES FOR NAVBAR */
+
+
+@media only screen and (max-width: 1370px) {
+    .navigation-bar {
+        flex-wrap: wrap;
+
+    }
+
+    .first-nav-container,
+    .second-nav-container {
+        margin: 5px 30px;
+    }
+
+    .searchLogo {
+        gap: 60px;
+    }
+
+    .logo {
+        gap: 15px;
+    }
+
+    .navbar-brand {
+        width: 75px;
+        height: 60px;
+    }
+
+    .logoImg {
+        width: 70px;
+        height: 60px;
+        border-radius: 30% 30% 20%;
+    }
+
+    h4 {
+        font-size: 1.7em;
+    }
+
+    .first-nav {
+        padding: 8px 0px;
+    }
+
+    .div-search {
+        width: 500px;
+    }
+
+    .searchInput {
+        width: 350px;
+        font-size: 1em;
+        height: 40px;
+    }
+
+    .navList {
+        gap: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 1100px) {
+
+    .searchLogo {
+
+        gap: 40px;
+    }
+
+    .logo {
+
+        gap: 10px;
+    }
+
+    .navbar-brand {
+        width: 75px;
+        height: 60px;
+    }
+
+    .logoImg {
+        width: 60px;
+        height: 50px;
+        border-radius: 20% 20% 10%;
+    }
+
+    h4 {
+        font-size: 1.7em;
+
+    }
+
+
+    .div-search {
+        width: 300px;
+    }
+
+    .searchInput {
+        width: 250px;
+
+
+    }
+
+    .navList {
+        gap: 10px;
+
+    }
+
+
+
+
+}
+
+@media only screen and (max-width: 841px) {
+
+    .searchLogo {
+
+        gap: 20px;
+    }
+
+
+    h4 {
+        font-size: 1.5em;
+
+    }
+
+    .div-search {
+        width: 200px;
+    }
+
+    .searchInput {
+        width: 200px;
+    }
+
+    .navList {
+        padding-top: 10px;
+        gap: 15px;
+
+    }
+
+}
+
+
+@media only screen and (max-width: 400px) {
+
+    .searchLogo {
+        flex-flow: column wrap;
+        gap: 10px;
+    }
+
+    .logoImg {
+        width: 50px;
+        height: 40px;
+        border-radius: 20% 20% 10%;
+    }
+
+    h4 {
+        font-size: 1em;
+
+    }
+
+    .div-search {
+        flex-wrap: wrap;
+        width: 200px;
+    }
+
+    .searchInput {
+        width: 200px;
+    }
+
+    .navList {
+        gap: 5px;
+
+    }
+
+    .nav-item span {
+        display: none;
+    }
 }

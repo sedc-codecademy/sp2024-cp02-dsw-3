@@ -46,13 +46,14 @@ document.addEventListener("DOMContentLoaded", function() {
             const storedCreds = localStorage.getItem('user-creds-check');
             if (storedCreds) {
                 const storedUser = JSON.parse(storedCreds);
+
                 if (inputEmail === storedUser.email && hashedInputPassword === storedUser.password) {
                     localStorage.setItem('user-creds', JSON.stringify({
                         email: storedUser.email,
                         fullName: storedUser.fullName,
                         age: storedUser.age
                     }));
-                    localStorage.removeItem('user-creds-check');
+                    localStorage.removeItem("user-creds-check");
                     window.location.href = "./salePage.html";
                 } else {
                     alert("Invalid email or password.");
