@@ -199,7 +199,6 @@ const searchInputService = {
 
 
 const addToCartService = {
-    key: [],
     addToCartBtn : document.getElementsByClassName("card__button"),
     addEventsAddToCart: function (data){
         for(let button of this.addToCartBtn){
@@ -214,13 +213,11 @@ const addToCartService = {
         }
         
     }, cartEvent: function(img){
-        let itemsinStorsge = storage.getFromLocalStorage("category-cart")
-        
-        if(itemsinStorsge==null || !this.key.find(i=> i==img)){
-            addToCartService.key.push(img)
-            storage.setToLocalStorage("category-cart", addToCartService.key)
-            itemsInCart.displayItems()
-        }
+        let items = storage.getFromLocalStorage("cart-items") || []
+        items.push(img)
+        storage.setToLocalStorage("cart-items", items)
+        itemsInCart.displayItems()
+        console.log(items)
         
     }
 }
@@ -230,23 +227,12 @@ const addToCartService = {
 const itemsInCart = {
     cart: document.getElementById("cart-count"),
     displayItems: function(){
-        this.cart.innerText = `${storage.itemsInCart("category-cart")}`
+        let storedCart = storage.getFromLocalStorage("cart-items") || []
+        this.cart.textContent = storedCart.length;
+        this.cart.style.display = storedCart.length > 0 ? 'block' : 'none';
     }
 }
 
-
-// const gallery = {
-//     galleryElement: document.getElementById("gallery"),
-//     addImagesInGallery: function(images){
-        
-//         const arraySorted = images.sort(function(a,b){return b.price-a.price})
-        
-//         for(let i = 0; i< arraySorted.length && i<11; i++){
-//             this.galleryElement.innerHTML += `<div class="item item-${i}"><img src=${arraySorted[i].imageUrl} alt=${arraySorted[i].title} width="300" height="410"</div>`
-            
-//         }
-//     }
-// }
 
 //For PopUp
 const popUpImagesService = {
