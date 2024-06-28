@@ -941,7 +941,7 @@
 {
     "id": 73,
     "type": "photo",
-    "description": "Little girl enjoing the fruits of life",
+    "description": "Little girl enjoying the fruits of life",
     "tags":["little girl", "happiness", "river", "boat"],
     "category": "Portraits",
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
@@ -1123,7 +1123,7 @@
 {
     "id": 87,
     "type": "photo",
-    "description": "Beatiful night sky",
+    "description": "Beautiful night sky",
     "tags":["stars", "night", "sky", "detailed", "colorful"],
     "category": "Astrophoto",
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
@@ -1292,7 +1292,7 @@
 {
     "id": 100,
     "type": "photo",
-    "description": "Beatiful picture from a house in the mountains in the cold winter nights",
+    "description": "Beautiful picture from a house in the mountains in the cold winter nights",
     "tags":["night", "sky", "nature", "winter", "snow", "house", "detailed", "scenic", "landscape"],
     "category": "Astrophoto",
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
@@ -1305,7 +1305,7 @@
 {
     "id": 101,
     "type": "photo",
-    "description": "Beatiful sight from the lake",
+    "description": "Beautiful sight from the lake",
     "tags":["landscape", "nature", "sky", "stars", "sun", "sunset"],
     "category": "Astrophoto",
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
@@ -1396,7 +1396,7 @@
 {
     "id":108,
     "type": "photo",
-    "description": "Sun's watery grave",
+    "description": "Suns watery grave",
     "tags":["abstract", "docks", "boats", "sun",  "water", "sailors"],
     "category": "Abstract painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
@@ -1435,7 +1435,7 @@
 {
     "id":111,
     "type": "photo",
-    "description": "Decending",
+    "description": "Descending",
     "tags":["abstract", "dark", "fade", "fog", "circles"],
     "category": "Abstract painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
@@ -1487,7 +1487,7 @@
 {
     "id":115,
     "type": "photo",
-    "description": "Cherry blosom",
+    "description": "Cherry blossom",
     "tags":["canvas", "cherry", "japan", "pink"],
     "category": "Canvas painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
@@ -1513,7 +1513,7 @@
 {
     "id":117,
     "type": "photo",
-    "description": "Farmers' home",
+    "description": "Farmers home",
     "tags":["canvas", "farmers", "cattle", "flowers", "farm"],
     "category": "Canvas painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
@@ -1526,8 +1526,8 @@
 {
     "id":118,
     "type": "photo",
-    "description": "St. Kateri",
-    "tags":["canvas", "wolf", "native", "christian"],
+    "description": "Shiny blue bird who fans out his large colorful iridescent tail feathers",
+    "tags":["bird", "canvas", "colors", "peacock", "colorful"],
     "category": "Canvas painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
     "price": 45,
@@ -1539,7 +1539,7 @@
 {
     "id":119,
     "type": "photo",
-    "description": "Fall lakeview",
+    "description": "Fall at the lake",
     "tags":["canvas", "trees", "fall", "autumn", "lake"],
     "category": "Canvas painting",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
@@ -1579,7 +1579,7 @@
     "id":122,
     "type": "photo",
     "description": "Geisha",
-    "tags":["charcoal", "chalk", "pastel", "japan", "face", "colorful"],
+    "tags":["charcoal", "chalk", "pastel", "japan", "face", "colorful", "geisha"],
     "category": "Charcoal & Chalk & Pastel",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
     "price": 45,
@@ -1604,8 +1604,8 @@
 {
     "id":124,
     "type": "photo",
-    "description": "I'm Batman",
-    "tags":["charcoal", "chalk", "pastel", "gotham", "batman", "vengance"],
+    "description": "I am Batman",
+    "tags":["charcoal", "chalk", "pastel", "gotham", "batman", "vengeance"],
     "category": "Charcoal & Chalk & Pastel",
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
     "price": 45,
