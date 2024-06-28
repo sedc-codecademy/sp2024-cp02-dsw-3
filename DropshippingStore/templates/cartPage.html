@@ -33,11 +33,7 @@
           <div class="searchLogo">
             <div class="logo">
               <a href="#">
-                <img
-                  src="../images/art-icon-1091.png"
-                  class="logoImg"
-                  alt="Logo"
-                />
+                <img src="../icons/art2.png" class="logoImg" alt="Logo" />
               </a>
               <h4>AIArt</h4>
             </div>
@@ -126,60 +122,13 @@
         </div>
       </nav>
     </div>
-
+    <!--Container-->
     <div class="container">
-      <h2>Cart Items</h2>
-      <div class="cart-items"></div>
-
-      <h1>Start Your Order Here</h1>
-      <div class="form-container">
-        <form id="orderForm">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Enter your name"
-              required
-            />
-            <span id="nameError" class="error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="phone">Phone Number</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              placeholder="Enter your phone number"
-              required
-            />
-            <span id="phoneError" class="error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Enter your email"
-              required
-            />
-            <span id="emailError" class="error"></span>
-          </div>
-
-          <div class="form-group">
-            <label for="delivery-day">Preferred Day for Delivery</label>
-            <input type="date" id="delivery-day" name="delivery-day" />
-            <span id="deliveryError" class="error"></span>
-          </div>
-          <button type="button" id="checkoutBtn">Checkout</button>
-        </form>
-      </div>
+      <h1>Your Shopping Cart</h1>
+      <section id="displayItems"></section>
+      <div id="totalAmount"></div>
+      <button type="button" id="checkoutBtn">Proceed To Checkout</button>
     </div>
-
     <!-- Footer -->
     <footer class="footer">
       <div class="containerFooter">
@@ -246,6 +195,5 @@
     ></script>
 
     <script src="../scripts/cart.js" type="module"></script>
-    <script type="module" src="../scripts/localStorage.js"></script>
   </body>
 </html>

@@ -94,7 +94,7 @@ hr {
 
 .first-nav,
 .second-nav {
-  background-color: #2d2f33;
+  background-color: rgb(52, 46, 46);
   color: whitesmoke;
 }
 
@@ -304,6 +304,14 @@ hr {
   }
 }
 
+/* CONTAINER */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
 body {
   font-family: "Poppins", sans-serif;
   background: linear-gradient(0deg, #b47474 0%, #ffffff 100%);
@@ -329,138 +337,110 @@ body {
 h1,
 h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
+  font-size: 30px;
 }
 
-.amount {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+#totalAmount {
+  font-size: 1.5em;
+  margin-top: 20px;
+  font-weight: 600;
 }
 
-.error {
-  color: red;
-  font-size: 0.6em;
-  margin-top: 3px;
-}
-
-.form-container {
-  margin-bottom: 40px;
-  width: 100%;
-  max-width: 500px;
-  transition: transform 0.3s;
-  box-shadow: -4px 5px 32px 4px #000000;
-  padding: 5%;
-  border-radius: 7px;
-}
-
-.form-group {
-  margin-bottom: 20px;
-  transition: transform 0.3s;
-}
-
-label {
-  display: block;
-  margin-bottom: 5px;
-  transition: transform 0.2s;
-}
-
-label:hover {
-  transform: rotate(-5deg);
-}
-
-input[type="text"],
-input[type="tel"],
-input[type="email"],
-input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  transition: border-color 0.3s, transform 0.2s;
-}
-
-input[type="text"]:focus,
-input[type="tel"]:focus,
-input[type="email"]:focus,
-input[type="date"]:focus {
-  border-color: #cec3c7;
-  transform: scale(1.02);
-}
-
-button {
-  background-color: rgba(203, 142, 142, 0.27);
-  color: #333;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-button:hover {
-  background-color: rgba(203, 142, 142, 0.5);
-  transform: scale(1.1);
-}
-
-.cart-items {
+#displayItems {
   width: 100%;
   max-width: 800px;
-  border-top: 1px solid #ccc;
-  padding-top: 20px;
   margin-bottom: 60px;
 }
 
-.cart-item {
+.cardItems {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   margin-bottom: 20px;
-  border-style: ridge;
-  height: 90px;
+  border: 1px solid #ddd;
   border-radius: 7px;
-  padding: 5px;
-  border-color: #f4f3f3;
-  transition: transform 0.2s;
+  padding: 10px;
+  transition: transform 0.5s;
   box-shadow: -21px -5px 35px 0px #000000c5;
+  background-color: #efefef;
 }
 
-.cart-item img {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  margin-right: 20px;
-  border-radius: 5px;
-  transition: opacity 0.3s;
-}
-
-.cart-item img:hover {
-  opacity: 0.8;
-}
-
-.cart-item-info {
-  flex-grow: 1;
-}
-
-.cart-item-info p {
-  margin: 0;
-}
-
-.cart-item-info h3 {
-  margin-top: 5px;
-}
-
-.cart-item:hover {
+.cardItems:hover {
   transform: scale(1.02);
 }
 
-.summary-item {
-  display: flex;
-  justify-content: flex-start;
-  margin-bottom: 10px;
+.cardItems img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 20px;
 }
-.summary-item span {
-  margin: 0 5px;
+
+.discounted-price {
+  color: #e74c3c;
+  font-size: 18px;
+}
+
+.cart-item-info {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column; */
+}
+
+.cart-item-info h1 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.cart-item-info p {
+  margin: 5px 0;
+  font-size: 0.9em;
+}
+
+.para {
+  font-weight: 500;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 18px;
+  flex-direction: column;
+}
+
+.deleteBtn,
+button {
+  background-color: #c39999;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.deleteBtn:hover,
+button:hover {
+  background-color: #836d76;
+  transform: scale(1.1);
+}
+
+.emptyCart {
+  font-size: x-large;
+  display: flex;
+  justify-content: center;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Footer */
@@ -560,6 +540,18 @@ ul {
 
 .delete-btn:hover {
   transform: rotate(10deg);
+}
+
+#checkoutBtn {
+  width: 300px;
+  font-size: large;
+  margin-top: 30px;
+}
+
+.noItems {
+  display: flex;
+  justify-content: center;
+  font-size: larger;
 }
 
 .emptyCart {

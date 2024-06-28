@@ -11,82 +11,97 @@
     <link rel="stylesheet" href="../styles/checkout.css" />
   </head>
   <body>
-    <div class="row">
-      <div class="col-75">
-        <div class="container">
-          <form class="form" >          
-              <div class="row">
-              <div class="col-50">
-                <h3>Billing Address</h3>
-                <label for="fname"> Full Name</label>
-              <input type="text" id="fname" name="firstname" placeholder="Full Name" />
-              <div id="fnameError" class="error"></div> 
-              
-              <label for="email"> Email</label>
-              <input type="text" id="email" name="email" placeholder="name@example.com" />
-              <div id="emailError" class="error"></div> 
-              
-              <label for="city"> City</label>
-              <input type="text" id="city" name="city" placeholder="City" />
-              <div id="cityError" class="error"></div> 
-              
-              <div class="row">
-                <div class="col-50">
-                  <label for="state">State</label>
-                  <input type="text" id="state" name="state" placeholder="State" />
-                  <div id="stateError" class="error"></div> 
-                </div>
-                <div class="col-50">
-                  <label for="zip">Zip</label>
-                  <input type="text" id="zip" name="zip" placeholder="Zip" />
-                  <div id="zipError" class="error"></div> 
-                </div>
-              </div>
+    <div class="wrapper">
+      <div class="container">
+        <form id="checkoutForm" action="#">
+          <h1><i class="fas fa-shipping-fast"></i> Details</h1>
+          <div class="name">
+            <div>
+              <label for="fname">First Name</label>
+              <input
+                type="text"
+                id="f-name"
+                name="f-name"
+                placeholder="Enter your name"
+              />
             </div>
+            <div>
+              <label for="lname">Last Name</label>
+              <input
+                type="text"
+                id="l-name"
+                name="l-name"
+                placeholder="Enter your last name"
+              />
+            </div>
+          </div>
 
-            <div class="col-50">
-              <h3>Payment</h3>
-              <label for="fname">Accepted Cards</label>
-              <div class="icon-container">
-                <img src="../images/visa.png" alt="visa" />
-                <img src="../images/mastercard.jpeg" alt="mastercard" class="cartImg" />
-                <img src="../images/maestro.png" alt="maestro" class="cartImg" />
-              </div>
-              
-              <label for="cname">Name on card</label>
-              <input type="text" id="cname" name="cardname" placeholder="Name on card" />
-              <div id="cnameError" class="error"></div> 
-              
-              <label for="ccnum">Credit card number</label>
-              <input type="text" id="ccnum" name="cardnumber" placeholder="1234-1234-1234-1234" />
-              <div id="ccnumError" class="error"></div> 
-              
-              <label for="expdate">Card Expiry Date (MM/YY)</label>
-              <input type="text" id="expdate" name="expdate" placeholder="MM/YY" />
-              <div id="expdateError" class="error"></div> 
-              
-              <label for="cvv">CVV</label>
-              <input type="text" id="cvv" name="cvv" placeholder="123" />
-              <div id="cvvError" class="error"></div> 
-                  </div>
-                </div>
-              </div>
+          <div class="address-info">
+            <div>
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" placeholder="City" />
             </div>
-            
-            <input type="submit" value="Pay" class="btn" />
-          </form>
-        </div>
+            <div>
+              <label for="state">State</label>
+              <input type="text" id="state" name="state" placeholder="State" />
+            </div>
+            <div>
+              <label for="zip">Zip Code</label>
+              <input type="text" id="zip" name="zip" placeholder="Zip" />
+            </div>
+          </div>
+
+          <h1><i class="far fa-credit-card"></i> Payment Information</h1>
+          <div class="cc-num">
+            <label for="cardnum">Credit Card Number</label>
+            <input
+              type="text"
+              id="card-num"
+              name="card-num"
+              placeholder="1234-1234-1234-1234"
+            />
+          </div>
+          <div class="cc-info">
+            <div>
+              <label for="expire">Expiration Date</label>
+              <input
+                type="text"
+                id="expire"
+                name="expire"
+                placeholder="MM/YY"
+              />
+            </div>
+            <div>
+              <label for="security">Security Code (CCV)</label>
+              <input
+                type="text"
+                id="security"
+                name="security"
+                placeholder="123"
+              />
+            </div>
+          </div>
+
+          <div class="btns">
+            <button type="submit" class="purchaseButton">Purchase</button>
+            <button
+              type="button"
+              onclick="window.location.href='./cartPage.html'"
+            >
+              Back to Cart
+            </button>
+          </div>
+        </form>
       </div>
     </div>
 
     <div id="successWindow" class="window">
       <div class="window-content">
-        <span class="close" >&times;</span>
+        <span id="closeWindow" class="close">&times;</span>
         <p>Payment successful! Thank you for your purchase.</p>
-        <button class="btn">OK</button>
+        <button id="okButton" class="btn">OK</button>
       </div>
     </div>
-
 
     <script src="../scripts/checkout.js"></script>
   </body>

@@ -1,71 +1,26 @@
-document.querySelector(".form").addEventListener("submit", function (event) {
-  validateForm(event);
-});
+document.addEventListener("DOMContentLoaded", function () {
+  const checkoutForm = document.getElementById("checkoutForm");
+  const successWindow = document.getElementById("successWindow");
+  const closeWindowBtn = document.getElementById("closeWindow");
+  const okButton = document.getElementById("okButton");
 
-document.getElementById("closeWindow").addEventListener("click", function () {
-  closeWindow();
-});
+  checkoutForm.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-document.getElementById("okButton").addEventListener("click", function () {
-  closeWindow();
-});
-
-function validateForm(event) {
-  event.preventDefault();
-  let isValid = true;
-  const fields = [
-    "fname",
-    "email",
-    "city",
-    "state",
-    "zip",
-    "cname",
-    "ccnum",
-    "expdate",
-    "cvv",
-  ];
-  const errors = {
-    fname: "Full Name is required",
-    email: "Valid Email is required",
-    city: "City is required",
-    state: "State is required",
-    zip: "Valid Zip is required",
-    cname: "Name on card is required",
-    ccnum: "Valid Credit card number is required",
-    expdate: "Valid Expiry Date is required",
-    cvv: "Valid CVV is required",
-  };
-
-  fields.forEach((field) => {
-    const value = document.getElementById(field).value;
-    const errorDiv = document.getElementById(`${field}Error`);
-
-    errorDiv.innerHTML = "";
-
-    if (
-      !value ||
-      (field === "email" && !validateEmail(value)) ||
-      (field === "zip" && !/^\d{4}$/.test(value)) ||
-      (field === "ccnum" && !/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(value)) ||
-      (field === "expdate" && !/^\d{2}\/\d{2}$/.test(value)) ||
-      (field === "cvv" && !/^\d{3}$/.test(value))
-    ) {
-      errorDiv.innerHTML = errors[field];
-      isValid = false;
-    }
+    showSuccessWindow();
   });
 
-  if (isValid) {
-    document.getElementById("successWindow").style.display = "block";
+  function showSuccessWindow() {
+    successWindow.style.display = "block";
   }
-}
 
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
+  closeWindowBtn.addEventListener("click", function () {
+    successWindow.style.display = "none";
+    checkoutForm.reset();
+  });
 
-function closeWindow() {
-  document.getElementById("successWindow").style.display = "none";
-  document.querySelector(".form").reset();
-}
+  okButton.addEventListener("click", function () {
+    successWindow.style.display = "none";
+    checkoutForm.reset();
+  });
+});
