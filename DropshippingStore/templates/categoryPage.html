@@ -21,7 +21,7 @@
                 <div class="searchLogo">
                     <div class="logo">
                         <a href="#">
-                            <img src="../icons/art-icon-1091.png" class="logoImg" alt="Logo">
+                            <img src="../icons/art-whiteTxt.png" class="logoImg" alt="Logo">
 
                         </a>
                         <h4>AIArt</h4>
@@ -87,11 +87,16 @@
 
 
     <section>
-        <!-- Gallery -->
+        <!-- first part of page -->
         <div class="galleryWrapper">
-            <div class="gallery-container">
-                <h1>Gallery</h1>
-                <div class="gallery-wrap" id="gallery"></div>
+            <div class="txt">
+                <h2>Welcome to AiArt!</h2>
+            <p>Discover a new world of creativity with AiArt, where  emerging artists harness the power of AI tools tho create stunning, unique artworks. Each piece you see here is a testament to the innovative fusion of human imagination and cutting-edge technology. Support these talented creators by purchasing their AI-generated masterpieces and become a part of the art revolution. Explore our collection and find your next favorite piece today!</p>
+            </div>
+
+            <div class="img-con">
+                <img src="../images/1_ce6Mx0rTRcy3E2H0ry3vGQ-removebg-preview.png" alt="" srcset="" >
+                
             </div>
         </div>
         <!-- Filter and sort buttons -->
@@ -190,27 +195,35 @@
         <!-- POP UP -->
 
         <div class="popup-container">
-            <div id="image-container"></div>
             <div id="popup" class="hidden">
                 <div id="popup-content">
-                    <div class="imageDiv">
-                        <img id="popup-image" src="" alt="Popup Image" class="popup-image">
-                    </div>
-                    <hr>
-                    <div class="infoPopup">
-                        <div class="txtDiv" id="txtDiv">
 
-                            <p id="popup-text"></p>
-                            <div id="btnDiv">
-                                <button class="add" id="add">Add to cart</button>
-                            </div>
-                            <img src="../icons/art.png" alt="" srcset="" width="60" class="logoPopup">
+                    <div class="popup-header" id="popup-header"> </div>
+                    <div class="pop-wrapper">
+                        <div class="imageDiv">
+                            <img id="popup-image" src="" alt="Popup Image" class="popup-image">
                         </div>
-                        
+
+                        <div class="infoPopup">
+                            <div class="txtDiv" id="txtDiv">
+
+                                <div id="popup-text" class="popup-text"></div>
+                                <div id="btnDiv">
+                                    <p class="add" id="add"><img src="../icons/icons8-add-to-cart-black.png" alt="Add to cart"></p>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <span id="popup-close">&times;</span>
                     </div>
-                    <span id="popup-close">&times;</span>
+
                 </div>
             </div>
+        </div>
     </main>
 
 
@@ -225,7 +238,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <script type="module" src="../scripts/category.js"></script>
+    <script src="../scripts/category.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,7 @@
 }
 
 /* Remove default margin */
-main,
+
 h2,
 p {
     margin: 0;
@@ -22,6 +22,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 100%;
+
 }
 
 
@@ -55,16 +56,18 @@ body {
     align-items: center;
     gap: 20px;
 }
-
+.active{
+    background-color: red;
+}
 .navbar-brand {
     width: 80px;
     height: 65px;
 }
 
 .logoImg {
-    width: 53px;
-    height: 40px;
-    /* border-radius: 40% 40% 30%; */
+    width: 80px;
+    height: 55px;
+
 }
 
 h4 {
@@ -187,70 +190,69 @@ hr {
 
 
 /* GALLERY */
-section{
-  padding-top: 50px;
-  background-color: rgb(197, 105, 105, 0.2);
+section {
+    background-color: rgb(197, 105, 105, 0.2);
     width: 100%;
-    height: fit-content;
-}
-/* .galleryWrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    gap: 10px;
-    align-items: center;
-    width: 100%;
-    height: 520px;
-}
-
-.gallery-container {
-    display: flex;
-    flex-direction: column;
-    width: 1100px;
-    max-height: 80vh;
-}
-
-h1 {
-    position: relative;
     margin-bottom: 20px;
-    font-family: "Poppins", sans-serif;
-    text-shadow: #474747 2px 2px 1px;
-    font-size: 2.7em;
-    font-weight: 700;
-    text-transform: uppercase;
-    color: #424242;
 }
 
-.gallery-wrap {
+.galleryWrapper {
     display: flex;
-    flex-direction: row;
-    width: 800px;
-    height: 95vh;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
+    gap: 70px;
+    padding: 30px 100px
 }
 
-.item {
-    flex: 1;
-    height: 60px;
-    width: 50px;
-    background-position: center;
-    background-size: cover;
-    background-repeat: none;
-    transition: flex 0.8s ease;
+.galleryWrapper p {
 
-    &:hover {
-        flex: 5;
-    }
-} */
+    padding: 55px;
+}
+
+.galleryWrapper div:hover {
+    box-shadow: 10px 10px 8px rgba(139, 128, 128, 0.347), 15px 15px 8px rgba(71, 69, 69, 0.347);
+}
+
+
+.txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.txt p {
+    color: #474747;
+    text-align: start;
+    padding-top: 10px;
+    margin: 0px;
+    padding: 10px 10px 30px 0px;
+    font-size: 1.1rem;
+}
+
+.txt h2 {
+    padding-top: 30px;
+    color: #474747;
+}
+
+.img-con img {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+}
 
 /* END GALLERY */
 
 
 /* SELECT INPUTS */
 
-.offcanvas-header{
-  background-color: rgb(197, 105, 105, 0.2);
+.offcanvas-header {
+    background-color: rgb(197, 105, 105, 0.2);
 }
+
 .offcanvas-body {
     display: flex;
     flex-direction: column;
@@ -259,18 +261,21 @@ h1 {
     background-color: rgb(197, 105, 105, 0.2);
 
 }
-.offcanvasHeading{
-  margin-bottom:  10px;;
-  padding-top: 40px;
-  font-size: 2em;
-  color: #474747;
+
+.offcanvasHeading {
+    margin-bottom: 10px;
+    ;
+    padding-top: 40px;
+    font-size: 2em;
+    color: #474747;
 }
 
-.categories{
-  display: flex;
-  flex-direction: column;
-  gap:30px
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 30px
 }
+
 .select-div {
     display: flex;
     justify-content: flex-start;
@@ -278,44 +283,50 @@ h1 {
     align-content: center;
     font-size: 1.1em;
 }
-select{
-  height: 45px;
-  font-family: var(--font-text);
+
+select {
+    height: 45px;
+    font-family: var(--font-text);
 }
-option{
-  margin-top: 3px;
-  font-size: 1.1em;
+
+option {
+    margin-top: 3px;
+    font-size: 1.1em;
 }
-.logoOC{
-  padding-bottom: 40px;
-  
+
+.logoOC {
+    padding-bottom: 40px;
+
 }
+
 /* END SELECTS AND OFFCANVAS */
 
 
 /* BUTTONS(SORT AND FILTER) */
-.filterOptions{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between ;
-  margin: 0px 40px;
+.filterOptions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0px 30px;
 
 }
+
 .btn {
-    height: 45px;
+    height: 40px;
     font-size: 1.1em;
-    
+
 }
 
 .sort-buttons {
-  display: flex;
-  flex-wrap: wrap;
-  
+    display: flex;
+    flex-wrap: wrap;
+
 }
 
-.btn:hover{
-  border: 2px solid #4747475c;
+.btn:hover {
+    border: 2px solid #4747475c;
 }
+
 /* END  BUTTONS(SORT AND FILTER)*/
 
 
@@ -332,11 +343,13 @@ option{
 }
 
 .page-numbers button:hover {
-  color: rgb(52, 46, 46);
-  background-color: rgb(197, 105, 105);
+    color: rgb(52, 46, 46);
+    background-color: rgb(197, 105, 105, 0.2);
     width: 50px;
 
 }
+
+
 /* END PAGE NUMBERS */
 
 
@@ -365,6 +378,7 @@ option{
 
 :root {
     --brand-color: rgb(194, 142, 142);
+    ;
     --black: hsl(0, 0%, 0%);
     --white: hsl(0, 0%, 100%);
     --font-title: "Poppins", sans-serif;
@@ -380,13 +394,13 @@ h2 {
     font-size: 2.25rem;
     font-family: var(--font-title);
     color: var(--white);
-    line-height: 1.1;
+    line-height: 1.4;
 }
 
 p {
     font-family: var(--font-text);
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 1.1rem;
+    line-height: 1.4;
     color: var(--white);
 }
 
@@ -421,7 +435,7 @@ p {
     --flow-space: 0.9375rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-end;
     align-self: flex-end;
     height: 70%;
     width: 100%;
@@ -434,7 +448,10 @@ p {
 
 .card__content--container {
     --flow-space: 1.25rem;
+
+
 }
+
 
 .card__title {
     position: relative;
@@ -454,23 +471,19 @@ p {
 
 .card__button,
 .details__button {
-    padding: 0.1em 0.1em;
-    width: fit-content;
-    width: -moz-fit-content;
-    font-variant: small-caps;
-    font-weight: bold;
-    border-radius: 0.45em;
-    border: none;
-    background-color: var(--brand-color);
-    font-family: var(--font-title);
-    font-size: 1.125rem;
-    color: var(--black);
+
+    cursor: pointer;
+    width: 30px;
 }
 
-.card__button:focus,
-.details__button:focus {
-    outline: 1px solid black;
-    outline-offset: -5px;
+.buttonsContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.card__description {
+    color: white;
+    font-family: "Poppins", sans-serif;
 }
 
 @media (any-hover: hover) and (any-pointer: fine) {
@@ -536,6 +549,8 @@ p {
         transition: opacity 500ms ease-in, transform 500ms ease-in;
         transition-delay: 500ms;
     }
+
+
 }
 
 /* END OF CARDS-IMAGES */
@@ -545,6 +560,7 @@ p {
 #image-container {
     display: flex;
     flex-wrap: wrap;
+
 }
 
 .image-card {
@@ -559,7 +575,7 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(250, 250, 250, 0.5);
+    background-color: rgba(255, 255, 255, 0.331);
     backdrop-filter: blur(5px);
     justify-content: center;
     align-items: center;
@@ -567,23 +583,38 @@ p {
 }
 
 #popup-content {
+
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 0px;
     align-items: center;
-    /* flex-wrap: wrap; */
-    gap: 20px;
-    background: #060606b3;
+    background: #ffffffc1;
     margin: 5px;
-    padding: 20px;
+    padding: 30px 20px;
     width: 100%;
-    max-width: 700px;
-    max-height: 750px;
+    max-width: 1000px;
+    max-height: 800px;
     filter: blur(0px);
-    box-shadow: 10px 9px rgba(156, 84, 84, 0.459);
-    border-radius: 8px;
+    box-shadow: -10px 9px rgba(156, 84, 84, 0.459);
+    border-radius: 15px;
     font-family: "Poppins", sans-serif;
-    color: white;
-    font-size: 1.4em;
+    color: rgb(23, 22, 22);
+
+}
+
+.pop-wrapper {
+    display: flex;
+    background-image: url('../icons/art.png');
+    background-size: 15%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: 95%;
+
+    margin: 0;
+    padding: 0px;
+    border: 7px solid rgba(194, 162, 162, 0.459);
+    padding: 10px;
+
 }
 
 .imageDiv {
@@ -592,28 +623,35 @@ p {
     align-content: center;
 }
 
+
 .popup-image {
     display: flex;
     justify-content: center;
     align-items: center;
-    max-width: 600px;
+    max-width: 550px;
     max-height: 450px;
     border: 5px double whitesmoke;
-    padding: 10px;
 }
-.infoPopup{
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+
+.infoPopup {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
 }
 
 
 .txtDiv {
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 50px;
+    flex-flow: column wrap;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#btnDiv p {
+    margin: 10px;
+    padding: 0px 20px;
+    cursor: pointer;
 }
 
 #popup-close {
@@ -621,52 +659,80 @@ p {
     top: 10px;
     right: 10px;
     cursor: pointer;
-    font-size: 25px;
+    font-size: 35px;
 }
+
+.popup-text {
+    font-size: 1.3rem;
+    margin: 10px;
+    padding: 20px 5px;
+
+}
+
+.popup-text p {
+    margin: 10px;
+    font-family: "Poppins", sans-serif;
+    color: rgb(23, 22, 22);
+}
+
+.popup-text p span {
+    font-weight: 600;
+}
+
 
 .hidden {
     display: none;
 }
 
 .add {
-    margin-top: 10px;
-    padding: 7px;
-    width: fit-content;
-    width: -moz-fit-content;
-    font-variant: small-caps;
-    font-weight: bold;
-    border-radius: 0.45em;
-    border: none;
-    background-color: var(--brand-color);
-    font-family: var(--font-title);
-    font-size: 1.125rem;
-    color: var(--black);
+    width: 36px;
 }
 
-.add :focus {
-    outline: 1px solid black;
-    outline-offset: -5px;
-}
 
-.card__description {
-    color: white;
-    font-family: "Poppins", sans-serif;
-}
 
 /* END POP UP */
 
 
 
-/* MEDIA QUERIES  */
+/*  MEDIA QUERIES  */
+
 @media only screen and (min-width: 1550px) {
+
+
+    .galleryWrapper {
+        gap: 150px;
+        padding: 30px 150px
+    }
+
+    .galleryWrapper p {
+
+        padding: 80px;
+    }
+
+    .txt {
+        padding: 20px;
+    }
+
+    .txt p {
+        padding-top: 20px;
+        font-size: 1.3rem;
+    }
+
+    .img-con img {
+        width: 500px;
+
+    }
+
+
     .card-img {
         padding: 40px 50px;
         grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-        
+
     }
 }
 
-@media only screen and (max-width: 1370px) {
+
+@media only screen and (max-width: 1470px) {
     .navigation-bar {
         flex-wrap: wrap;
 
@@ -676,6 +742,7 @@ p {
     .second-nav-container {
         margin: 5px 30px;
     }
+
 
     .searchLogo {
         gap: 60px;
@@ -717,13 +784,18 @@ p {
     .navList {
         gap: 20px;
     }
-    .card-img {
-        padding: 40px 50px;
-        
+
+
+
+    .img-con img {
+        width: 450px;
+
     }
+
 }
 
 @media only screen and (max-width: 1100px) {
+
 
     .searchLogo {
 
@@ -768,12 +840,71 @@ p {
     }
 
     .card-img {
-        padding: 40px 20px;
+        padding: 40px 50px;
         grid-template-columns: 1fr 1fr 1fr;
-        
+
     }
 
+    .galleryWrapper {
+        gap: 50px;
+        padding: 30px 50px
+    }
 
+    .galleryWrapper p {
+
+        padding: 30px;
+    }
+
+    .txt h2 {
+        padding-top: 10px;
+
+    }
+
+    .txt {
+        padding: 15px;
+    }
+
+    .txt p {
+        padding-top: 20px;
+        font-size: 1rem;
+    }
+
+    .img-con img {
+        width: 300px;
+
+    }
+
+    #popup {
+        
+        flex-wrap: wrap;
+       
+    }
+
+    #popup-content {
+        flex-wrap: wrap;
+        padding: 20px 20px;
+        max-width: 900px;
+        max-height: 700px;
+
+    }
+
+    .popup-image {
+        max-width: 450px;
+        max-height: 350px;
+    }
+
+    .infoPopup {
+        flex-wrap: wrap;
+    }
+
+    .popup-text {
+        font-size: 1.1rem;
+        padding: 10px 5px;
+    }
+
+    .add {
+        height: 36px;
+    }
 
 }
 
@@ -806,29 +937,137 @@ p {
 
     .card-img {
         grid-template-columns: 1fr 1fr;
+
     }
 
+    .galleryWrapper {
+
+        flex-wrap: wrap;
+        gap: 30px;
+        padding: 30px 30px
+    }
+
+    .galleryWrapper p {
+        padding: 15px;
+    }
+
+    .txt h2 {
+        padding-top: 10px;
+
+    }
+
+    .txt {
+        padding: 10px;
+    }
+
+    .txt p {
+        padding-top: 20px;
+        font-size: 0.9rem;
+    }
+
+    .img-con img {
+        width: 250px;
+
+    }
+
+    #popup {
+        
+        flex-wrap: wrap;
+       
+    }
+
+    #popup-content {
+        flex-wrap: wrap;
+        padding: 20px 20px;
+        max-width: 900px;
+        max-height: 700px;
+
+    }
+
+    .popup-image {
+        max-width: 450px;
+        max-height: 350px;
+    }
+
+    .infoPopup {
+        justify-content: flex-start;
+        gap: 0px;
+    }
+
+    .popup-text {
+        font-size: 1.1rem;
+        padding: 20px 5px;
+    }
+
+    .add {
+        height: 36px;
+      
+    }
 }
+
+@media only screen and (max-width: 705px) {
+    .pop-wrapper{
+        flex-direction: column;
+        gap: 0px;
+    }
+    
+    
+    .popup-image {
+        max-width: 400px;
+        max-height: 300px;
+    }
+    
+}
+
+
 
 @media only screen and (max-width: 564px) {
 
-    .popup-image {
-       
-        max-width: 400px;
-        max-height: 350px;
-        /* border: 5px double whitesmoke;
-        padding: 10px; */
-    }
-    #popup-content {
-        flex-wrap: wrap;
-    }
-    .card-img {
-        
-        grid-template-columns: 1fr ;
-        
+    .galleryWrapper {
+        padding: 15px 5px;
     }
 
+    .card-img {
+
+        grid-template-columns: 1fr;
+        padding: 0px;
+    }
+
+    .txt p {
+        font-size: 1rem;
+    }
+
+    .txt h2 {
+        padding-top: 20px;
+
+    }
+
+    .txt {
+        justify-content: flex-start;
+    }
+
+    .filterOptions {
+        margin: 0px;
+    }
+
+   .imageDiv{
+    padding: 0px;
+    margin: 0px
+   }
+    
+    .popup-image {
+        max-width: 450px;
+        max-height: 250px;
+    }
 }
+
+@media only screen and (max-width: 500px) {
+    .popup-image {
+        max-width: 350px;
+        max-height: 250px;
+    }
+}
+
 
 @media only screen and (max-width: 400px) {
 
@@ -865,4 +1104,30 @@ p {
     .nav-item span {
         display: none;
     }
+
+    .txt h2 {
+        font-size: 1em;
+    }
+
+    .txt {
+        justify-content: flex-start;
+    }
+
+    .txt p {
+        text-align: justify;
+        width: 100%;
+        margin: 0;
+    }
+    .popup-image {
+        max-width: 250px;
+        max-height: 200px;
+    }
 }
+
+@media only screen and (max-width: 300px) {
+    .img-con img{
+        width: 150px;
+        height: 150px;
+    }
+}
+

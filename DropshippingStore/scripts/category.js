@@ -1,23 +1,20 @@
-import { LocalStorageService } from "./classLS.js"
-
-document.addEventListener("DOMContentLoaded", async function(){
+document.addEventListener("DOMContentLoaded", async function () {
     let data = await fetchDataService.getImg()
-    // const copyData = [...data]
-    // gallery.addImagesInGallery(copyData)
-    await createCardsService.cardsDefault(data)
-    imageFilterService.listenToCategoryFilter(data);
-    imageFilterService.listenToStockFilter(data);
-    searchInputService.addSearchEvent(data)
+    let copyData = [...data]
+    createCardsService.cardsDefault(copyData)
+    imageFilterService.listenToCategoryFilter(copyData);
+    imageFilterService.listenToStockFilter(copyData);
+    searchInputService.addSearchEvent(copyData)
     itemsInCart.displayItems()
 })
 
 let fetchDataService = {
-    getImg: async function(){
+    getImg: async function () {
         try {
             let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
             let res = await fetch(url)
             let data = await res.json()
-            
+
             return [...data]
 
         } catch (error) {
@@ -25,40 +22,40 @@ let fetchDataService = {
         }
     }
 }
-const storage = new LocalStorageService()
 let currentPage = 1
 let items = 12
 const createCardsService = {
-    divShowingCards : document.getElementById("cardContainer"),
+    divShowingCards: document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
-    cardsDefault: async function(data){
-        // console.log(data)
-        await this.createCards(data, items,currentPage)
+    cardsDefault:  function (data) {
+        this.createCards(data, items, currentPage)
         categoriesService.addAscEvent(data)
         categoriesService.addDescEvent(data)
-        
+
     },
-    createCards: async function(images,numOfImagesPerPage, page){
+    createCards: function (images, numOfImagesPerPage, page) {
         this.divShowingCards.innerHTML = "";
         page--;
         let start = numOfImagesPerPage * page
-        let end = start + numOfImagesPerPage 
+        let end = start + numOfImagesPerPage
         let pagginatedItems = images.slice(start, end)
-        for(let i = 0; i< pagginatedItems.length; i++){
+        for (let i = 0; i < pagginatedItems.length; i++) {
 
             this.divShowingCards.innerHTML += `
-             <article class="card">
+             <article class="card" >
                 <img
                 class="card__background"
                 src=${pagginatedItems[i].imageUrl}
                 alt=${pagginatedItems[i].type}
                 width="1920"
                 height="2193"/>
-                    <div class="card__content | flow">
-                        <div class="card__content--container | flow"  id="${pagginatedItems[i].id}">
+                    <div class="card__content | flow" id='card__content'>
+                        <div class="card__content--container | flow">
                             <p class="card__description">${pagginatedItems[i].category}</p>
                             <p class="img-price">${pagginatedItems[i].price}$</p>
-                            <button class="details__button" >Details</button>
+                            <div class="buttonsContainer" id='${pagginatedItems[i].id}' data-item='${JSON.stringify(pagginatedItems[i])}'>
+                                <p class="details__button"><img src='../icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
+                            </div>
                         </div>
                         
                     </div>
@@ -66,45 +63,50 @@ const createCardsService = {
            
             `;
 
-            if(pagginatedItems[i].stock == true){
+            if (pagginatedItems[i].stock == true) {
                 let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
-                parentDiv.innerHTML += `<button class="card__button">Add to cart</button>`
+                parentDiv.innerHTML += `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
             }
+
         }
-        
-        addToCartService.addEventsAddToCart(images)
+        addToCartService.addEventsAddToCart()
         const arrayToBeSorted = [...images]
         categoriesService.addAscEvent(arrayToBeSorted)
         categoriesService.addDescEvent(arrayToBeSorted)
-        this.setupPagination(images,this.pageNumber, items)
-        popUpImagesService.addEventsImgButtons(images)//POP UP
+        this.setupPagination(images, this.pageNumber, items)
+        popUpImagesService.addEventsImgButtons()//POP UP
 
-    }, setupPagination(images, wrapper, numOfImagesPerPage){
+    }, setupPagination(images, wrapper, numOfImagesPerPage) {
         wrapper.innerHTML = ""
         let page_count = Math.ceil(images.length / numOfImagesPerPage)
-
-        for( let i = 1; i<page_count +1; i++){
-            let btn= this.paginationButton(i, images)
+        if(page_count == 1){
+            let btn = this.paginationButton(page_count,images, wrapper)
             wrapper.appendChild(btn)
+        }else{
+            for (let i = 1; i < page_count + 1; i++) {
+                let btn = this.paginationButton(i, images, wrapper)
+                wrapper.appendChild(btn)
+            }
         }
+        
     },
-    paginationButton: function(page, images){
+    paginationButton: function (page, images) {
         let button = document.createElement('button')
         button.innerText = page
-        if(currentPage == page){
+        if (currentPage == page) {
             button.classList.add("active")
         }
-        button.addEventListener("click", function(){
+        button.addEventListener("click", function (event) {
             currentPage = page
             createCardsService.createCards(images, items, currentPage)
             let current_btn = document.querySelector('.page-numbers button.active')
             current_btn.classList.remove('active')
-            button.classList.add('active')
-            
+            event.target.classList.add('active')
+
         })
         return button
     }
-    
+
 }
 
 const imageFilterService = {
@@ -112,25 +114,27 @@ const imageFilterService = {
     stockFilter: document.getElementById("filterStock"),
 
     listenToCategoryFilter: (data) => {
-        imageFilterService.categoryFilter.addEventListener("change", function () {
-            imageFilterService.filterImages(data)
+        imageFilterService.categoryFilter.addEventListener("change", async function () {
+            await imageFilterService.filterImages(data)
         })
     },
     listenToStockFilter: (data) => {
-        imageFilterService.stockFilter.addEventListener("change", function () {
-            imageFilterService.filterImages(data)
+        imageFilterService.stockFilter.addEventListener("change", async function () {
+           await imageFilterService.filterImages(data)
         })
     },
 
-
-    filterImages: async (images) => {
+    filterImages: async(images) => {
 
         const categoryFilter = imageFilterService.categoryFilter.value;
         const stockFilter = imageFilterService.stockFilter.value;
 
         let filteredImages = images;
-
+        if(categoryFilter == "default"){
+            filteredImages = await fetchDataService.getImg()
+        }
         if (categoryFilter !== "default") {
+            
             filteredImages = filteredImages.filter(image => image.category === categoryFilter);
 
         }
@@ -138,8 +142,9 @@ const imageFilterService = {
         if (stockFilter === "available") {
             filteredImages = filteredImages.filter(image => image.stock === true);
         }
+        
 
-        createCardsService.createCards(filteredImages,items,currentPage);
+        createCardsService.createCards(filteredImages, items, currentPage);
     }
 };
 
@@ -148,77 +153,75 @@ const categoriesService = {
     categorySelect: document.getElementById("categorySelect"),
     ascendingBtn: document.getElementById("lowToHigh"),
     descendingBtn: document.getElementById("highToLow"),
-    addAscEvent: function(data){
-        this.ascendingBtn.addEventListener("click", function(){
-            const arraySorted = data.sort(function(a,b){return a.price-b.price});
-            createCardsService.createCards(arraySorted,items,currentPage)
+    addAscEvent: function (data) {
+        this.ascendingBtn.addEventListener("click", function () {
+            const arraySorted = data.sort(function (a, b) { return a.price - b.price });
+            createCardsService.createCards(arraySorted, items, currentPage)
         })
     },
-    addDescEvent: function(data){
-        this.descendingBtn.addEventListener("click", function(){
-            const arraySorted = data.sort(function(a,b){return b.price-a.price})
-            createCardsService.createCards(arraySorted,items,currentPage)
+    addDescEvent: function (data) {
+        this.descendingBtn.addEventListener("click", function () {
+            const arraySorted = data.sort(function (a, b) { return b.price - a.price })
+            createCardsService.createCards(arraySorted, items, currentPage)
         })
     }
-    
+
 }
 
 
 
 const searchInputService = {
     searchInput: document.getElementById("searchInput"),
-      addSearchEvent: async function (data){
-        if(this.searchInput){
-            searchInputService.searchInput.addEventListener("keydown",async function(event){
-                if(event.code === 'Enter'){
-                    const searchedItems= searchInputService.searchDB(data)
+    addSearchEvent: async function (data) {
+        if (this.searchInput) {
+            searchInputService.searchInput.addEventListener("keydown", async function (event) {
+                if (event.code === 'Enter') {
+                    const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
-                    if(searchedItems.length==0){
+                    if (searchedItems.length == 0) {
                         const divNoItems = document.getElementById("noItemsFound")
                         divNoItems.style.display = "block"
-                        setTimeout(()=>{divNoItems.style.display = "none"}, 4000)
-                        await createCardsService.cardsDefault(data)
-                    }else{
-                      createCardsService.createCards(searchedItems,items, currentPage)
+                        setTimeout(() => { divNoItems.style.display = "none" }, 4000)
+                        createCardsService.cardsDefault(data)
+                    } else {
+                        createCardsService.createCards(searchedItems, items, currentPage)
                     }
                 }
             })
         }
-        },
-    searchDB: function(data){
-
-        const result = data.filter(item=>{
-            if(item.tags.find(str=> str == searchInputService.searchInput.value.toLowerCase() || str.includes(searchInputService.searchInput.value.toLowerCase()))){
+    },
+    searchDB: function (data) {
+        const result = data.filter(item => {
+            if (item.tags.find(str => str == searchInputService.searchInput.value.toLowerCase() || str.includes(searchInputService.searchInput.value.toLowerCase()))) {
                 return item
             }
         })
         return result
     }
-  
+
 }
 
 
 const addToCartService = {
-    addToCartBtn : document.getElementsByClassName("card__button"),
-    addEventsAddToCart: function (data){
-        for(let button of this.addToCartBtn){
-            button.addEventListener("click", function(event){
+    addToCartBtn: document.getElementsByClassName("card__button"),
+    addEventsAddToCart: function () {
+        for (let button of this.addToCartBtn) {
+            button.addEventListener("click", function (event) {
                 event.preventDefault()
-                let id = button.parentElement.getAttribute('id')
-                let img= data.find(i=> i.id == id)
-                addToCartService.cartEvent(img)
-                button.disabled = true 
-                button.style.backgroundColor= "gray"              
+                let img = button.parentElement.getAttribute('data-item')
+                let item = JSON.parse(img)
+                addToCartService.cartEvent(item)
+                button.style.display = "none"
             })
         }
-        
-    }, cartEvent: function(img){
-        let items = storage.getFromLocalStorage("cart-items") || []
+
+    }, cartEvent: function (img) {
+        let items = JSON.parse(localStorage.getItem("cart-items")) || []
         items.push(img)
-        storage.setToLocalStorage("cart-items", items)
+        localStorage.setItem("cart-items", JSON.stringify(items))
         itemsInCart.displayItems()
         console.log(items)
-        
+
     }
 }
 
@@ -226,40 +229,38 @@ const addToCartService = {
 
 const itemsInCart = {
     cart: document.getElementById("cart-count"),
-    displayItems: function(){
-        let storedCart = storage.getFromLocalStorage("cart-items") || []
+    displayItems: function () {
+        let storedCart = JSON.parse(localStorage.getItem("cart-items")) || []
         this.cart.textContent = storedCart.length;
         this.cart.style.display = storedCart.length > 0 ? 'block' : 'none';
     }
 }
 
 
+
 //For PopUp
 const popUpImagesService = {
-    addEventsImgButtons: function(data) {
+    addEventsImgButtons: function () {
         const buttons = document.getElementsByClassName("details__button");
         for (let button of buttons) {
-            button.addEventListener("click", function(event) {
+            button.addEventListener("click",  function (event) {
                 event.preventDefault();
-                const id = button.parentElement.getAttribute('id')
-                const imageData = data.find(item => item.id == id);
+                let item  = button.parentElement.getAttribute('data-item')
+                console.log(item)
+                let imageData = JSON.parse(item)
+                console.log(imageData)
                 if (imageData) {
                     showPopup(imageData);
                 }
-                if (imageData.stock === true && !document.getElementById(`${imageData.id}`).children[3].disabled) {
+                let cardBtn = document.getElementById(`${imageData.id}`).children[1]
+                if (imageData.stock === true && cardBtn.style.display!=='none') {
                     let btn = document.getElementById('add')
                     btn.style.display = "flex"
                     btn.addEventListener("click", function (event) {
                         event.preventDefault()
-                        const btn = event.currentTarget
-                        btn.classList.add("activeBtn")
                         addToCartService.cartEvent(imageData)
-                        let parentElement = document.getElementById(`${imageData.id}`)
-                        let btnOnCard = parentElement.children[3]
-                        btnOnCard.disabled = true
-                        btnOnCard.style.backgroundColor = 'gray'
-                        btn.style.display = 'none'
-                        
+                        cardBtn.style.display = 'none'
+                        this.style.display = 'none'
                     })
                 } else {
                     document.getElementById('add').style.display = "none"
@@ -274,22 +275,21 @@ function showPopup(imageData) {
     const popupText = document.getElementById('popup-text');
     const popupClose = document.getElementById('popup-close');
     const popupImage = document.getElementById('popup-image');
-    const btnDiv = document.getElementById('btnDiv')
-
+    const popupHeader = document.getElementById('popup-header')
     const stockStatus = imageData.stock ? ' ✓' : ' ✘';
-    
-    
+
     // Update the popup image
     popupImage.src = imageData.imageUrl;
     popupImage.alt = imageData.type;
-
     // Update the popup content
+
+    popupHeader.innerHTML = `<h3>${imageData.category}</h3>`
     popupText.innerHTML = `
-        <strong>■ Category:</strong> ${imageData.category}<br><hr>
-        <strong>■ Description:</strong> ${imageData.description}<br><hr>
-        <strong>■ Artist:</strong> ${imageData.artist.userName}<br><hr>
-        <strong>■ Price:</strong> $${imageData.price}<br><hr>
-        <strong>■ In Stock:</strong> ${stockStatus}<br><hr>
+        
+        <p><span>■ Description:</span>  ${imageData.description}</p>
+        <p><span>■ Artist:</span>  ${imageData.artist.userName}</p>
+        <p><span>■ Price:</span>  ${imageData.price}$</p>
+        <p><span>■ In Stock:</span>  ${stockStatus}</p>
     `;
 
     popup.classList.remove('hidden');
@@ -306,5 +306,5 @@ function showPopup(imageData) {
             popup.style.display = 'none';
         }
     });
-    
+
 }
