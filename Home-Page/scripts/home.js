@@ -2,7 +2,7 @@
   function scrollR() {
     const container = document.getElementById('mz-gallery');
     container.scrollBy({
-      left: 300,
+      left: 400,
       behavior: 'smooth'
     });
   }
@@ -10,7 +10,7 @@
   function scrollL() {
     const container = document.getElementById('mz-gallery');
     container.scrollBy({
-      left: -200,
+      left: -300,
       behavior: 'smooth'
     });
   }
