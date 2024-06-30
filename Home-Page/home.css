@@ -1,53 +1,331 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
 
-body {
-  background-color: white
-}
 * {
   box-sizing: border-box;
   font-family: "Lato", sans-serif;
-
 }
 
-.logo {
-  width: 60px;
-  height: 45px;
+.navigation-bar{
+  display: flex;
+  width: 100%;
 }
 
-.hr-nav {
-  margin: 0px 60px 0px 60px;
-  padding: 0px;
-  background-color: black;
+.first-nav-container, .second-nav-container{
+
+  margin: 5px 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-
-#first-nav,
-#second-nav {
-  padding-right: 250px;
-  padding-left: 250px;
-  background-color: rgb(223, 220, 220);
+.searchLogo{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 70px;
 }
 
-#searchInput {
-  width: 500px;
+.logo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-brand{
+ width: 80px; 
+ height: 65px;
+}
+
+.logoImg{
+  width: 53px;
   height: 40px;
+  /* border-radius: 40% 40% 30%; */
+}
+
+.logo h4{
+  color: #FFFFFF;
+  font-family: "Poppins", sans-serif;
+  text-shadow: #474747 3px 5px 2px;
+  font-size: 1.7em;
+  margin: 0px 5px;
+}
+
+hr{
+  margin: 0px;
+}
+
+.first-nav{
+  padding: 8px 0px;
+}
+
+.div-search{
+  display: flex;
+  justify-content: flex-start;
+  width: 600px;
+}
+
+.searchInput{
+  width: 450px;
+  padding: 2px;
+  font-size: 1.1em;
+  font-family: "Poppins", sans-serif;
+  color: rgb(255, 255, 255);
+  background-color: #474747;
+  height: 40px;
+  border-radius: 10px;
+  border: none;
+  
+} 
+.btn-toggler{
+  background-color: #474747;
+}
+
+.searchInput::placeholder{
+  color: #FFFFFF;
+  padding-left:15px;
+}
+
+.searchInput:hover{
+  cursor: pointer;
+}
+
+.first-nav, .second-nav{
+  background-color:rgb(52, 46, 46);
+  color: whitesmoke;
+}
+
+.cart-navItems{
+  display: flex;
+  flex-wrap: wrap;  
+  
+}
+.navList{
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  color: whitesmoke;
+  gap: 25px;
+  padding: 0;
+  margin: 0;
+}
+.nav-item{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  list-style: none;
+  padding: 4px 13px;
+  background-color: #474747;
+  border-radius: 10px;    
+}
+
+
+.cart-icon{
+  display: flex;
+  gap: 1px;
+  width: 35px;
+  height: 30px;    
+}
+
+.second-nav{
+  padding: 0px;
+  display: flex;
+
+}
+.navPages{
+  display: flex;
+  gap: 25px;
+}
+
+.nav-link, .second-nav-links{
+  color: whitesmoke;
+  font-size: 1em;
+  font-family: "Poppins", sans-serif;    
+}
+.second-nav-links:hover{
+  color: whitesmoke;
+  font-weight: 450;
+  background-color: #474747;
+  border-radius: 10px;   
+  
+}
+
+/* .second-nav {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+} */
+
+
+@media only screen and (max-width: 1370px){
+  .navigation-bar{
+      flex-wrap: wrap;
+
+  }
+  
+  .first-nav-container, .second-nav-container{
+      margin: 5px 30px;
+  }
+  
+  .searchLogo{
+      gap: 60px;
+  }
+  
+  .logo{
+      gap: 15px;
+  }
+  
+  .navbar-brand{
+     width: 75px; 
+     height: 60px;
+  }
+  
+  .logoImg{
+      width: 70px;
+      height: 60px;
+      border-radius: 30% 30% 20%;
+  }
+  
+  h4{
+      font-size: 1.7em;
+  }
+  
+  .first-nav{
+      padding: 8px 0px;
+  }
+  
+  .div-search{
+      width: 500px;
+  }
+  
+  .searchInput{
+      width: 350px;
+      font-size: 1em;
+      height: 40px;  
+  } 
+  
+  .navList{
+      gap: 20px;
+  }
+  
+}
+@media only screen and (max-width: 1100px){
+
+  .searchLogo{
+      
+      gap: 40px;
+  }
+  
+  .logo{
+      
+      gap: 10px;
+  }
+  
+  .navbar-brand{
+     width: 75px; 
+     height: 60px;
+  }
+  
+  .logoImg{
+      width: 60px;
+      height: 50px;
+      border-radius: 20% 20% 10%;
+  }
+  
+  h4{
+      font-size: 1.7em;
+     
+  }
+ 
+  
+  .div-search{
+      width: 300px;
+  }
+  
+  .searchInput{
+      width: 250px;
+      
+      
+  } 
+  
+  .navList{
+      gap: 10px;
+
+  }
+
+
+
 
 }
 
-#first-nav {
-  padding-top: 5px;
-  padding-bottom: 5px;
+@media only screen and (max-width: 841px){
+
+  .searchLogo{
+      
+      gap: 20px;
+  }
+  
+  
+  h4{
+      font-size: 1.5em;
+     
+  }
+ 
+  .div-search{
+      width: 200px;
+  }
+  
+  .searchInput{
+      width: 200px;        
+  } 
+  
+  .navList{
+      padding-top: 10px;
+      gap: 15px;
+
+  }
 
 }
 
-.cart-gif {
-  width: 30px;
-  border: 10px rgb(74, 71, 71);
+
+@media only screen and (max-width: 400px){
+
+  .searchLogo{
+      flex-flow: column wrap;
+      gap: 10px;
+  }
+  .logoImg{
+      width: 50px;
+      height: 40px;
+      border-radius: 20% 20% 10%;
+  }
+  h4{
+      font-size: 1em;
+     
+  }
+ 
+  .div-search{
+      flex-wrap: wrap;
+      width: 200px;
+  }
+  
+  .searchInput{
+      width: 200px;        
+  } 
+  
+  .navList{
+      gap: 5px;
+
+  }
+  .nav-item span{
+      display: none;
+  }
 }
 
-#second-nav {
-  padding-top: 0px;
-}
 
 /*Center Image slider */
 *,
@@ -565,7 +843,7 @@ html {
 }
 
 /* ------------------------------------------- */
-
+/* 
 @media only screen and (max-width: 1370px) {
 
   #first-nav,
@@ -601,9 +879,9 @@ html {
 
   #searchInput {
     width: 80px;
-  }
-
-}
+  } */
+/* 
+} */
 
 /* Bottom Card */
 * {
@@ -659,7 +937,10 @@ h3 {
   padding: 0 2.25em 4em;
   background: #fff;
 }
-
+.bottomCardsContainer img{
+ margin-left: auto;
+ margin-right: auto;
+}
 .main-header {
   text-align: center;
   padding: 2.8em 0 3.8em;
@@ -790,13 +1071,6 @@ h3 {
 .right {
   transform: translateZ(-110px) rotateY(180deg);
 }
-
-.navigation-bar {
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
 
 /* Cards */
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap");

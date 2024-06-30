@@ -20,61 +20,63 @@
 
 <body>
     <!--------- Nav Bar ---------------->
-    <div class="navigation-bar">
-        <nav class="navbar bg-body-tertiary navigation-bar m-0 b-0" id="first-nav">
-            <div class="container-fluid">
-                <div class="d-flex justify-content-start align-items-center" id="searchLogo">
-                    <div class="d-flex justify-content-around align-items-center">
-                        <a class="navbar-brand" href="#">
-                            <img src="./images/art.jpg" class="logo" alt="Logo" width="30" height="24"
-                                class="d-inline-block align-text-top">
-                            AIArt
+    <div class="navigation-bar ">
+        <nav class="navbar  navigation-bar first-nav">
+            <div class="first-nav-container">
+                <div class="searchLogo">
+                    <div class="logo">
+                        <a href="#">
+                            <img src="./icons/art-icon-1091.png" class="logoImg" alt="Logo">
+                            
                         </a>
-                        <form class="d-flex justify-content-end align-items-center" role="search">
-                            <input class="form-control me-2" id="searchInput" type="search"
-                                placeholder="&#xF002; Search" style="font-family:Arial, FontAwesome"
-                                aria-label="Search">
-                        </form>
+                        <h4>AIArt</h4>
+                    </div>
+                    
+                    <div class="div-search">
+                        <input class="searchInput" id="searchInput" type="search" placeholder="&#xF002; Search..."
+                            style="font-family:Poppins, FontAwesome">
                     </div>
                 </div>
 
-                <div class="nav justify-content-end">
-                    <ul class="nav justify-content-end align-items-center">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link" id="cart">
-                                <lord-icon src="https://cdn.lordicon.com/eiekfffz.json" trigger="loop" delay="1000"
-                                    stroke="bold" state="in-reveal" style="width:40px;height:50px">
-                                </lord-icon>
+                <div class="cart-navItems">
+                    <ul class="navList">
+                        <li class="nav-item ">
+                            <a href="../templates/cartPage.html" class="nav-link cart-icon" id="cart">
+                                <img src="./icons/icons8-cart-48.png" alt="Shopping cart logo" srcset="" class="cart-icon">
+                                <small id="cart-count" class=" cart-count">0</small>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Log In</a>
+                            <a class="nav-link" aria-current="page" href="#"><img src="./icons/icons8-log-in-32.png" alt="Login icon" width="25" height="23" srcset=""><span> Log In</span></a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Sing Up</a>
+                            <a class="nav-link" href="#"><img src="./icons/icons8-account-32.png" alt="Sing up icon" srcset="" width="25" height="23" ><span> Sing up</span></a>
                         </li>
+
                     </ul>
                 </div>
             </div>
-
         </nav>
-        <hr class="hr-nav">
+    </div>
+    <hr>
+    <div class="navigation-bar">
+        <nav class="navbar navigation-bar navbar-expand-lg second-nav" >
+            <div class="second-nav-container">
 
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" id="second-nav">
-            <div class="container-fluid d-flex" id="items">
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler btn-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        <a class="nav-link" href="#">Categories</a>
-                        <a class="nav-link" href="#">Discount</a>
-                        <a class="nav-link" href="#">About us</a>
-                        <a class="nav-link" href="#">Contact</a>
+                    <div class="navbar-nav navPages">
+                        <a class="nav-link second-nav-links" href="#">Home</a>
+                        <a class="nav-link second-nav-links" href="#">Categories</a>
+                        <a class="nav-link second-nav-links" href="#">Sale</a>
+                        <a class="nav-link second-nav-links" href="#">About us</a>
+                        <a class="nav-link second-nav-links" href="#">Contact</a>
+
                     </div>
                 </div>
             </div>
