@@ -762,14 +762,13 @@ html {
   margin-left: 1rem;
   margin-right: 1rem;
   margin-bottom: 25px;
-  background-color: rgb(197, 105, 105, 0.2);
   padding: 10px;
   border-radius: 15px;
 }
 
 .artworkProgress {
   display: flex;
-  justify-content: space-around;
+  flex-direction: space-between;
 }
 
 .artwork {
@@ -991,7 +990,7 @@ h3 {
 .photo-desc {
 
   font-size: .85em;
-  color: #fff;
+  color: black;
   padding: 1.1em 1em 0;
   background:rgb(197, 105, 105);
 }
@@ -1025,7 +1024,9 @@ h3 {
 }
 
 .button {
-  background: rgb(197, 105, 105);
+  color: black;
+  border: 1px solid black;
+  background: rgb(177, 92, 92);
   transition: background .3s;
 }
 
