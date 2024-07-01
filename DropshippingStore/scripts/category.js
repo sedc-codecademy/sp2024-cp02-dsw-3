@@ -124,9 +124,9 @@ const imageFilterService = {
         })
     },
     listenToStockFilter: (data) => {
-        imageFilterService.stockFilter.addEventListener("change",  function () {
+        imageFilterService.stockFilter.addEventListener("change",async  function () {
             currentPage=1
-            imageFilterService.filterImagesStock(data)
+            await imageFilterService.filterImagesStock(data)
             
         })
     },
@@ -149,13 +149,15 @@ const imageFilterService = {
         imageFilterService.listenToStockFilter(filteredImages)
         createCardsService.createCards(filteredImages, items, currentPage);
     },
-    filterImagesStock: function(data){
+    filterImagesStock: async function(data){
         let filteredImages
         const stockFilter = imageFilterService.stockFilter.value;
         if (stockFilter === "available") {
             filteredImages = data.filter(image => image.stock === true);
+        }else{
+            let images = await fetchDataService.getImg() 
+            filteredImages = images.filter(i=> i.category === imageFilterService.categoryFilter.value)
         }
-        imageFilterService.listenToStockFilter(filteredImages)
         createCardsService.createCards(filteredImages, items, currentPage);
     }
 };
@@ -190,17 +192,18 @@ const searchInputService = {
     addSearchEvent: async function (data) {
         if (this.searchInput) {
             searchInputService.searchInput.addEventListener("keydown", async function (event) {
+                currentPage = 1
                 if (event.code === 'Enter') {
                     const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
                     if (searchedItems.length == 0) {
                         searchInputService.noItemsToShow()
                         createCardsService.cardsDefault(data)
-                        imageFilterService.categoryFilter.value = ("default")
+                        imageFilterService.categoryFilter.value = ("")
                         imageFilterService.stockFilter.value = ('default')
 
                     } else {
-                        imageFilterService.categoryFilter.value = ("default")
+                        imageFilterService.categoryFilter.value = ("")
                         imageFilterService.stockFilter.value = ('default')
                         createCardsService.createCards(searchedItems, items, currentPage)
                         searchInputService.searchInput.value = ""
