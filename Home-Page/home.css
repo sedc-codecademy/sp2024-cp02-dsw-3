@@ -930,6 +930,139 @@ main p {
   transition: transform 0.5s ease-in-out;
 }
 
+/* Rotating Cards */
+
+.bottomCardsContainer header img{
+  width: 90px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.card {
+  position: relative;
+  height: 250px;
+  width: 100%;
+  margin: 10px 0;
+  transition: ease all 2.3s;
+  perspective: 1200px;
+  background-color: transparent;
+}
+
+
+.card:hover .cover {
+  transform: rotateX(0deg) rotateY(-180deg);
+}
+
+.card:hover .cover:before {
+  transform: translateZ(30px);
+}
+
+.card:hover .cover:after {
+  background-color: rgb(216, 170, 170);
+  filter: blur(40px);
+}
+
+.card:hover .cover p {
+  transform: translateZ(-60px) rotatey(-180deg);
+  color: black;
+  font-weight: bold;
+}
+
+.card .cover {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: ease all 2.3s;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.card .cover:before {
+  content: "";
+  position: absolute;
+  border: 5px solid rgba(255, 255, 255, 0.749);
+  top: 20px;
+  left: 20px;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  transition: ease all 2.3s;
+  transform-style: preserve-3d;
+  transform: translateZ(0px);
+}
+
+.card .cover:after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  z-index: 2;
+  transition: ease all 1.3s;
+}
+
+.card .cover.item-a {
+  background-image: url(icons/handshakeicon.png);
+  background-size: 30%;
+  text-align: start;
+}
+.card .cover.item-a:hover {
+  background-image:none;
+}
+
+.card .cover.item-b {
+  background-image: url(icons/adviceicon.png);
+  background-size: 30%;
+  text-align: start;
+}
+.card .cover.item-b:hover {
+  background-image: none;
+}
+.card .cover.item-c {
+  background-image: url(icons/bestcontacticon.png);
+  background-size: 30%;
+  text-align: start;
+}
+.card .cover.item-c:hover {
+  background-image: none;
+}
+
+.card-text {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: transparent;
+  transform-style: preserve-3d;
+  transition: ease all 2.3s;
+  transform: translateZ(-1px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-text p {
+  padding: 14px 32px;
+  outline: none;
+  color: transparent;
+}
+
+.card-title {
+  text-align: center;
+}
+
+/* .card:hover {
+  border: 3px solid black;
+  border-color: rgb(197, 105, 105);
+  box-shadow: 0 0 10px rgb(197, 105, 105);
+  transition: 500ms;
+  img {
+    display: none;
+  }
+} */
+
 /*Center Image slider */
 *,
 *::before,
@@ -1337,27 +1470,6 @@ html {
   color: rgb(197, 105, 105);
   transition: 500ms;
 }
-/* 
-.cardPictures {
-  width: 7rem;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-} */
-
-.card-title {
-  text-align: center;
-}
-
-.card:hover {
-  border: 3px solid black;
-  border-color: rgb(197, 105, 105);
-  box-shadow: 0 0 10px rgb(197, 105, 105);
-  transition: 500ms;
-  img {
-    display: none;
-  }
-}
 
 .sellYourArtContainer {
   margin-left: 1rem;
@@ -1633,120 +1745,3 @@ h3 {
   transform: translateZ(-110px) rotateY(180deg);
 }
 
-/* Cards */
-@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;600&display=swap");
-
-.bottomCardsContainer header img{
-  width: 90px;
-  height: 80px;
-  object-fit: cover;
-}
-
-.card {
-  position: relative;
-  height: 250px;
-  width: 100%;
-  margin: 10px 0;
-  transition: ease all 2.3s;
-  perspective: 1200px;
-  background-color: transparent;
-}
-
-
-.card:hover .cover {
-  transform: rotateX(0deg) rotateY(-180deg);
-}
-
-.card:hover .cover:before {
-  transform: translateZ(30px);
-}
-
-.card:hover .cover:after {
-  background-color: rgb(216, 170, 170);
-  filter: blur(40px);
-}
-
-.card:hover .cover p {
-  transform: translateZ(-60px) rotatey(-180deg);
-  color: black;
-  font-weight: bold;
-}
-
-.card .cover {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  transform-style: preserve-3d;
-  transition: ease all 2.3s;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.card .cover:before {
-  content: "";
-  position: absolute;
-  border: 5px solid rgba(255, 255, 255, 0.749);
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  bottom: 20px;
-  z-index: 2;
-  transition: ease all 2.3s;
-  transform-style: preserve-3d;
-  transform: translateZ(0px);
-}
-
-.card .cover:after {
-  content: "";
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
-  z-index: 2;
-  transition: ease all 1.3s;
-}
-
-.card .cover.item-a {
-  background-image: url(images/handshakeicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-b {
-  background-image: url(images/adviceicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-c {
-  background-image: url(images/bestcontacticon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card .cover.item-d {
-  background-image: url(images/stockicon.png);
-  background-size: 30%;
-  text-align: start;
-}
-
-.card-text {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-  background: transparent;
-  transform-style: preserve-3d;
-  transition: ease all 2.3s;
-  transform: translateZ(-1px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.card-text p {
-  padding: 14px 32px;
-  outline: none;
-  color: transparent;
-}
