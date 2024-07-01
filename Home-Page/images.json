@@ -9,7 +9,7 @@
     "onDiscount": false,
     "discPrice": null,
     "stock": true,
-    "imageUrl": "../images/acrylic/6.png"
+    "imageUrl": "./images/acrylic/6.png"
     
 
 },
