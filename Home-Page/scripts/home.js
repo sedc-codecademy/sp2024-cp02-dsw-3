@@ -32,3 +32,5 @@ function changeSlide(step) {
 document.addEventListener('DOMContentLoaded', () => {
     showSlide(currentSlide);
 });
+
+
