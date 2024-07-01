@@ -118,11 +118,14 @@ const imageFilterService = {
 
     listenToCategoryFilter: (data) => {
         imageFilterService.categoryFilter.addEventListener("change", async function () {
+            currentPage=1
+            imageFilterService.stockFilter.value = "default"
             await imageFilterService.filterImagesCategories(data)
         })
     },
     listenToStockFilter: (data) => {
         imageFilterService.stockFilter.addEventListener("change",  function () {
+            currentPage=1
             imageFilterService.filterImagesStock(data)
             
         })
@@ -136,7 +139,6 @@ const imageFilterService = {
         let filteredImages
         if(categoryFilter == "default"){
             filteredImages = await fetchDataService.getImg()
-            imageFilterService.stockFilter.value = 'default'
         }
         if (categoryFilter !== "default") {
             
