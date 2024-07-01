@@ -1,3 +1,4 @@
+
 // Script for top Carousel
 let currentSlide = 0;
 
@@ -18,21 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Script for Most Popular Creator Pics
 
-function scrollR() {
+function scrollGallery(distance) {
   const container = document.getElementById('mz-gallery');
-  container.scrollBy({
-    left: 400,
-    behavior: 'smooth'
-  });
+  if (container) {
+    container.scrollBy({
+      left: distance,
+      behavior: 'smooth'
+    });
+  } else {
+    console.error('Element with ID "mz-gallery" not found.');
+  }
+}
+
+// Usage example:
+function scrollR() {
+  scrollGallery(500);
 }
 
 function scrollL() {
-  const container = document.getElementById('mz-gallery');
-  container.scrollBy({
-    left: -300,
-    behavior: 'smooth'
-  });
+  scrollGallery(-300);
 }
+
 
 
 document.addEventListener("DOMContentLoaded", function() {
