@@ -24,40 +24,72 @@
 </head>
 
 <body>
-  <!--------- Nav Bar ---------------->
+  <!-- Nav Bar -->
   <div class="navigation-bar">
     <nav class="navbar navigation-bar first-nav">
       <div class="first-nav-container">
         <div class="searchLogo">
-          <div class="logo">
+          <div class="logoNav">
             <a href="#">
-              <img src="./icons/art-whiteTxt.png" class="logoImg" alt="Logo" />
+              <img
+                src="./icons/art-whiteTxt.png"
+                class="logoImg"
+                alt="Logo"
+              />
             </a>
             <h4>AIArt</h4>
           </div>
 
           <div class="div-search">
-            <input class="searchInput" id="searchInput" type="search" placeholder="&#xF002; Search..."
-              style="font-family: Poppins, FontAwesome" />
+            <input
+              class="searchInput"
+              id="searchInput"
+              type="search"
+              placeholder="&#xF002; Search..."
+              style="font-family: Poppins, FontAwesome"
+            />
           </div>
         </div>
 
         <div class="cart-navItems">
           <ul class="navList">
             <li class="nav-item">
-              <a href="../templates/cartPage.html" class="nav-link cart-icon" id="cart">
-                <img src="./icons/icons8-cart-48.png" alt="Shopping cart logo" srcset="" class="cart-icon" />
-                <small id="cart-count" class="cart-count">0</small>
+              <a
+                href="../templates/cartPage.html"
+                class="nav-link cart-icon"
+                id="cart"
+              >
+                <img
+                  src="./icons/icons8-cart-48.png"
+                  alt="Shopping cart logo"
+                  srcset=""
+                  class="cart-icon"
+                />
+                <p id="cart-count" class="cart-count">0</p>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="#"><img src="./icons/icons8-log-in-32.png" alt="Login icon"
-                  width="25" height="23" srcset="" /><span> Log In</span></a>
+              <a class="nav-link" aria-current="page" href="#"
+                ><img
+                  src="./icons/icons8-log-in-32.png"
+                  alt="Login icon"
+                  width="25"
+                  height="23"
+                  srcset=""
+                /><span> Log In</span></a
+              >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="#"><img src="./icons/icons8-account-32.png" alt="Sing up icon" srcset=""
-                  width="25" height="23" /><span> Sing up</span></a>
+              <a class="nav-link" href="#"
+                ><img
+                  src="./icons/icons8-account-32.png"
+                  alt="Sing up icon"
+                  srcset=""
+                  width="25"
+                  height="23"
+                /><span> Sing up</span></a
+              >
             </li>
           </ul>
         </div>
@@ -69,9 +101,15 @@
   <div class="navigation-bar">
     <nav class="navbar navigation-bar navbar-expand-lg second-nav">
       <div class="second-nav-container">
-        <button class="navbar-toggler btn-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-          aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler btn-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -87,45 +125,7 @@
     </nav>
   </div>
 
-  <main>
-    <!-- showing animation if no result are found from search input -->
-    <div id="noItemsFound" class="noItemsFound">
-      <dotlottie-player src="https://lottie.host/7b1da760-d966-4332-88e5-8fafd7dabb77/hs9i5dQSl0.json"
-        background="transparent" speed="1" class="noItems" direction="1" playMode="normal" loop controls
-        autoplay></dotlottie-player>
-    </div>
-
-    <!-- Cards -->
-    <div class="card-img" id="cardContainer"></div>
-
-    <!-- POP UP -->
-
-    <div class="popup-container">
-      <div id="popup" class="hidden">
-        <div id="popup-content">
-          <div class="popup-header" id="popup-header"></div>
-          <div class="pop-wrapper">
-            <div class="imageDiv">
-              <img id="popup-image" src="" alt="Popup Image" class="popup-image" />
-            </div>
-
-            <div class="infoPopup">
-              <div class="txtDiv" id="txtDiv">
-                <div id="popup-text" class="popup-text"></div>
-                <div id="btnDiv">
-                  <p class="add" id="add">
-                    <img src="./icons/icons8-add-to-cart-black.png" alt="Add to cart" />
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <span id="popup-close">&times;</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
+  
 
   <!-- Top image slider -->
   <header>
@@ -179,6 +179,48 @@
         </a>
     </div>
 </header>
+
+<main>
+  <!-- showing animation if no result are found from search input -->
+  <div id="noItemsFound" class="noItemsFound">
+    <dotlottie-player src="https://lottie.host/7b1da760-d966-4332-88e5-8fafd7dabb77/hs9i5dQSl0.json"
+      background="transparent" speed="1" class="noItems" direction="1" playMode="normal" loop controls
+      autoplay></dotlottie-player>
+  </div>
+
+  <!-- Cards -->
+  <div class="card-img" id="cardContainer"></div>
+
+  <!-- POP UP -->
+
+  <div class="popup-container">
+    <div id="popup" class="hidden">
+      <div id="popup-content">
+        <div class="popup-header" id="popup-header"></div>
+        <div class="pop-wrapper">
+          <div class="imageDiv">
+            <img id="popup-image" src="" alt="Popup Image" class="popup-image" />
+          </div>
+
+          <div class="infoPopup">
+            <div class="txtDiv" id="txtDiv">
+              <div id="popup-text" class="popup-text"></div>
+              <div id="btnDiv">
+                <p class="add" id="add">
+                  <img src="./icons/icons8-add-to-cart-black.png" alt="Add to cart" />
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <span id="popup-close">&times;</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+
 
   <!-- Top cards -->
   <div>
