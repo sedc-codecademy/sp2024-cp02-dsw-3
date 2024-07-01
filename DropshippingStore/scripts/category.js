@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     let data = await fetchDataService.getImg()
     let copyData = [...data]
     createCardsService.cardsDefault(copyData)
-    imageFilterService.listenToCategoryFilter(copyData);
-    imageFilterService.listenToStockFilter(copyData);
     searchInputService.addSearchEvent(copyData)
+    imageFilterService.listenToCategoryFilter(copyData)
+    imageFilterService.listenToStockFilter(copyData);
     itemsInCart.displayItems()
 })
 
@@ -31,6 +31,7 @@ const createCardsService = {
         this.createCards(data, items, currentPage)
         categoriesService.addAscEvent(data)
         categoriesService.addDescEvent(data)
+
 
     },
     createCards: function (images, numOfImagesPerPage, page) {
@@ -75,6 +76,8 @@ const createCardsService = {
         categoriesService.addDescEvent(arrayToBeSorted)
         this.setupPagination(images, this.pageNumber, items)
         popUpImagesService.addEventsImgButtons()//POP UP
+        
+        
 
     }, setupPagination(images, wrapper, numOfImagesPerPage) {
         wrapper.innerHTML = ""
@@ -115,52 +118,62 @@ const imageFilterService = {
 
     listenToCategoryFilter: (data) => {
         imageFilterService.categoryFilter.addEventListener("change", async function () {
-            await imageFilterService.filterImages(data)
+            await imageFilterService.filterImagesCategories(data)
         })
     },
     listenToStockFilter: (data) => {
-        imageFilterService.stockFilter.addEventListener("change", async function () {
-           await imageFilterService.filterImages(data)
+        imageFilterService.stockFilter.addEventListener("change",  function () {
+            imageFilterService.filterImagesStock(data)
+            
         })
     },
 
-    filterImages: async(images) => {
+    filterImagesCategories: async(images) => {
 
         const categoryFilter = imageFilterService.categoryFilter.value;
-        const stockFilter = imageFilterService.stockFilter.value;
+        
 
-        let filteredImages = images;
+        let filteredImages
         if(categoryFilter == "default"){
             filteredImages = await fetchDataService.getImg()
+            imageFilterService.stockFilter.value = 'default'
         }
         if (categoryFilter !== "default") {
             
-            filteredImages = filteredImages.filter(image => image.category === categoryFilter);
+            filteredImages = images.filter(image => image.category === categoryFilter);
 
         }
 
+        imageFilterService.listenToStockFilter(filteredImages)
+        createCardsService.createCards(filteredImages, items, currentPage);
+    },
+    filterImagesStock: function(data){
+        let filteredImages
+        const stockFilter = imageFilterService.stockFilter.value;
         if (stockFilter === "available") {
-            filteredImages = filteredImages.filter(image => image.stock === true);
+            filteredImages = data.filter(image => image.stock === true);
         }
-        
-
+        imageFilterService.listenToStockFilter(filteredImages)
         createCardsService.createCards(filteredImages, items, currentPage);
     }
 };
 
 
 const categoriesService = {
-    categorySelect: document.getElementById("categorySelect"),
     ascendingBtn: document.getElementById("lowToHigh"),
     descendingBtn: document.getElementById("highToLow"),
     addAscEvent: function (data) {
         this.ascendingBtn.addEventListener("click", function () {
+            categoriesService.descendingBtn.classList.remove('activeBtn')
+            this.classList.add("activeBtn")
             const arraySorted = data.sort(function (a, b) { return a.price - b.price });
             createCardsService.createCards(arraySorted, items, currentPage)
         })
     },
     addDescEvent: function (data) {
         this.descendingBtn.addEventListener("click", function () {
+            categoriesService.ascendingBtn.classList.remove('activeBtn')
+            this.classList.add("activeBtn")
             const arraySorted = data.sort(function (a, b) { return b.price - a.price })
             createCardsService.createCards(arraySorted, items, currentPage)
         })
@@ -179,12 +192,17 @@ const searchInputService = {
                     const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
                     if (searchedItems.length == 0) {
-                        const divNoItems = document.getElementById("noItemsFound")
-                        divNoItems.style.display = "block"
-                        setTimeout(() => { divNoItems.style.display = "none" }, 4000)
+                        searchInputService.noItemsToShow()
                         createCardsService.cardsDefault(data)
+                        imageFilterService.categoryFilter.value = ("default")
+                        imageFilterService.stockFilter.value = ('default')
+
                     } else {
+                        imageFilterService.categoryFilter.value = ("default")
+                        imageFilterService.stockFilter.value = ('default')
                         createCardsService.createCards(searchedItems, items, currentPage)
+                        searchInputService.searchInput.value = ""
+                        
                     }
                 }
             })
@@ -197,6 +215,11 @@ const searchInputService = {
             }
         })
         return result
+    },
+    noItemsToShow: function(){
+        const divNoItems = document.getElementById("noItemsFound")
+        divNoItems.style.display = "block"
+        setTimeout(() => { divNoItems.style.display = "none" }, 4000)
     }
 
 }

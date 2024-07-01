@@ -327,6 +327,10 @@ option {
     border: 2px solid #4747475c;
 }
 
+.activeBtn{
+    border: 2px solid #474747;
+}
+
 /* END  BUTTONS(SORT AND FILTER)*/
 
 
