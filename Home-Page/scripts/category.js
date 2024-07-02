@@ -42,7 +42,7 @@ const createCardsService = {
              <article class="card" >
                 <img
                 class="card__background"
-                src=${images[i].imageUrl}
+                src=${images[i].imageUrl.replace('../', './')}
                 alt=${images[i].type}
                 width="1920"
                 height="2193"/>

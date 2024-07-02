@@ -903,7 +903,7 @@ main p {
   object-fit: cover;
 }
 
-.card {
+#rotatingCards {
   position: relative;
   height: 250px;
   width: 100%;
@@ -914,26 +914,26 @@ main p {
 }
 
 
-.card:hover .cover {
+#rotatingCards:hover .cover {
   transform: rotateX(0deg) rotateY(-180deg);
 }
 
-.card:hover .cover:before {
+#rotatingCards:hover .cover:before {
   transform: translateZ(30px);
 }
 
-.card:hover .cover:after {
+#rotatingCards:hover .cover:after {
   background-color: rgb(216, 170, 170);
   filter: blur(40px);
 }
 
-.card:hover .cover p {
+#rotatingCards:hover .cover p {
   transform: translateZ(-60px) rotatey(-180deg);
   color: black;
   font-weight: bold;
 }
 
-.card .cover {
+#rotatingCards .cover {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -944,7 +944,7 @@ main p {
   background-repeat: no-repeat;
 }
 
-.card .cover:before {
+#rotatingCards .cover:before {
   content: "";
   position: absolute;
   border: 5px solid rgba(255, 255, 255, 0.749);
@@ -958,7 +958,7 @@ main p {
   transform: translateZ(0px);
 }
 
-.card .cover:after {
+#rotatingCards .cover:after {
   content: "";
   position: absolute;
   top: 0px;
@@ -969,29 +969,29 @@ main p {
   transition: ease all 1.3s;
 }
 
-.card .cover.item-a {
+#rotatingCards .cover.item-a {
   background-image: url(icons/handshakeicon.png);
   background-size: 30%;
   text-align: start;
 }
-.card .cover.item-a:hover {
+#rotatingCards .cover.item-a:hover {
   background-image:none;
 }
 
-.card .cover.item-b {
+#rotatingCards .cover.item-b {
   background-image: url(icons/adviceicon.png);
   background-size: 30%;
   text-align: start;
 }
-.card .cover.item-b:hover {
+#rotatingCards .cover.item-b:hover {
   background-image: none;
 }
-.card .cover.item-c {
+#rotatingCards .cover.item-c {
   background-image: url(icons/bestcontacticon.png);
   background-size: 30%;
   text-align: start;
 }
-.card .cover.item-c:hover {
+#rotatingCards .cover.item-c:hover {
   background-image: none;
 }
 
@@ -1017,16 +1017,6 @@ main p {
 .card-title {
   text-align: center;
 }
-
-/* .card:hover {
-  border: 3px solid black;
-  border-color: rgb(197, 105, 105);
-  box-shadow: 0 0 10px rgb(197, 105, 105);
-  transition: 500ms;
-  img {
-    display: none;
-  }
-} */
 
 /*Center Image slider */
 /* *,
@@ -1455,17 +1445,6 @@ html {
   border-radius: 15px;
 }
 
-.card2 {
-  padding: 10px;
-  border: 1px solid rgb(197, 105, 105, 0.5);
-}
-
-.card2:hover {
-  border-color: rgb(197, 105, 105);
-  box-shadow: 0 0 10px rgb(197, 105, 105);
-  transition: 500ms;
-}
-
 .secondButton {
   text-align: center;
   padding: 25px;
@@ -1622,11 +1601,17 @@ h3 {
 }
 
 .photo-desc {
-
   font-size: .85em;
   color: black;
   padding: 1.1em 1em 0;
   background:rgb(197, 105, 105);
+}
+
+.photo-desc h3 {
+  margin-top: 40px;
+}
+.photo-desc p {
+  margin-top: 30px;
 }
 
 .clearfix::after {
@@ -1671,8 +1656,9 @@ h3 {
 .photo-cube {
   transition: transform 2s ease-in-out; 
   width: 220px;
-  height: 200px;
+  height: 270px;
   transform-style: preserve-3d;
+
 }
 
 .photo-cube:hover {
