@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
                             <p class="card__description">${item.category}</p>
                             <p class="img-price">${item.discPrice}$</p>
                             <button class="card__button" data-item='${JSON.stringify(item)}'>Add to cart</button>
+                              <button class="details__button" data-item='${JSON.stringify(item)}'>Details</button>
                         </div>
                     </div>
                     </article>
@@ -63,6 +64,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         addEventsAddToCart();
         renderPaginationControls(data.length);
+        popUpImagesService.addEventsImgButtons()//POP UP
     }
 
     function renderPaginationControls(totalItems) {
@@ -221,6 +223,62 @@ document.addEventListener("DOMContentLoaded", function() {
         const storedData = JSON.parse(localStorage.getItem("user-creds"));
         userCreds.innerHTML += " " + "<b>" + storedData.fullName + "</b>" + " " + "with email: " + "<b>" +storedData.email + "</b>";
     }
+
+ //For PopUp
+ const popUpImagesService = {
+    addEventsImgButtons: function () {
+        const buttons = document.getElementsByClassName("details__button");
+        for (let button of buttons) {
+            button.addEventListener("click", function (event) {
+                event.preventDefault();
+                // Retrieve item data from the data-item attribute
+                const item = JSON.parse(button.getAttribute('data-item'));
+                // Check if the item exists
+                if (item) {
+                    showPopup(item); // Call the function to show the pop-up with the item data
+                }
+            });
+        }
+    }
+};
+//Pop up
+function showPopup(imageData) {
+const popup = document.getElementById('popup');
+const popupText = document.getElementById('popup-text');
+const popupClose = document.getElementById('popup-close');
+const popupImage = document.getElementById('popup-image');
+const popupHeader = document.getElementById('popup-header')
+const stockStatus = imageData.stock ? ' ✓' : ' ✘';
+
+// Update the popup image
+popupImage.src = imageData.imageUrl;
+popupImage.alt = imageData.type;
+// Update the popup content
+
+popupHeader.innerHTML = `<h3>${imageData.category}</h3>`
+popupText.innerHTML = `
+    
+    <p><span>■ Description:</span>  ${imageData.description}</p>
+    <p><span>■ Artist:</span>  ${imageData.artist.userName}</p>
+    <p><span>■ Price:</span>  ${imageData.price}$</p>
+    <p><span>■ In Stock:</span>  ${stockStatus}</p>
+`;
+
+popup.classList.remove('hidden');
+popup.style.display = 'flex';
+
+popupClose.addEventListener('click', () => {
+    popup.classList.add('hidden');
+    popup.style.display = 'none';
+});
+
+popup.addEventListener('click', (event) => {
+    if (event.target === popup) {
+        popup.classList.add('hidden');
+        popup.style.display = 'none';
+    }
+});
+}
     const url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json';
     showDefaultCards(url);
     addSubmitEvent();
