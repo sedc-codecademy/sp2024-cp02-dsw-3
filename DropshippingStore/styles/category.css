@@ -697,6 +697,19 @@ p {
 /* END POP UP */
 
 
+/* FOOTER */
+footer{
+    width: 100%;
+    background-color: rgb(52, 46, 46);
+    color: whitesmoke;
+}
+.text-white, .mb-2, .text-uppercase{
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Poppins", sans-serif;
+}
+/* END FOOTER */
+
 
 /*  MEDIA QUERIES  */
 
