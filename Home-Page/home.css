@@ -95,7 +95,7 @@ hr{
 }
 
 .first-nav, .second-nav{
-  background-color:rgb(52, 46, 46);
+  background-color: rgb(52, 46, 46);
   color: whitesmoke;
 }
 
@@ -164,7 +164,7 @@ hr{
 
 
 
-/* END NAV BAR */
+
 
 
 
@@ -1707,3 +1707,9 @@ h3 {
   transform: translateZ(-110px) rotateY(180deg);
 }
 
+
+
+/* FOOTER*/
+footer{
+  background-color: rgb(52, 46, 46);
+}
