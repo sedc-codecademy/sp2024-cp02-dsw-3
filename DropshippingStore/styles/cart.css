@@ -40,8 +40,8 @@
 }
 
 .logoImg {
-  width: 53px;
-  height: 40px;
+  width: 80px;
+  height: 55px;
   /* border-radius: 40% 40% 30%; */
 }
 
@@ -569,4 +569,22 @@ ul {
   to {
     opacity: 1;
   }
+}
+
+/* FOOTER */
+footer {
+  width: 100%;
+  background-color: rgb(52, 46, 46);
+  color: whitesmoke;
+}
+.text-white,
+.mb-2,
+.text-uppercase {
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+
+.p-4 {
+  padding: 1.5rem !important;
 }
