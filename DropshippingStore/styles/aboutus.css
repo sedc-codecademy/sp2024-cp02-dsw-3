@@ -221,7 +221,7 @@ main {
   text-decoration: underline 3px pink;
 }
 
-.text {
+.text-p {
   padding: 20px;
   text-align: center;
 }
@@ -235,16 +235,17 @@ main {
 }
 
 /* FOOTER */
-footer {
-  background-color: #343434;
+footer{
+  width: 100%;
+  background-color: rgb(52, 46, 46);
   color: whitesmoke;
-  padding: 20px;
+}
+.text-white, .mb-2, .text-uppercase{
   text-align: center;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
 }
 
-footer p {
-  margin: 0;
-}
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1370px) {
@@ -308,7 +309,7 @@ footer p {
     font-size: 1.5em;
   }
 
-  .text {
+  .text-p {
     font-size: 0.9em;
   }
 }
@@ -349,6 +350,16 @@ footer p {
     gap: 10px;
   }
 
+  
+
+  .text-container,.text-container-2 {
+    transform: translate(-10px, 10px);
+  }
+
+  .text-container:hover,
+  .text-container-2:hover {
+    transform: translateY(-10px);
+  }
   .text-container,
   .text-container-2 {
     padding: 10px;
@@ -359,8 +370,12 @@ footer p {
     font-size: 1.3em;
   }
 
-  .text {
+  .text-p {
     font-size: 0.85em;
+  }
+
+  main {
+    place-items: center;
   }
 }
 
@@ -396,8 +411,25 @@ footer p {
     font-size: 1.2em;
   }
 
-  .text {
+  .text-p {
     font-size: 0.8em;
+  }
+
+  
+  .text-container,.text-container-2 {
+    transform: translate(-5px, 5px);
+  }
+
+  .text-container:hover,
+  .text-container-2:hover {
+    transform: translateY(-5px);
+  }
+
+
+  main {
+    gap: 30px;
+    grid-template-columns: 1fr;
+    place-items: center;
   }
 }
 
@@ -436,7 +468,7 @@ footer p {
 
   .text-container,
   .text-container-2 {
-    padding: 5px;
+    padding: 3px;
     box-shadow: none;
     transform: none;
   }
@@ -446,7 +478,29 @@ footer p {
     font-size: 1em;
   }
 
-  .text {
+  .text-p {
     font-size: 0.75em;
+  }
+
+  .text-container,.text-container-2 {
+    transform: translate(-5px, 5px);
+  }
+
+  .text-container:hover,
+  .text-container-2:hover {
+    transform: translateY(-5px);
+  }
+
+
+  main {
+    gap: 15px;
+    grid-template-columns: 1fr;
+    place-items: center;
+  }
+  .skills {
+    justify-content: flex-start;
+    align-items: flex-start;
+    font-size: 0.7em;
+    font-weight: 400;
   }
 }
