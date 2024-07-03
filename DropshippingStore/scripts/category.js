@@ -215,6 +215,7 @@ const searchInputService = {
             searchInputService.searchInput.addEventListener("keydown", async function (event) {
                 currentPage = 1
                 if (event.code === 'Enter') {
+                    document.getElementsByTagName('main')[0].scrollIntoView()
                     const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
                     if (searchedItems.length == 0) {
@@ -224,6 +225,7 @@ const searchInputService = {
                         imageFilterService.stockFilter.value = ('default')
 
                     } else {
+                        
                         imageFilterService.categoryFilter.value = ("")
                         imageFilterService.stockFilter.value = ('default')
                         createCardsService.createCards(searchedItems, currentPage)
