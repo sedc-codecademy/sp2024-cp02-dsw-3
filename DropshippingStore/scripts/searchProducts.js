@@ -213,18 +213,18 @@ const searchInputService = {
         if (this.searchInput) {
             searchInputService.searchInput.addEventListener("keydown", async function (event) {
                 if (event.code === 'Enter') {
+                    document.getElementById("main").scrollIntoView()
                     const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
-                    let header = document.getElementById('searchItem')
-                    createCardsService.divShowingCards.scrollIntoView()
+                    
                     if (searchedItems.length == 0) {
                         const divNoItems = document.getElementById("noItemsFound")
                         createCardsService.divShowingCards.style.display="none"
                         createCardsService.pageNumber.style.display = "none"
-                        divNoItems.scrollIntoView()
                         divNoItems.style.display = "block"
                         setTimeout(() => { divNoItems.style.display = "none" },                      5000)
                     } else {
+                        document.getElementById("main").scrollIntoView()
                         currentPage = 1
                         createCardsService.createCards(searchedItems, currentPage)
                     }

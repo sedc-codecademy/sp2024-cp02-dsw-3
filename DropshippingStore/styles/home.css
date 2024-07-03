@@ -875,20 +875,31 @@ main p {
     }
 }
 
+
+
 /* top image slider */
 .carousel-item {
-  height: 500px;
-  min-height: 300px;
+  
+  height: 600px;
+  min-height: 400px;
   background: no-repeat center center scroll;
-  -webkit-background-size: cover;
+  -webkit-background-size: contain;
   -moz-background-size: cover;
   -o-background-size: cover;
   transition: transform 2s ease-in-out;
   background-size: cover;
+  
+  
+}
+.carousel-caption p a{
+  font-size: 1.6em;
+  font-weight: 600;
+  color: whitesmoke;
 }
 
 .carousel-inner {
   overflow: hidden;
+  
 }
 
 .carousel-fade .carousel-item {
@@ -921,7 +932,7 @@ main p {
 
 #rotatingCards {
   position: relative;
-  height: 250px;
+  height: 280px;
   width: 100%;
   margin: 10px 0;
   transition: ease all 2.3s;
@@ -986,7 +997,7 @@ main p {
 }
 
 #rotatingCards .cover.item-a {
-  background-image: url(../icons/handshakeicon.png);
+  background-image: url(../icons/665049.png);
   background-size: 30%;
   text-align: start;
 }
@@ -995,7 +1006,7 @@ main p {
 }
 
 #rotatingCards .cover.item-b {
-  background-image: url(../icons/adviceicon.png);
+  background-image: url(../icons/5207196.png);
   background-size: 30%;
   text-align: start;
 }
@@ -1003,13 +1014,14 @@ main p {
   background-image: none;
 }
 #rotatingCards .cover.item-c {
-  background-image: url(../icons/bestcontacticon.png);
+  background-image: url(../icons/5578531.png);
   background-size: 30%;
   text-align: start;
 }
 #rotatingCards .cover.item-c:hover {
   background-image: none;
 }
+
 
 .card-text {
   position: absolute;
@@ -1044,7 +1056,7 @@ main p {
 
 .cenetrImageSlider,
 html {
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 70%;
   -webkit-tap-highlight-color: transparent;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -1056,10 +1068,10 @@ html {
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   overflow: hidden;
-  background-color: white;
-  margin: 0;
+  background-color: rgba(211, 142, 142, 0.331);
+  margin-top: 30px;
 }
 
 #mz-gallery-container {
@@ -1229,19 +1241,19 @@ html {
   font-size: 18pt;
   line-height: 24pt;
   font-weight: 500;
-  padding: 0px 20px;
+  padding: 0px ;
   text-align: center;
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(40, 39, 39, 0.571);
   outline-offset: 0px;
   background-size: 40px 40px;
   opacity: 0;
-  border-radius: 100%;
+ 
   pointer-events: none;
   transition: all 0.3s ease-in-out;
 }
@@ -1262,8 +1274,7 @@ html {
 #mz-gallery figure:hover figcaption {
   opacity: 0.8;
   color: white;
-  outline: 1px solid lawngreen;
-  outline-offset: -20px;
+  outline-offset: -5px;
   text-shadow: 1px 1px 3px black, 0px 0px 5px black;
   transition: all 0.3s ease-in-out;
 }
@@ -1446,19 +1457,26 @@ html {
   padding: 10px;
   border-radius: 15px;
 }
-
-.artworkProgress {
-  display: flex;
-  justify-content: space-between;
+.artwork{
+  display: grid;
+  grid-template-columns: auto auto;
+  place-content: center;
+  gap: 50px;
+  margin: 80px;
+  
 }
 
-.artwork {
-  margin-left: 1rem;
-  margin-right: 1rem;
-  margin-top: 3rem;
-  background-color: rgb(197, 105, 105, 0.2);
-  padding: 10px;
-  border-radius: 15px;
+
+.artwork div{
+  padding: 30px;
+  background-color: rgba(222, 179, 187, 0.47);
+  box-shadow: #6c6b6b 5px 7px 50px;
+  border-radius: 10%;
+}
+
+.article{
+  font-size: larger;
+  box-shadow: #f5f1f1 5px 0px 50px;
 }
 
 .secondButton {
@@ -1517,7 +1535,7 @@ html {
 }
 
 .bottomCardsContainer {
-  font-family: "Libre Baskerville", serif;
+  font-family: "Poppins", serif;
 	color: #373737;
 	background: #eaeaea;
 	margin: 0;
@@ -1672,7 +1690,7 @@ h3 {
 .photo-cube {
   transition: transform 2s ease-in-out; 
   width: 220px;
-  height: 270px;
+  height: 250px;
   transform-style: preserve-3d;
 
 }
