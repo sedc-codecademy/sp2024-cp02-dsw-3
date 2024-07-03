@@ -1,3 +1,4 @@
+let currentPage = 1
 document.addEventListener("DOMContentLoaded", async function () {
     let data = await fetchDataService.getImg()
     let copyData = [...data]
@@ -5,6 +6,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     searchInputService.addSearchEvent(copyData)
     imageFilterService.listenToCategoryFilter(copyData)
     imageFilterService.listenToStockFilter(copyData);
+    imageFilterService.listenItemsPerPage(copyData, currentPage)
     itemsInCart.displayItems()
 })
 
@@ -22,19 +24,21 @@ let fetchDataService = {
         }
     }
 }
-let currentPage = 1
-let items = 12
+
+
 const createCardsService = {
+    items: document.getElementById("itemsPerPAge"),
     divShowingCards: document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
     cardsDefault:  function (data) {
-        this.createCards(data, items, currentPage)
+        this.createCards(data, currentPage)
         categoriesService.addAscEvent(data)
         categoriesService.addDescEvent(data)
 
 
     },
-    createCards: function (images, numOfImagesPerPage, page) {
+    createCards: function (images, page) {
+        let numOfImagesPerPage = parseInt(this.items.value)
         this.divShowingCards.innerHTML = "";
         page--;
         let start = numOfImagesPerPage * page
@@ -74,20 +78,21 @@ const createCardsService = {
         const arrayToBeSorted = [...images]
         categoriesService.addAscEvent(arrayToBeSorted)
         categoriesService.addDescEvent(arrayToBeSorted)
-        this.setupPagination(images, this.pageNumber, items)
+        this.setupPagination(images, this.pageNumber)
         popUpImagesService.addEventsImgButtons()//POP UP
         
         
 
-    }, setupPagination(images, wrapper, numOfImagesPerPage) {
+    }, setupPagination(images, wrapper) {
+        let numOfImagesPerPage = parseInt(this.items.value)
         wrapper.innerHTML = ""
         let page_count = Math.ceil(images.length / numOfImagesPerPage)
         if(page_count == 1){
-            let btn = this.paginationButton(page_count,images, wrapper)
+            let btn = this.paginationButton(page_count,images)
             wrapper.appendChild(btn)
         }else{
             for (let i = 1; i < page_count + 1; i++) {
-                let btn = this.paginationButton(i, images, wrapper)
+                let btn = this.paginationButton(i, images)
                 wrapper.appendChild(btn)
             }
         }
@@ -101,10 +106,11 @@ const createCardsService = {
         }
         button.addEventListener("click", function (event) {
             currentPage = page
-            createCardsService.createCards(images, items, currentPage)
+            createCardsService.createCards(images, currentPage)
             let current_btn = document.querySelector('.page-numbers button.active')
             current_btn.classList.remove('active')
             event.target.classList.add('active')
+            current_btn.style.color = "red"
 
         })
         return button
@@ -115,6 +121,7 @@ const createCardsService = {
 const imageFilterService = {
     categoryFilter: document.getElementById("categorySelect"),
     stockFilter: document.getElementById("filterStock"),
+    items: document.getElementById("itemsPerPAge"),
 
     listenToCategoryFilter: (data) => {
         imageFilterService.categoryFilter.addEventListener("change", async function () {
@@ -147,7 +154,7 @@ const imageFilterService = {
         }
 
         imageFilterService.listenToStockFilter(filteredImages)
-        createCardsService.createCards(filteredImages, items, currentPage);
+        createCardsService.createCards(filteredImages, currentPage);
     },
     filterImagesStock: async function(data){
         let filteredImages
@@ -158,7 +165,21 @@ const imageFilterService = {
             let images = await fetchDataService.getImg() 
             filteredImages = images.filter(i=> i.category === imageFilterService.categoryFilter.value)
         }
-        createCardsService.createCards(filteredImages, items, currentPage);
+        createCardsService.createCards(filteredImages, currentPage);
+    },
+    listenItemsPerPage: function(data){
+        this.items.addEventListener("change", function(){
+            if(imageFilterService.categoryFilter.value !== "default"){
+                let images = data.filter(i=> i.category == imageFilterService.categoryFilter.value)
+                if(imageFilterService.stockFilter ==="available"){
+                    let availableImg = images.filter(i=>i.stock === true)
+                    createCardsService.createCards(availableImg, currentPage);
+                }
+                createCardsService.createCards(images, currentPage);
+            }
+            createCardsService.createCards(data, currentPage);
+            
+        })
     }
 };
 
@@ -171,7 +192,7 @@ const categoriesService = {
             categoriesService.descendingBtn.classList.remove('activeBtn')
             this.classList.add("activeBtn")
             const arraySorted = data.sort(function (a, b) { return a.price - b.price });
-            createCardsService.createCards(arraySorted, items, currentPage)
+            createCardsService.createCards(arraySorted, currentPage)
         })
     },
     addDescEvent: function (data) {
@@ -179,7 +200,7 @@ const categoriesService = {
             categoriesService.ascendingBtn.classList.remove('activeBtn')
             this.classList.add("activeBtn")
             const arraySorted = data.sort(function (a, b) { return b.price - a.price })
-            createCardsService.createCards(arraySorted, items, currentPage)
+            createCardsService.createCards(arraySorted, currentPage)
         })
     }
 
@@ -205,7 +226,7 @@ const searchInputService = {
                     } else {
                         imageFilterService.categoryFilter.value = ("")
                         imageFilterService.stockFilter.value = ('default')
-                        createCardsService.createCards(searchedItems, items, currentPage)
+                        createCardsService.createCards(searchedItems, currentPage)
                         searchInputService.searchInput.value = ""
                         
                     }
@@ -336,3 +357,4 @@ function showPopup(imageData) {
     });
 
 }
+
