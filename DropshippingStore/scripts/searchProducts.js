@@ -51,7 +51,7 @@ const createCardsService = {
                             <p class="card__description">${images[i].category}</p>
                             <p class="img-price">${images[i].price}$</p>
                             <div class="buttonsContainer" id='${images[i].id}' data-item='${JSON.stringify(images[i])}'>
-                                <p class="details__button"><img src='./icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
+                                <p class="details__button"><img src='../icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
                             </div>
                         </div>
                         
@@ -62,7 +62,7 @@ const createCardsService = {
 
             if (images[i].stock == true) {
                 let parentDiv = document.getElementById(`${images[i].id}`)
-                parentDiv.innerHTML += `<p class="card__button"><img src="./icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
+                parentDiv.innerHTML += `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
             }
 
         }
