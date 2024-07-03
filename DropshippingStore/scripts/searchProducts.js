@@ -1,4 +1,6 @@
+let currentPage=1
 document.addEventListener('DOMContentLoaded', async function(){
+    
     let data = await fetchDataService.getImg()
     let copyData = [...data]
     searchInputService.addSearchEvent(copyData)
@@ -33,24 +35,31 @@ let fetchDataService = {
 
 const createCardsService = {
     divShowingCards: document.getElementById("cardContainer"),
-    createCards: function (images) {
-        this.divShowingCards.innerHTML = "";
+    pageNumber: document.getElementById("pagination"),
+    createCards: function (images, page) {
+        this.pageNumber.style.display = "flex"
         this.divShowingCards.style.display = "grid"
-        for (let i = 0; i < images.length; i++) {
+        let numOfImagesPerPage = 4
+        this.divShowingCards.innerHTML = "";
+        page--;
+        let start = numOfImagesPerPage * page
+        let end = start + numOfImagesPerPage
+        let pagginatedItems = images.slice(start, end)
+        for (let i = 0; i < pagginatedItems.length; i++) {
 
             this.divShowingCards.innerHTML += `
              <article class="card" >
                 <img
                 class="card__background"
-                src=${images[i].imageUrl}
-                alt=${images[i].type}
+                src=${pagginatedItems[i].imageUrl}
+                alt=${pagginatedItems[i].type}
                 width="1920"
                 height="2193"/>
                     <div class="card__content | flow" id='card__content'>
                         <div class="card__content--container | flow">
-                            <p class="card__description">${images[i].category}</p>
-                            <p class="img-price">${images[i].price}$</p>
-                            <div class="buttonsContainer" id='${images[i].id}' data-item='${JSON.stringify(images[i])}'>
+                            <p class="card__description">${pagginatedItems[i].category}</p>
+                            <p class="img-price">${pagginatedItems[i].price}$</p>
+                            <div class="buttonsContainer" id='${pagginatedItems[i].id}' data-item='${JSON.stringify(pagginatedItems[i])}'>
                                 <p class="details__button"><img src='../icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
                             </div>
                         </div>
@@ -60,18 +69,50 @@ const createCardsService = {
            
             `;
 
-            if (images[i].stock == true) {
-                let parentDiv = document.getElementById(`${images[i].id}`)
+            if (pagginatedItems[i].stock == true) {
+                let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
                 parentDiv.innerHTML += `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
             }
 
         }
         addToCartService.addEventsAddToCart()
+        this.setupPagination(images, this.pageNumber)
         popUpImagesService.addEventsImgButtons()//POP UP
+        this.pageNumber.classList.remove('hidden')
+        
 
+    }, setupPagination(images, wrapper) {
+        let numOfImagesPerPage = 4
+        wrapper.innerHTML = ""
+        let page_count = Math.ceil(images.length / numOfImagesPerPage)
+        if(page_count == 1){
+            let btn = this.paginationButton(page_count,images)
+            wrapper.appendChild(btn)
+        }else{
+            for (let i = 1; i < page_count + 1; i++) {
+                let btn = this.paginationButton(i, images)
+                wrapper.appendChild(btn)
+            }
+        }
+        
+    },
+    paginationButton: function (page, images) {
+        let button = document.createElement('button')
+        button.innerText = page
+        if (currentPage == page) {
+            button.classList.add("active")
+        }
+        button.addEventListener("click", function (event) {
+            currentPage = page
+            createCardsService.createCards(images, currentPage)
+            let current_btn = document.querySelector('.page-numbers button.active')
+            current_btn.classList.remove('active')
+            event.target.classList.add('active')
+            current_btn.style.color = "red"
+
+        })
+        return button
     }
-
-
 
 }
 const addToCartService = {
@@ -174,12 +215,18 @@ const searchInputService = {
                 if (event.code === 'Enter') {
                     const searchedItems = searchInputService.searchDB(data)
                     searchInputService.searchInput.value = '';
+                    let header = document.getElementById('searchItem')
+                    createCardsService.divShowingCards.scrollIntoView()
                     if (searchedItems.length == 0) {
                         const divNoItems = document.getElementById("noItemsFound")
+                        createCardsService.divShowingCards.style.display="none"
+                        createCardsService.pageNumber.style.display = "none"
+                        divNoItems.scrollIntoView()
                         divNoItems.style.display = "block"
-                        setTimeout(() => { divNoItems.style.display = "none" }, 4000)
+                        setTimeout(() => { divNoItems.style.display = "none" },                      5000)
                     } else {
-                        createCardsService.createCards(searchedItems)
+                        currentPage = 1
+                        createCardsService.createCards(searchedItems, currentPage)
                     }
                 }
             })
