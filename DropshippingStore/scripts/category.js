@@ -169,15 +169,21 @@ const imageFilterService = {
     },
     listenItemsPerPage: function(data){
         this.items.addEventListener("change", function(){
-            if(imageFilterService.categoryFilter.value !== "default"){
+            if(imageFilterService.categoryFilter.value !== "default" && imageFilterService.stockFilter ==="available"){
                 let images = data.filter(i=> i.category == imageFilterService.categoryFilter.value)
-                if(imageFilterService.stockFilter ==="available"){
-                    let availableImg = images.filter(i=>i.stock === true)
-                    createCardsService.createCards(availableImg, currentPage);
-                }
+                let availableImg = images.filter(i=>i.stock === true)
+                createCardsService.createCards(availableImg, currentPage);
+                
+            }else if(imageFilterService.categoryFilter.value !== "default" && imageFilterService.stockFilter !=="available"){
+                let images = data.filter(i=> i.category == imageFilterService.categoryFilter.value)
+                createCardsService.createCards(images, currentPage);
+            }else if(imageFilterService.categoryFilter.value == "default" && imageFilterService.stockFilter !=="available"){
+                createCardsService.cardsDefault(data, currentPage)
+
+            }else if(imageFilterService.categoryFilter.value == "default" && imageFilterService.stockFilter =="available"){
+                let images = data.filter(i=>i.stock === true)
                 createCardsService.createCards(images, currentPage);
             }
-            createCardsService.createCards(data, currentPage);
             
         })
     }
