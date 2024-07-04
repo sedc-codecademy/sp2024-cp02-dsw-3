@@ -169,20 +169,23 @@ const imageFilterService = {
     },
     listenItemsPerPage: function(data){
         this.items.addEventListener("change", function(){
-            if(imageFilterService.categoryFilter.value !== "default" && imageFilterService.stockFilter ==="available"){
+            if(imageFilterService.categoryFilter.value !== "default"&& imageFilterService.categoryFilter.value !== ""  && imageFilterService.stockFilter.value ==="available"){
                 let images = data.filter(i=> i.category == imageFilterService.categoryFilter.value)
                 let availableImg = images.filter(i=>i.stock === true)
                 createCardsService.createCards(availableImg, currentPage);
+                imageFilterService.stockFilter.value ="default"
                 
-            }else if(imageFilterService.categoryFilter.value !== "default" && imageFilterService.stockFilter !=="available"){
+            }else if(imageFilterService.categoryFilter.value !== "default" && imageFilterService.categoryFilter.value !== "" && imageFilterService.stockFilter.value !=="available"){
                 let images = data.filter(i=> i.category == imageFilterService.categoryFilter.value)
                 createCardsService.createCards(images, currentPage);
-            }else if(imageFilterService.categoryFilter.value == "default" && imageFilterService.stockFilter !=="available"){
+
+            }else if(imageFilterService.categoryFilter.value == "default" || imageFilterService.categoryFilter.value == "" && imageFilterService.stockFilter.value !=="available"){
                 createCardsService.cardsDefault(data, currentPage)
 
-            }else if(imageFilterService.categoryFilter.value == "default" && imageFilterService.stockFilter =="available"){
+            }else if(imageFilterService.categoryFilter.value =="" || imageFilterService.categoryFilter.value =="default"  && imageFilterService.stockFilter.value =="available"){
                 let images = data.filter(i=>i.stock === true)
                 createCardsService.createCards(images, currentPage);
+                imageFilterService.stockFilter.value="default"
             }
             
         })
