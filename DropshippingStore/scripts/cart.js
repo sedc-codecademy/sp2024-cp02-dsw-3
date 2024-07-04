@@ -1,39 +1,3 @@
-let items = [
-  {
-    id: "1",
-    imageUrl:
-      "https://img.freepik.com/free-photo/abstract-beauty-vibrant-colors-paints-sensuality-generated-by-ai_188544-30274.jpg?t=st=1716917774~exp=1716921374~hmac=f19eb64429cda8b0918ccebbd4db99d29c683ef9fab538324c93457be2882eb1&w=2000",
-    category: "Acrylic",
-    price: 10,
-    discPrice: 7,
-  },
-  {
-    id: "2",
-    imageUrl:
-      "https://img.freepik.com/free-photo/abstract-painting-grunge-canvas-texture-colorful-background-concept_53876-132509.jpg?w=2000",
-    category: "Oil",
-    price: 15,
-    discPrice: 10,
-  },
-  {
-    id: "3",
-    imageUrl:
-      "https://img.freepik.com/free-photo/abstract-beauty-vibrant-colors-paints-sensuality-generated-by-ai_188544-30274.jpg?t=st=1716917774~exp=1716921374~hmac=f19eb64429cda8b0918ccebbd4db99d29c683ef9fab538324c93457be2882eb1&w=2000",
-    category: "Acrylic",
-    price: 10,
-    discPrice: null,
-  },
-  {
-    id: "4",
-    imageUrl:
-      "https://img.freepik.com/free-photo/abstract-painting-grunge-canvas-texture-colorful-background-concept_53876-132509.jpg?w=2000",
-    category: "Oil",
-    price: 15,
-    discPrice: null,
-  },
-];
-
-localStorage.setItem("cart-items", JSON.stringify(items));
 document.addEventListener("DOMContentLoaded", function () {
   const displayItems = document.getElementById("displayItems");
   const totalAmount = document.getElementById("totalAmount");
