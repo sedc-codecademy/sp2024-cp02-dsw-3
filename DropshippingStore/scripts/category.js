@@ -61,12 +61,14 @@ const createCardsService = {
                             <div class="buttonsContainer" id='${pagginatedItems[i].id}' data-item='${JSON.stringify(pagginatedItems[i])}'>
                                 <p class="details__button"><img src='../icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
                             </div>
+
                         </div>
                         
                     </div>
             </article> 
            
             `;
+
 
             if (pagginatedItems[i].stock == true) {
                 let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
