@@ -20,6 +20,13 @@
   width: 100%;
 }
 
+#checkoutBtn:disabled {
+  background-color: #8f979f;
+  color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .searchLogo {
   display: flex;
   justify-content: space-between;

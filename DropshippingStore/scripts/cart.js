@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const displayItems = document.getElementById("displayItems");
   const totalAmount = document.getElementById("totalAmount");
   let items = JSON.parse(localStorage.getItem("cart-items")) || [];
+  const checkoutBtn = document.getElementById("checkoutBtn");
+
   function displayCartItems() {
     if (items.length > 0) {
       const itemsDisplay = items
@@ -26,8 +28,10 @@ document.addEventListener("DOMContentLoaded", function () {
         .join("");
 
       displayItems.innerHTML = itemsDisplay;
+      checkoutBtn.disabled = false;
     } else {
       displayItems.innerHTML = '<p class="noItems">No items in the cart</p>';
+      checkoutBtn.disabled = true;
     }
 
     calculateTotalAmount();

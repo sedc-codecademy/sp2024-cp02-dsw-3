@@ -19,6 +19,12 @@ body {
   box-shadow: -3px -2px 18px 0px #000000;
 }
 
+.error-message {
+  color: red;
+  font-size: 8px;
+  margin-top: 5px;
+}
+
 .window {
   display: none;
   position: fixed;
