@@ -31,7 +31,6 @@ function scrollGallery(distance) {
   }
 }
 
-// Usage example:
 function scrollR() {
   scrollGallery(500);
 }
@@ -62,6 +61,11 @@ document.addEventListener("DOMContentLoaded", function() {
               img.src = image.imageUrl;
               img.width = 700;
               img.height = 700;
+
+              img.addEventListener("click", function() {
+                window.location.href = "../templates/categoryPage.html";
+            });
+
               figure.appendChild(img);
 
               const figcaption = document.createElement("figcaption");
