@@ -285,10 +285,13 @@ const addToCartService = {
 
     }, cartEvent: function (img) {
         let items = JSON.parse(localStorage.getItem("cart-items")) || []
-        items.push(img)
-        localStorage.setItem("cart-items", JSON.stringify(items))
-        itemsInCart.displayItems()
-        console.log(items)
+        let check = items.find(i=> i.id ==img.id)
+        if(!check){
+            items.push(img)
+            localStorage.setItem("cart-items", JSON.stringify(items))
+            itemsInCart.displayItems()
+            console.log(items)
+        }
 
     }
 }
