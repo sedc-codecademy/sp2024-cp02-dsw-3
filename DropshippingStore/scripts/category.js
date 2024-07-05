@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 let fetchDataService = {
     getImg: async function () {
         try {
-            let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
+            let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/development/DropshippingStore/images.json'
             let res = await fetch(url)
             let data = await res.json()
 
@@ -36,6 +36,12 @@ const createCardsService = {
         categoriesService.addDescEvent(data)
 
 
+    },
+    itemsCart: function(item){
+        let itemsInCart = JSON.parse(localStorage.getItem("cart-items")) || []
+        console.log(itemsInCart, "itemsInCart")
+        let img = itemsInCart.find(i=>i.id==item.id)
+        return img
     },
     createCards: function (images, page) {
         let numOfImagesPerPage = parseInt(this.items.value)
@@ -69,8 +75,8 @@ const createCardsService = {
            
             `;
 
-
-            if (pagginatedItems[i].stock == true) {
+            let cart = createCardsService.itemsCart(pagginatedItems[i])
+            if (pagginatedItems[i].stock == true  && !cart) {
                 let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
                 parentDiv.innerHTML += `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
             }
@@ -279,10 +285,13 @@ const addToCartService = {
 
     }, cartEvent: function (img) {
         let items = JSON.parse(localStorage.getItem("cart-items")) || []
-        items.push(img)
-        localStorage.setItem("cart-items", JSON.stringify(items))
-        itemsInCart.displayItems()
-        console.log(items)
+        let check = items.find(i=> i.id ==img.id)
+        if(!check){
+            items.push(img)
+            localStorage.setItem("cart-items", JSON.stringify(items))
+            itemsInCart.displayItems()
+            console.log(items)
+        }
 
     }
 }
@@ -315,7 +324,9 @@ const popUpImagesService = {
                     showPopup(imageData);
                 }
                 let cardBtn = document.getElementById(`${imageData.id}`).children[1]
-                if (imageData.stock === true && cardBtn.style.display!=='none') {
+                let cart = createCardsService.itemsCart(imageData)
+                if (imageData.stock === true && !cart) {
+                    // cardBtn.style.display!=='none'
                     let btn = document.getElementById('add')
                     btn.style.display = "flex"
                     btn.addEventListener("click", function (event) {

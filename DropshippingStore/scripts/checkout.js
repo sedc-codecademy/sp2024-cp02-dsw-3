@@ -66,10 +66,18 @@ document.addEventListener("DOMContentLoaded", function () {
   closeWindowBtn.addEventListener("click", function () {
     successWindow.style.display = "none";
     checkoutForm.reset();
+    clearCartItems();
+    window.location.href = "./home.html";
   });
 
   okButton.addEventListener("click", function () {
     successWindow.style.display = "none";
     checkoutForm.reset();
+    clearCartItems();
+    window.location.href = "./home.html";
   });
+
+  function clearCartItems() {
+    localStorage.removeItem("cart-items");
+  }
 });
