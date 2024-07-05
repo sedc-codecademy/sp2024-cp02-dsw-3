@@ -49,9 +49,8 @@ body, input, textarea {
 }
 
 .logoImg{
-    width: 53px;
-    height: 40px;
-    /* border-radius: 40% 40% 30%; */
+    width: 80px;
+    height: 55px;
 }
 
 h4{
@@ -359,7 +358,7 @@ hr{
 }
 
 .contact-form {
-    background-color: rgb(194, 142, 142);
+    background-color: rgba(197, 105, 105, 0.502);
     position: relative;
 
 }
