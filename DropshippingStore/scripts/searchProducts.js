@@ -21,7 +21,7 @@ const itemsInCart = {
 let fetchDataService = {
     getImg: async function () {
         try {
-            let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/feature/T8/category-page/DropshippingStore/images.json'
+            let url = 'https://raw.githubusercontent.com/sedc-codecademy/sp2024-cp02-dsw-3/development/DropshippingStore/images.json'
             let res = await fetch(url)
             let data = await res.json()
 
@@ -36,6 +36,12 @@ let fetchDataService = {
 const createCardsService = {
     divShowingCards: document.getElementById("cardContainer"),
     pageNumber: document.getElementById("pagination"),
+    itemsCart: function(item){
+        let itemsInCart = JSON.parse(localStorage.getItem("cart-items")) || []
+        console.log(itemsInCart, "itemsInCart")
+        let img = itemsInCart.find(i=>i.id==item.id)
+        return img
+    },
     createCards: function (images, page) {
         this.pageNumber.style.display = "flex"
         this.divShowingCards.style.display = "grid"
@@ -68,8 +74,8 @@ const createCardsService = {
             </article> 
            
             `;
-
-            if (pagginatedItems[i].stock == true) {
+            let cart = createCardsService.itemsCart(pagginatedItems[i])
+            if (pagginatedItems[i].stock == true && !cart) {
                 let parentDiv = document.getElementById(`${pagginatedItems[i].id}`)
                 parentDiv.innerHTML += `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width ='38' ></p>`
             }
@@ -152,7 +158,8 @@ const popUpImagesService = {
                     showPopup(imageData);
                 }
                 let cardBtn = document.getElementById(`${imageData.id}`).children[1]
-                if (imageData.stock === true && cardBtn.style.display!=='none') {
+                let cart = createCardsService.itemsCart(imageData)
+                if (imageData.stock === true && !cart) {
                     let btn = document.getElementById('add')
                     btn.style.display = "flex"
                     btn.addEventListener("click", function (event) {
