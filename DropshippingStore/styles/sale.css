@@ -52,6 +52,7 @@ body {
 
 .logo {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 20px;
@@ -198,12 +199,12 @@ hr {
     gap: 1px;
 }
 
-.cart-icon {
+/* .cart-icon {
     display: flex;
     gap: 1px;
     width: 35px;
     height: 30px;
-}
+} */
 
 .second-nav {
     padding: 0px;

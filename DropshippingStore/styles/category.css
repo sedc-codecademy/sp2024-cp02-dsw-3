@@ -60,14 +60,9 @@ body {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    gap: 20px
 }
 
-.logoNav {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-}
 
 .navbar-brand {
     width: 80px;
