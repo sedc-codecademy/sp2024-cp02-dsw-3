@@ -20,8 +20,8 @@
             <div class="first-nav-container">
                 <div class="searchLogo">
                     <div class="logo">
-                        <a href="#">
-                            <img src="../icons/art-icon-1091.png" class="logoImg" alt="Logo">
+                        <a href="../templates/home.html">
+                            <img src="../icons/art-whiteTxt.png" class="logoImg" alt="Logo">
 
                         </a>
                         <h4>AIArt</h4>
@@ -41,16 +41,16 @@
                             <a href="../templates/cartPage.html" class="nav-link cart-icon" id="cart">
                                 <img src="../icons/icons8-cart-48.png" alt="Shopping cart logo" srcset=""
                                     class="cart-icon">
-                                <small id="cart-count" class=" cart-count">0</small>
+                                <p id="cart-count" class=" cart-count">0</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#"><img src="../icons/icons8-log-in-32.png"
+                            <a class="nav-link" aria-current="page" href="../templates/loginPage.html"><img src="../icons/icons8-log-in-32.png"
                                     alt="Login icon" width="25" height="23" srcset=""><span> Log In</span></a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><img src="../icons/icons8-account-32.png" alt="Sing up icon"
+                            <a class="nav-link" href="../templates/singUp.html"><img src="../icons/icons8-account-32.png" alt="Sing up icon"
                                     srcset="" width="25" height="23"><span> Sing up</span></a>
                         </li>
 
@@ -74,11 +74,11 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav navPages">
-                        <a class="nav-link second-nav-links" href="#">Home</a>
+                        <a class="nav-link second-nav-links" href="../templates/home.html">Home</a>
                         <a class="nav-link second-nav-links" href="#">Categories</a>
-                        <a class="nav-link second-nav-links" href="#">Sale</a>
-                        <a class="nav-link second-nav-links" href="#">About us</a>
-                        <a class="nav-link second-nav-links" href="#">Contact</a>
+                        <a class="nav-link second-nav-links" href="../templates/salePage.html">Sale</a>
+                        <a class="nav-link second-nav-links" href="../templates/aboutus.html">About us</a>
+                        <a class="nav-link second-nav-links" href="../templates/contactUsPage.html">Contact</a>
                     </div>
                 </div>
             </div>
@@ -87,11 +87,16 @@
 
 
     <section>
-        <!-- Gallery -->
+        <!-- first part of page -->
         <div class="galleryWrapper">
-            <div class="gallery-container">
-                <h1>Gallery</h1>
-                <div class="gallery-wrap" id="gallery"></div>
+            <div class="txt">
+                <h2>Welcome to AiArt!</h2>
+            <p>Discover a new world of creativity with AiArt, where  emerging artists harness the power of AI tools tho create stunning, unique artworks. Each piece you see here is a testament to the innovative fusion of human imagination and cutting-edge technology. Support these talented creators by purchasing their AI-generated masterpieces and become a part of the art revolution. Explore our collection and find your next favorite piece today!</p>
+            </div>
+
+            <div class="img-con">
+                <img src="../images/1_ce6Mx0rTRcy3E2H0ry3vGQ-removebg-preview.png" alt="" srcset="" >
+                
             </div>
         </div>
         <!-- Filter and sort buttons -->
@@ -134,6 +139,7 @@
                     <h2 class="offcanvasHeading">Browse products</h2>
                     <div class="select-div">
                         <select class="form-select" id="categorySelect">
+                            <option value="" selected disabled hidden>Choose category</option>
                             <option value="default">All categories</option>
                             <option value="Acrylic painting">Acrylic</option>
                             <option value="Art & Designs">Art & Design</option>
@@ -153,6 +159,17 @@
                         <select class="form-select" id="filterStock">
                             <option value="default">See all products</option>
                             <option value="available">See available</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <select class="form-select" id="itemsPerPAge">
+                            <option value="12" selected disabled hidden>Products per page</option>
+                            <option value="12">12</option>
+                            <option value="16">16</option>
+                            <option value="20">20</option>
+                            <option value="24">24</option>
                         </select>
 
                     </div>
@@ -181,7 +198,7 @@
                 autoplay></dotlottie-player>
         </div>
 
-
+        <h4 id="searchedProducts" style="display: none;">Searched products:</h4>
         <!-- Cards -->
         <div class="card-img" id="cardContainer"></div>
         <!-- Page Numbers -->
@@ -190,27 +207,35 @@
         <!-- POP UP -->
 
         <div class="popup-container">
-            <div id="image-container"></div>
             <div id="popup" class="hidden">
                 <div id="popup-content">
-                    <div class="imageDiv">
-                        <img id="popup-image" src="" alt="Popup Image" class="popup-image">
-                    </div>
-                    <hr>
-                    <div class="infoPopup">
-                        <div class="txtDiv" id="txtDiv">
 
-                            <p id="popup-text"></p>
-                            <div id="btnDiv">
-                                <button class="add" id="add">Add to cart</button>
-                            </div>
-                            
+                    <div class="popup-header" id="popup-header"> </div>
+                    <div class="pop-wrapper">
+                        <div class="imageDiv">
+                            <img id="popup-image" src="" alt="Popup Image" class="popup-image">
                         </div>
-                        <img src="../icons/art.png" alt="" srcset="" width="60" class="logoPopup">
+
+                        <div class="infoPopup">
+                            <div class="txtDiv" id="txtDiv">
+
+                                <div id="popup-text" class="popup-text"></div>
+                                <div id="btnDiv">
+                                    <p class="add" id="add"><img src="../icons/icons8-add-to-cart-black.png" alt="Add to cart"></p>
+                                </div>
+
+
+                            </div>
+
+
+                        </div>
+
+                        <span id="popup-close">&times;</span>
                     </div>
-                    <span id="popup-close">&times;</span>
+
                 </div>
             </div>
+        </div>
     </main>
 
 
@@ -225,7 +250,107 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.lordicon.com/lordicon.js"></script>
     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script>
-    <script type="module" src="../scripts/category.js"></script>
+    <script src="../scripts/category.js"></script>
+
+
+    <footer class=" text-center text-lg-start ">
+
+        <div class="container p-4">
+
+            <div class="row my-4 ">
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0 align-items-center justify-content-center">
+
+                    <div class="  shadow-1-strong d-flex align-items-center justify-content-center mb-4 mx-auto"
+                        style="width: 150px; height: 120px;">
+                        <img src="../icons/art-whiteTxt.png" height="60" alt=""
+                            style="width:150px; height: fit-content;" loading="lazy" />
+                    </div>
+
+                    <p class="text-center">A place where you can create stunning AI-generated images effortlessly</p>
+
+                    <ul class="list-unstyled d-flex flex-row justify-content-center">
+                        <li>
+                            <a href="https://www.facebook.com/people/Qinshift/100091645631435/"><img
+                                    src="../icons/facebook.png" alt="Facebook Logo"
+                                    style=" height: 34px; width: 34px; margin-right: 10px;"></a>
+                        </li>
+                        <li>
+                            <a href="https://x.com/qinshift"><img src="../icons/twitter.png" alt="X logo"
+                                    style=" height: 34px; width: 34px; margin-right: 10px;"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.instagram.com/qinshift/"><img src="../icons/instagram.png"
+                                    alt="Instagram Logo" style=" height: 34px; width: 34px;"></a>
+                        </li>
+                        <li>
+                            <a href="https://www.linkedin.com/company/qinshift/"><img src="../icons/linkedin.png"
+                                    alt="Linkedin Logo" style=" height: 34px; width: 34px;"></a>
+                        </li>
+                    </ul>
+                </div>
+
+                
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Information</h5>
+
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="aboutus.html"  class="text-white" style="text-decoration: none;">About us</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="aboutus.html" class="text-white" style="text-decoration: none;">Our mission</a>
+                        </li>
+                        <li class="mb-2">
+                            <a href="aboutus.html" class="text-white" style="text-decoration: none;">What we offer
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-4">Contact</h5>
+
+                    <ul class="list-unstyled">
+
+                        <li class="mb-2">
+                            <a href="contactUs.html" class="text-white" style="text-decoration: none;">Write us here
+                            </a>
+                        </li>
+                        <li class="mb-2">
+                            <p class="text-white" style="text-decoration: none;">Qinshift, bb Street, Skopje
+                            </p>
+                        </li>
+                        <li class="mb-2">
+                            <p class="text-white" style="text-decoration: none;">+389 234 567
+                            </p>
+                        </li>
+                        <li class="mb-2">
+                            <p class="text-white" style="text-decoration: none;">qinshift@example.com
+                            </p>
+                        </li>
+                       
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0" >
+                    <h5 class="text-uppercase mb-4">Create account</h5>
+
+                    <ul class="list-unstyled">
+                        <li class="mb-2">
+                            <a href="singUp.html" class="text-white" style="text-decoration: none;">Sing up</a>
+                        </li>
+                    </ul>
+
+                 </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+            © 2024 Copyright:
+            <a class="text-white" href="../index.html">ArtShop</a>
+        </div>
+    </footer>
 </body>
 
 </html>
