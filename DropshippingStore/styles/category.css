@@ -27,6 +27,11 @@ body {
 
 
 /* NAVBAR */
+
+.active {
+    background-color: red;
+}
+
 .navigation-bar {
     display: flex;
     width: 100%;
@@ -52,13 +57,18 @@ body {
 
 .logo {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoNav {
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
 }
-.active{
-    background-color: red;
-}
+
 .navbar-brand {
     width: 80px;
     height: 65px;
@@ -140,7 +150,7 @@ hr {
     margin: 0;
 }
 
-.nav-item {
+.list-cart {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -152,13 +162,44 @@ hr {
     border-radius: 10px;
 }
 
-
-.cart-icon {
+.list-cart a {
     display: flex;
-    gap: 1px;
+    align-items: center;
+
+}
+
+.nav-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration: none;
+    list-style: none;
+    padding: 0px;
+    background-color: #474747;
+    border-radius: 10px;
+}
+
+.nav-item a {
+    padding: 4px 13px;
+}
+
+h2,
+p {
+    margin: 0;
+}
+
+.cart-icon-img {
     width: 35px;
     height: 30px;
 }
+
+.test-cart {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+}
+
 
 .second-nav {
     padding: 0px;
@@ -185,6 +226,9 @@ hr {
     border-radius: 10px;
 
 }
+
+/* END NAV BAR */
+
 
 /* END NAVBAR */
 
@@ -327,7 +371,7 @@ option {
     border: 2px solid #4747475c;
 }
 
-.activeBtn{
+.activeBtn {
     border: 2px solid #474747;
 }
 
@@ -698,16 +742,20 @@ p {
 
 
 /* FOOTER */
-footer{
+footer {
     width: 100%;
     background-color: rgb(52, 46, 46);
     color: whitesmoke;
 }
-.text-white, .mb-2, .text-uppercase{
+
+.text-white,
+.mb-2,
+.text-uppercase {
     text-align: center;
     font-size: 1rem;
     font-family: "Poppins", sans-serif;
 }
+
 /* END FOOTER */
 
 
@@ -892,9 +940,9 @@ footer{
     }
 
     #popup {
-        
+
         flex-wrap: wrap;
-       
+
     }
 
     #popup-content {
@@ -988,9 +1036,9 @@ footer{
     }
 
     #popup {
-        
+
         flex-wrap: wrap;
-       
+
     }
 
     #popup-content {
@@ -1018,22 +1066,22 @@ footer{
 
     .add {
         height: 36px;
-      
+
     }
 }
 
 @media only screen and (max-width: 705px) {
-    .pop-wrapper{
+    .pop-wrapper {
         flex-direction: column;
         gap: 0px;
     }
-    
-    
+
+
     .popup-image {
         max-width: 400px;
         max-height: 300px;
     }
-    
+
 }
 
 
@@ -1067,11 +1115,11 @@ footer{
         margin: 0px;
     }
 
-   .imageDiv{
-    padding: 0px;
-    margin: 0px
-   }
-    
+    .imageDiv {
+        padding: 0px;
+        margin: 0px
+    }
+
     .popup-image {
         max-width: 450px;
         max-height: 250px;
@@ -1135,6 +1183,7 @@ footer{
         width: 100%;
         margin: 0;
     }
+
     .popup-image {
         max-width: 250px;
         max-height: 200px;
@@ -1142,7 +1191,7 @@ footer{
 }
 
 @media only screen and (max-width: 300px) {
-    .img-con img{
+    .img-con img {
         width: 150px;
         height: 150px;
     }
