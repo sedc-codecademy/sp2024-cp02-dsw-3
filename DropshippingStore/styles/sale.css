@@ -187,7 +187,16 @@ hr {
     background-color: #474747;
     border-radius: 10px;
 }
+.cart-icon-img {
+    width: 35px;
+    height: 30px;
+}
 
+.test-cart {
+    display: flex;
+    justify-content: center;
+    gap: 1px;
+}
 
 .cart-icon {
     display: flex;
