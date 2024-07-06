@@ -1143,13 +1143,13 @@ footer {
     }
 
     .logoImg {
-        width: 50px;
-        height: 40px;
-        border-radius: 20% 20% 10%;
+        width: 80px;
+        height: 60px;
+       
     }
 
     h4 {
-        font-size: 1em;
+        font-size: 2em;
 
     }
 
