@@ -234,7 +234,7 @@ const searchInputService = {
                         divNoItems.style.display = "block"
                         setTimeout(() => { divNoItems.style.display = "none" },                      5000)
                     } else {
-                        document.getElementById("main").scrollIntoView()
+                        
                         currentPage = 1
                         createCardsService.createCards(searchedItems, currentPage)
                     }

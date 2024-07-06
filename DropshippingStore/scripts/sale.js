@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (event.code === 'Enter') {
                 const searchedItems = await searchDB(url);
                 searchInput.value = '';
-
+                document.getElementsByTagName('main')[0].scrollIntoView()
                 if (searchedItems.length == 0) {
                     const divNoItems = document.getElementById("noItemsFound");
                     divNoItems.style.display = "block";
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
     addSearchEvent();
     displayUserCreds();
     logOut();
-    // updateCartBadge();
+ 
 
     document.getElementById("categorySelect").addEventListener("change", filterImages);
     document.getElementById("filterStock").addEventListener("change", filterImages);
