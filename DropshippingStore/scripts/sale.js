@@ -143,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (event.code === 'Enter') {
                 const searchedItems = await searchDB(url);
                 searchInput.value = '';
-
+                document.getElementsByTagName('main')[0].scrollIntoView()
                 if (searchedItems.length == 0) {
                     const divNoItems = document.getElementById("noItemsFound");
                     divNoItems.style.display = "block";
@@ -226,15 +226,15 @@ document.addEventListener("DOMContentLoaded", function() {
         userCreds.innerHTML += " " + "<b>" + storedData.fullName + "</b>" + " " + "with email: " + "<b>" + storedData.email + "</b>";
     }
 
-    function logOut() {
-        const logOutBtn = document.getElementById("LogOutBtn");
+    // function logOut() {
+    //     const logOutBtn = document.getElementById("LogOutBtn");
 
-        logOutBtn.addEventListener("click", () => {
-            localStorage.removeItem("user-creds");
-            localStorage.removeItem("cart-items");
-            document.location.href = "./loginPage.html";
-        });
-    }
+    //     logOutBtn.addEventListener("click", () => {
+    //         localStorage.removeItem("user-creds");
+    //         localStorage.removeItem("cart-items");
+    //         document.location.href = "./loginPage.html";
+    //     });
+    // }
 
     function getCartItems() {
         return JSON.parse(localStorage.getItem('cart-items')) || [];
@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function() {
     DscBtn(url);
     addSearchEvent();
     displayUserCreds();
-    logOut();
+    // logOut();
     // updateCartBadge();
 
     document.getElementById("categorySelect").addEventListener("change", filterImages);
