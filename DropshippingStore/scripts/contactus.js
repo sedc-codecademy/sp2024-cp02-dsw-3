@@ -1,3 +1,16 @@
+const itemsInCart = {
+    cart: document.getElementById("cart-count"),
+    displayItems: function () {
+        let storedCart = JSON.parse(localStorage.getItem("cart-items")) || []
+        this.cart.textContent = storedCart.length;
+        this.cart.style.display = storedCart.length > 0 ? 'block' : 'none';
+    }
+}
+document.addEventListener("DOMContentLoaded", function(){
+    itemsInCart.displayItems()
+})
+
+
 const inputs = document.querySelectorAll(".input");
 
 function focusFunc() {
@@ -25,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const phoneField = document.getElementById('phone');
     const messageField = document.getElementById('message');
 
-   
+
     const nameError = document.createElement('div');
     const emailError = document.createElement('div');
     const phoneError = document.createElement('div');
@@ -41,14 +54,20 @@ document.addEventListener('DOMContentLoaded', () => {
     phoneField.parentNode.appendChild(phoneError);
     messageField.parentNode.appendChild(messageError);
 
-    form.addEventListener('submit', function(event) {
+    form.addEventListener('submit', function (event) {
         event.preventDefault();
 
         // Validate the form
         if (validateForm()) {
-            feedback.textContent = 'Thank you for your message. We will get back to you shortly.';
-            feedback.style.color = 'white';
-            feedback.style.display = 'block';
+            feedback.textContent =
+                "Thank you for your message. We will get back to you shortly.";
+            feedback.style.color = "white";
+            feedback.style.display = "block";
+            feedback.style.marginLeft = "10px";
+            feedback.style.fontStyle = "italic";
+            feedback.style.marginBottom = "10px";
+            feedback.style.padding = "10px";
+            feedback.style.textShadow = "-4px -1px 7px #707070, 5px 5px 10px #765656";
             form.reset();
         }
     });
@@ -87,17 +106,17 @@ document.addEventListener('DOMContentLoaded', () => {
             emailError.textContent = '';
         }
 
-        const phonePattern = /^\d+$/;
-        if (phone === '') {
-            phoneError.textContent = 'Phone is requiwhite.';
-            phoneError.style.color = 'white';
+        const phonePattern = /^\d{9}$/;
+        if (phone === "") {
+            phoneError.textContent = "Phone is required.";
+            phoneError.style.color = "white";
             valid = false;
         } else if (!phonePattern.test(phone)) {
-            phoneError.textContent = 'Please enter a valid phone number.';
-            phoneError.style.color = 'white';
+            phoneError.textContent = "Please enter a valid phone number.";
+            phoneError.style.color = "white";
             valid = false;
         } else {
-            phoneError.textContent = '';
+            phoneError.textContent = "";
         }
 
         if (message === '') {
@@ -156,16 +175,16 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 errorElement.textContent = '';
             }
-        } else if (field.id === 'phone') {
-            const phonePattern = /^\d+$/;
+        } else if (field.id === "phone") {
+            const phonePattern = /^\d{9}$/;
             if (!phonePattern.test(value)) {
-                errorElement.textContent = 'Please enter a valid phone number.';
-                errorElement.style.color = 'white';
+                errorElement.textContent = "Please enter a valid phone number.";
+                errorElement.style.color = "white";
             } else {
-                errorElement.textContent = '';
+                errorElement.textContent = "";
             }
         } else {
-            errorElement.textContent = '';
+            errorElement.textContent = "";
         }
     }
 });

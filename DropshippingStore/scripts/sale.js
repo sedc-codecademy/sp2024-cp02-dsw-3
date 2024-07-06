@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
     let currentPage = 1;
     let allData = [];
     const cartBadge = document.getElementById("cart-count");
-
+    updateCartBadge();
     function isAuthenticated() {
         return localStorage.getItem("user-creds") !== null;
     }
@@ -41,12 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     <article class="card">
                         <div class="first">
                             <img class="card__background" src="${item.imageUrl}" alt="${item.type}" width="1920" height="2193"/>
-                            <div class="salePercentage">Sale - ${calculatePercentage(item.discPrice, item.price)}%</div>
+                            <div class="salePercentage">Sale - ${100 - calculatePercentage(item.discPrice, item.price)}%</div>
                         </div>
                         <div class="card__content | flow">
                             <div class="card__content--container | flow">
                                 <p class="card__description">${item.category}</p>
-                                <p class="img-price">${item.price}$</p>
+                                <p class="img-price">${item.discPrice}$</p>
                                 <div class="buttonsContainer" id="${item.id}" data-item='${JSON.stringify(item)}'>
                                     <p class="details__button"><img src='../icons/icons8-info-64.png' alt='info icon' width ='38'/></p>
                                     ${item.stock ? `<p class="card__button"><img src="../icons/icons8-add-to-cart-48.png" alt="Add to cart" width="38" data-item='${JSON.stringify(item)}'></p>` : ''}
@@ -117,7 +117,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const ascendingBtn = document.getElementById("lowToHigh");
         let dataDiscount = data.filter((data) => { return data.onDiscount });
         ascendingBtn.addEventListener("click", function() {
-            const arraySorted = [...dataDiscount].sort((a, b) => a.price - b.price);
+            const arraySorted = [...dataDiscount].sort((a, b) => a.discPrice - b.discPrice);
             allData = arraySorted;
             currentPage = 1;
             createCards(arraySorted);
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const descendingBtn = document.getElementById("highToLow");
         let dataDiscount = data.filter((data) => { return data.onDiscount });
         descendingBtn.addEventListener("click", function() {
-            const arraySorted = [...dataDiscount].sort((a, b) => b.price - a.price);
+            const arraySorted = [...dataDiscount].sort((a, b) => b.discPrice - a.discPrice);
             allData = arraySorted;
             currentPage = 1;
             createCards(arraySorted);
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function updateCartBadge() {
         const storedCart = JSON.parse(localStorage.getItem("cart-items")) || [];
-        cartBadge.textContent = storedCart.length;
+        cartBadge.innerText = storedCart.length;
         cartBadge.style.display = storedCart.length > 0 ? 'block' : 'none';
     }
 
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", function() {
         popupText.innerHTML = `
             <p><span>■ Description:</span> ${imageData.description}</p>
             <p><span>■ Artist:</span> ${imageData.artist.userName}</p>
-            <p><span>■ Price:</span> ${imageData.price}$</p>
+            <p><span>■ Price:</span> ${imageData.discPrice}$</p>
             <p><span>■ In Stock:</span> ${stockStatus}</p>`;
             btnDiv.innerHTML = !isInCart && imageData.stock ? `<p class="proba"><img src="../icons/icons8-add-to-cart-black.png" alt="Add to cart" width="38" data-item='${JSON.stringify(imageData)}'></p>` : '';
 
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", function() {
     addSearchEvent();
     displayUserCreds();
     logOut();
-    updateCartBadge();
+    // updateCartBadge();
 
     document.getElementById("categorySelect").addEventListener("change", filterImages);
     document.getElementById("filterStock").addEventListener("change", filterImages);

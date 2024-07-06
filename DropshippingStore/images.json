@@ -738,7 +738,7 @@
     "artist": {  "userName" :"AIArt", "userID": "AIArt"},
     "price": 25,
     "onDiscount": true,
-    "discPrice": "",
+    "discPrice": 20,
     "stock": true,
     "imageUrl": "../images/black&white/57.jpg"
 }
@@ -882,7 +882,7 @@
     "artist": { "userName" :"AIArt", "userID": "AIArt" },
     "price": 65,
     "onDiscount": true,
-    "discPrice": "",
+    "discPrice": 57,
     "stock": true,
     "imageUrl": "../images/portraits/68.jpg"
 },
