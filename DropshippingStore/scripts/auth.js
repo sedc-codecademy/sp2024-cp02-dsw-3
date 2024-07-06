@@ -17,5 +17,5 @@ const logOutBtn = document.getElementById("LogOutBtn");
 logOutBtn.addEventListener("click", () => {
     localStorage.removeItem("user-creds");
     localStorage.removeItem("cart-items");
-    document.location.href = "./loginPage.html";
+    document.location.href = "../templates/home.html";
 });
