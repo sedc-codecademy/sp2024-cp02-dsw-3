@@ -8,6 +8,6 @@ export interface Image{
     artist: Artist,
     price: number,
     stock: boolean,
-    imageUrl: string,
-    createdAt: string
+    imageUrl: string
+
 }

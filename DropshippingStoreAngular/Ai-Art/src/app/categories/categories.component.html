@@ -1,1 +1,20 @@
-<p>categories works!</p>
+<div class="categories-container">
+  <app-gallery />
+
+  <app-filters />
+
+  <app-search />
+
+  <app-card-container [products]="productStore.products()" />
+
+  <!-- <mat-paginator
+      [length]="productStore.total()"
+      [pageSize]="productStore.pageSize()"
+      [pageSizeOptions]="[12, 20, 40, 80, 120]"
+      aria-label="Select page"
+      (page)="
+        productStore.setPageSize($event.pageSize);
+        productStore.setPage($event.pageIndex)
+      "
+    /> -->
+</div>

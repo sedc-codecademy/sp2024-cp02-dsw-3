@@ -1,0 +1,71 @@
+<div class="filters">
+  <mat-accordion class="accordion">
+    <mat-expansion-panel
+      (opened)="handleAccordion()"
+      (closed)="handleAccordion()"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title> <mat-icon>tune</mat-icon> Filters</mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="inputFields">
+        <section class="inputs">
+          <mat-form-field class="select">
+            <mat-label>Category</mat-label>
+            <mat-select>
+              <mat-option value="undefined">None</mat-option>
+              @for (category of categories; track $index) {
+              <mat-option [value]="category">{{ category }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="select">
+            <mat-label>Artist</mat-label>
+            <mat-select>
+              <mat-option value="undefined">None</mat-option>
+              @for (artist of artists(); track $index) {
+              <mat-option [value]="artist">{{ artist }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </section>
+
+        <mat-radio-group
+          aria-label="Select an option"
+          class="radio"
+          (change)="handleRadioBtns($event)"
+        >
+          <mat-label>Check:</mat-label>
+          <mat-radio-button [value]="true">In stock</mat-radio-button>
+          <mat-radio-button [value]="false">Bought</mat-radio-button>
+          <mat-radio-button [value]="undefined">All</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-radio-group
+          aria-label="Select an option"
+          class="radio"
+          (change)="handleRadioBtns($event)"
+        >
+          <mat-label>Sort by:</mat-label>
+          <mat-radio-button value="price">Price</mat-radio-button>
+          <mat-radio-button value="createdAt">Date</mat-radio-button>
+          <mat-radio-button value="undefined">All</mat-radio-button>
+        </mat-radio-group>
+
+        <mat-radio-group
+          aria-label="Select an option"
+          class="radio"
+          (change)="handleRadioBtns($event)"
+        >
+          <mat-label>Sort direction:</mat-label>
+          <mat-radio-button [value]="sortDirection.ASC"
+            >Ascending</mat-radio-button
+          >
+          <mat-radio-button [value]="sortDirection.DESC"
+            >Descending</mat-radio-button
+          >
+        </mat-radio-group>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

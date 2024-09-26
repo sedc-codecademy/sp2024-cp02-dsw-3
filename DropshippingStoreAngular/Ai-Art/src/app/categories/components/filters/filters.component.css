@@ -1,0 +1,21 @@
+.filters{
+    padding: 40px;
+}
+
+.inputFields{
+    display: flex;
+    justify-content: center;
+    gap: 150px;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+}
+.radio{
+    display: flex;
+    flex-direction: column;
+}
+.select
+{
+    height: 65px;
+}

@@ -1,1 +1,30 @@
-<p>cart works!</p>
+<!-- @switch (stepperOrientation | async) { @case ('horizontal') { } @case
+('vertical') { } } -->
+
+<div class="container">
+  <mat-stepper orientation="horizontal" #stepper class="stepper">
+    <mat-step label="Check your products" class="column">
+      <!-- <div class="component"> -->
+      <app-cart-table />
+      <!-- </div> -->
+
+      <div>
+        <button mat-flat-button matStepperNext>Next</button>
+      </div>
+    </mat-step>
+
+    <mat-step class="column">
+      <ng-template matStepLabel>Checkout</ng-template>
+      <div class="component">
+        <app-cart-form />
+      </div>
+
+      <div>
+        <button mat-flat-button matStepperPrevious type="button">Back</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>
+<!-- <button mat-button (click)="stepper.reset()">
+            Back to your products
+          </button> -->
