@@ -1,0 +1,18 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-right: 40px;
+    
+}
+p{
+    font-family: "Inconsolata", monospace;
+}
+.btn{
+    display: flex;
+    justify-content: center;
+}
+.prompt{
+    width: 100%;
+}

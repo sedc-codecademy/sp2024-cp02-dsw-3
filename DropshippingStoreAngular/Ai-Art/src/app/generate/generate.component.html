@@ -1,1 +1,14 @@
-<p>generate works!</p>
+<mat-tab-group dynamicHeight class="tabs">
+  <mat-tab label="Short tab">
+    <h6 class="heading">Ai image generator</h6>
+    <div class="first">
+      <img src="ai-generate.png" width="400px" height="400px" />
+      <div class="test">
+        <app-prompt />
+      </div>
+    </div>
+  </mat-tab>
+  <mat-tab label="Long tab" [disabled]="secondTab()">
+    <div class="example-large-box mat-elevation-z4">Large content</div>
+  </mat-tab>
+</mat-tab-group>
