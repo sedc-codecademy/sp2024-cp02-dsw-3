@@ -8,9 +8,13 @@
   </p>
   <mat-form-field class="example-full-width prompt">
     <mat-label>Write your inspirations...</mat-label>
-    <textarea matInput placeholder="Ex. It makes me feel..."></textarea>
+    <textarea
+      matInput
+      [(ngModel)]="value"
+      placeholder="Ex. something..."
+    ></textarea>
   </mat-form-field>
   <div class="btn">
-    <button mat-stroked-button>Create</button>
+    <button mat-stroked-button (click)="handleCreate()">Create</button>
   </div>
 </section>

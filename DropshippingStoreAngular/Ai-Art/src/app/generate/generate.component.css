@@ -1,21 +1,19 @@
-.tabs{
-    margin:40px;
-    background: linear-gradient(to left top, #000 10%, #291d37 100%) content-box;
-    border-radius: 5%;
-    box-shadow: 0 0 10px rgba(220, 210, 210, 0.507);
+.container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    
 }
 
 
-/* .example-small-box,
-.example-large-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    margin: 16px;
-    padding: 16px;
-    border-radius: 8px;
-} */
+.tabs{
+    margin-top:40px;
+    background: linear-gradient(to left top, #000 10%, #291d37 100%) content-box;
+    border-radius: 5%;
+    box-shadow: 0 0 10px rgba(220, 210, 210, 0.507);
+    width: 70%;
+}
+
 .heading{
     text-align: center;
     margin: 40px;
