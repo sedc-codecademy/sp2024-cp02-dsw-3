@@ -2,16 +2,20 @@
   <mat-tab-group dynamicHeight class="tabs">
     <mat-tab label="Short tab">
       <h6 class="heading">Ai image generator</h6>
+      @if (image()) {
+      <h3 class="heading">Your image is generated</h3>
+      }
+
       <div class="first">
         <img src="ai-generate.png" width="400px" height="400px" />
         <div class="test">
-          <app-prompt />
+          <app-prompt (isCreated)="this.image.set($event)" />
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Long tab">
+    <mat-tab label="Long tab" [disabled]="!image()">
       <div class="secondTab">
-        <app-list-image-form [image]="image()" />
+        <app-list-image-form />
       </div>
     </mat-tab>
   </mat-tab-group>

@@ -1,4 +1,5 @@
-import { Component, input } from '@angular/core';
+import { Component, inject, input } from '@angular/core';
+import { AppStore } from '../../../store/app.store';
 
 @Component({
   selector: 'app-list-image-form',
@@ -8,5 +9,6 @@ import { Component, input } from '@angular/core';
   styleUrl: './list-image-form.component.css'
 })
 export class ListImageFormComponent {
-  image= input.required<string>()
+  appStore = inject(AppStore)
+  
 }

@@ -44,7 +44,7 @@ const defaultState: AppStates = {
     isAuth: false,
     createdImage: '',
     prompt: '',
-    user: undefined
+    user: undefined,
 }
 
 export const AppStore = signalStore(
@@ -63,6 +63,8 @@ export const AppStore = signalStore(
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
+        setCreatedImage: (createdImage:string)=>{patchState(state, {createdImage})},
+        setPrompt: (prompt:string)=>{patchState(state, {prompt})},
         reset: ()=>{
             patchState(state,{
                 page: 0,
