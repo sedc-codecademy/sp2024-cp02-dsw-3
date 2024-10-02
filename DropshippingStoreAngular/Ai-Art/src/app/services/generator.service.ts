@@ -52,7 +52,7 @@ export class GeneratorService {
         return of(null)
       })
     );
-    console.log(response)
+   
     return response;
   }
 }

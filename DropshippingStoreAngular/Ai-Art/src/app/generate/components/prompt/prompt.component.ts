@@ -26,43 +26,6 @@ export class PromptComponent {
   image: any
   constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,) { }
 
-  // generateImage() {
-
-
-
-  // Make the request using the modified sendGenerationRequest, and handle it with .then() and .catch()
-  //   this.generatorService.sendGenerationRequest(this.value)
-  //     .then((data) => {
-  //       if (data?.image) {
-  //         this.response.set(data.image); // Adjust according to your actual response
-
-  //         // Fetch the image if the response contains the image URL
-  //         fetch(data.image)
-  //           .then(response => {
-  //             if (!response.ok) {
-  //               throw new Error('Network response was not ok');
-  //             }
-  //             return response.blob(); // Convert response to Blob
-  //           })
-  //           .then(blob => {
-  //             const imageUrl = URL.createObjectURL(blob); // Create an Object URL for the Blob
-  //             this.response.set(imageUrl); // Set the new image URL in response
-  //           })
-  //           .catch(error => {
-  //             console.error('Error fetching image:', error);
-  //           });
-  //       } else {
-  //         console.error('No image URL in response');
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error generating image:', error);
-  //     });
-  // }
-
-
-  // }
-
   generateImage() {
 
     this.subscription = this.generatorService.sendGenerationRequest(this.value).pipe(
@@ -85,12 +48,5 @@ export class PromptComponent {
 
     
   }
-  test(img:Blob){
-    let raeder  = new FileReader()
-    if(img){
-      let item  = raeder.readAsDataURL(img)
-      console.log(item)
-      this.image = item
-    }
-  }
+
 }
