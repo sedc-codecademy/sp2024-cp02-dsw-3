@@ -32,8 +32,8 @@ export const routes: Routes = [
     path: 'account',
     component: AccountComponent,
   },
-  {path: 'notfound', component: NotFoundComponent },
-    {
-        path: '**', redirectTo: 'notfound'
-    }
+  // {path: 'notfound', component: NotFoundComponent },
+  //   {
+  //       path: '**', redirectTo: 'notfound'
+  //   }
 ];

@@ -1,6 +1,6 @@
 <section class="container">
   <p>
-    {{ response() }}
+    {{ image }}
     <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, repellat
     error, temporibus fugit accusantium maiores sit nam sequi est sapiente quis
     illo aperiam minima ullam voluptatum iste ab impedit cum nihil at distinctio
@@ -19,3 +19,8 @@
     <button mat-stroked-button (click)="generateImage()">Create</button>
   </div>
 </section>
+@if (image) {
+<img [src]="image" alt="creation" width="500" height="450" />
+}
+
+<!-- <div style.background-image="url({{ response() }})" class="image"></div> -->

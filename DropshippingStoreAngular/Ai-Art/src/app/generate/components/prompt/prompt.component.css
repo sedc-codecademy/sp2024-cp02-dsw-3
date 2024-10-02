@@ -16,3 +16,10 @@ p{
 .prompt{
     width: 100%;
 }
+.image{
+    width: 500px;
+    height: 450px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
