@@ -3,21 +3,10 @@ import { GENERATOR_API, STABILITY_KEY } from '../../environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 
-
-interface RequestBody {
-  prompt: string
-  negative_prompt: string
-  aspect_ratio: string
-  seed: number
-  output_format: string
-}
 export interface ResponseApi {
   seed: number,
   image: string,
   finish_reason: string
-}
-export interface Params {
-  [key: string]: string | number | File | Blob | object;
 }
 
 @Injectable({
@@ -27,7 +16,7 @@ export class GeneratorService {
 
   constructor(private readonly http: HttpClient) { }
 
-  sendGenerationRequest(prompt: String) {
+  sendGenerationRequest(prompt: string): Observable<ResponseApi | null> {
     const formData = new FormData();
 
     formData.append('prompt', `${prompt}`);
@@ -42,17 +31,15 @@ export class GeneratorService {
     const headers = new HttpHeaders({
 
       'Authorization': `Bearer ${STABILITY_KEY}`,
-      // 'Accept': 'image/*'
 
     });
     
-    const response = this.http.post<ResponseApi>(GENERATOR_API, formData, { headers }).pipe(
+    return this.http.post<ResponseApi>(GENERATOR_API, formData, { headers }).pipe(
       catchError((error) => {
-        console.log(error)
+        console.error('Error generating image: ', error)
         return of(null)
       })
     );
-   
-    return response;
+  
   }
 }

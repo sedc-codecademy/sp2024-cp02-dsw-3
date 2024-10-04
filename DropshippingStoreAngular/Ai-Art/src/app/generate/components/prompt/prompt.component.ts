@@ -1,14 +1,14 @@
-import { Component, ElementRef, inject, input, output, signal, ViewChild } from '@angular/core';
+import { Component, effect, inject, output, signal } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
-import { GENERATOR_API, STABILITY_KEY } from '../../../../environment';
 import { AppStore } from '../../../store/app.store';
 import { GeneratorService, ResponseApi } from '../../../services/generator.service';
-import { catchError, map, of, Subscription, tap } from 'rxjs';
-import { Params } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
+import {Subscription, tap } from 'rxjs';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { NotificationService } from '../../../services/notification.service';
+import { LoaderComponent } from '../../../loader/loader.component';
 @Component({
   selector: 'app-prompt',
   standalone: true,
@@ -17,30 +17,36 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrl: './prompt.component.css'
 })
 export class PromptComponent {
+  isLoading = signal(false)
   isCreated = output<boolean>()
   appStore = inject(AppStore)
-  value = "" //ova vrednost treba da se zapise vo store
+  value = "" 
   subscription = new Subscription
-  response = signal<any | null>(null)
-  blob = signal(null)
-  image: any
-  constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,) { }
+  image: SafeUrl | null = null
+  constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,private readonly notificationService: NotificationService) { 
+    effect(()=>{
+
+    }, {allowSignalWrites: true})
+  }
 
   generateImage() {
-
-    this.subscription = this.generatorService.sendGenerationRequest(this.value).pipe(
-      // map((res)=>{
-      //   const jsonString = JSON.stringify(res)
-      //   return new Blob([jsonString],{type: 'image/png'})})
-    ).subscribe(
-      (data) => {
-        if(data){
-          const jsonString = JSON.stringify(data)
-          const blob = new Blob([jsonString], { type: 'image/png' }); // Specify the appropriate MIME type
-          // this.test(blob)
-          const imageUrl = URL.createObjectURL(blob);
-          console.log(imageUrl)
-          this.image = imageUrl
+    
+    if(!this.value || this.value.trim() == ''){
+      this.notificationService.handleSnackBar('Please enter a valid value in the field.')
+      return
+    }
+    this.appStore.setIsLoading(true)
+    this.subscription = this.generatorService.sendGenerationRequest(this.value).subscribe(
+      (data: ResponseApi | null) => {
+        if(data && data.image){
+          const base64Image = `data:image/png;base64,${data.image}`
+          this.appStore.setStringifyCreationImage(base64Image)
+          this.image = this.sanitizer.bypassSecurityTrustUrl(base64Image)
+          this.appStore.setIsLoading(false)
+          this.notificationService.handleSnackBar('You art is successfully created!')
+          this.appStore.setCreatedImage(this.image)
+          this.appStore.setPrompt(this.value)
+          this.isCreated.emit(true)
         }
         
       }

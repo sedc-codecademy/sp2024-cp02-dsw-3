@@ -1,3 +1,52 @@
 <section class="container">
-  <div class="imageContainer"></div>
+  <div class="imageContainer">
+    <img [src]="appStore.createdImage()" alt="creation" class="image" />
+  </div>
+
+  <div class="formContainer">
+    <div>
+      <p>
+        You can make up your description about the art you created. Choose
+        category for it and write price!
+      </p>
+      <span>*Have in mind that you will earn 95% of the price.</span>
+    </div>
+
+    <form class="form" [formGroup]="creationForm" (ngSubmit)="handleSubmit()">
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input
+          matInput
+          formControlName="description"
+          [value]="appStore.prompt()"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select name="categories" formControlName="category">
+          @for (category of categories; track category) {
+          <mat-option [value]="category">{{ category }}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field floatLabel="always">
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          type="number"
+          class="example-right-align"
+          placeholder="0"
+          formControlName="price"
+        />
+        <span matTextPrefix>$&nbsp;</span>
+        <span matTextSuffix>.00</span>
+      </mat-form-field>
+
+      <div class="btnContainer">
+        <button type="submit" mat-stroked-button>List</button>
+        <button type="button" mat-stroked-button>Remove</button>
+      </div>
+    </form>
+  </div>
 </section>

@@ -2,11 +2,14 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-direction: column;
-    padding-right: 40px;
+    /* padding-right: 40px; */
     
 }
 p{
+    font-size: 1.3em;
+    font-weight: 600;
     font-family: "Inconsolata", monospace;
 }
 .btn{
@@ -14,12 +17,18 @@ p{
     justify-content: center;
 }
 .prompt{
-    width: 100%;
+    width: 70%;
+    background-color: transparent;
 }
-.image{
-    width: 500px;
-    height: 450px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+
+@media screen and (max-width:550px) {
+    p{
+        font-size: 1em;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .test{
+        width: 85%;
+    }
 }

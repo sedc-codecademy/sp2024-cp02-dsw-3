@@ -1,21 +1,61 @@
-<div class="container">
-  <mat-tab-group dynamicHeight class="tabs">
-    <mat-tab label="Short tab">
-      <h6 class="heading">Ai image generator</h6>
-      @if (image()) {
-      <h3 class="heading">Your image is generated</h3>
-      }
+<div class="container" [style.background-image]="'url(bg.jpg)'">
+  <mat-tab-group class="tabs">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span
+          style="
+            font-size: 1.5rem;
+            font-family: Inconsolata, monospace;
+            color: white;
+            font-weight: 700;
+          "
+          >Text to image</span
+        >
+        <mat-icon class="example-tab-icon">brush</mat-icon>
+      </ng-template>
+      <div class="example-small-box mat-elevation-z4">
+        <app-loader />
 
-      <div class="first">
-        <img src="ai-generate.png" width="400px" height="400px" />
+        <div class="first">
+          <div class="video">
+            <video
+              src="https://cdn.web.imagine.art/imagine-frontend/assets/video/landing-page/tools/text-to-img.webm"
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+          <div class="video">
+            <video
+              src="https://cdn.web.imagine.art/imagine-frontend/assets/video/landing-page/tools/realtime-text.webm"
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+        </div>
         <div class="test">
-          <app-prompt (isCreated)="this.image.set($event)" />
+          <app-prompt (isCreated)="this.isImageCreated.set($event)" />
         </div>
       </div>
     </mat-tab>
-    <mat-tab label="Long tab" [disabled]="!image()">
-      <div class="secondTab">
-        <app-list-image-form />
+    <mat-tab [disabled]="!isImageCreated()">
+      <ng-template mat-tab-label>
+        <span
+          style="
+            font-size: 1.5rem;
+            font-family: Inconsolata, monospace;
+            color: white;
+            font-weight: 700;
+          "
+          >List for sale</span
+        >
+        <mat-icon class="example-tab-icon">attach_money</mat-icon>
+      </ng-template>
+      <div class="example-large-box mat-elevation-z5">
+        <div class="secondTab">
+          <app-list-image-form />
+        </div>
       </div>
     </mat-tab>
   </mat-tab-group>

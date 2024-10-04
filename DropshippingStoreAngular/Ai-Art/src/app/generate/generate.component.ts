@@ -1,26 +1,19 @@
-import { Component, signal, ViewChild } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {MatTabsModule} from '@angular/material/tabs';
 import { PromptComponent } from "./components/prompt/prompt.component";
 import { ListImageFormComponent } from './components/list-image-form/list-image-form.component';
-import { STABILITY_KEY } from '../../environment';
+import { LoaderComponent } from '../loader/loader.component';
+import { MatIcon } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-generate',
   standalone: true,
-  imports: [MatTabsModule, PromptComponent, ListImageFormComponent],
+  imports: [MatTabsModule, PromptComponent, ListImageFormComponent, LoaderComponent, MatIcon],
   templateUrl: './generate.component.html',
   styleUrl: './generate.component.css'
 })
 export class GenerateComponent {
   
-  image = signal<boolean>(false)  //ovde treba da dojde slikata sto ke bide generirana 
-  
-  // async handleCreateImage(){
-  //   this.generatorService.
-  // }
-  // handleSecondTab(){
-  //   this.secondTab.update(v=>!v)
-  // }
-
-  
+  isImageCreated = signal<boolean>(false)     
 }
