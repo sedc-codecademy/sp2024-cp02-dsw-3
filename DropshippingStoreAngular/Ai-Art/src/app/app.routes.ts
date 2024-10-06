@@ -6,6 +6,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { authGuard } from './auth.guard';
 
 
 export const routes: Routes = [
@@ -21,7 +22,7 @@ export const routes: Routes = [
 {path: 'cart', loadComponent: ()=>
     import('./cart/cart.component').then((c)=>c.CartComponent)
 },
-  { path: 'generate-your-art',children: [
+  { path: 'generate-your-art', canActivate: [authGuard],children: [
 
     {path: '',loadComponent: ()=>
         import('./generate/generate.component').then((c)=>c.GenerateComponent) },
