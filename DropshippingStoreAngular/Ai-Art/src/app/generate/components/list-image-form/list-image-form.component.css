@@ -1,4 +1,5 @@
 .container{
+    background-image: url("../../../../../public/bg.jpg");
     display: flex;
     justify-content: center;
     width: 100%;
