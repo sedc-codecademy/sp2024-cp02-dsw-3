@@ -1,6 +1,7 @@
-import { Component, effect, inject, output } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { AppStore } from '../../../store/app.store';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -8,10 +9,13 @@ import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import { Category } from '../../../types/category.enum';
 import { Creation } from '../../../types/creation.interface';
+import { Router } from '@angular/router';
+import { LoaderComponent } from "../../../loader/loader.component";
+
 @Component({
   selector: 'app-list-image-form',
   standalone: true,
-  imports: [MatFormFieldModule,MatSelectModule, MatInputModule,MatButtonModule, ReactiveFormsModule, MatIconModule],
+  imports: [MatFormFieldModule, MatSelectModule, MatTabsModule, MatInputModule, MatButtonModule, ReactiveFormsModule, MatIconModule, LoaderComponent],
   templateUrl: './list-image-form.component.html',
   styleUrl: './list-image-form.component.css'
 })
@@ -21,7 +25,9 @@ export class ListImageFormComponent {
   creationForm: FormGroup
   categories = Object.values(Category)
   desc = this.appStore.prompt()
-  constructor(){
+
+  
+  constructor(private router: Router){
     effect(()=>{
 
     },{allowSignalWrites: true})
@@ -45,6 +51,15 @@ export class ListImageFormComponent {
       image: this.appStore.stringifyCreationImage()
     }
     console.log(requestBody)
+
+    //otkako ke se kreira ke treba userot da go vrati vo generate 
   }
 
+  handleRemove(){
+    this.appStore.setCreatedImage(null)
+    this.appStore.setStringifyCreationImage('')
+    this.appStore.setPrompt('')
+    this.router.navigate(['/generate-your-art'])
+  }
+  
 }

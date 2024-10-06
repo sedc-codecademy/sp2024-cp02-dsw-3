@@ -6,28 +6,28 @@
 
 <div class="container">
   @for (item of favorites; track $index) {
-  <div
-    [class]="gridClass[num]"
-    style.background-image="url({{ item.imageUrl }})"
-  >
-    <button
-      mat-icon-button
-      aria-label="Example icon button with a vertical three dot icon"
-      class="btn"
-      (click)="handleAddToCart(item)"
-    >
-      <mat-icon>add_shopping_cart</mat-icon>
-    </button>
-
-    <span>
+  <div class="medium">
+    <div>
+      <img [src]="item.imageUrl" />
       <button
         mat-icon-button
         aria-label="Example icon button with a vertical three dot icon"
-        (click)="handleRemoveFromFavorites(item)"
+        class="btn"
+        (click)="handleAddToCart(item)"
       >
-        <mat-icon>close</mat-icon>
-      </button></span
-    >
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+
+      <span>
+        <button
+          mat-icon-button
+          aria-label="Example icon button with a vertical three dot icon"
+          (click)="handleRemoveFromFavorites(item)"
+        >
+          <mat-icon>close</mat-icon>
+        </button></span
+      >
+    </div>
   </div>
   }
 </div>

@@ -35,26 +35,7 @@
           </div>
         </div>
         <div class="test">
-          <app-prompt (isCreated)="this.isImageCreated.set($event)" />
-        </div>
-      </div>
-    </mat-tab>
-    <mat-tab [disabled]="!isImageCreated()">
-      <ng-template mat-tab-label>
-        <span
-          style="
-            font-size: 1.5rem;
-            font-family: Inconsolata, monospace;
-            color: white;
-            font-weight: 700;
-          "
-          >List for sale</span
-        >
-        <mat-icon class="example-tab-icon">attach_money</mat-icon>
-      </ng-template>
-      <div class="example-large-box mat-elevation-z5">
-        <div class="secondTab">
-          <app-list-image-form />
+          <app-prompt />
         </div>
       </div>
     </mat-tab>

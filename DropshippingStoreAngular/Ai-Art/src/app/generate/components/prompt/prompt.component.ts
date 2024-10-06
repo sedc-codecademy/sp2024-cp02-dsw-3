@@ -1,14 +1,14 @@
-import { Component, effect, inject, output, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { AppStore } from '../../../store/app.store';
 import { GeneratorService, ResponseApi } from '../../../services/generator.service';
-import {Subscription, tap } from 'rxjs';
+import {Subscription } from 'rxjs';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { NotificationService } from '../../../services/notification.service';
-import { LoaderComponent } from '../../../loader/loader.component';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-prompt',
   standalone: true,
@@ -18,12 +18,11 @@ import { LoaderComponent } from '../../../loader/loader.component';
 })
 export class PromptComponent {
   isLoading = signal(false)
-  isCreated = output<boolean>()
   appStore = inject(AppStore)
   value = "" 
   subscription = new Subscription
   image: SafeUrl | null = null
-  constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,private readonly notificationService: NotificationService) { 
+  constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,private readonly notificationService: NotificationService, private readonly router: Router) { 
     effect(()=>{
 
     }, {allowSignalWrites: true})
@@ -46,13 +45,9 @@ export class PromptComponent {
           this.notificationService.handleSnackBar('You art is successfully created!')
           this.appStore.setCreatedImage(this.image)
           this.appStore.setPrompt(this.value)
-          this.isCreated.emit(true)
-        }
-        
+          this.router.navigate(['/generate-your-art/list-for-sale'])
+        }     
       }
     );
-
-    
   }
-
 }

@@ -2,11 +2,11 @@ import { Routes } from '@angular/router';
 import { AccountComponent } from './account/account.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { GenerateComponent } from './generate/generate.component';
 import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,7 +21,12 @@ export const routes: Routes = [
 {path: 'cart', loadComponent: ()=>
     import('./cart/cart.component').then((c)=>c.CartComponent)
 },
-  { path: 'generate-your-art', component: GenerateComponent },
+  { path: 'generate-your-art',children: [
+
+    {path: '',loadComponent: ()=>
+        import('./generate/generate.component').then((c)=>c.GenerateComponent) },
+    {path: 'list-for-sale',loadComponent: ()=> import('./generate/components/list-image-form/list-image-form.component').then((c)=>c.ListImageFormComponent)}
+]},
   { path: 'contact', component: ContactComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'cart', component: CartComponent },
@@ -32,8 +37,8 @@ export const routes: Routes = [
     path: 'account',
     component: AccountComponent,
   },
-  // {path: 'notfound', component: NotFoundComponent },
-  //   {
-  //       path: '**', redirectTo: 'notfound'
-  //   }
+  {path: 'notfound', component: NotFoundComponent },
+    {
+        path: '**', redirectTo: 'notfound'
+    }
 ];
