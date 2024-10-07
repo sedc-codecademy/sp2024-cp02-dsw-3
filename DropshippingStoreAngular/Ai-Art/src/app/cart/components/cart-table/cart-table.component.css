@@ -10,7 +10,7 @@
     max-width: 100%;
       
 }
-
+.tableContainer{max-width:80%}
 .tableHeader{
     /* font-size: 1.3em; */
     font-weight: 400;
@@ -59,7 +59,11 @@
         
     }
 }
-
+@media  screen and (max-width:350px) {
+    .container{
+        align-items: flex-start;
+    }
+}
 @media screen and ( max-width:320px) {
     .image{
         width: 60px;

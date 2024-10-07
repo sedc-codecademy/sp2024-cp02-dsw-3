@@ -6,9 +6,7 @@
   padding: 0px;
 }
 .logo{
-  position: fixed;
-  /* right: 12px; */
-  
+  position: fixed; 
   width: 40px;
   height: auto;
 }
