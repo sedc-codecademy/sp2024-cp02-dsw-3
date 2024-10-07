@@ -22,7 +22,7 @@ export interface AppStates{
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    createdImage: string,
+    createdImage: SafeUrl | null,
     handleExpansion: boolean,
     isAuth: boolean,
     prompt: string,
@@ -71,10 +71,10 @@ export const AppStore = signalStore(
         setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
-        setCreatedImage: (createdImage:string | undefined)=>{patchState(state, {createdImage})},
+        setCreatedImage: (createdImage:SafeUrl | null)=>{patchState(state, {createdImage})},
         setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
         setPrompt: (prompt:string)=>{patchState(state, {prompt})},
-        reset: ()=>{
+        resetQueryParams: ()=>{
             patchState(state,{
                 pageNumber: 1,
                 totalCount: 0,
@@ -110,7 +110,7 @@ export const AppStore = signalStore(
     })),
     withHooks({
         onInit:(state)=> {
-            state.reset()
+            state.resetQueryParams()
         },
     })
 )
