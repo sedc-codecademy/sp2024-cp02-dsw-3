@@ -4,6 +4,5 @@ export interface Creation{
     category: Category,
     description: string,
     price: number,
-    user: string,
     image: string 
 }

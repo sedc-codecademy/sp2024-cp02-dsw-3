@@ -7,7 +7,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
-import { Category } from '../../../types/category.enum';
 import { Creation } from '../../../types/creation.interface';
 import { Router } from '@angular/router';
 import { LoaderComponent } from "../../../loader/loader.component";
@@ -23,7 +22,6 @@ export class ListImageFormComponent {
   
   appStore = inject(AppStore)
   creationForm: FormGroup
-  categories = Object.values(Category)
   desc = this.appStore.prompt()
 
   
@@ -34,7 +32,7 @@ export class ListImageFormComponent {
   }
   ngOnInit(){
     this.creationForm = new FormGroup({
-      description: new FormControl(Validators.required),
+      description: new FormControl(`${this.appStore.prompt()}`,Validators.required),
       price: new FormControl('',[Validators.required]),
       category: new FormControl('', [Validators.required])
     })
@@ -47,7 +45,6 @@ export class ListImageFormComponent {
       category: this.creationForm.get('category')?.value,
       description: this.creationForm.get('description')?.value,
       price: this.creationForm.get('price')?.value,
-      user: 'userOne',
       image: this.appStore.stringifyCreationImage()
     }
     console.log(requestBody)

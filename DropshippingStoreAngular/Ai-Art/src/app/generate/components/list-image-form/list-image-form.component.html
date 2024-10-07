@@ -37,18 +37,20 @@
             >
               <mat-form-field>
                 <mat-label>Description</mat-label>
-                <input
-                  matInput
-                  formControlName="description"
-                  [value]="appStore.prompt()"
-                />
+                <input matInput formControlName="description" />
               </mat-form-field>
               <mat-form-field>
                 <mat-label>Category</mat-label>
                 <mat-select name="categories" formControlName="category">
-                  @for (category of categories; track category) {
-                  <mat-option [value]="category">{{ category }}</mat-option>
-                  }
+                  <mat-option value="0">Portraits</mat-option>
+                  <mat-option value="1">Acrylic</mat-option>
+                  <mat-option value="2">Black & white</mat-option>
+                  <mat-option value="3">Astro photography</mat-option>
+                  <mat-option value="4">Canvas</mat-option>
+                  <mat-option value="5">Landscapes</mat-option>
+                  <mat-option value="6">Charcoal, chalk and pastel</mat-option>
+                  <mat-option value="7">Art & design</mat-option>
+                  <mat-option value="8">Abstract </mat-option>
                 </mat-select>
               </mat-form-field>
 

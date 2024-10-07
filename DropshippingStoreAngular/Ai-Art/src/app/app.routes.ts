@@ -22,6 +22,9 @@ export const routes: Routes = [
 {path: 'cart', loadComponent: ()=>
     import('./cart/cart.component').then((c)=>c.CartComponent)
 },
+{path: 'login', loadComponent: ()=>
+  import('./login/login.component').then((c)=>c.LoginComponent)
+},
   { path: 'generate-your-art', canActivate: [authGuard],children: [
 
     {path: '',loadComponent: ()=>
