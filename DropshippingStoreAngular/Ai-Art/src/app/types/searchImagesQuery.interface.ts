@@ -1,10 +1,10 @@
-import { Category } from "./category.enum";
-import { SortBy, SortDirection } from "./sortBy.enum";
+
+import {  SortDirection } from "./sortBy.enum";
 
 export interface SearchImagesQuery{
     searchTerm?: string,
     pageNumber?: number,
-    category?:Category,
+    category?:string ,
     sortDirection?: SortDirection,
     inStock?:boolean
 }

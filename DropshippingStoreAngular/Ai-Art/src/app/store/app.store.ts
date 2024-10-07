@@ -17,12 +17,9 @@ export interface AppStates{
     sortBy: SortBy| undefined, //category, artist, stock, date
     sortDirection: SortDirection ,
     artistNames: string[],
-    category: Category | undefined,
     favorites: Image[],
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    handleExpansion: boolean,
-    isAuth: boolean,
     createdImage: string,
     prompt: string,
     user: Artist | undefined,
@@ -41,12 +38,9 @@ const defaultState: AppStates = {
     sortBy: undefined,
     sortDirection: SortDirection.ASC,
     artistNames: [],
-    category: undefined,
     favorites: [],
     selectedArtist:undefined,
     selectedCategory:undefined,
-    handleExpansion: false,
-    isAuth: false,
     createdImage: '',
     prompt: '',
     user: undefined,
@@ -64,7 +58,6 @@ export const AppStore = signalStore(
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
         setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
-        setCategories: (category: Category)=>{patchState(state, {category})}, //moze nema da treba
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
@@ -77,7 +70,7 @@ export const AppStore = signalStore(
                 totalCount: 0,
                 pageSize: 12,
                 searchTerm: '',
-                category: Category.Portraits,
+                selectedCategory: undefined,
                 inStock: true,
                 totalPages:0
 
@@ -95,8 +88,8 @@ export const AppStore = signalStore(
             if(state.inStock()){
                 searchParams.inStock = state.inStock()
             }
-            if(state.category()){
-                searchParams.category = state.category()
+            if(state.selectedCategory()){
+                searchParams.category = state.selectedCategory()
             }
             // if(state.sortDirection()){
             //     searchParams.sortDirection = state.sortDirection()

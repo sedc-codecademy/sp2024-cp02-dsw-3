@@ -16,7 +16,7 @@ import { SortBy, SortDirection } from '../../../types/sortBy.enum';
   styleUrl: './filters.component.css'
 })
 export class FiltersComponent {
-  selectedCategory = input.required<Category | undefined>()
+  selectedCategory = input.required<string | undefined>()
   selectedArtist = input.required<string | undefined>()
   selectedDirection = input.required<SortDirection>()
   inStock = input.required<boolean | undefined>()
@@ -41,7 +41,5 @@ export class FiltersComponent {
     emitter.emit(event)
   }
 
-  ngOnInit(){
-    console.log(this.categories)
-  }
+
 }
