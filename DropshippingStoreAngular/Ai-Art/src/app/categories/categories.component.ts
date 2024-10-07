@@ -8,6 +8,7 @@ import { CardContainerComponent } from './components/card-container/card-contain
 import { FiltersComponent } from './components/filters/filters.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { SearchComponent } from './components/search/search.component';
+import { SearchImagesQuery } from '../types/searchImagesQuery.interface';
 @Component({
   selector: 'app-categories',
   standalone: true,
@@ -22,17 +23,17 @@ export class CategoriesComponent {
   constructor(private readonly categoryService: CategoriesService){
     effect(()=>{
       this.productStore.setIsLoading(true)
+      this.getImages(this.productStore.searchParams())
     },{allowSignalWrites:true})
   }
-  ngOnInit(){
-    this.getImages()
-    
-  }
   
-  getImages(){
-    this.subscription = this.categoryService.getImages().subscribe((v)=>{
-      this.productStore.setTotal(v.length)
-      this.productStore.setProducts(v)
+  getImages(searchQuery: SearchImagesQuery = {}){
+    this.subscription = this.categoryService.getImages(searchQuery).subscribe((response)=>{
+      console.log(response)
+      const {paginatedImages} = response
+      this.productStore.setTotal(paginatedImages.totalCount)
+      this.productStore.setProducts(paginatedImages.data)
+      //i total pages ovde da se stavi vo store ako treba
       this.productStore.setIsLoading(false)
     })
     

@@ -1,15 +1,18 @@
+import { computed } from "@angular/core";
 import { Artist } from "../types/artist.interface";
 import { Category } from "../types/category.enum";
 import { Image } from "../types/image.interface";
 import { SortBy, SortDirection } from "../types/sortBy.enum";
-import {patchState, signalStore, withHooks, withMethods, withState} from '@ngrx/signals'
+import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
+import { SearchImagesQuery } from "../types/searchImagesQuery.interface";
 
 export interface AppStates{
     products: Image[],
     searchTerm: string,// category, description
-    page: number,
+    pageNumber: number,
+    totalPages: number,
     pageSize: number,
-    total: number,
+    totalCount: number,
     isLoading: boolean,
     sortBy: SortBy| undefined, //category, artist, stock, date
     sortDirection: SortDirection ,
@@ -23,15 +26,17 @@ export interface AppStates{
     createdImage: string,
     prompt: string,
     user: Artist | undefined,
+    inStock: boolean | undefined
 }
 
 
 const defaultState: AppStates = {
     products: [],
     searchTerm: '',
-    page: 0,
+    pageNumber: 1,
+    totalPages: 0,
     pageSize: 12,
-    total: 0,
+    totalCount: 0,
     isLoading: false,
     sortBy: undefined,
     sortDirection: SortDirection.ASC,
@@ -44,7 +49,8 @@ const defaultState: AppStates = {
     isAuth: false,
     createdImage: '',
     prompt: '',
-    user: undefined
+    user: undefined,
+    inStock: true
 }
 
 export const AppStore = signalStore(
@@ -52,33 +58,56 @@ export const AppStore = signalStore(
     withState(defaultState),
     withMethods((state)=>({
         setProducts: (products: Image[])=>{patchState(state, {products})},
-        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, page:0})},
-        setPage: (page: number)=>{patchState(state,{page})},
+        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, pageNumber:0})},
+        setPage: (pageNumber: number)=>{patchState(state,{pageNumber})},
+        setTotalPages:(totalPages:number)=>{patchState(state, {totalPages})},
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
-        setTotal: (total:number)=>{patchState(state, {total})},
+        setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
         setCategories: (category: Category)=>{patchState(state, {category})}, //moze nema da treba
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
+        setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
-        reset: ()=>{
+        resetSearchQueryParams: ()=>{
             patchState(state,{
-                page: 0,
+                pageNumber: 1,
+                totalCount: 0,
                 pageSize: 12,
                 searchTerm: '',
-                sortBy: undefined,
-                sortDirection: SortDirection.ASC,
-                selectedArtist: undefined,
-                selectedCategory: undefined
+                category: Category.Portraits,
+                inStock: true,
+                totalPages:0
 
             })
         }
     })),
+    withComputed((state)=>({
+        searchParams: computed(()=>{
+            const searchParams: SearchImagesQuery = {
+                pageNumber: state.pageNumber(),
+            }
+            if(state.searchTerm()){
+                searchParams.searchTerm = state.searchTerm()
+            }
+            if(state.inStock()){
+                searchParams.inStock = state.inStock()
+            }
+            if(state.category()){
+                searchParams.category = state.category()
+            }
+            // if(state.sortDirection()){
+            //     searchParams.sortDirection = state.sortDirection()
+            // }
+
+            return searchParams
+        })
+    })),
     withHooks({
         onInit:(state)=> {
-            state.reset()
+            state.resetSearchQueryParams()
         },
     })
 )

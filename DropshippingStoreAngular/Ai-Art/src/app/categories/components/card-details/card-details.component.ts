@@ -26,7 +26,7 @@ export class CardDetailsComponent {
   panelOpenState = signal(false);
   openRoom = signal(false)
   openCertificate = signal(false)
-  product : Image
+  product : any
   subscription= new Subscription()
   constructor(private readonly productsService: CategoriesService, private readonly route: ActivatedRoute, private cartService:CartService, private favoritesService:FavoritesService){}
   ngOnInit(){
