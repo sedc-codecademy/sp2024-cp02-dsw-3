@@ -1,3 +1,4 @@
+import { SafeUrl } from "@angular/platform-browser";
 import { Artist } from "../types/artist.interface";
 import { Category } from "../types/category.enum";
 import { Image } from "../types/image.interface";
@@ -16,11 +17,12 @@ export interface AppStates{
     artistNames: string[],
     category: Category | undefined,
     favorites: Image[],
+    stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
     handleExpansion: boolean,
     isAuth: boolean,
-    createdImage: string,
+    createdImage: SafeUrl | null,
     prompt: string,
     user: Artist | undefined,
 }
@@ -42,9 +44,10 @@ const defaultState: AppStates = {
     selectedCategory:undefined,
     handleExpansion: false,
     isAuth: false,
-    createdImage: '',
+    createdImage: null,
+    stringifyCreationImage: '',
     prompt: '',
-    user: undefined
+    user: undefined,
 }
 
 export const AppStore = signalStore(
@@ -63,6 +66,9 @@ export const AppStore = signalStore(
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
+        setCreatedImage: (createdImage:SafeUrl | null)=>{patchState(state, {createdImage})},
+        setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
+        setPrompt: (prompt:string)=>{patchState(state, {prompt})},
         reset: ()=>{
             patchState(state,{
                 page: 0,

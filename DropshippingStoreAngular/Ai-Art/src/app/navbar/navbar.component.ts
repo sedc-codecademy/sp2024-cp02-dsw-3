@@ -7,6 +7,11 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { NgFor } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import {MatBadgeModule} from '@angular/material/badge';
+import { FavoritesService } from '../services/favorites.service';
+import { CartService } from '../services/cart.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   standalone: true,
@@ -16,6 +21,7 @@ import { RouterModule } from '@angular/router';
     MatIconModule,
     MatMenuModule,
     MatSidenavModule,
+    MatBadgeModule,
     MatListModule,
     RouterModule,
     NgFor,
@@ -25,8 +31,18 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
+  favorites: number
+  cart:number
+  subscriptionFave = new Subscription()
+  subscriptionCart = new Subscription()
   @ViewChild('drawer') drawer: MatSidenav | undefined;
-
+  constructor(private readonly favoriteService: FavoritesService, private readonly cartService: CartService){}
+  ngOnInit(){ 
+    this.subscriptionFave = this.favoriteService.$favorites.subscribe(data=> this.favorites = data.length )
+    this.subscriptionCart = this.cartService.$cart.subscribe(data=> this.cart = data.length)
+  }
+  
+  
   closeSidenav(): void {
     if (this.drawer) {
       this.drawer.close();

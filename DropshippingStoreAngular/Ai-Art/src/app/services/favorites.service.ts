@@ -25,7 +25,7 @@ export class FavoritesService {
   removeFromFavorites(imageID: string){
     const favorites = this._favorites.getValue().filter((i)=>i.id !== imageID)
     this._favorites.next([...favorites])
-    this.notificationService.handleSnackBar('Item is successfully removed from favorites!')
+    
   }
 
   favoritesLength(){
