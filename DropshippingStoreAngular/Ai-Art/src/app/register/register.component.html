@@ -1,51 +1,54 @@
-<form [formGroup]="registerForm" (ngSubmit)="submit()">
-    <!-- Input za firstName  -->
+<div class="register-page-container">
+  <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <!-- Input for firstName -->
     <mat-form-field>
       <mat-label>Enter your name</mat-label>
       <input matInput placeholder="Michael" type="text" formControlName="firstName" />
     </mat-form-field>
-  
-    <!-- Input za lastName -->
+
+    <!-- Input for lastName -->
     <mat-form-field>
       <mat-label>Enter your last name</mat-label>
-      <input matInput placeholder="Mayers" type="text" formControlName="lastName" />
+      <input matInput placeholder="Myers" type="text" formControlName="lastName" />
     </mat-form-field>
-  
-    <!-- Input za userName -->
+
+    <!-- Input for userName -->
     <mat-form-field>
       <mat-label>Enter your Username</mat-label>
       <input matInput placeholder="AI_Pic_Generator" type="text" formControlName="userName" />
     </mat-form-field>
-  
-    <!--Input za email  -->
+
+    <!-- Input for email -->
     <mat-form-field>
       <mat-label>Enter your e-mail</mat-label>
       <input matInput placeholder="Michael_Myers@example.com" type="email" formControlName="email" />
     </mat-form-field>
-  
-    <!-- input za cardNumber -->
+
+    <!-- Input for cardNumber -->
     <mat-form-field>
       <mat-label>Enter your Cardnumber</mat-label>
       <input matInput placeholder="2080-****-****-2080" type="text" formControlName="cardNo" />
     </mat-form-field>
-  
-    <!-- input za cardNumber expireDate -->
+
+    <!-- Input for card expireDate -->
     <mat-form-field>
       <mat-label>Enter Card expireDate</mat-label>
       <input matInput placeholder="01/30" type="text" formControlName="expireDate" />
     </mat-form-field>
-  
-    <!-- Input za password -->
+
+    <!-- Input for password -->
     <mat-form-field>
       <mat-label>Enter your password</mat-label>
       <input matInput placeholder="Pas$wOrd" type="password" formControlName="password" />
     </mat-form-field>
-  
-    <!-- Input za confirm password -->
+
+    <!-- Input for confirm password -->
     <mat-form-field>
       <mat-label>Confirm your password</mat-label>
       <input matInput placeholder="Pas$wOrd" type="password" formControlName="confirmPassword" />
     </mat-form-field>
+
+    <p>Already have an account? Click <a routerLink="/login">here</a>!</p>
   
     @if(passwordMissMatch){
       <mat-error>Passwords do not match</mat-error>
@@ -55,3 +58,4 @@
   
     <button mat-raised-button>Register</button>
   </form>
+</div>  

@@ -1,31 +1,69 @@
-<form [formGroup]="loginForm" (ngSubmit)="submit()">
+<!-- <form [formGroup]="loginForm" (ngSubmit)="submit()">
 
-    <!-- input za username -->
-    <mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Enter your Username</mat-label>
+    <input matInput placeholder="Enter Username" type="text" formControlName="userName" />
+    @if (!loginForm.get("userName")?.valid) {
+    <mat-error>Enter valid userName</mat-error>
+    }
+  </mat-form-field>
+
+
+  <mat-form-field>
+    <mat-label>Enter your password</mat-label>
+    <input matInput placeholder="Pas$wOrd" type="password" formControlName="password" />
+    @if (!loginForm.get("password")?.valid) {
+    <mat-error>Enter valid password</mat-error>
+    }
+  </mat-form-field>
+
+
+@if(authService.isAuth()){
+<button mat-raised-button (click)="submitLogout()">Logout</button>
+}@else if(!authService.isAuth()) {
+<button mat-raised-button>Login</button>
+
+<p>
+  You don't have an account? Click <a routerLink="/register">here</a>!</p>
+}
+</form> -->
+
+
+
+<div class="login-page-container">
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+
+
+    <mat-form-field class="input-filed">
       <mat-label>Enter your Username</mat-label>
       <input matInput placeholder="Enter Username" type="text" formControlName="userName" />
       @if (!loginForm.get("userName")?.valid) {
-      <mat-error>Enter valid userName</mat-error>
+      <mat-error class="mterror">Enter valid userName</mat-error>
       }
     </mat-form-field>
-  
-  
-    <!-- Input za password -->
-    <mat-form-field>
+
+
+    <mat-form-field class="input-field">
       <mat-label>Enter your password</mat-label>
       <input matInput placeholder="Pas$wOrd" type="password" formControlName="password" />
       @if (!loginForm.get("password")?.valid) {
-      <mat-error>Enter valid password</mat-error>
+      <mat-error class="mterror">Enter valid password</mat-error>
       }
     </mat-form-field>
-  
-  
+
+
   @if(authService.isAuth()){
+    <div class="auth-actions">
   <button mat-raised-button (click)="submitLogout()">Logout</button>
-  }@else if(!authService.isAuth()) {
-  <button mat-raised-button>Login</button>
-  
+</div>
+}@else if(!authService.isAuth()) {
+  <div class="auth-actions">
+    <button mat-raised-button>Login</button>
+
   <p>
     You don't have an account? Click <a routerLink="/register">here</a>!</p>
-  }
+  </div>}
   </form>
+</div>
+

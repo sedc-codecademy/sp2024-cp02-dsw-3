@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Set up background and centering */
+  .login-page-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 300px 40px;
+    background: linear-gradient(135deg, #000 30%, #291d37 100%);
+    font-family: "Inconsolata", monospace;
+    
+  }  
+  
+  /* Form container styling */
+  form {
+    background-color: #08010f;
+    padding: 40px;
+    border-radius: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* Form field input styling */
+  .mat-form-field {
+    width: 100%;
+    margin-bottom: 40px;
+  }
+  
+  .input-field input {
+    color: #fff;
+  }
+  
+  .mterror{
+    color: green;
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    background-color: #71499d;
+    color: white;
+  }
+  
+  button:hover {
+    background-color: #4a128a;
+  }
+  
+  /* Error message styling */
+  mat-error {
+    color: red;
+  }
+  
+  /* Adjust font for label */
+  mat-label {
+    font-weight: bold;
+    color: #fff;
+  }
+  
+  
