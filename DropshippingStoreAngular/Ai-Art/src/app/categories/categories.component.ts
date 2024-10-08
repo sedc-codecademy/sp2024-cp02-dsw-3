@@ -9,10 +9,11 @@ import { FiltersComponent } from './components/filters/filters.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchImagesQuery } from '../types/searchImagesQuery.interface';
+import { LoaderComponent } from '../loader/loader.component';
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [AsyncPipe, CommonModule, CardContainerComponent, MatPaginatorModule, FiltersComponent, GalleryComponent, SearchComponent],
+  imports: [AsyncPipe, CommonModule,LoaderComponent, CardContainerComponent, MatPaginatorModule, FiltersComponent, GalleryComponent, SearchComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })

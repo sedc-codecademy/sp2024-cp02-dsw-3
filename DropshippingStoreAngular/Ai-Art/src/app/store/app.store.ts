@@ -22,7 +22,7 @@ export interface AppStates{
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    createdImage: SafeUrl | null,
+    createdImage: SafeUrl,
     handleExpansion: boolean,
     isAuth: boolean,
     prompt: string,
@@ -69,9 +69,10 @@ export const AppStore = signalStore(
         setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
         setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock})},
+        setIsAuth: (isAuth: boolean)=>{patchState(state, {isAuth})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
-        setCreatedImage: (createdImage:SafeUrl | null)=>{patchState(state, {createdImage})},
+        setCreatedImage: (createdImage:SafeUrl)=>{patchState(state, {createdImage})},
         setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
         setPrompt: (prompt:string)=>{patchState(state, {prompt})},
         resetQueryParams: ()=>{
@@ -99,7 +100,7 @@ export const AppStore = signalStore(
                 searchParams.inStock = state.inStock()
             }
             if(state.selectedCategory()){
-                searchParams.category = state.selectedCategory()
+                searchParams.category = Number(state.selectedCategory())
             }
             // if(state.sortDirection()){
             //     searchParams.sortDirection = state.sortDirection()

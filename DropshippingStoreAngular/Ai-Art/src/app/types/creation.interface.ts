@@ -1,8 +1,10 @@
+import { SafeUrl } from "@angular/platform-browser";
 import { Category } from "./category.enum";
 
 export interface Creation{
-    category: Category,
+    category: number,
     description: string,
-    price: number,
-    image: string 
+    price: string,
+    imageUrl: SafeUrl 
+    stock: true 
 }

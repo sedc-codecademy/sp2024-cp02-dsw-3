@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { GENERATOR_API, STABILITY_KEY } from '../../environment';
+import { environment, GENERATOR_API, STABILITY_KEY } from '../../environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
+import { Creation } from '../types/creation.interface';
 
 export interface ResponseApi {
   seed: number,
@@ -13,7 +14,7 @@ export interface ResponseApi {
   providedIn: 'root'
 })
 export class GeneratorService {
-
+  private generatePath = `${environment.API_IMAGES}addImage`
   constructor(private readonly http: HttpClient) { }
 
   sendGenerationRequest(prompt: string): Observable<ResponseApi | null> {
@@ -41,5 +42,18 @@ export class GeneratorService {
       })
     );
   
+  }
+
+  addGeneratedImage(requestBody: Creation){
+    return this.http.post<{message: string}>(this.generatePath, requestBody, {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    }).pipe(
+      catchError(error=>{
+        console.error(error)
+        return of(null)
+      }
+    ))
   }
 }
