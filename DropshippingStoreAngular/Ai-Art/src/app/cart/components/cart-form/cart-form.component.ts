@@ -23,7 +23,7 @@ export class CartFormComponent {
       fullName: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z]{3,}(?: [a-zA-Z]+)?(?: [a-zA-Z]+)?$/)]),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
       cardNo: new FormControl('',[Validators.required,Validators.minLength(16), Validators.maxLength(16),Validators.pattern(/^[0-9]\d*$/)]),
-      cardDate: new FormControl('', [Validators.required, Validators.pattern(/^(0[1-9]|10|11|12)\/2[5-9]{1}$/)]),
+      cardDate: new FormControl('', [Validators.required, Validators.pattern(/^(11|12)\/24$|^(0[1-9]|10|11|12)\/2[5-9]$/), ]),
       cvvNo: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]{3}$/)])
     })
   }
@@ -60,6 +60,12 @@ export class CartFormComponent {
       this.cardNoError.set('Enter a valid card number')
       return
     } 
+  }
+  checkDate(date:string){
+    if(date.charAt(0)==='0'){
+      return true
+    }
+    return false
   }
 
   resetErrorsMessages(){

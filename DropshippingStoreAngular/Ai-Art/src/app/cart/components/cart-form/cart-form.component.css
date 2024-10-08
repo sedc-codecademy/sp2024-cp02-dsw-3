@@ -68,7 +68,7 @@
 }
 
 .credit-card-box {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -203,5 +203,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     max-width: 100%;
+}
+@media screen and (max-width:700px ) {
+    .credit-card-box .front{
+        width: 60%;
+    }
+    .form{
+        width: 90%;
+    }
+    .input-row{
+        grid-template-columns: 100%;
+    }
 }
