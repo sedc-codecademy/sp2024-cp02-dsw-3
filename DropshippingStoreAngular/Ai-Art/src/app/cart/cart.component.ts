@@ -1,6 +1,5 @@
-import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, inject } from '@angular/core';
-import { Subscription, Observable, map } from 'rxjs';
+import { Component, ElementRef, inject, signal, ViewChild, viewChild } from '@angular/core';
+import { Subscription, Observable } from 'rxjs';
 import { CartService } from '../services/cart.service';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatStepperModule, StepperOrientation} from '@angular/material/stepper';
@@ -9,6 +8,7 @@ import { CartTableComponent } from './components/cart-table/cart-table.component
 import { CartFormComponent } from './components/cart-form/cart-form.component';
 import { AsyncPipe } from '@angular/common';
 import { Image } from '../types/image.interface';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-cart',
@@ -21,14 +21,11 @@ export class CartComponent {
   cart: Image[]
   subscription = new Subscription()
   stepperOrientation: Observable<StepperOrientation>;
-  constructor(private readonly cartService: CartService){
-    const breakpointObserver = inject(BreakpointObserver);
+  isLinear = signal<boolean>(true)
+  constructor(private readonly cartService: CartService){}
+ 
 
-    this.stepperOrientation = breakpointObserver
-      .observe('(min-width: 800px)')
-      .pipe(map(({matches}) => (matches ? 'horizontal' : 'vertical')));
-  }
-  
+ 
   ngOnInit(){
     this.subscription = this.cartService.$cart.subscribe((data)=>this.cart = data)
   }

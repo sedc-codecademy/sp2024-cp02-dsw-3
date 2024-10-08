@@ -1,18 +1,20 @@
-<!-- @switch (stepperOrientation | async) { @case ('horizontal') { } @case
-('vertical') { } } -->
-
-<div class="container">
-  <mat-stepper orientation="horizontal" #stepper class="stepper">
+<div class="stepperContainer">
+  <mat-stepper
+    [linear]="isLinear"
+    orientation="horizontal"
+    #stepper
+    class="stepper"
+  >
     <mat-step label="Check your products" class="column">
-      <!-- <div class="component"> -->
       <app-cart-table />
-      <!-- </div> -->
 
       <div>
-        <button mat-flat-button matStepperNext>Next</button>
+        <button mat-flat-button matStepperNext [disabled]="!cart.length">
+          Next
+        </button>
       </div>
     </mat-step>
-
+    @if(!cart.length){
     <mat-step class="column">
       <ng-template matStepLabel>Checkout</ng-template>
       <div class="component">
@@ -23,8 +25,6 @@
         <button mat-flat-button matStepperPrevious type="button">Back</button>
       </div>
     </mat-step>
+    }
   </mat-stepper>
 </div>
-<!-- <button mat-button (click)="stepper.reset()">
-            Back to your products
-          </button> -->

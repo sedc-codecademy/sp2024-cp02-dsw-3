@@ -12,7 +12,10 @@
     (updateInStock)="productStore.setInStock($event)"
   />
 
-  <app-search />
+  <app-search
+    [searchTerm]="productStore.searchTerm()"
+    (updateSearchTerm)="productStore.setSearch($event.target.value)"
+  />
   <app-loader />
   <app-card-container [products]="productStore.products()" />
 
