@@ -18,7 +18,7 @@
     <mat-step class="column">
       <ng-template matStepLabel>Checkout</ng-template>
       <div class="component">
-        <app-cart-form />
+        <app-cart-form [cartItems]="cart" />
       </div>
 
       <div>
