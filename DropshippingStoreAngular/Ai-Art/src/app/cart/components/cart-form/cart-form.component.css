@@ -431,3 +431,15 @@ input:focus {
     align-items: center;
     width: 100%;
 }
+.checkoutNone{
+    display: none;
+}
+.purchasePassed{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Inconsolata;
+    font-size: 1.2em;
+    color: white;
+}
