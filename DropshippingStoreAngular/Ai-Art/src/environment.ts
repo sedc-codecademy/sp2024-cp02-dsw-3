@@ -1,6 +1,7 @@
 export const environment={
     production: false,
-    gitJSON: 'https://raw.githubusercontent.com/tamaranaj/SEDC-CodeAcademy/refs/heads/main/Homeworks-SQL/imgIndex%20copy.json'
+    gitJSON: 'https://raw.githubusercontent.com/tamaranaj/SEDC-CodeAcademy/refs/heads/main/Homeworks-SQL/imgIndex%20copy.json',
+    API_CART: 'http://localhost:5095/api/Cart/checkout'
 }
 
 export const STABILITY_KEY = ''
