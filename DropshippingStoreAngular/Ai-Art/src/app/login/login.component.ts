@@ -16,14 +16,10 @@ import { AppStore } from '../store/app.store';
 })
 export class LoginComponent {
   [x: string]: any;
-  appStore = inject(AppStore)
+
   loginForm: FormGroup
   
-  constructor (public readonly authService:AuthService, private readonly router: Router) {
-    effect(()=>{
-
-    },{allowSignalWrites:true})
-  }
+  constructor (public readonly authService:AuthService, private readonly router: Router) { }
   
   ngOnInit () {
     this.initForm();
@@ -42,8 +38,8 @@ export class LoginComponent {
     const { userName, password } = this.loginForm.value
     this.authService.login(userName, password).subscribe((response) => {
       console.log(response);
-      if(response?.token){
-        this.appStore.setIsAuth(true)
+      if(response){
+
         this.router.navigate(['/'])
       };
     });
@@ -51,7 +47,7 @@ export class LoginComponent {
   
   submitLogout(){
     this.authService.logout()
-    this.appStore.setIsAuth(false)
+
   };
   }
   
