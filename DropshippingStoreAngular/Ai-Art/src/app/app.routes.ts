@@ -7,6 +7,7 @@ import { ContactComponent } from './contact/contact.component';
 import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,14 +25,22 @@ export const routes: Routes = [
   { path: 'generate-your-art', component: GenerateComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'cart', component: CartComponent },
   {path: 'favorites', loadComponent: ()=>
     import('./favorites/favorites.component').then((c)=>c.FavoritesComponent)
 },
-  {
-    path: 'account',
-    component: AccountComponent,
-  },
+{
+  path: 'account',
+  loadComponent: () => import('./account/account.component').then(m => m.AccountComponent),
+  children: [
+    { path: 'user-info', loadComponent: () => import('./account/user-info/user-info.component').then(c => c.UserInfoComponent) },
+    { path: 'change-info', loadComponent: () => import('./account/change-user-info/change-user-info.component').then(c => c.ChangeUserInfoComponent) },
+    { path: 'generated-images', loadComponent: () => import('./account/generated-images/generated-images.component').then(c => c.GeneratedImagesComponent) },
+    { path: 'purchased-images', loadComponent: () => import('./account/purchased-images/purchased-images.component').then(c => c.PurchasedImagesComponent) },
+    { path: '', redirectTo: 'user-info', pathMatch: 'full' }
+  ]
+},
   {path: 'notfound', component: NotFoundComponent },
     {
         path: '**', redirectTo: 'notfound'

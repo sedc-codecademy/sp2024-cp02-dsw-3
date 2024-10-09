@@ -1,0 +1,45 @@
+<form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div>
+        <label for="firstName">First Name:</label>
+        <input id="firstName" formControlName="firstName" />
+      </div>
+      <div>
+        <label for="lastName">Last Name:</label>
+        <input id="lastName" formControlName="lastName" />
+      </div>
+      <div>
+        <label for="userName">User Name:</label>
+        <input id="userName" formControlName="userName" />
+      </div>
+    </div>
+    
+    <div class="row">
+      <div>
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" />
+      </div>
+      <div>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+      </div>
+    </div>
+    
+    <div class="row">
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" type="email" formControlName="email" />
+      </div>
+      <div>
+        <label for="cardNo">Card Number:</label>
+        <input id="cardNo" formControlName="cardNo" />
+      </div>
+      <div>
+        <label for="expireDate">Expire Date:</label>
+        <input id="expireDate" formControlName="expireDate" />
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="userInfoForm.invalid">Update Info</button>
+  </form>
+  
