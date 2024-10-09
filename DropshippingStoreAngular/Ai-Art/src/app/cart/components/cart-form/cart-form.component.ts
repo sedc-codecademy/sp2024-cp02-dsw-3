@@ -1,10 +1,16 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, inject, input, signal } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import { Image } from '../../../types/image.interface';
+import { catchError, of, Subscription } from 'rxjs';
+import { CartService } from '../../../services/cart.service';
+import { AppStore } from '../../../store/app.store';
+import { NotificationService } from '../../../services/notification.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-form',
@@ -14,9 +20,14 @@ import {MatSelectModule} from '@angular/material/select';
   styleUrl: './cart-form.component.css'
 })
 export class CartFormComponent {
+  appStore = inject(AppStore)
   formUntouched = signal<string>('')
-  cardNoError = signal<string>('')
+  purchaseError = signal(false)
+  purchasePassed = signal(false)
+  cartItems = input.required<Image[]>()
+  subscription = new Subscription()
   checkout: FormGroup
+  constructor(private readonly cartService: CartService, private readonly notificationService: NotificationService, private readonly router: Router){}
   ngOnInit(){
     this.checkout = new FormGroup({
       
@@ -32,38 +43,50 @@ export class CartFormComponent {
 
   checkoutSubmit(){
     console.log(this.checkout)
-    this.checkForm()
-  }
-
-  checkForm(){
     this.resetErrorsMessages()
     if(!this.checkout.touched){
       this.formUntouched.set('You must fill all fields.')
-      return
+      return 
     } 
     if(this.checkout.invalid)return
-    this.checkCardNumber()
-    if(!this.cardNoError() && !this.checkout.invalid ){
-      console.log(this.checkout.value)
+     let itemsFromCartID = this.cartItems().map((item)=>item.id)
+
+    if(this.appStore.user() || localStorage.getItem('token')){
+      this.subscription = this.cartService.checkoutAuth(itemsFromCartID).pipe(
+        catchError((error)=>{
+          console.log(error)
+          return of(null)
+        })
+      ).subscribe((response)=>{console.log(response)
+        if(response?.isChecked == true){
+          this.purchasePassed.set(true)
+        }else{
+          this.purchaseError.set(true)
+        }
+      })
+    }else{
+      this.subscription = this.cartService.checkoutGuest(itemsFromCartID).pipe(
+        catchError((error)=>{
+          console.log(error)
+          return of(null)
+        })
+      ).subscribe((response)=>{console.log(response)
+        if(response?.isChecked == true){
+          this.purchasePassed.set(true)
+        }else{
+          this.purchaseError.set(true)
+        }
+      })
     }
     
-  }
 
-  checkCardNumber(){
-    if(this.checkout.get('cardNo')?.hasError('required')){
-      this.cardNoError.set('Card number is required')
-      return
-    }
-    let test = isNaN(Number(this.checkout.get('cardNo')?.value))
-    console.log(test, 'test')
-    if(test || this.checkout.get('cardNo')?.hasError('pattern') || this.checkout.get('cardNo')?.hasError('minlength') || this.checkout.get('cardNo')?.hasError('minlength')){
-      this.cardNoError.set('Enter a valid card number')
-      return
-    } 
+  }
+  handleBackToProducts(){
+    this.router.navigate(['/categories'])
   }
 
   resetErrorsMessages(){
     this.formUntouched.set('')
-    this.cardNoError.set('')
+    
   }
 }

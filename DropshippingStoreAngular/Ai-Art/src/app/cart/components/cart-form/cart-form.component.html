@@ -1,5 +1,16 @@
 <div class="container">
-  <div class="checkout">
+  @if(this.purchasePassed()){
+  <div class="purchasePassed">
+    <p>Thank you for your purchase!</p>
+    <button mat-flat-button (click)="handleBackToProducts()">
+      Back to products
+    </button>
+  </div>
+  }
+  <div
+    [class.checkout]="this.purchasePassed() === true"
+    [class.checkoutNone]="this.purchasePassed() === false"
+  >
     <div class="credit-card-box">
       <div class="flip">
         <div class="front">
@@ -57,6 +68,13 @@
         </div>
       </div>
     </div>
+
+    @if(purchaseError()===true){
+    <div class="purchasePassed">
+      <p>Error while purchasing items. Please try again</p>
+    </div>
+    }
+
     <form class="form" [formGroup]="checkout" (ngSubmit)="checkoutSubmit()">
       <div class="card-name">
         <mat-form-field class="field">
@@ -95,9 +113,12 @@
           >
           @if(checkout.get('cardNo')?.hasError('required')){
           <mat-error>Card number is <strong>required</strong></mat-error>
+          }@if (this.checkout.get('cardNo')?.hasError('pattern')) {
+          <mat-error>Enter valid value.</mat-error>
+          }@if(this.checkout.get('cardNo')?.hasError('minlength') ||
+          this.checkout.get('cardNo')?.hasError('maxlength')){
+          <mat-error>Card number should be 16 numbers.</mat-error>
           }
-
-          <mat-error>{{ cardNoError() }}</mat-error>
         </mat-form-field>
       </div>
 
