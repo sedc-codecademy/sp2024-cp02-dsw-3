@@ -15,10 +15,11 @@ export interface AppStates{
     pageSize: number,
     totalCount: number,
     isLoading: boolean,
-    sortBy: SortBy| undefined, //category, artist, stock, date
-    sortDirection: SortDirection ,
+    sortBy: SortBy| undefined, //price
+    sortDirection: SortDirection , //default ASC
     artistNames: string[],
     favorites: Image[],
+    cart: Image[]
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
@@ -43,6 +44,7 @@ const defaultState: AppStates = {
     sortDirection: SortDirection.ASC,
     artistNames: [],
     favorites: [],
+    cart: [],
     selectedArtist:undefined,
     selectedCategory:undefined,
     prompt: '',
@@ -65,9 +67,39 @@ export const AppStore = signalStore(
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
         setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
-        setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
         setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
+        setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
+        setFavorites: (image: Image)=>{ 
+            if(!state.favorites().find((c)=>c.id==image.id)){
+                patchState(state,{favorites: [...state.favorites(), image]})
+            }
+            
+        },
+        removeFromFavorites:(image:Image)=>{
+            let filtered = [] as Image[]
+            state.favorites().map((c)=>{ if(c.id !== image.id){filtered.push(c)} })
+            patchState(state, {favorites:[...filtered]})
+        },
+        resetFavorites: ()=>{
+            let fave:Image[] = []
+            patchState(state, {favorites:fave})
+        },
+        setCart: (image: Image)=>{ 
+            if(!state.cart().find((c)=>c.id==image.id)){
+                patchState(state,{cart: [...state.cart(), image]})
+            }
+            
+        },
+        removeFromCart:(image:Image)=>{
+            let filtered = [] as Image[]
+            state.cart().map((c)=>{ if(c.id !== image.id){filtered.push(c)} })
+            patchState(state, {cart:[...filtered]})
+        },
+        resetCart: ()=>{
+            let fave:Image[] = []
+            patchState(state, {cart:fave})
+        },
         setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock})},
         setIsAuth: (isAuth: boolean)=>{patchState(state, {isAuth})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},

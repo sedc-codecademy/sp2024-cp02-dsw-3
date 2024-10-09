@@ -4,7 +4,6 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { Category } from '../../../types/category.enum';
 import { SortBy, SortDirection } from '../../../types/sortBy.enum';
 
 

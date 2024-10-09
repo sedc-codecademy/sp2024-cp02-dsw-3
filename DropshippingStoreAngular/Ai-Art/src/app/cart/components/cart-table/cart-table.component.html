@@ -1,4 +1,4 @@
-@if(!cart.length){
+@if(!appStore.cart().length){
 <div class="containerEmpty">
   <p class="tableHeader">Cart is empty.</p>
 </div>
@@ -8,7 +8,11 @@
   <h6>Cart summary</h6>
 
   <div class="tableContainer">
-    <table mat-table [dataSource]="cart" class="mat-elevation-z8 table">
+    <table
+      mat-table
+      [dataSource]="appStore.cart()"
+      class="mat-elevation-z8 table"
+    >
       <ng-container matColumnDef="product">
         <th mat-header-cell *matHeaderCellDef class="tableHeader">Product</th>
         <td mat-cell *matCellDef="let element" class="details">
@@ -43,7 +47,7 @@
             mat-icon-button
             aria-label="Example icon button with a vertical three dot icon"
             color="inherit"
-            (click)="handleRemoveFromList(element.id)"
+            (click)="handleRemoveFromList(element)"
           >
             <mat-icon>delete</mat-icon>
           </button>

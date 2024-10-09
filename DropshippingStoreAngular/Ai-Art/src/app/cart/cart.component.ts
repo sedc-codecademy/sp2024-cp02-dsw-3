@@ -1,14 +1,11 @@
-import { Component, ElementRef, inject, signal, ViewChild, viewChild } from '@angular/core';
-import { Subscription, Observable } from 'rxjs';
-import { CartService } from '../services/cart.service';
+import { Component, inject } from '@angular/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatStepperModule, StepperOrientation} from '@angular/material/stepper';
+import {MatStepperModule} from '@angular/material/stepper';
 import {MatButtonModule} from '@angular/material/button';
 import { CartTableComponent } from './components/cart-table/cart-table.component';
 import { CartFormComponent } from './components/cart-form/cart-form.component';
 import { AsyncPipe } from '@angular/common';
-import { Image } from '../types/image.interface';
-import { FormBuilder, Validators } from '@angular/forms';
+import { AppStore } from '../store/app.store';
 
 @Component({
   selector: 'app-cart',
@@ -18,16 +15,6 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrl: './cart.component.css'
 })
 export class CartComponent {
-  cart: Image[]
-  subscription = new Subscription()
-  stepperOrientation: Observable<StepperOrientation>;
-  isLinear = signal<boolean>(true)
-  constructor(private readonly cartService: CartService){}
- 
-
- 
-  ngOnInit(){
-    this.subscription = this.cartService.$cart.subscribe((data)=>this.cart = data)
-  }
+  appStore = inject(AppStore)
 
 }

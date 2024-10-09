@@ -1,11 +1,11 @@
-@if(favorites.length){
+@if(appStore.favorites().length){
 <div class="heading">
   <h5>Your favorites are here!</h5>
   <mat-divider></mat-divider>
 </div>
 
 <div class="container">
-  @for (item of favorites; track $index) {
+  @for (item of appStore.favorites(); track $index) {
   <div class="medium">
     <div>
       <img [src]="item.imageUrl" />

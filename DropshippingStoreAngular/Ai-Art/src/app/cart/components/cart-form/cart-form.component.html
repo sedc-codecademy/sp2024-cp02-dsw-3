@@ -1,4 +1,4 @@
-<div class="container">
+<div class="bigContainer">
   @if(this.purchasePassed()){
   <div class="purchasePassed">
     <p>Thank you for your purchase!</p>
@@ -8,8 +8,8 @@
   </div>
   }
   <div
-    [class.checkout]="this.purchasePassed() === true"
-    [class.checkoutNone]="this.purchasePassed() === false"
+    [class.checkout]="this.purchasePassed() === false"
+    [class.checkoutNone]="this.purchasePassed() === true"
   >
     <div class="credit-card-box">
       <div class="flip">
