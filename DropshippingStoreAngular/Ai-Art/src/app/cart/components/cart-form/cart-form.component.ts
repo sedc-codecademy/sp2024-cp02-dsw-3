@@ -70,7 +70,13 @@ export class CartFormComponent {
           console.log(error)
           return of(null)
         })
-      ).subscribe((response)=>{console.log(response)})
+      ).subscribe((response)=>{console.log(response)
+        if(response?.isChecked == true){
+          this.purchasePassed.set(true)
+        }else{
+          this.purchaseError.set(true)
+        }
+      })
     }
     
 
