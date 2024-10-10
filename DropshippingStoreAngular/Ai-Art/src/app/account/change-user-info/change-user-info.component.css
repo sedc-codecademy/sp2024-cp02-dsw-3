@@ -5,7 +5,7 @@ form {
   padding: 40px;
   border-radius: 15px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   max-width: 700px;
   margin: 30px auto;
 }
@@ -22,9 +22,29 @@ form {
   padding: 0 15px;
   margin-bottom: 20px;
 }
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 20px; /* Add space for the eye icon */
+}
+
+.password-field i {
+  position: absolute;
+  right: 10px; /* Position the icon inside the input */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #888; /* Color for the eye icon */
+  font-size: 16px; /* Adjust icon size if needed */
+  pointer-events: all; /* Ensure click events can reach the icon */
+  margin-right: 10px;
+}
 
 .form-container {
-  position: relative; 
+  position: relative;
 }
 
 .success-message {
@@ -42,8 +62,6 @@ form {
   z-index: 10;
   width: fit-content; /* Ensure it appears above other elements */
 }
-
-
 
 /* Labels */
 form label {
@@ -76,7 +94,7 @@ form input:focus {
 
 /* Password Fields */
 form input[type="password"] {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   letter-spacing: 1px;
 }
 

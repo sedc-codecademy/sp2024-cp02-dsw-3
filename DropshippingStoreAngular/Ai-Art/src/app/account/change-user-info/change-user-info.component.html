@@ -1,5 +1,4 @@
 <div class="form-container">
-  
   <div *ngIf="successMessage" class="success-message">
     <p>{{ successMessage }}</p>
   </div>
@@ -23,14 +22,36 @@
     <div class="row">
       <div>
         <label for="password">Password:</label>
-        <input id="password" type="password" formControlName="password" />
+        <div class="password-field">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            formControlName="password"
+          />
+          <i
+            class="fas"
+            [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePasswordVisibility('password')"
+          ></i>
+        </div>
         <div *ngIf="userInfoForm.get('password')?.hasError('minlength')">
           <p class="error">Password must be at least 8 characters long!</p>
         </div>
       </div>
       <div>
         <label for="confirmPassword">Confirm Password:</label>
-        <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+        <div class="password-field">
+          <input
+            id="confirmPassword"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            formControlName="confirmPassword"
+          />
+          <i
+            class="fas"
+            [ngClass]="showConfirmPassword ? 'fa-eye-slash' : 'fa-eye'"
+            (click)="togglePasswordVisibility('confirmPassword')"
+          ></i>
+        </div>
         <div *ngIf="userInfoForm.get('confirmPassword')?.hasError('minlength')">
           <p class="error">Password must be at least 8 characters long!</p>
         </div>
@@ -58,3 +79,8 @@
     <button type="submit" [disabled]="userInfoForm.invalid">Update Info</button>
   </form>
 </div>
+
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+/>
