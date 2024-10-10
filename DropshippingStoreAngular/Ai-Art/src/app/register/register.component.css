@@ -1,76 +1,175 @@
-/* Main container for centering */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Inconsolata", monospace;
+}
+
+/* Center the entire form on the page */
+/* Set up background and centering */
 .register-page-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #000 30%, #291d37 100%);
-    padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #000 30%, #291d37 100%);
+}
+
+/* Form container styling */
+form {
+  background: linear-gradient(135deg, #000 30%, #291d37 100%);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form:hover {
+  transform: translateY(-10px);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+/* Form field input styling */
+.mat-form-field {
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.input-field input {
+  color: #fff;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+}
+
+.input-field input:hover {
+  opacity: 1;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  background-color: #71499d;
+  color: white;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #4a128a;
+  box-shadow: 0px 4px 15px rgba(74, 18, 138, 0.5);
+}
+
+/* Error message styling */
+.mterror {
+  color: #71499d;
+}
+
+/* Adjust font for label */
+mat-label {
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Responsive design adjustments */
+@media only screen and (max-width: 920px) {
+  .register-page-container {
+    padding: 50px 20px;
   }
-  
-  /* Style for the form container */
   form {
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-    background-color: #fff;
-    padding: 80px;
-    border-radius: 70px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    max-width: 450px;
-    width: 100%;
+    max-width: 300px;
+    padding: 30px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .register-page-container {
+    padding: 30px 10px;
+  }
+  form {
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 15px;
   }
   
-  /* Input fields styling */
-  .mat-form-field {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-  
-  /* Input styling to match theme */
-  input {
-    color: #4a128a;
-  }
-  
-  .mat-form-field input {
-    background-color: #f8f8f8;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  
-  /* Button styling */
   button {
-    width: 100%;
-    background-color: #71499d;
-    color: white;
-    font-weight: bold;
+    font-size: 14px;
+    padding: 10px;
   }
-  
-  button:hover {
-    background-color: #4a128a;
-  }
-  
-  /* Error styling */
-  mat-error {
-    color: red;
-    font-weight: bold;
-    margin-top: -10px;
-    margin-bottom: 10px;
-  }
-  
-  /* Link styling */
-  a {
-    color: #71499d;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 600px) {
-    form {
-      padding: 20px;
-    }
-  }
-  
+}
+
+/* Focused field enhancement */
+.mat-form-field input:focus {
+  border-bottom: 2px solid #71499d;
+  box-shadow: 0px 2px 8px rgba(113, 73, 157, 0.7);
+}
+
+
+/*FOOTER*/
+.footer {
+  background-color: #000000;
+  color: #fff;
+  padding: 40px 0;
+}
+.footer .container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-family: "Inconsolata", monospace;
+}
+.footer .logo {
+  margin-bottom: 20px;
+}
+.footer .column {
+  flex: 1;
+  margin: 20px;
+  min-width: 200px;
+}
+.footer .column h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-family: "Inconsolata", monospace;
+}
+.footer .column p,
+.footer .column ul,
+.footer .column li,
+.footer .column a {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ccc;
+}
+.footer .column ul {
+  list-style: none;
+  padding: 0;
+}
+.footer .column li {
+  margin-bottom: 10px;
+}
+.footer .column a {
+  color: #ccc;
+  text-decoration: none;
+}
+.footer .column a:hover {
+  text-decoration: underline;
+}
+.footer .social-icons {
+  display: flex;
+}
+.footer .social-icons a {
+  color: #ccc;
+  margin-right: 10px;
+  font-size: 20px;
+}
+.footer .social-icons a:hover {
+  color: #fff;
+}
+.footer-stylish-bottom {
+  text-align: center;
+  padding: 20px 0;
+
+  font-size: 0.9rem;
+}
+

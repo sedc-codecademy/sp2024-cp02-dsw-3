@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
+import { AppStore } from '../store/app.store';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +15,12 @@ import { AuthService } from '../services/auth.service';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  [x: string]: any;
+
 
   loginForm: FormGroup
-  
-  constructor (public readonly authService:AuthService, private readonly router: Router) {}
+  appStore = inject(AppStore);
+
+  constructor (public readonly authService:AuthService, private readonly router: Router, ) { effect(()=>{},{allowSignalWrites:true})}
   
   ngOnInit () {
     this.initForm();
@@ -27,7 +29,7 @@ export class LoginComponent {
   initForm () {
     this.loginForm = new FormGroup({
       userName: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required])
+      password: new FormControl('', [Validators.required, Validators.minLength(9), Validators.maxLength(15)])
     })
   };
   
@@ -38,6 +40,7 @@ export class LoginComponent {
     this.authService.login(userName, password).subscribe((response) => {
       console.log(response);
       if(response){
+        this.appStore.setUserInfo(response);
         this.router.navigate(['/'])
       };
     });
