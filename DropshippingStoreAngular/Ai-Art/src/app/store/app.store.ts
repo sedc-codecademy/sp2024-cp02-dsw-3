@@ -1,7 +1,6 @@
 import { computed } from "@angular/core";
 import { SafeUrl } from "@angular/platform-browser";
 import { Artist } from "../types/artist.interface";
-import { Category } from "../types/category.enum";
 import { Image } from "../types/image.interface";
 import { SortBy, SortDirection } from "../types/sortBy.enum";
 import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
@@ -15,8 +14,7 @@ export interface AppStates{
     pageSize: number,
     totalCount: number,
     isLoading: boolean,
-    sortBy: SortBy| undefined, //price
-    sortDirection: SortDirection , //default ASC
+    sortByPriceAsc: boolean , //default ASC
     artistNames: string[],
     favorites: Image[],
     cart: Image[]
@@ -40,8 +38,7 @@ const defaultState: AppStates = {
     pageSize: 12,
     totalCount: 0,
     isLoading: false,
-    sortBy: undefined,
-    sortDirection: SortDirection.ASC,
+    sortByPriceAsc: true,
     artistNames: [],
     favorites: [],
     cart: [],
@@ -67,34 +64,23 @@ export const AppStore = signalStore(
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
         setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
-        setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
-        setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
+        setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setFavorites: (image: Image)=>{ 
-            if(!state.favorites().find((c)=>c.id==image.id)){
-                patchState(state,{favorites: [...state.favorites(), image]})
-            }
-            
+                patchState(state,{favorites: [...state.favorites(), image]})            
         },
-        removeFromFavorites:(image:Image)=>{
-            let filtered = [] as Image[]
-            state.favorites().map((c)=>{ if(c.id !== image.id){filtered.push(c)} })
-            patchState(state, {favorites:[...filtered]})
+        removeFromFavorites:(images:Image[])=>{
+            patchState(state, {favorites:images})
         },
         resetFavorites: ()=>{
             let fave:Image[] = []
             patchState(state, {favorites:fave})
         },
         setCart: (image: Image)=>{ 
-            if(!state.cart().find((c)=>c.id==image.id)){
                 patchState(state,{cart: [...state.cart(), image]})
-            }
-            
         },
-        removeFromCart:(image:Image)=>{
-            let filtered = [] as Image[]
-            state.cart().map((c)=>{ if(c.id !== image.id){filtered.push(c)} })
-            patchState(state, {cart:[...filtered]})
+        removeFromCart:(image:Image[])=>{
+            patchState(state, {cart:image})
         },
         resetCart: ()=>{
             let fave:Image[] = []
@@ -113,6 +99,7 @@ export const AppStore = signalStore(
                 totalCount: 0,
                 pageSize: 12,
                 searchTerm: '',
+                sortByPriceAsc: undefined,
                 selectedCategory: undefined,
                 inStock: true,
                 totalPages:0
@@ -134,9 +121,11 @@ export const AppStore = signalStore(
             if(state.selectedCategory()){
                 searchParams.category = Number(state.selectedCategory())
             }
-            // if(state.sortDirection()){
-            //     searchParams.sortDirection = state.sortDirection()
-            // }
+            if(state.sortByPriceAsc()){
+                searchParams.sortByPriceAsc = state.sortByPriceAsc()
+            }if(state.selectedArtist()){
+                searchParams.username = state.selectedArtist()
+            }
 
             return searchParams
         })

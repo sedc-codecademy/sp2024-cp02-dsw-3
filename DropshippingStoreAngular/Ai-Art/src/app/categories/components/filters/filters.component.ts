@@ -17,15 +17,13 @@ import { SortBy, SortDirection } from '../../../types/sortBy.enum';
 export class FiltersComponent {
   selectedCategory = input.required<string | undefined>()
   selectedArtist = input.required<string | undefined>()
-  selectedDirection = input.required<SortDirection>()
+  selectedDirection = input.required<boolean>()
   inStock = input.required<boolean | undefined>()
   updateSelectCategory = output<any>()
   updateSelectedArtist = output<any>()
   updateSelectedDirection = output<any>()
   updateInStock = output<any>()
   artists = input<string[]>([])
-  sortBy = SortBy
-  sortDirection = SortDirection
   readonly panelOpenState = signal(false);
   handleAccordion(){
     this.panelOpenState.update((v)=>!v)

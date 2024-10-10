@@ -24,12 +24,18 @@ export class CardComponent {
   effect(()=>{},{allowSignalWrites:true})
  }
  handleAddToCart(item:Image){
-  this.appStore.setCart(item)
+  if(!this.appStore.cart().find((i)=>i===item)){
+    this.appStore.setCart(item)
   this.notificationService.handleSnackBar('Item is successfully added in cart!')
+  }
+  
  }
  handleAddToFavorites(item:Image){
-  this.appStore.setFavorites(item)
+  if(!this.appStore.favorites().find((i)=>i===item)){
+    this.appStore.setFavorites(item)
   this.notificationService.handleSnackBar('Item is successfully added in favorites!')
+  }
+  
  }
 
 }

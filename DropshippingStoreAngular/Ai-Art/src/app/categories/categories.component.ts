@@ -32,6 +32,7 @@ export class CategoriesComponent {
     this.subscription = this.categoryService.getImages(searchQuery).subscribe((response)=>{
       console.log(response)
       const {paginatedImages} = response
+      console.log('paginated images',paginatedImages)
       this.productStore.setTotal(paginatedImages.totalCount)
       this.productStore.setProducts(paginatedImages.data)
       //i total pages ovde da se stavi vo store ako treba

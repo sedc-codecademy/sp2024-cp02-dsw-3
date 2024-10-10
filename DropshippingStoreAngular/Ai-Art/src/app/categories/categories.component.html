@@ -4,11 +4,11 @@
   <app-filters
     [selectedCategory]="productStore.selectedCategory()"
     [selectedArtist]="productStore.selectedArtist()"
-    [selectedDirection]="productStore.sortDirection()"
+    [selectedDirection]="productStore.sortByPriceAsc()"
     [inStock]="productStore.inStock()"
     (updateSelectCategory)="productStore.setSelectedCategory($event)"
     (updateSelectedArtist)="productStore.setSelectedArtist($event)"
-    (updateSelectedDirection)="productStore.setSortDirection($event)"
+    (updateSelectedDirection)="productStore.setSortByPriceAsc($event)"
     (updateInStock)="productStore.setInStock($event)"
   />
 

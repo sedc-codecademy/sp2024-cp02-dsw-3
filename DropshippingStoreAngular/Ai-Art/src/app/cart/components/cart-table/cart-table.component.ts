@@ -28,7 +28,8 @@ export class CartTableComponent {
   }
 
   handleRemoveFromList(item: Image){
-    this.appStore.removeFromCart(item)
+    let filtered = this.appStore.cart().filter(i=>i!==item)
+    this.appStore.removeFromCart(filtered)
     this.notificationService.handleSnackBar('Item is successfully removed from cart!')
     this.calculateTotal()
    }

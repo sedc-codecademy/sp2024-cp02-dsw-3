@@ -50,7 +50,7 @@ export class CartFormComponent {
     } 
     if(this.checkout.invalid)return
      let itemsFromCartID = this.appStore.cart().map((item)=>item.id)
-
+    console.log(itemsFromCartID)
     if(this.appStore.user() || localStorage.getItem('token')){
       this.subscription = this.cartService.checkoutAuth(itemsFromCartID).pipe(
         catchError((error)=>{

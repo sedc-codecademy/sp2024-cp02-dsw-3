@@ -54,17 +54,6 @@
           <mat-radio-button [value]="undefined">All</mat-radio-button>
         </mat-radio-group>
 
-        <!-- <mat-radio-group
-          aria-label="Select an option"
-          class="radio"
-          (change)="handleRadioBtns($event)"
-        >
-          <mat-label>Sort by:</mat-label>
-          <mat-radio-button value="price">Price</mat-radio-button>
-          <mat-radio-button value="createdAt">Date</mat-radio-button>
-          <mat-radio-button value="undefined">All</mat-radio-button>
-        </mat-radio-group> -->
-
         <mat-radio-group
           aria-label="Select an option"
           class="radio"
@@ -72,12 +61,8 @@
           (change)="handleRadioBtns($event, this.updateSelectedDirection)"
         >
           <mat-label>Sort direction:</mat-label>
-          <mat-radio-button [value]="sortDirection.ASC"
-            >Ascending</mat-radio-button
-          >
-          <mat-radio-button [value]="sortDirection.DESC"
-            >Descending</mat-radio-button
-          >
+          <mat-radio-button [value]="true">Ascending</mat-radio-button>
+          <mat-radio-button [value]="false">Descending</mat-radio-button>
         </mat-radio-group>
       </div>
     </mat-expansion-panel>

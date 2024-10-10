@@ -22,7 +22,7 @@ export class CategoriesService {
   
 
   getImages(searchQuery: SearchImagesQuery = {}):Observable<ResponseApiCategories>{
-    return this.httpClient.get<ResponseApiCategories>(`${this.imagesPath}/GetImages`,{params: {...searchQuery}}).pipe(
+    return this.httpClient.get<ResponseApiCategories>(`${this.imagesPath}GetImages`,{params: {...searchQuery}}).pipe(
       catchError((error)=>{
         console.log(error)
         return of({paginatedImages: {
@@ -38,7 +38,8 @@ export class CategoriesService {
   }
 
   getImage(id:string){
-    return this.httpClient.get(`${this.imagesPath}/GetById/${id}`)
+    console.log('id in getImage',id)
+    return this.httpClient.get<Image>(`${this.imagesPath}GetById/${id}`)
   }
   
 

@@ -53,11 +53,14 @@ export class CardDetailsComponent {
     console.log(this.openUniqueWork())
   }
   handleAddToCart(item:Image){
-    this.appStore.setCart(item)
+    if(!this.appStore.cart().find((i)=>i===item)){
+    this.appStore.setCart(item)}
   }
   handleAddToFavorites(item:Image){
+    if(!this.appStore.favorites().find((i)=>i===item)){
     this.appStore.setFavorites(item)
     this.notificationService.handleSnackBar('Item is successfully added in favorites!')
+    }
   }
   ngOnDestroy(){
     this.subscription.unsubscribe()
