@@ -57,7 +57,7 @@ export class ListImageFormComponent {
     }
     console.log(requestBody)
 
-    //otkako ke se kreira ke treba userot da go vrati vo generate 
+    
     this.subscription = this.generatorService.addGeneratedImage(requestBody).subscribe((data)=>
     {
       console.log('i am here')
@@ -65,7 +65,6 @@ export class ListImageFormComponent {
       if(data?.message){
         const{message} = data
         this.appStore.setPrompt('')
-        this.appStore.setCreatedImage('')
         this.appStore.setStringifyCreationImage('')
         this.router.navigate(['/generate-your-art'])
         this.notificationService.handleSnackBar(message)
@@ -77,7 +76,6 @@ export class ListImageFormComponent {
   }
 
   handleRemove(){
-    this.appStore.setCreatedImage('')
     this.appStore.setStringifyCreationImage('')
     this.appStore.setPrompt('')
     this.router.navigate(['/generate-your-art'])

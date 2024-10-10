@@ -24,18 +24,27 @@ export class CardComponent {
   effect(()=>{},{allowSignalWrites:true})
  }
  handleAddToCart(item:Image){
-  if(!this.appStore.cart().find((i)=>i===item)){
+  if(!this.appStore.cart().find((i)=>i.id===item.id)){
     this.appStore.setCart(item)
   this.notificationService.handleSnackBar('Item is successfully added in cart!')
   }
   
  }
  handleAddToFavorites(item:Image){
-  if(!this.appStore.favorites().find((i)=>i===item)){
+  if(!this.appStore.favorites().find((i)=>i.id===item.id)){
     this.appStore.setFavorites(item)
   this.notificationService.handleSnackBar('Item is successfully added in favorites!')
   }
   
  }
-
+ handleCategories(){
+  if(this.image().category == 'AstroPhoto'){
+    return 'Astro-photography'
+  }else if(this.image().category == 'ArtAndDesigns'){
+    return 'Art & design'
+  }else if(this.image().category == 'CharcoalAndChalkAndPastel'){
+    return 'Charcoal,chalk & pastel'
+  }else if(this.image().category == 'BlackAndWhite'){return 'Black & white'}
+  return
+ }
 }

@@ -27,7 +27,8 @@ export class CardDetailsComponent {
   panelOpenState = signal(false);
   openRoom = signal(false)
   openCertificate = signal(false)
-  product : any
+  product : Image
+  category: string | undefined
   subscription= new Subscription()
   constructor(private readonly productsService: CategoriesService, private readonly route: ActivatedRoute, private notificationService: NotificationService){
     effect(()=>{},{allowSignalWrites:true})
@@ -38,7 +39,13 @@ export class CardDetailsComponent {
   }
   getProduct(){
     this.subscription = this.route.params.pipe(
-      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe(v=> this.product = v)
+      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe((v)=>{ this.product = v.image
+        console.log('product',this.product)
+        console.log('v',v)
+        this.category=this.productsService.handleProductCategory(this.product)
+      }
+    )
+      
   }
   handleAccordion(){
     this.panelOpenState.update((v=>!v))
@@ -53,11 +60,11 @@ export class CardDetailsComponent {
     console.log(this.openUniqueWork())
   }
   handleAddToCart(item:Image){
-    if(!this.appStore.cart().find((i)=>i===item)){
+    if(!this.appStore.cart().find((i)=>i.id===item.id)){
     this.appStore.setCart(item)}
   }
   handleAddToFavorites(item:Image){
-    if(!this.appStore.favorites().find((i)=>i===item)){
+    if(!this.appStore.favorites().find((i)=>i.id===item.id)){
     this.appStore.setFavorites(item)
     this.notificationService.handleSnackBar('Item is successfully added in favorites!')
     }
@@ -65,4 +72,6 @@ export class CardDetailsComponent {
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }
+
+
 }

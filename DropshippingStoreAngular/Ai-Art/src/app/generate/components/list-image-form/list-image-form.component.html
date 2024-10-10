@@ -18,7 +18,11 @@
         <div class="secondTab">
           <app-loader />
           <div class="imageContainer">
-            <img [src]="appStore.createdImage()" alt="creation" class="image" />
+            <img
+              [src]="appStore.stringifyCreationImage()"
+              alt="creation"
+              class="image"
+            />
           </div>
 
           <div class="formContainer">

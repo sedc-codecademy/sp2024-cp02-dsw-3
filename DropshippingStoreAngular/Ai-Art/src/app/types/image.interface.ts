@@ -1,10 +1,8 @@
-import { Artist } from "./artist.interface";
-
 
 export interface Image{
     id: string,
     description: string,
-    category: number,
+    category: string | number,
     userId: string,
     price: number,
     stock: boolean,

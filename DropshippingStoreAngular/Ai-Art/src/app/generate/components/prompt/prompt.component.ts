@@ -22,7 +22,7 @@ export class PromptComponent {
   promptForm: FormGroup
   subscription = new Subscription
   image: SafeUrl | null = null
-  constructor(private generatorService: GeneratorService, private sanitizer: DomSanitizer,private readonly notificationService: NotificationService, private readonly router: Router) { 
+  constructor(private generatorService: GeneratorService,private readonly notificationService: NotificationService, private readonly router: Router) { 
     effect(()=>{
 
     }, {allowSignalWrites: true})
@@ -51,10 +51,8 @@ export class PromptComponent {
         if(data && data.image){
           const base64Image = `data:image/png;base64,${data.image}`
           this.appStore.setStringifyCreationImage(base64Image)
-          this.image = this.sanitizer.bypassSecurityTrustUrl(base64Image)
           this.appStore.setIsLoading(false)
           this.notificationService.handleSnackBar('You art is successfully created!')
-          this.appStore.setCreatedImage(this.image)
           this.appStore.setPrompt(value)
           this.router.navigate(['/generate-your-art/list-for-sale'])
         }     

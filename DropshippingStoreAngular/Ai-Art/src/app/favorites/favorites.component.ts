@@ -26,9 +26,9 @@ constructor(private readonly notificationService: NotificationService){
 
 
 handleAddToCart(img: Image){
-  if(!this.appStore.cart().find((i)=>i===img)){
+  if(!this.appStore.cart().find((i)=>i.id===img.id)){
     this.appStore.setCart(img)
-    let filtered = this.appStore.favorites().filter(i=>i!==img)
+    let filtered = this.appStore.favorites().filter(i=>i.id!==img.id)
     this.appStore.removeFromFavorites(filtered)
     this.notificationService.handleSnackBar('Item is added in cart!')
   }else{
@@ -38,7 +38,7 @@ handleAddToCart(img: Image){
 }
 
 handleRemoveFromFavorites(img: Image){
-  let filtered = this.appStore.favorites().filter(i=>i!==img)
+  let filtered = this.appStore.favorites().filter(i=>i.id!==img.id)
   this.appStore.removeFromFavorites(filtered)
   this.notificationService.handleSnackBar('Item is removed from favorites!')
 }

@@ -23,6 +23,6 @@
     [length]="productStore.totalCount()"
     [pageSize]="productStore.pageSize()"
     aria-label="Select page"
-    (page)="productStore.setPage($event.pageIndex)"
+    (page)="productStore.setPage($event.pageIndex + 1)"
   />
 </div>

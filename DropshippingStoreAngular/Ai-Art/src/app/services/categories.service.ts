@@ -39,8 +39,44 @@ export class CategoriesService {
 
   getImage(id:string){
     console.log('id in getImage',id)
-    return this.httpClient.get<Image>(`${this.imagesPath}GetById/${id}`)
+    return this.httpClient.get<{image: Image}>(`${this.imagesPath}GetById${id}`)
   }
   
-
+  handleProductCategory(item: Image){
+    let category
+    switch (item.category) {
+      case 0:
+        category = 'Portraits'
+        break;
+      case 1:
+        category = 'Acrylic'
+        break;
+      case 2:
+        category = 'Black and white'
+      break;
+      case 4:
+        category = 'Canvas'
+      break;
+      case 5:
+        category = 'Landscapes'
+      break;
+      case 6:
+        category = 'Charcoal,chalk and pastel'
+      break;
+      case 7:
+        category = 'Art and design'
+      break;
+      case 8:
+        category = 'Abstract'
+      break;
+      case 9:
+        category = 'Astro photography'
+      break;
+      default:
+        break;
+      
+    }
+    return category
+    
+  }
 }

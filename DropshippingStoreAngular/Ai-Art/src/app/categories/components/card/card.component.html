@@ -10,7 +10,12 @@
 
   <div class="cardDetails">
     <mat-card-content class="paragraphs">
+      @if(handleCategories()){
+      <p>{{ handleCategories() }}</p>
+      }@else {
       <p>{{ image().category }}</p>
+      }
+
       <p>Price: {{ image().price | currency }}</p>
       <p></p
     ></mat-card-content>

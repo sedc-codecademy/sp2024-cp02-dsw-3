@@ -1,9 +1,9 @@
- .container {
+ .bigContainer {
   display: flex;
   width: 100%;
   margin: 0px;
   justify-content: center;
-  
+  font-family: "Inconsolata", monospace;
 }
 
 .detailsContainer {
@@ -15,6 +15,7 @@
   column-gap: 60px;
   padding: 30px;
   box-shadow: 1px 2px 4px #24093e, 0 0 35px #500f91, 0 0 15px #6b12c5;
+  font-family: "Inconsolata", monospace;
 }
 
 .article-container {
@@ -28,6 +29,7 @@ h6,
 h4 {
   margin: 0px 0px 5px 0px;
   padding: 0px;
+  font-family: "Inconsolata", monospace;
 }
 .imageContainer {
   width: 100%;
@@ -52,11 +54,13 @@ h4 {
   flex-direction: column;
   justify-content: flex-start;
   gap: 20px;
+  font-family: "Inconsolata", monospace;
 }
 .chips {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-family: "Inconsolata", monospace;
 }
 .chip {
   display: flex;
@@ -64,17 +68,19 @@ h4 {
   align-items: center;
   gap: 5px;
   cursor: pointer;
+  font-family: "Inconsolata", monospace;
 }
 
 .buttons {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  font-family: "Inconsolata", monospace;
 }
 /* POP UP */
 
 
-.active {
+.activeRoom {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,14 +98,14 @@ h4 {
   background-color: rgba(0, 0, 0, 0.9);
 }
 
-.close {
+/* .closeRoom {
   position: fixed;
   top: 10px;
   right: 10px;
   color: gray;
-}
+} */
 
-.modal-content {
+.room{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +129,7 @@ h4 {
   background-size: contain;
 }
 
-.close {
+.closeRoom {
   position: absolute;
   top: 15px;
   right: 35px;
@@ -132,14 +138,14 @@ h4 {
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.closeRoom:hover,
+.closeRoom:focus {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
 @media only screen and (max-width: 700px) {
-  .active {
+  .activeRoom {
     background-size: cover;
   }
   .modal-content {
@@ -213,6 +219,7 @@ h4 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: "Inconsolata", monospace;
     /* border-radius: 5%; */
         
 }
@@ -230,6 +237,7 @@ h4 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: "Inconsolata", monospace;
 }
 
 @media only screen and (max-width: 880px) {
@@ -255,4 +263,7 @@ h4 {
     width: 80%;
     left: 10%;
   }
+  /* .info{
+    width:70%;
+  } */
 }

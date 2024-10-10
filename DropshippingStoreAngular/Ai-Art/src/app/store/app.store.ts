@@ -21,7 +21,6 @@ export interface AppStates{
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    createdImage: SafeUrl,
     handleExpansion: boolean,
     isAuth: boolean,
     prompt: string,
@@ -49,7 +48,6 @@ const defaultState: AppStates = {
     inStock: true,
     handleExpansion: false,
     isAuth: false,
-    createdImage: '',
     stringifyCreationImage: '',
 }
 
@@ -58,7 +56,7 @@ export const AppStore = signalStore(
     withState(defaultState),
     withMethods((state)=>({
         setProducts: (products: Image[])=>{patchState(state, {products})},
-        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, pageNumber:0})},
+        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, pageNumber:1})},
         setPage: (pageNumber: number)=>{patchState(state,{pageNumber})},
         setTotalPages:(totalPages:number)=>{patchState(state, {totalPages})},
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
@@ -90,19 +88,13 @@ export const AppStore = signalStore(
         setIsAuth: (isAuth: boolean)=>{patchState(state, {isAuth})},
         setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
         setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
-        setCreatedImage: (createdImage:SafeUrl)=>{patchState(state, {createdImage})},
         setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
         setPrompt: (prompt:string)=>{patchState(state, {prompt})},
         resetQueryParams: ()=>{
             patchState(state,{
                 pageNumber: 1,
-                totalCount: 0,
-                pageSize: 12,
                 searchTerm: '',
-                sortByPriceAsc: undefined,
-                selectedCategory: undefined,
-                inStock: true,
-                totalPages:0
+                // sortByPriceAsc: true,
 
             })
         }
@@ -111,19 +103,22 @@ export const AppStore = signalStore(
         searchParams: computed(()=>{
             const searchParams: SearchImagesQuery = {
                 pageNumber: state.pageNumber(),
+                sortByPriceAsc: state.sortByPriceAsc(),
+                // username: state.selectedArtist()
             }
             if(state.searchTerm()){
+                console.log(state.searchTerm())
                 searchParams.searchTerm = state.searchTerm()
             }
             if(state.inStock()){
                 searchParams.inStock = state.inStock()
+            }else if(state.inStock()===false){
+                searchParams.inStock=state.inStock()
             }
             if(state.selectedCategory()){
                 searchParams.category = Number(state.selectedCategory())
             }
-            if(state.sortByPriceAsc()){
-                searchParams.sortByPriceAsc = state.sortByPriceAsc()
-            }if(state.selectedArtist()){
+            if(state.selectedArtist()){
                 searchParams.username = state.selectedArtist()
             }
 
