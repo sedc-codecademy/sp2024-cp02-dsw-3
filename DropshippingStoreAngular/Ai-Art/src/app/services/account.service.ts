@@ -1,21 +1,30 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-@Injectable ({
-    providedIn: 'root'
+@Injectable({
+  providedIn: 'root'
 })
-
 export class AccountService {
-    private apiUrl = `http://localhost:5095/api/User`;
+  private apiUrl = 'http://localhost:5095/api/User'; 
 
-    constructor(private readonly http: HttpClient){}
+  constructor(private http: HttpClient) {}
 
-    getUserInfo(userName: string): Observable <any>{
-        return this.http.get(`${this.apiUrl}/${userName}`);
-    }
+  // Get user info
+  getUserInfo(): Observable<any> {
+    const token = localStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<any>(`${this.apiUrl}/userInfo`, { headers });
+  }
 
-    updateUserInfo(userName: string, userInfo: any): Observable<any>{
-return this.http.put(`${this.apiUrl}/${userName}`, userInfo)
-    }
+  // Update user info
+  updateUserInfo(updatedUserInfo: any): Observable<any> {
+    const token = localStorage.getItem('token'); 
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(`${this.apiUrl}/update`, updatedUserInfo, { headers });
+  }
 }

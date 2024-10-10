@@ -1,8 +1,9 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AccountService } from '../../services/account.service';
 import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { UserInfo } from '../../types/user-info.interface';
 
 @Component({
   selector: 'app-change-user-info',
@@ -12,7 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./change-user-info.component.css']
 })
 export class ChangeUserInfoComponent implements OnInit {
-  @Output() userInfoUpdated = new EventEmitter<void>();
+  userInfo = signal<UserInfo | null>(null)
   userInfoForm: FormGroup;
 
   constructor(private fb: FormBuilder, private route: ActivatedRoute, private readonly accountService: AccountService) {
@@ -29,46 +30,41 @@ export class ChangeUserInfoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const userName = this.route.snapshot.paramMap.get('userName');
-    console.log(userName)
-
-    if (userName) {
-      this.accountService.getUserInfo(userName).subscribe({
-        next: (data) => {
-          this.userInfoForm.patchValue({
-            firstName: data.firstName || '',
-            lastName: data.lastName || '',
-            userName: data.userName || '',
-            email: data.email || '',
-            cardNo: data.cardNo || '',
-            expireDate: data.expireDate || '',
-          });
-        },
-        error: (error) => {
-          console.error('Error fetching user info', error);
-        }
-      });
-    }
+    
+        // Fetch user info from the service
+    this.accountService.getUserInfo().subscribe({
+      next: (data) => {
+        console.log('User info response:', data);
+        this.userInfo.set(data.userInfo); // Update the signal with the fetched data
+        
+        // Populate the form with user data
+        this.userInfoForm.patchValue(data.userInfo);
+      },
+      error: (error) => {
+        console.error('Error fetching user info:', error);
+      },
+      complete: () => {
+        console.log('User info fetch complete');
+      }
+    });
   }
 
   onSubmit() {
     if (this.userInfoForm.valid) {
-      const updatedInfo: any = this.userInfoForm.value;
+      const updatedUserInfo = this.userInfoForm.value;
 
-      // Assuming you want to skip empty values for the update.
-      const userName = updatedInfo.userName;
-
-      this.accountService.updateUserInfo(userName, updatedInfo).subscribe({
-        next: (response) => {
-          console.log('User info updated!', response);
-          this.userInfoUpdated.emit();
+      // Call a service method to update the user info
+      this.accountService.updateUserInfo(updatedUserInfo).subscribe({
+        next: () => {
+          console.log('User info updated successfully');
         },
         error: (error) => {
-          console.error('Error updating user info', error);
+          console.error('Error updating user info:', error);
         }
       });
     } else {
-      console.log('Form is invalid. Please correct the errors.');
+      console.error('Form is invalid');
     }
   }
-}
+  }
+

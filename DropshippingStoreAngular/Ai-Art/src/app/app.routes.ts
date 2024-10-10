@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart.component';
 import { RegisterComponent } from './register/register.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { authGuard } from './auth.guard';
+import { LoginComponent } from './login/login.component';
 
 
 export const routes: Routes = [
@@ -33,7 +34,7 @@ export const routes: Routes = [
 ]},
   { path: 'contact', component: ContactComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'login', component: LoginComponent },
+  
   { path: 'cart', component: CartComponent },
   {path: 'favorites', loadComponent: ()=>
     import('./favorites/favorites.component').then((c)=>c.FavoritesComponent)
