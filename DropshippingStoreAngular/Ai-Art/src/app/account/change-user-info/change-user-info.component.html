@@ -1,4 +1,10 @@
-<form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
+<div class="form-container">
+  
+  <div *ngIf="successMessage" class="success-message">
+    <p>{{ successMessage }}</p>
+  </div>
+
+  <form [formGroup]="userInfoForm" (ngSubmit)="onSubmit()">
     <div class="row">
       <div>
         <label for="firstName">First Name:</label>
@@ -13,18 +19,27 @@
         <input id="userName" formControlName="userName" />
       </div>
     </div>
-    
+
     <div class="row">
       <div>
         <label for="password">Password:</label>
         <input id="password" type="password" formControlName="password" />
+        <div *ngIf="userInfoForm.get('password')?.hasError('minlength')">
+          <p class="error">Password must be at least 8 characters long!</p>
+        </div>
       </div>
       <div>
         <label for="confirmPassword">Confirm Password:</label>
         <input id="confirmPassword" type="password" formControlName="confirmPassword" />
+        <div *ngIf="userInfoForm.get('confirmPassword')?.hasError('minlength')">
+          <p class="error">Password must be at least 8 characters long!</p>
+        </div>
+        <div *ngIf="userInfoForm.hasError('passwordsMismatch')">
+          <p class="error">Passwords do not match!</p>
+        </div>
       </div>
     </div>
-    
+
     <div class="row">
       <div>
         <label for="email">Email:</label>
@@ -39,7 +54,7 @@
         <input id="expireDate" formControlName="expireDate" />
       </div>
     </div>
-    
+
     <button type="submit" [disabled]="userInfoForm.invalid">Update Info</button>
   </form>
-  
+</div>
