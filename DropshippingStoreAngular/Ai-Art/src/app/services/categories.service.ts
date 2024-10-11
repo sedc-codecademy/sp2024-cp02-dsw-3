@@ -5,6 +5,7 @@ import { Image } from '../types/image.interface';
 import { environment } from '../../environment';
 import { SearchImagesQuery } from '../types/searchImagesQuery.interface';
 import { ResponseApiCategories } from '../types/responseCategories.interface';
+import { ResponseAPIArtist } from '../types/getArtist.interface';
 
 
 
@@ -41,7 +42,9 @@ export class CategoriesService {
     console.log('id in getImage',id)
     return this.httpClient.get<{image: Image}>(`${this.imagesPath}GetById${id}`)
   }
-  
+  getArtist(){
+    return this.httpClient.get<{users: ResponseAPIArtist[]}>(`${this.imagesPath}users`)
+  }
   handleProductCategory(item: Image){
     let category
     switch (item.category) {

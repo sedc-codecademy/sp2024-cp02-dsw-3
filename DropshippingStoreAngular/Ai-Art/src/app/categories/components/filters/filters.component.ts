@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import { SortBy, SortDirection } from '../../../types/sortBy.enum';
+
 
 
 @Component({
@@ -15,6 +15,7 @@ import { SortBy, SortDirection } from '../../../types/sortBy.enum';
   styleUrl: './filters.component.css'
 })
 export class FiltersComponent {
+  
   selectedCategory = input.required<string | undefined>()
   selectedArtist = input.required<string | undefined>()
   selectedDirection = input.required<boolean>()

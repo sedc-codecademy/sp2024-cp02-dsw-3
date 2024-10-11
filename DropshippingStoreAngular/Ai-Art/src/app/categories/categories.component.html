@@ -5,6 +5,7 @@
     [selectedCategory]="productStore.selectedCategory()"
     [selectedArtist]="productStore.selectedArtist()"
     [selectedDirection]="productStore.sortByPriceAsc()"
+    [artists]="productStore.artistNames()"
     [inStock]="productStore.inStock()"
     (updateSelectCategory)="productStore.setSelectedCategory($event)"
     (updateSelectedArtist)="productStore.setSelectedArtist($event)"

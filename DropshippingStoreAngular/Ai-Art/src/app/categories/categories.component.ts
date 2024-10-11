@@ -1,5 +1,5 @@
 import { Component, effect, inject } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { map, Subscription } from 'rxjs';
 import { CategoriesService } from '../services/categories.service';
 import { AppStore } from '../store/app.store';
 import { MatPaginatorModule} from '@angular/material/paginator';
@@ -21,6 +21,7 @@ export class CategoriesComponent {
   readonly productStore = inject(AppStore)
   
   subscription: Subscription = new Subscription()
+  subscriptionArtists: Subscription = new Subscription()
   constructor(private readonly categoryService: CategoriesService){
     effect(()=>{
       this.productStore.setIsLoading(true)
@@ -40,7 +41,15 @@ export class CategoriesComponent {
     })
     
   }
+  ngOnInit(){
+    this.subscriptionArtists = this.categoryService.getArtist().pipe(
+      map((data)=>{
+        const{users} = data
+       return users.map((item)=>{return item.userName})
+      })
+    ).subscribe((artists)=>{this.productStore.setArtists(artists)})
   
+  }
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
