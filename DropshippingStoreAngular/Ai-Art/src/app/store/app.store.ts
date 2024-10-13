@@ -1,53 +1,50 @@
-import { SafeUrl } from "@angular/platform-browser";
+import { computed } from "@angular/core";
 import { Artist } from "../types/artist.interface";
-import { Category } from "../types/category.enum";
 import { Image } from "../types/image.interface";
-import { SortBy, SortDirection } from "../types/sortBy.enum";
-import {patchState, signalStore, withHooks, withMethods, withState} from '@ngrx/signals'
+import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
+import { SearchImagesQuery } from "../types/searchImagesQuery.interface";
 
 export interface AppStates{
     products: Image[],
-    searchTerm: string,// category, description
-    page: number,
+    searchTerm: string,
+    pageNumber: number,
+    totalPages: number,
     pageSize: number,
-    total: number,
+    totalCount: number,
     isLoading: boolean,
-    sortBy: SortBy| undefined, //category, artist, stock, date
-    sortDirection: SortDirection ,
+    sortByPriceAsc: boolean ,
     artistNames: string[],
-    category: Category | undefined,
     favorites: Image[],
+    cart: Image[]
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    handleExpansion: boolean,
     isAuth: boolean,
-    createdImage: SafeUrl | null,
     prompt: string,
     user: Artist | undefined,
+    inStock: boolean | undefined
 }
 
 
 const defaultState: AppStates = {
     products: [],
     searchTerm: '',
-    page: 0,
-    pageSize: 12,
-    total: 0,
+    pageNumber: 1,
+    totalPages: 0,
+    pageSize: 15,
+    totalCount: 0,
     isLoading: false,
-    sortBy: undefined,
-    sortDirection: SortDirection.ASC,
+    sortByPriceAsc: true,
     artistNames: [],
-    category: undefined,
     favorites: [],
+    cart: [],
     selectedArtist:undefined,
     selectedCategory:undefined,
-    handleExpansion: false,
-    isAuth: false,
-    createdImage: null,
-    stringifyCreationImage: '',
     prompt: '',
     user: undefined,
+    inStock: true,
+    isAuth: false,
+    stringifyCreationImage: '',
 }
 
 export const AppStore = signalStore(
@@ -55,36 +52,78 @@ export const AppStore = signalStore(
     withState(defaultState),
     withMethods((state)=>({
         setProducts: (products: Image[])=>{patchState(state, {products})},
-        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, page:0})},
-        setPage: (page: number)=>{patchState(state,{page})},
+        setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, pageNumber:1})},
+        setPage: (pageNumber: number)=>{patchState(state,{pageNumber})},
+        setTotalPages:(totalPages:number)=>{patchState(state, {totalPages})},
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
-        setTotal: (total:number)=>{patchState(state, {total})},
+        setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
-        setCategories: (category: Category)=>{patchState(state, {category})}, //moze nema da treba
+        setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc,  pageNumber:1})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
-        setSortBy: (sortBy: SortBy | undefined)=>{patchState(state,{sortBy})},
-        setSortDirection: (sortDirection: SortDirection)=>{patchState(state, {sortDirection})},
-        setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
-        setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
-        setCreatedImage: (createdImage:SafeUrl | null)=>{patchState(state, {createdImage})},
+        setFavorites: (image: Image)=>{ 
+                patchState(state,{favorites: [...state.favorites(), image]})            
+        },
+        removeFromFavorites:(images:Image[])=>{
+            patchState(state, {favorites:images})
+        },
+        resetFavorites: ()=>{
+            let fave:Image[] = []
+            patchState(state, {favorites:fave})
+        },
+        setCart: (image: Image)=>{ 
+                patchState(state,{cart: [...state.cart(), image]})
+        },
+        removeFromCart:(image:Image[])=>{
+            patchState(state, {cart:image})
+        },
+        resetCart: ()=>{
+            let fave:Image[] = []
+            patchState(state, {cart:fave})
+        },
+        setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock,  pageNumber:1})},
+        setIsAuth: (isAuth: boolean)=>{patchState(state, {isAuth})},
+        setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory,  pageNumber:1})},
+        setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist,  pageNumber:1})},
         setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
         setPrompt: (prompt:string)=>{patchState(state, {prompt})},
-        reset: ()=>{
+        resetQueryParams: ()=>{
             patchState(state,{
-                page: 0,
-                pageSize: 12,
+                pageNumber: 1,
                 searchTerm: '',
-                sortBy: undefined,
-                sortDirection: SortDirection.ASC,
-                selectedArtist: undefined,
-                selectedCategory: undefined
+                // sortByPriceAsc: true,
 
             })
         }
     })),
+    withComputed((state)=>({
+        searchParams: computed(()=>{
+            const searchParams: SearchImagesQuery = {
+                pageNumber: state.pageNumber(),
+                sortByPriceAsc: state.sortByPriceAsc(),
+                // username: state.selectedArtist()
+            }
+            if(state.searchTerm()){
+                console.log(state.searchTerm())
+                searchParams.searchTerm = state.searchTerm()
+            }
+            if(state.inStock()){
+                searchParams.inStock = state.inStock()
+            }else if(state.inStock()===false){
+                searchParams.inStock=state.inStock()
+            }
+            if(state.selectedCategory()){
+                searchParams.category = Number(state.selectedCategory())
+            }
+            if(state.selectedArtist() !== undefined){
+                searchParams.username = state.selectedArtist()
+            }
+
+            return searchParams
+        })
+    })),
     withHooks({
         onInit:(state)=> {
-            state.reset()
+            state.resetQueryParams()
         },
     })
 )

@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -11,6 +11,7 @@ import {MatBadgeModule} from '@angular/material/badge';
 import { FavoritesService } from '../services/favorites.service';
 import { CartService } from '../services/cart.service';
 import { Subscription } from 'rxjs';
+import { AppStore } from '../store/app.store';
 
 
 @Component({
@@ -31,16 +32,10 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  favorites: number
-  cart:number
-  subscriptionFave = new Subscription()
-  subscriptionCart = new Subscription()
+  appStore = inject(AppStore)
   @ViewChild('drawer') drawer: MatSidenav | undefined;
   constructor(private readonly favoriteService: FavoritesService, private readonly cartService: CartService){}
-  ngOnInit(){ 
-    this.subscriptionFave = this.favoriteService.$favorites.subscribe(data=> this.favorites = data.length )
-    this.subscriptionCart = this.cartService.$cart.subscribe(data=> this.cart = data.length)
-  }
+  
   
   
   closeSidenav(): void {
