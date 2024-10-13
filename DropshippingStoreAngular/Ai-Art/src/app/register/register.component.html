@@ -1,57 +1,78 @@
-<form [formGroup]="registerForm" (ngSubmit)="submit()">
-    <!-- Input za firstName  -->
-    <mat-form-field>
-      <mat-label>Enter your name</mat-label>
-      <input matInput placeholder="Michael" type="text" formControlName="firstName" />
-    </mat-form-field>
-  
-    <!-- Input za lastName -->
-    <mat-form-field>
-      <mat-label>Enter your last name</mat-label>
-      <input matInput placeholder="Mayers" type="text" formControlName="lastName" />
-    </mat-form-field>
-  
-    <!-- Input za userName -->
-    <mat-form-field>
-      <mat-label>Enter your Username</mat-label>
-      <input matInput placeholder="AI_Pic_Generator" type="text" formControlName="userName" />
-    </mat-form-field>
-  
-    <!--Input za email  -->
-    <mat-form-field>
-      <mat-label>Enter your e-mail</mat-label>
-      <input matInput placeholder="Michael_Myers@example.com" type="email" formControlName="email" />
-    </mat-form-field>
-  
-    <!-- input za cardNumber -->
-    <mat-form-field>
-      <mat-label>Enter your Cardnumber</mat-label>
-      <input matInput placeholder="2080-****-****-2080" type="text" formControlName="cardNo" />
-    </mat-form-field>
-  
-    <!-- input za cardNumber expireDate -->
-    <mat-form-field>
-      <mat-label>Enter Card expireDate</mat-label>
-      <input matInput placeholder="01/30" type="text" formControlName="expireDate" />
-    </mat-form-field>
-  
-    <!-- Input za password -->
-    <mat-form-field>
-      <mat-label>Enter your password</mat-label>
-      <input matInput placeholder="Pas$wOrd" type="password" formControlName="password" />
-    </mat-form-field>
-  
-    <!-- Input za confirm password -->
-    <mat-form-field>
-      <mat-label>Confirm your password</mat-label>
-      <input matInput placeholder="Pas$wOrd" type="password" formControlName="confirmPassword" />
-    </mat-form-field>
-  
-    @if(passwordMissMatch){
-      <mat-error>Passwords do not match</mat-error>
-  }
-  
-     
-  
-    <button mat-raised-button>Register</button>
-  </form>
+<!-- register.component.html -->
+<div class="container">
+  <div class="register-container">
+    <i class="fas fa-user-circle icon"></i>
+    <h2>Create Account</h2>
+    <a href="login">Already have an account? Login here!</a>
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+      <input
+        type="text"
+        placeholder="Full Name"
+        formControlName="firstName"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Last Name"
+        formControlName="lastName"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Username"
+        formControlName="userName"
+        required
+      />
+      <input
+        type="email"
+        placeholder="Email Address"
+        formControlName="email"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Card Number"
+        formControlName="cardNo"
+        required
+      />
+      <input
+        type="text"
+        placeholder="Card Expiration Date"
+        formControlName="expireDate"
+        required
+      />
+      <div class="password-container">
+        <input
+          [type]="isPasswordVisible ? 'text' : 'password'"
+          placeholder="Password"
+          formControlName="password"
+          required
+        />
+        <i
+          class="fas"
+          [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+          (click)="togglePasswordVisibility()"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <div class="password-container">
+        <input
+          [type]="isConfirmPasswordVisible ? 'text' : 'password'"
+          placeholder="Confirm Password"
+          formControlName="confirmPassword"
+          required
+        />
+        <i
+          class="fas"
+          [ngClass]="isConfirmPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"
+          (click)="toggleConfirmPasswordVisibility()"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <div *ngIf="passwordMissMatch" class="error-message">
+        Passwords do not match
+      </div>
+      <input type="submit" value="Register" />
+    </form>
+  </div>
+</div>
