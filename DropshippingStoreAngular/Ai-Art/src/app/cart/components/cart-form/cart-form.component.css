@@ -1,229 +1,3 @@
-/* .container{
-    display: flex;
-    justify-content: center;
-}
-.content{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    padding: 10px;
-    width: 50%;
-    border: 3px solid pink;
-    border-radius: 5%;
-    font-family: "Inconsolata", monospace, Roboto, "Helvetica Neue", sans-serif;
-    background: linear-gradient(to top, #000 5%, #47335e 100%) content-box;
-    
-}
-.checkoutInfo{
-    margin: 20px;
-    padding: 30px 0px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    width: 100%;
-    
-    
-} */
-
-/* .error-msg{
-    display: flex;
-    justify-content: center;
-    color: #F2A08F;
-    font-size: 1.2em;
-    margin: 0px;
-    padding: 0px;
-
-} */
-
-/* .paymentDetails{
-    padding: 10px;
-}
-
-.info{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 30px;
-    color:white;
-    font-size: 1em;
-}
-.hint{
-    color:#F29EE7;
-}
-.row{
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-.card{
-    width: 70%;
-}
-
-.content:hover,
-  .content:focus-within {
-      transform: scale(1.02);
-      transition: transform 500ms ease-in;
-      box-shadow:1px 2px 4px #9a89a9, 0 0 20px #cac3d16c, 0 0 5px #9b6dc9;
-  } */
-
-
-/* body {
-    margin: 0;
-    color: white;
-    font-family: 'Electrolize', sans-serif;
-    background-image: url(http://www.newhdwallpapers.in/wp-content/uploads/2014/04/Dandelion-at-Sunset-Nature-HD-Wallpaper.jpg);
-    background-size: cover;
-    background-position: center;
-} */
-
-
-/* ======> VTOR PRIMER  <====== */
-
-/* 
-.align-center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.card {
-   
-    margin-top: 30px;
-    border-radius: 12px;
-    box-shadow: 2px 2px 0 #222, 2px 2px 15px rgba(0, 0, 0, 0.9);
-    font-family: "Inconsolata", monospace, Roboto, "Helvetica Neue", sans-serif;
-    background: linear-gradient(to bottom right, #000 5%, #47335e 100%) content-box;
-    
-}
-
-.form {
-    padding-top: 100px;
-}
-
-.card-title {
-    color: white;
-    float: left;
-    padding: 10px;
-}
-
-.logo {
-    float: right;
-    margin-top: 15px;
-    margin-right: 15px;
-}
-
-.card-number {
-    float: left;
-    margin-left: 15px;
-    margin-bottom: 5px;
-}
-
-.card-number input {
-    height: 15px;
-    background-color: transparent;
-    border: none;
-}
-
-.card-name {
-    clear: both;
-    float: left;
-    margin-left: 15px;
-    margin-bottom: 5px;
-    
-}
-
-.card-name input {
-    height: 15px;
-    background-color: transparent;
-    border: none;
-    
-}
-
-.email{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-   
-}
-
-.emailField{
-    width: 100%;
-    margin-left: 15px;
-   margin-right: 15px;
-
-    input{
-        height: 15px;
-    }
-}
-
-
-input:focus {
-    color: #fff;
-    outline: none;
-    border-bottom: 1px solid white;
-}
-
-.select-date {
-    clear: both;
-    float: left;
-    margin-left: 15px;
-    input{
-        height: 15px;
-    }
-}
-
-.card-cvc {
-    float: right;
-    margin-right: 15px;
-}
-
-.card-cvc input {
-    background-color: transparent;
-    border: none;
-    height: 15px;
-}
-
-
-
-
-.buy-button {
-    font-family: 'Electrolize', sans-serif;
-    cursor: pointer;
-    position: relative;
-    margin-top: auto;
-    margin-left: 64px;
-    margin-right: -100px;
-    padding: 10px 10px;
-    border-radius: 6px;
-    box-shadow: -2px 0px 6px 1px #000000;
-    background-color: #ffac40a3;
-    border: none;
-    color: #fff;
-}
-
-.buy-button:hover {
-    background-color: #66BB6A;
-    transition: linear 0.2s;
-}
-.card:hover,
-.content:focus-within {
-    transform: scale(1.02);
-    transition: transform 500ms ease-in;
-    box-shadow:1px 2px 4px #9a89a9, 0 0 20px #cac3d16c, 0 0 5px #9b6dc9;
-}  */
-
-
-
-/* =====> TRET PRIMER<===== */
-
-
-
-
 .form fieldset {
     border: none;
     padding: 0;
@@ -288,13 +62,13 @@ input:focus {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 60%;
+    width: 100%;
     background: transparent;
     margin-top: 30px;
 }
 
 .credit-card-box {
-    max-width: 100%;
+    width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
@@ -423,13 +197,25 @@ input:focus {
     justify-content: center;
     align-items: center;
 }
-.container{
+.bigContainer{
     padding: 0px;
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    flex-direction: column;
+    max-width: 100%;
+}
+@media screen and (max-width:700px ) {
+    .credit-card-box .front{
+        width: 60%;
+    }
+    .form{
+        width: 90%;
+    }
+    .input-row{
+        grid-template-columns: 100%;
+    }
 }
 .checkoutNone{
     display: none;

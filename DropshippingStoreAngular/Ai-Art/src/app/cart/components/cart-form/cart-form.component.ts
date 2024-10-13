@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, signal } from '@angular/core';
+import { Component, effect, inject, input, signal } from '@angular/core';
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -9,7 +9,6 @@ import { Image } from '../../../types/image.interface';
 import { catchError, of, Subscription } from 'rxjs';
 import { CartService } from '../../../services/cart.service';
 import { AppStore } from '../../../store/app.store';
-import { NotificationService } from '../../../services/notification.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,17 +23,18 @@ export class CartFormComponent {
   formUntouched = signal<string>('')
   purchaseError = signal(false)
   purchasePassed = signal(false)
-  cartItems = input.required<Image[]>()
   subscription = new Subscription()
   checkout: FormGroup
-  constructor(private readonly cartService: CartService, private readonly notificationService: NotificationService, private readonly router: Router){}
+  constructor(private readonly cartService: CartService, private readonly router: Router){
+    effect(()=>{},{allowSignalWrites:true})
+  }
   ngOnInit(){
     this.checkout = new FormGroup({
       
       fullName: new FormControl('',[Validators.required, Validators.pattern(/^[a-zA-Z]{3,}(?: [a-zA-Z]+)?(?: [a-zA-Z]+)?$/)]),
       email: new FormControl('', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
       cardNo: new FormControl('',[Validators.required,Validators.minLength(16), Validators.maxLength(16),Validators.pattern(/^[0-9]\d*$/)]),
-      cardDate: new FormControl('', [Validators.required, Validators.pattern(/^(0[1-9]|10|11|12)\/2[5-9]{1}$/)]),
+      cardDate: new FormControl('', [Validators.required, Validators.pattern(/^(11|12)\/24$|^(0[1-9]|10|11|12)\/2[5-9]$/), ]),
       cvvNo: new FormControl('',[Validators.required, Validators.pattern(/^[0-9]{3}$/)])
     })
   }
@@ -49,8 +49,8 @@ export class CartFormComponent {
       return 
     } 
     if(this.checkout.invalid)return
-     let itemsFromCartID = this.cartItems().map((item)=>item.id)
-
+     let itemsFromCartID = this.appStore.cart().map((item)=>item.id)
+    console.log(itemsFromCartID)
     if(this.appStore.user() || localStorage.getItem('token')){
       this.subscription = this.cartService.checkoutAuth(itemsFromCartID).pipe(
         catchError((error)=>{
@@ -82,11 +82,22 @@ export class CartFormComponent {
 
   }
   handleBackToProducts(){
+    this.appStore.resetCart()
     this.router.navigate(['/categories'])
+  }
+  checkDate(date:string){
+    if(date.charAt(0)==='0'){
+      return true
+    }
+    return false
   }
 
   resetErrorsMessages(){
     this.formUntouched.set('')
     
+  }
+
+  ngOnDestroy(){
+    this.subscription.unsubscribe()
   }
 }

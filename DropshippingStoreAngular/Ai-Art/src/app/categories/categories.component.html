@@ -1,20 +1,29 @@
-<div class="categories-container">
+<div class="categoriesContainer">
   <app-gallery />
 
-  <app-filters />
+  <app-filters
+    [selectedCategory]="productStore.selectedCategory()"
+    [selectedArtist]="productStore.selectedArtist()"
+    [selectedDirection]="productStore.sortByPriceAsc()"
+    [artists]="productStore.artistNames()"
+    [inStock]="productStore.inStock()"
+    (updateSelectCategory)="productStore.setSelectedCategory($event)"
+    (updateSelectedArtist)="productStore.setSelectedArtist($event)"
+    (updateSelectedDirection)="productStore.setSortByPriceAsc($event)"
+    (updateInStock)="productStore.setInStock($event)"
+  />
 
-  <app-search />
-
+  <app-search
+    [searchTerm]="productStore.searchTerm()"
+    (updateSearchTerm)="productStore.setSearch($event.target.value)"
+  />
+  <app-loader />
   <app-card-container [products]="productStore.products()" />
 
-  <!-- <mat-paginator
-      [length]="productStore.total()"
-      [pageSize]="productStore.pageSize()"
-      [pageSizeOptions]="[12, 20, 40, 80, 120]"
-      aria-label="Select page"
-      (page)="
-        productStore.setPageSize($event.pageSize);
-        productStore.setPage($event.pageIndex)
-      "
-    /> -->
+  <mat-paginator
+    [length]="productStore.totalCount()"
+    [pageSize]="productStore.pageSize()"
+    aria-label="Select page"
+    (page)="productStore.setPage($event.pageIndex + 1)"
+  />
 </div>

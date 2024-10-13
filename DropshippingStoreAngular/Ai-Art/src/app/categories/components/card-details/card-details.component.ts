@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
 import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
@@ -10,8 +10,8 @@ import { UniqueWorkComponent } from './components/unique-work/unique-work.compon
 import { CertificateComponent } from './components/certificate/certificate.component';
 import { Image } from '../../../types/image.interface';
 import { CategoriesService } from '../../../services/categories.service';
-import { CartService } from '../../../services/cart.service';
-import { FavoritesService } from '../../../services/favorites.service';
+import { AppStore } from '../../../store/app.store';
+import { NotificationService } from '../../../services/notification.service';
 
 
 @Component({
@@ -22,20 +22,30 @@ import { FavoritesService } from '../../../services/favorites.service';
   styleUrl: './card-details.component.css'
 })
 export class CardDetailsComponent {
+  appStore = inject(AppStore)
   openUniqueWork = signal(false)
   panelOpenState = signal(false);
   openRoom = signal(false)
   openCertificate = signal(false)
   product : Image
+  category: string | undefined
   subscription= new Subscription()
-  constructor(private readonly productsService: CategoriesService, private readonly route: ActivatedRoute, private cartService:CartService, private favoritesService:FavoritesService){}
+  constructor(private readonly productsService: CategoriesService, private readonly route: ActivatedRoute, private notificationService: NotificationService){
+    effect(()=>{},{allowSignalWrites:true})
+  }
   ngOnInit(){
     this.getProduct()
     
   }
   getProduct(){
     this.subscription = this.route.params.pipe(
-      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe(v=> this.product = v)
+      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe((v)=>{ this.product = v.image
+        console.log('product',this.product)
+        console.log('v',v)
+        this.category=this.productsService.handleProductCategory(this.product)
+      }
+    )
+      
   }
   handleAccordion(){
     this.panelOpenState.update((v=>!v))
@@ -50,12 +60,18 @@ export class CardDetailsComponent {
     console.log(this.openUniqueWork())
   }
   handleAddToCart(item:Image){
-    this.cartService.addInCart(item)
+    if(!this.appStore.cart().find((i)=>i.id===item.id)){
+    this.appStore.setCart(item)}
   }
   handleAddToFavorites(item:Image){
-    this.favoritesService.addInFavorites(item)
+    if(!this.appStore.favorites().find((i)=>i.id===item.id)){
+    this.appStore.setFavorites(item)
+    this.notificationService.handleSnackBar('Item is successfully added in favorites!')
+    }
   }
   ngOnDestroy(){
     this.subscription.unsubscribe()
   }
+
+
 }

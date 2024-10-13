@@ -20,10 +20,14 @@
     <a mat-button routerLink="/login" (click)="closeSidenav()">Login</a>
   </nav>
   <a mat-icon-button routerLink="/favorites" class="cart-icon">
-    <mat-icon [matBadge]="favorites" aria-hidden="false">favorite</mat-icon>
+    <mat-icon [matBadge]="appStore.favorites().length" aria-hidden="false"
+      >favorite</mat-icon
+    >
   </a>
   <a mat-icon-button routerLink="/cart" class="cart-icon">
-    <mat-icon [matBadge]="cart" aria-hidden="false">shopping_cart</mat-icon>
+    <mat-icon [matBadge]="appStore.cart().length" aria-hidden="false"
+      >shopping_cart</mat-icon
+    >
   </a>
   <a mat-icon-button routerLink="/account" class="cart-icon">
     <mat-icon>account_circle</mat-icon>

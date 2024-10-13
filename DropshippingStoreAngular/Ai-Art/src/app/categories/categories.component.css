@@ -1,6 +1,6 @@
-.categories-container{
-
-    height: 100%;
+.categoriesContainer{
+    
+    background: linear-gradient(to left, #000 10%, #291d37 100%) content-box;;
     width: 100%;
     margin: 0px;
     padding: 0px;

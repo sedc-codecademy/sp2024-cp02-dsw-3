@@ -15,12 +15,18 @@ isLoading = signal<boolean>(true);
 
 constructor(private readonly accountService: AccountService){}
 
-
+ngOnInit(){
+  this.fetchUserInfo()
+}
 fetchUserInfo(){
   this.accountService.getUserInfo().subscribe({
     next: (data) => {
-      console.log('User info response:', data);
-      this.boughtImages.set(data.userInfo.boughtImages);
+      console.log('User info response:', data); 
+      if (data && data.userInfo && data.userInfo.boughtImages) {
+        this.boughtImages.set(data.userInfo.boughtImages);
+      } else {
+        console.error('boughtImages not found in the response');
+      }
       this.isLoading.set(false);
     },
     error: (error) => {

@@ -1,4 +1,4 @@
-<section class="container">
+<section class="bigContainer">
   <div class="detailsContainer">
     <div class="article-container">
       <div
@@ -9,10 +9,10 @@
 
     <div class="info">
       <div>
-        <h4>{{ product.category }}</h4>
-        <p>Created by {{ product.artist.userName }}, (PUT DATE HERE)</p>
         <h6>{{ product.description }}.</h6>
         <h6>US {{ product.price | currency }}</h6>
+        <p>Category: {{ category }}</p>
+        <p>Created at: {{ product.createdAt | date }}</p>
       </div>
 
       <div class="chips">
@@ -40,6 +40,24 @@
         </div>
         <div>
           <mat-chip>
+            <div class="chip">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24px"
+                viewBox="0 -960 960 960"
+                width="24px"
+                fill="#FFFFFF"
+              >
+                <path
+                  d="M420-360h120l-23-129q20-10 31.5-29t11.5-42q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 23 11.5 42t31.5 29l-23 129Zm60 280q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"
+                />
+              </svg>
+              <span style="cursor: default">Secure checkout</span>
+            </div>
+          </mat-chip>
+        </div>
+        <div>
+          <mat-chip>
             <div class="chip" (click)="openCertificate.set(true)">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -55,6 +73,21 @@
               <span>Includes a Certificate of Authenticity</span>
             </div>
           </mat-chip>
+        </div>
+
+        <div class="chip" (click)="handleRoom()" style="cursor: pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            height="24px"
+            viewBox="0 -960 960 960"
+            width="24px"
+            fill="#FFFFFF"
+          >
+            <path
+              d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"
+            />
+          </svg>
+          <p>view in room</p>
         </div>
 
         <div class="buttons">
@@ -76,81 +109,22 @@
           </button>
         </div>
       </div>
-
-      <div>
-        <mat-accordion class="accordion">
-          <mat-expansion-panel
-            (opened)="handleAccordion()"
-            (closed)="handleAccordion()"
-          >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Be covered by Ai Art Guarantee when you check out
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-
-            <div class="chip">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#FFFFFF"
-              >
-                <path
-                  d="M420-360h120l-23-129q20-10 31.5-29t11.5-42q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 23 11.5 42t31.5 29l-23 129Zm60 280q-139-35-229.5-159.5T160-516v-244l320-120 320 120v244q0 152-90.5 276.5T480-80Zm0-84q104-33 172-132t68-220v-189l-240-90-240 90v189q0 121 68 220t172 132Zm0-316Z"
-                />
-              </svg>
-              <span>Secure checkout</span>
-            </div>
-            <hr />
-            <div class="chip">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                height="24px"
-                viewBox="0 -960 960 960"
-                width="24px"
-                fill="#FFFFFF"
-              >
-                <path
-                  d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58-136 58Zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24 58 96Zm102-318Zm-42 142 226-226-56-58-170 170-86-84-56 56 142 142Z"
-                />
-              </svg>
-              <span>Authenticity Guarantee</span>
-            </div>
-          </mat-expansion-panel>
-        </mat-accordion>
-      </div>
-      <div class="chip" (click)="handleRoom()" style="cursor: pointer">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="24px"
-          viewBox="0 -960 960 960"
-          width="24px"
-          fill="#FFFFFF"
-        >
-          <path
-            d="M480-320q75 0 127.5-52.5T660-500q0-75-52.5-127.5T480-680q-75 0-127.5 52.5T300-500q0 75 52.5 127.5T480-320Zm0-72q-45 0-76.5-31.5T372-500q0-45 31.5-76.5T480-608q45 0 76.5 31.5T588-500q0 45-31.5 76.5T480-392Zm0 192q-146 0-266-81.5T40-500q54-137 174-218.5T480-800q146 0 266 81.5T920-500q-54 137-174 218.5T480-200Zm0-300Zm0 220q113 0 207.5-59.5T832-500q-50-101-144.5-160.5T480-720q-113 0-207.5 59.5T128-500q50 101 144.5 160.5T480-280Z"
-          />
-        </svg>
-        <p>view in room</p>
-      </div>
     </div>
   </div>
 </section>
 
 @if(openRoom() === true){
-<section class="active">
-  <div class="modal-content">
+<section class="activeRoom">
+  <div class="room">
     <div class="test1">
       <div
         class="test"
         style.background-image="url({{ product.imageUrl }})"
       ></div>
     </div>
-
-    <span (click)="handleRoom()" class="close">x</span>
   </div>
+
+  <span (click)="handleRoom()" class="closeRoom">x</span>
 </section>
 } @if(this.openUniqueWork()===true){
 <div class="uniqueWork">
