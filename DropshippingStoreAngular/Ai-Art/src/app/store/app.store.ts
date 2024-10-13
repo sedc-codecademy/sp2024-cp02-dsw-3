@@ -1,27 +1,24 @@
 import { computed } from "@angular/core";
-import { SafeUrl } from "@angular/platform-browser";
 import { Artist } from "../types/artist.interface";
 import { Image } from "../types/image.interface";
-import { SortBy, SortDirection } from "../types/sortBy.enum";
 import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
 import { SearchImagesQuery } from "../types/searchImagesQuery.interface";
 
 export interface AppStates{
     products: Image[],
-    searchTerm: string,// category, description
+    searchTerm: string,
     pageNumber: number,
     totalPages: number,
     pageSize: number,
     totalCount: number,
     isLoading: boolean,
-    sortByPriceAsc: boolean , //default ASC
+    sortByPriceAsc: boolean ,
     artistNames: string[],
     favorites: Image[],
     cart: Image[]
     stringifyCreationImage: string,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
-    handleExpansion: boolean,
     isAuth: boolean,
     prompt: string,
     user: Artist | undefined,
@@ -34,7 +31,7 @@ const defaultState: AppStates = {
     searchTerm: '',
     pageNumber: 1,
     totalPages: 0,
-    pageSize: 12,
+    pageSize: 15,
     totalCount: 0,
     isLoading: false,
     sortByPriceAsc: true,
@@ -46,7 +43,6 @@ const defaultState: AppStates = {
     prompt: '',
     user: undefined,
     inStock: true,
-    handleExpansion: false,
     isAuth: false,
     stringifyCreationImage: '',
 }
@@ -62,7 +58,7 @@ export const AppStore = signalStore(
         setPageSize: (pageSize: number)=>{patchState(state, {pageSize})},
         setTotal: (totalCount:number)=>{patchState(state, {totalCount})},
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
-        setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc})},
+        setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc,  pageNumber:1})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setFavorites: (image: Image)=>{ 
                 patchState(state,{favorites: [...state.favorites(), image]})            
@@ -84,10 +80,10 @@ export const AppStore = signalStore(
             let fave:Image[] = []
             patchState(state, {cart:fave})
         },
-        setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock})},
+        setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock,  pageNumber:1})},
         setIsAuth: (isAuth: boolean)=>{patchState(state, {isAuth})},
-        setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory})},
-        setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist})},
+        setSelectedCategory: (selectedCategory: string | undefined)=>{patchState(state, {selectedCategory,  pageNumber:1})},
+        setSelectedArtist: (selectedArtist: string | undefined)=>{patchState(state, {selectedArtist,  pageNumber:1})},
         setStringifyCreationImage: (stringifyCreationImage: string )=>{patchState(state, {stringifyCreationImage})},
         setPrompt: (prompt:string)=>{patchState(state, {prompt})},
         resetQueryParams: ()=>{
@@ -118,7 +114,7 @@ export const AppStore = signalStore(
             if(state.selectedCategory()){
                 searchParams.category = Number(state.selectedCategory())
             }
-            if(state.selectedArtist()){
+            if(state.selectedArtist() !== undefined){
                 searchParams.username = state.selectedArtist()
             }
 

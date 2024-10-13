@@ -34,7 +34,7 @@
               [value]="selectedArtist()"
               (valueChange)="handleChange($event, updateSelectedArtist)"
             >
-              <mat-option value="undefined">None</mat-option>
+              <mat-option [value]="undefined">None</mat-option>
               @for (artist of artists(); track $index) {
               <mat-option [value]="artist">{{ artist }}</mat-option>
               }

@@ -36,7 +36,7 @@ export class CategoriesComponent {
       console.log('paginated images',paginatedImages)
       this.productStore.setTotal(paginatedImages.totalCount)
       this.productStore.setProducts(paginatedImages.data)
-      //i total pages ovde da se stavi vo store ako treba
+      this.productStore.setPageSize(paginatedImages.pageSize)
       this.productStore.setIsLoading(false)
     })
     
