@@ -1,18 +1,18 @@
 /* User Info Container */
 .user-info-container {
-    background-color: #1a1a1a;
+    background-color: #000000;
     color: #fff;
     padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    font-family: 'Playfair Display', serif;
+    
+    box-shadow: 0 8px 16px #9a8d95;
+    font-family: "Inconsolata", monospace;
     max-width: 600px;
     margin: 30px auto;
   }
   
   /* Heading */
   .user-info-container h2 {
-    color: #9370db;
+    color: #b9b7bc;
     margin-bottom: 30px;
     font-size: 32px;
     font-weight: bold;
@@ -31,7 +31,7 @@
   
   /* Label */
   .user-info-container .info-item strong {
-    color: #9370db;
+    color: #b9b7bc;
     font-weight: bold;
     font-size: 18px;
     text-transform: uppercase;

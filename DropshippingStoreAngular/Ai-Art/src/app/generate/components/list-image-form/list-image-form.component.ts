@@ -49,7 +49,8 @@ export class ListImageFormComponent {
     }
     console.log(requestBody)
 
-    //otkako ke se kreira ke treba userot da go vrati vo generate 
+    //otkako ke se kreira ke treba userot da go vrati vo generate
+    
   }
 
   handleRemove(){

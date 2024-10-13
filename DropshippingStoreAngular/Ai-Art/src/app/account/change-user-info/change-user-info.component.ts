@@ -16,6 +16,8 @@ export class ChangeUserInfoComponent implements OnInit {
   userInfo = signal<UserInfo | null>(null);
   userInfoForm: FormGroup;
   successMessage: string | null = null; 
+  passwordVisible: boolean = false;
+  confirmPasswordVisible: boolean = false;
 
   constructor(
     private fb: FormBuilder,
@@ -60,6 +62,13 @@ export class ChangeUserInfoComponent implements OnInit {
     } else {
       return null;
     }
+  }
+  togglePasswordVisibility() {
+    this.passwordVisible = !this.passwordVisible;
+  }
+
+  toggleConfirmPasswordVisibility() {
+    this.confirmPasswordVisible = !this.confirmPasswordVisible;
   }
 
   onSubmit() {

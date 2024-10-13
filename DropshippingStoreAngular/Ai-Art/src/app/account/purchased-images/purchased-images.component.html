@@ -1,1 +1,16 @@
-<p>purchased-images works!</p>
+<div class="purchased-images" *ngIf="boughtImages().length > 0; else noImages">
+    <h3>Purchased Images</h3>
+    <div class="image-card" *ngFor="let image of boughtImages()">
+      <img [src]="image.imageUrl" alt="{{ image.title }}" />
+      <div class="image-info">
+        <h4>{{ image.title }}</h4>
+        <p>Artist: {{ image.artistName }}</p>
+        <p>Purchased on: {{ image.purchaseDate | date }}</p>
+      </div>
+    </div>
+  </div>
+  
+  <ng-template #noImages>
+    <p>No purchased images found.</p>
+  </ng-template>
+  
