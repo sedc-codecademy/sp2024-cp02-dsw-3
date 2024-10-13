@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -12,6 +12,7 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
+import { AppStore } from '../store/app.store';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  appStore = inject(AppStore)
   isPasswordVisible: boolean = false;
   [x: string]: any;
 
@@ -58,7 +60,8 @@ export class LoginComponent {
     const { userName, password } = this.loginForm.value;
     this.authService.login(userName, password).subscribe((response) => {
       console.log(response);
-      if (response) {
+      if (response?.token) {
+        this.getLoggedUser(response.token)
         this.router.navigate(['/']);
       }
     });
@@ -66,5 +69,14 @@ export class LoginComponent {
 
   submitLogout() {
     this.authService.logout();
+  }
+
+  getLoggedUser(token:string){
+    this.authService.getUser(token).subscribe((response)=>{
+      if(response?.userInfo){
+        console.log(response.userInfo)
+        this.appStore.setUser(response.userInfo)
+      }
+    })
   }
 }

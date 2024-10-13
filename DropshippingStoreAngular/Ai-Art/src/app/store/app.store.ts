@@ -60,6 +60,7 @@ export const AppStore = signalStore(
         setIsLoading: (isLoading:boolean)=>{patchState(state, {isLoading})},
         setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc,  pageNumber:1})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
+        setUser:(user: Artist | undefined)=>{patchState(state, {user})},
         setFavorites: (image: Image)=>{ 
                 patchState(state,{favorites: [...state.favorites(), image]})            
         },
