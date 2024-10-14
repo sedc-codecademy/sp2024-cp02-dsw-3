@@ -1,5 +1,5 @@
 .stepperContainer{
-   
+    background: linear-gradient(to left, #000 10%, #291d37 100%) content-box;
     display: flex;
     justify-content: center;
     align-items: center;

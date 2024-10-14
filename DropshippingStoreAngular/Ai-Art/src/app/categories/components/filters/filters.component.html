@@ -49,9 +49,9 @@
           (change)="handleRadioBtns($event, this.updateInStock)"
         >
           <mat-label>Check:</mat-label>
+          <mat-radio-button [value]="undefined">All</mat-radio-button>
           <mat-radio-button [value]="true">In stock</mat-radio-button>
           <mat-radio-button [value]="false">Bought</mat-radio-button>
-          <mat-radio-button [value]="undefined">All</mat-radio-button>
         </mat-radio-group>
 
         <mat-radio-group

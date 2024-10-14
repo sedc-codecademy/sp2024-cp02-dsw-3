@@ -34,7 +34,7 @@ import { AppStore } from '../store/app.store';
 export class NavbarComponent {
   appStore = inject(AppStore)
   @ViewChild('drawer') drawer: MatSidenav | undefined;
-  constructor(private readonly favoriteService: FavoritesService, private readonly cartService: CartService){}
+  constructor(){}
   
   
   

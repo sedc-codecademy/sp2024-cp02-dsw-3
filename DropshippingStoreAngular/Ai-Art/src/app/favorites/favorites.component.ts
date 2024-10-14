@@ -8,12 +8,13 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { NotificationService } from '../services/notification.service';
 import { AppStore } from '../store/app.store';
+import { FooterComponent } from '../footer/footer.component';
 
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [MatDividerModule, MatButtonModule,MatGridListModule,MatIconModule, RouterLink,MatTooltipModule],
+  imports: [MatDividerModule, MatButtonModule, FooterComponent,MatGridListModule,MatIconModule, RouterLink,MatTooltipModule],
   templateUrl: './favorites.component.html',
   styleUrl: './favorites.component.css'
 })

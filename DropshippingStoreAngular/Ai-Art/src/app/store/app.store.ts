@@ -22,7 +22,8 @@ export interface AppStates{
     isAuth: boolean,
     prompt: string,
     user: Artist | undefined,
-    inStock: boolean | undefined
+    inStock: boolean | undefined,
+    recentOpen: Image[] 
 }
 
 
@@ -42,9 +43,10 @@ const defaultState: AppStates = {
     selectedCategory:undefined,
     prompt: '',
     user: undefined,
-    inStock: true,
+    inStock: undefined,
     isAuth: false,
     stringifyCreationImage: '',
+    recentOpen: []
 }
 
 export const AppStore = signalStore(
@@ -61,6 +63,13 @@ export const AppStore = signalStore(
         setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc,  pageNumber:1})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setUser:(user: Artist | undefined)=>{patchState(state, {user})},
+        setRecentOpen: (recentOpen: Image)=>{
+            let items = state.recentOpen()
+            
+                patchState(state, {recentOpen: [...items, recentOpen]})
+            
+        },
+        resetRecentOpen: ()=>{patchState(state, {recentOpen: []})},
         setFavorites: (image: Image)=>{ 
                 patchState(state,{favorites: [...state.favorites(), image]})            
         },

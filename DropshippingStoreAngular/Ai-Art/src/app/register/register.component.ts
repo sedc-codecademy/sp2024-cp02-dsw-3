@@ -36,18 +36,22 @@ export class RegisterComponent {
   //da se proverat validatorite
   initForm() {
     this.registerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required]),
-      lastName: new FormControl('', [Validators.required]),
-      userName: new FormControl('', [Validators.required]),
-      email: new FormControl('', [Validators.required, Validators.email]),
-      cardNo: new FormControl('', [Validators.required]),
-      expireDate: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]$/), Validators.minLength(2)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]$/), Validators.minLength(2)]),
+      userName: new FormControl('', [Validators.required, Validators.minLength(2)]),
+      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+      cardNo: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16),Validators.pattern(/^[0-9]\d*$/)]),
+      expireDate: new FormControl('', [Validators.required, Validators.pattern(/^(11|12)\/24$|^(0[1-9]|10|11|12)\/2[5-9]$/)]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       confirmPassword: new FormControl('', [Validators.required]),
     });
   }
 
   submit() {
+    if(!this.registerForm.valid){
+      return
+    }
+    
     //proverka na password-ot pred da se pusti request do backend
     const registerPassword = this.registerForm.get('password')?.value;
     const confirmedPassword = this.registerForm.get('confirmPassword')?.value;

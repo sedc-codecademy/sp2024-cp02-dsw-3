@@ -18,6 +18,7 @@
     (updateSearchTerm)="productStore.setSearch($event.target.value)"
   />
   <app-loader />
+  @if(productStore.products().length){
   <app-card-container [products]="productStore.products()" />
 
   <mat-paginator
@@ -26,4 +27,8 @@
     aria-label="Select page"
     (page)="productStore.setPage($event.pageIndex + 1)"
   />
+  }@else {
+  <div class="noItems"><p>There are no products.</p></div>
+  }
 </div>
+<app-footer />

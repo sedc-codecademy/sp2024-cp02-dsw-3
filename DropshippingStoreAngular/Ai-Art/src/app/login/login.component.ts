@@ -13,11 +13,13 @@ import { RouterLink, Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
 import { AppStore } from '../store/app.store';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
   imports: [
+    FooterComponent,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,

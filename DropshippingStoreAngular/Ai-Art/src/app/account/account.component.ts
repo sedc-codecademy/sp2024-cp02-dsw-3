@@ -19,6 +19,7 @@ export class AccountComponent {
   handleLogout(){
     this.appStore.setUser(undefined)
     this.appStore.resetCart()
+    this.appStore.resetRecentOpen()
     this.appStore.resetFavorites()
     this.authService.logout()
     this.router.navigate(['/'])
