@@ -14,10 +14,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common'
 import { MatDialog } from '@angular/material/dialog'
 import { AlertComponent } from '../shared/alert/alert.component'
+import { FooterComponent } from '../footer/footer.component'
 @Component({
   selector: 'app-contact',
   standalone: true,
   imports: [
+    FooterComponent,
     ReactiveFormsModule,
     MatCardModule,
     MatFormFieldModule,

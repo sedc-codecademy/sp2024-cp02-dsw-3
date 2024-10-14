@@ -5,13 +5,15 @@
 }
 .text p{
     font-size: 1.2em;
-    color: #71499d;
+    /* color: #71499d; */
+    color: #E9E0E4;
     padding-top: 10px;
 
 }
 .galleryContainer{
     display: flex;
-    color: #71499d;
+  /* color: #71499d; */
+  color: #E9E0E4;
     justify-content: center;
     align-items: center;  
     flex-direction: row-reverse;
@@ -27,7 +29,8 @@ h3{
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
     text-transform: uppercase;
-    color: #71499d;
+     /* color: #71499d; */
+     color: #E9E0E4;
     padding-top: 10px;
     text-shadow: 1px 2px 2px #24093e, 1px 0 5px #500f91, 2px 2px 5px #c4c0c7;
 }

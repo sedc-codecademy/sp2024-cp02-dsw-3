@@ -1,5 +1,5 @@
 import { Component, effect, inject, signal } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
 import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
 import {MatChipsModule} from '@angular/material/chips';
@@ -12,12 +12,14 @@ import { Image } from '../../../types/image.interface';
 import { CategoriesService } from '../../../services/categories.service';
 import { AppStore } from '../../../store/app.store';
 import { NotificationService } from '../../../services/notification.service';
+import { FooterComponent } from '../../../footer/footer.component';
+import { RecentOpenComponent } from './components/recent-open/recent-open.component';
 
 
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [AsyncPipe,UniqueWorkComponent,CertificateComponent ,MatChipsModule,MatIconModule,CurrencyPipe, MatButtonModule, RouterLink, MatExpansionModule, CommonModule],
+  imports: [AsyncPipe,UniqueWorkComponent,CertificateComponent, RecentOpenComponent ,MatChipsModule,FooterComponent,MatIconModule,CurrencyPipe, MatButtonModule, RouterLink, MatExpansionModule, CommonModule],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.css'
 })
@@ -30,12 +32,11 @@ export class CardDetailsComponent {
   product : Image
   category: string | undefined
   subscription= new Subscription()
-  constructor(private readonly productsService: CategoriesService, private readonly route: ActivatedRoute, private notificationService: NotificationService){
+  constructor(private readonly productsService: CategoriesService,private router: Router, private readonly route: ActivatedRoute, private notificationService: NotificationService){
     effect(()=>{},{allowSignalWrites:true})
   }
   ngOnInit(){
-    this.getProduct()
-    
+    this.getProduct()    
   }
   getProduct(){
     this.subscription = this.route.params.pipe(
@@ -43,6 +44,7 @@ export class CardDetailsComponent {
         console.log('product',this.product)
         console.log('v',v)
         this.category=this.productsService.handleProductCategory(this.product)
+        
       }
     )
       
@@ -71,7 +73,17 @@ export class CardDetailsComponent {
   }
   ngOnDestroy(){
     this.subscription.unsubscribe()
+    let test =this.checkRecent()
+        if(!test){
+          this.appStore.setRecentOpen(this.product)
+        }
+    
   }
-
-
+  checkRecent(){
+    let check = this.appStore.recentOpen().find(item=>item.id == this.product.id)
+    return check
+  }
+  goBack(){
+    this.router.navigate(['/categories'])
+  }
 }

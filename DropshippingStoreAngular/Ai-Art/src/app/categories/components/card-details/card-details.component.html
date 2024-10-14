@@ -1,4 +1,12 @@
 <section class="bigContainer">
+  <button
+    mat-stroked-button
+    aria-label="Example icon button with a vertical three dot icon"
+    class="back"
+    (click)="goBack()"
+  >
+    <mat-icon>arrow_back</mat-icon> Go back
+  </button>
   <div class="detailsContainer">
     <div class="article-container">
       <div
@@ -111,8 +119,10 @@
       </div>
     </div>
   </div>
+  <app-recent-open />
 </section>
 
+<app-footer></app-footer>
 @if(openRoom() === true){
 <section class="activeRoom">
   <div class="room">

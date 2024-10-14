@@ -3,7 +3,9 @@
     <mat-icon>menu</mat-icon>
   </button>
 
-  <span><img src="/logo2.png" alt="logo" width="70px" /></span>
+  <a routerLink="/" (click)="closeSidenav()"
+    ><span><img src="/logo2.png" alt="logo" width="70px" /></span
+  ></a>
   <span class="spacer"></span>
 
   <nav class="nav-links">
@@ -16,8 +18,8 @@
       >Generate Your Art</a
     >
     <a mat-button routerLink="/contact" (click)="closeSidenav()">Contact</a>
-    <a mat-button routerLink="/register" (click)="closeSidenav()">Sign Up</a>
-    <a mat-button routerLink="/login" (click)="closeSidenav()">Login</a>
+    <!-- <a mat-button routerLink="/register" (click)="closeSidenav()">Sign Up</a>
+    <a mat-button routerLink="/login" (click)="closeSidenav()">Login</a> -->
   </nav>
   <a mat-icon-button routerLink="/favorites" class="cart-icon">
     <mat-icon [matBadge]="appStore.favorites().length" aria-hidden="false"

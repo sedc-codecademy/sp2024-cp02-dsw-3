@@ -1,6 +1,7 @@
-body {
+/* body {
     margin: 0;
-}
+    background: linear-gradient(to left, #000 10%, #291d37 100%) content-box;
+} */
 .heading{
     display: flex;
     justify-content: flex-start;
@@ -13,8 +14,10 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 10em;
     color: white;
+    font-family: "Inconsolata", monospace;
+    height: 70vh;
+    
 }
 .container{
     display: grid;

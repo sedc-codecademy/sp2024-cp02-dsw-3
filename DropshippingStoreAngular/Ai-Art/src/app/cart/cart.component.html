@@ -17,7 +17,11 @@
     <mat-step class="column">
       <ng-template matStepLabel>Checkout</ng-template>
       <div class="component">
+        @if(!appStore.user() || !checkToken() ){
         <app-cart-form />
+        }@else if (appStore.user() && checkToken()) {
+        <app-cart-form-auth />
+        }
       </div>
 
       <div>
@@ -27,3 +31,4 @@
     }
   </mat-stepper>
 </div>
+<app-footer />

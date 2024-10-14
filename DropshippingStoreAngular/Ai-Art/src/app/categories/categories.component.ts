@@ -10,10 +10,11 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { SearchComponent } from './components/search/search.component';
 import { SearchImagesQuery } from '../types/searchImagesQuery.interface';
 import { LoaderComponent } from '../loader/loader.component';
+import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [AsyncPipe, CommonModule,LoaderComponent, CardContainerComponent, MatPaginatorModule, FiltersComponent, GalleryComponent, SearchComponent],
+  imports: [AsyncPipe, CommonModule,FooterComponent,LoaderComponent, CardContainerComponent, MatPaginatorModule, FiltersComponent, GalleryComponent, SearchComponent],
   templateUrl: './categories.component.html',
   styleUrl: './categories.component.css'
 })

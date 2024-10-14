@@ -1,6 +1,7 @@
 .card{
   font-family: "Inconsolata", monospace;
-  color: #71499d;
+   /* color: #71499d; */
+   color: #E9E0E4;
   width: 240px;
   height: 370px;
   padding: 0px;

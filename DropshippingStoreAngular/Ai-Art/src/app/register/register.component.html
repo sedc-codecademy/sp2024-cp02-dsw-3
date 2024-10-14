@@ -11,36 +11,54 @@
         formControlName="firstName"
         required
       />
+      @if(this.registerForm.get('firstName')?.hasError('pattern')){
+      <p>Enter a valid first name.</p>
+      }
       <input
         type="text"
         placeholder="Last Name"
         formControlName="lastName"
         required
       />
+      @if(this.registerForm.get('lastName')?.hasError('pattern')){
+      <p>Enter a valid last name.</p>
+      }
       <input
         type="text"
         placeholder="Username"
         formControlName="userName"
         required
       />
+      @if(this.registerForm.get('userName')?.hasError('minlength')){
+      <p>User name should be at least 2 characters.</p>
+      }
       <input
         type="email"
         placeholder="Email Address"
         formControlName="email"
         required
       />
+      @if(this.registerForm.get('email')?.hasError('pattern')){
+      <p>Enter a valid e-mail address.</p>
+      }
       <input
         type="text"
         placeholder="Card Number"
         formControlName="cardNo"
         required
       />
+      @if(this.registerForm.get('cardNo')?.hasError('pattern')){
+      <p>Enter a valid card number.</p>
+      }
       <input
         type="text"
         placeholder="Card Expiration Date"
         formControlName="expireDate"
         required
       />
+      @if(this.registerForm.get('expireDate')?.hasError('pattern')){
+      <p>Your card is expired.</p>
+      }
       <div class="password-container">
         <input
           [type]="isPasswordVisible ? 'text' : 'password'"
@@ -48,6 +66,9 @@
           formControlName="password"
           required
         />
+        @if(this.registerForm.get('password')?.hasError('minlength')){
+        <p>Your password should be at least 8 characters.</p>
+        }
         <i
           class="fas"
           [ngClass]="isPasswordVisible ? 'fa-eye-slash' : 'fa-eye'"

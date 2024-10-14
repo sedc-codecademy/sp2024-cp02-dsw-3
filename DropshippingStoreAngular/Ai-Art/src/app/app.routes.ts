@@ -40,7 +40,7 @@ export const routes: Routes = [
     import('./favorites/favorites.component').then((c)=>c.FavoritesComponent)
 },
 {
-  path: 'account',
+  path: 'account', canActivate: [authGuard],
   loadComponent: () => import('./account/account.component').then(m => m.AccountComponent),
   children: [
     { path: 'user-info', loadComponent: () => import('./account/user-info/user-info.component').then(c => c.UserInfoComponent) },
