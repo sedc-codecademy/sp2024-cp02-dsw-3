@@ -174,15 +174,17 @@
 /*CAROUSEL*/
 .carouselContainer {
   width: 100%;
-  height: 70%;
+  height: 40%;
   margin: 0;
-  padding: 0;
+  padding-top: 250px;
+  position: relative;
 }
 
 #carousel {
   position: relative;
   height: 400px;
-  top: 50%;
+  bottom: 0%;
+  width: 100%;
   transform: translateY(-50%);
   overflow: hidden;
 }
@@ -245,6 +247,7 @@
 .buttons {
   position: absolute;
   left: 50%;
+  top: 400px;
   transform: translateX(-50%);
 }
 .buttons button {
@@ -586,9 +589,9 @@ a {
 .generate {
   position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
   height: 30vw;
 
   overflow: hidden;

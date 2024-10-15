@@ -36,8 +36,8 @@ export class RegisterComponent {
   //da se proverat validatorite
   initForm() {
     this.registerForm = new FormGroup({
-      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]$/), Validators.minLength(2)]),
-      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z]$/), Validators.minLength(2)]),
+      firstName: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(2)]),
+      lastName: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(2)]),
       userName: new FormControl('', [Validators.required, Validators.minLength(2)]),
       email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
       cardNo: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16),Validators.pattern(/^[0-9]\d*$/)]),
