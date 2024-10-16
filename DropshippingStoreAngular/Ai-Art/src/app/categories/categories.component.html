@@ -11,6 +11,7 @@
     (updateSelectedArtist)="productStore.setSelectedArtist($event)"
     (updateSelectedDirection)="productStore.setSortByPriceAsc($event)"
     (updateInStock)="productStore.setInStock($event)"
+    id="products"
   />
 
   <app-search
@@ -24,8 +25,11 @@
   <mat-paginator
     [length]="productStore.totalCount()"
     [pageSize]="productStore.pageSize()"
+    [pageIndex]="productStore.pageNumber() - 1"
+    [showFirstLastButtons]="true"
+    [hidePageSize]="true"
     aria-label="Select page"
-    (page)="productStore.setPage($event.pageIndex + 1)"
+    (page)="handlePage($event)"
   />
   }@else {
   <div class="noItems"><p>There are no products.</p></div>

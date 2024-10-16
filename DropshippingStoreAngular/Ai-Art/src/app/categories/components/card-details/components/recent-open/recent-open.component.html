@@ -7,10 +7,13 @@
   <div id="marquee">
     <div class="container">
       <div class="pic-container">
-        @for (item of this.appStore.recentOpen(); track $index) {
+        @for (item of recent; track $index ) {
 
-        <a routerLink="/categories/details/{{ item.id }}" class="pic">
-          <img [src]="item.imageUrl" alt="recent" />
+        <a routerLink="/categories/details/{{ item.id }}" class="link">
+          <div
+            class="pic"
+            style.background-image="url({{ item.imageUrl }})"
+          ></div>
         </a>
 
         }

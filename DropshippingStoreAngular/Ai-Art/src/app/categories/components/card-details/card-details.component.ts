@@ -36,8 +36,11 @@ export class CardDetailsComponent {
     effect(()=>{},{allowSignalWrites:true})
   }
   ngOnInit(){
-    this.getProduct()    
+    this.getProduct()  
+    scroll(0,120)  
   }
+
+ 
   getProduct(){
     this.subscription = this.route.params.pipe(
       switchMap((params)=> this.productsService.getImage(params['id']))).subscribe((v)=>{ this.product = v.image
@@ -47,7 +50,7 @@ export class CardDetailsComponent {
         
       }
     )
-      
+   
   }
   handleAccordion(){
     this.panelOpenState.update((v=>!v))
@@ -85,5 +88,6 @@ export class CardDetailsComponent {
   }
   goBack(){
     this.router.navigate(['/categories'])
+    
   }
 }

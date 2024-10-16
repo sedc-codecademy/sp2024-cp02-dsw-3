@@ -2,7 +2,7 @@ import { Component, effect, inject } from '@angular/core';
 import { map, Subscription } from 'rxjs';
 import { CategoriesService } from '../services/categories.service';
 import { AppStore } from '../store/app.store';
-import { MatPaginatorModule} from '@angular/material/paginator';
+import { MatPaginatorModule, PageEvent} from '@angular/material/paginator';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { CardContainerComponent } from './components/card-container/card-container.component';
 import { FiltersComponent } from './components/filters/filters.component';
@@ -41,6 +41,11 @@ export class CategoriesComponent {
       this.productStore.setIsLoading(false)
     })
     
+  }
+
+  handlePage(event: PageEvent){
+    this.productStore.setPage(event.pageIndex + 1)
+    document.getElementById('products')?.scrollIntoView()
   }
   ngOnInit(){
     this.subscriptionArtists = this.categoryService.getArtist().pipe(

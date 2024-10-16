@@ -1,7 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { AppStore } from '../../../../../store/app.store';
 import {MatDividerModule} from '@angular/material/divider';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
+import { Image } from '../../../../../types/image.interface';
+
 
 @Component({
   selector: 'app-recent-open',
@@ -12,11 +14,12 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class RecentOpenComponent {
   appStore = inject(AppStore)
-  constructor(private router: Router){}
+  recent= this.appStore.recentOpen().reverse().slice(0,6)
+  constructor(){}
   ngOnInit(){
+    
     console.log(this.appStore.recentOpen())
+    
   }
-  // openRecent(id:string){
-  //   this.router.navigate([`categories/details/${id}`])
-  // }
+  
 }
