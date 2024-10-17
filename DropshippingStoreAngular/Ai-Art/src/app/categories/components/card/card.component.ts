@@ -9,6 +9,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { Image } from '../../../types/image.interface';
 import { AppStore } from '../../../store/app.store';
 import { NotificationService } from '../../../services/notification.service';
+import { ImageSafeUrl } from '../../../types/image.safeUrl';
 
 @Component({
   selector: 'app-card2',
@@ -19,18 +20,18 @@ import { NotificationService } from '../../../services/notification.service';
 })
 export class CardComponent {
   appStore= inject(AppStore)
- image=input.required<Image>()
+ image=input.required<ImageSafeUrl>()
  constructor(private notificationService:NotificationService){
   effect(()=>{},{allowSignalWrites:true})
  }
- handleAddToCart(item:Image){
+ handleAddToCart(item:ImageSafeUrl){
   if(!this.appStore.cart().find((i)=>i.id===item.id)){
     this.appStore.setCart(item)
   this.notificationService.handleSnackBar('Item is successfully added in cart!')
   }
   
  }
- handleAddToFavorites(item:Image){
+ handleAddToFavorites(item:ImageSafeUrl){
   if(!this.appStore.favorites().find((i)=>i.id===item.id)){
     this.appStore.setFavorites(item)
   this.notificationService.handleSnackBar('Item is successfully added in favorites!')

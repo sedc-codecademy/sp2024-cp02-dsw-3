@@ -1,7 +1,7 @@
 import { Component, effect, inject, signal } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Subscription, switchMap } from 'rxjs';
-import { AsyncPipe, CommonModule, CurrencyPipe } from '@angular/common';
+import { AsyncPipe, CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -14,12 +14,13 @@ import { AppStore } from '../../../store/app.store';
 import { NotificationService } from '../../../services/notification.service';
 import { FooterComponent } from '../../../footer/footer.component';
 import { RecentOpenComponent } from './components/recent-open/recent-open.component';
+import { ImageSafeUrl } from '../../../types/image.safeUrl';
 
 
 @Component({
   selector: 'app-card-details',
   standalone: true,
-  imports: [AsyncPipe,UniqueWorkComponent,CertificateComponent, RecentOpenComponent ,MatChipsModule,FooterComponent,MatIconModule,CurrencyPipe, MatButtonModule, RouterLink, MatExpansionModule, CommonModule],
+  imports: [AsyncPipe,UniqueWorkComponent,CertificateComponent, RecentOpenComponent ,MatChipsModule,FooterComponent,MatIconModule,CurrencyPipe, MatButtonModule, RouterLink, MatExpansionModule, CommonModule, DatePipe],
   templateUrl: './card-details.component.html',
   styleUrl: './card-details.component.css'
 })
@@ -29,7 +30,7 @@ export class CardDetailsComponent {
   panelOpenState = signal(false);
   openRoom = signal(false)
   openCertificate = signal(false)
-  product : Image
+  product : ImageSafeUrl
   category: string | undefined
   subscription= new Subscription()
   constructor(private readonly productsService: CategoriesService,private router: Router, private readonly route: ActivatedRoute, private notificationService: NotificationService){
@@ -43,7 +44,9 @@ export class CardDetailsComponent {
  
   getProduct(){
     this.subscription = this.route.params.pipe(
-      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe((v)=>{ this.product = v.image
+      switchMap((params)=> this.productsService.getImage(params['id']))).subscribe((v)=>{ 
+        let item = this.productsService.mapProduct(v.image)
+        this.product = item
         console.log('product',this.product)
         console.log('v',v)
         this.category=this.productsService.handleProductCategory(this.product)
@@ -64,11 +67,11 @@ export class CardDetailsComponent {
     this.openUniqueWork.update(v=>!v)
     console.log(this.openUniqueWork())
   }
-  handleAddToCart(item:Image){
+  handleAddToCart(item:ImageSafeUrl){
     if(!this.appStore.cart().find((i)=>i.id===item.id)){
     this.appStore.setCart(item)}
   }
-  handleAddToFavorites(item:Image){
+  handleAddToFavorites(item:ImageSafeUrl){
     if(!this.appStore.favorites().find((i)=>i.id===item.id)){
     this.appStore.setFavorites(item)
     this.notificationService.handleSnackBar('Item is successfully added in favorites!')

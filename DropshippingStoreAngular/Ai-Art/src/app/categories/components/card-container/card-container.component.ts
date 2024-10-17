@@ -2,6 +2,7 @@ import { Component, input } from '@angular/core';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CardComponent } from '../card/card.component';
 import { Image } from '../../../types/image.interface';
+import { ImageSafeUrl } from '../../../types/image.safeUrl';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Image } from '../../../types/image.interface';
   styleUrl: './card-container.component.css'
 })
 export class CardContainerComponent {
-  products = input<Image[]>()
+  products = input<ImageSafeUrl[]>()
   breakpoint: number = 0;
    ngOnInit() {
     this.calculateBreakpoint();

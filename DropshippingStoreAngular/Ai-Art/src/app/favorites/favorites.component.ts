@@ -9,6 +9,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import { NotificationService } from '../services/notification.service';
 import { AppStore } from '../store/app.store';
 import { FooterComponent } from '../footer/footer.component';
+import { ImageSafeUrl } from '../types/image.safeUrl';
 
 
 @Component({
@@ -26,7 +27,7 @@ constructor(private readonly notificationService: NotificationService){
 }
 
 
-handleAddToCart(img: Image){
+handleAddToCart(img: ImageSafeUrl){
   if(!this.appStore.cart().find((i)=>i.id===img.id)){
     this.appStore.setCart(img)
     let filtered = this.appStore.favorites().filter(i=>i.id!==img.id)
@@ -38,7 +39,7 @@ handleAddToCart(img: Image){
 
 }
 
-handleRemoveFromFavorites(img: Image){
+handleRemoveFromFavorites(img: ImageSafeUrl){
   let filtered = this.appStore.favorites().filter(i=>i.id!==img.id)
   this.appStore.removeFromFavorites(filtered)
   this.notificationService.handleSnackBar('Item is removed from favorites!')

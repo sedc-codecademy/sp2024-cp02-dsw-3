@@ -34,9 +34,10 @@ export class CategoriesComponent {
     this.subscription = this.categoryService.getImages(searchQuery).subscribe((response)=>{
       console.log(response)
       const {paginatedImages} = response
+      let items = this.categoryService.mapperSafeUrl(paginatedImages.data)
       console.log('paginated images',paginatedImages)
       this.productStore.setTotal(paginatedImages.totalCount)
-      this.productStore.setProducts(paginatedImages.data)
+      this.productStore.setProducts(items)
       this.productStore.setPageSize(paginatedImages.pageSize)
       this.productStore.setIsLoading(false)
     })

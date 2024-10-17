@@ -1,11 +1,20 @@
 <mat-card class="card" appearance="outlined">
   <mat-card-header>
-    <a
+    <a routerLink="/categories/details/{{ image().id }}" class="test">
+      <img
+        [src]="image().imageUrl"
+        alt=""
+        class="test"
+        style="object-fit: cover"
+      />
+      <img src="logo2.png" alt="logo" class="logo" />
+    </a>
+    <!-- <a
       routerLink="/categories/details/{{ image().id }}"
       class="test"
       style.background-image="url({{ image().imageUrl }})"
       ><img src="logo2.png" alt="logo" class="logo"
-    /></a>
+    /></a> -->
   </mat-card-header>
 
   <div class="cardDetails">

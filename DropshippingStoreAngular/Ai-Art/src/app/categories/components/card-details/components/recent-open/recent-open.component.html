@@ -10,10 +10,11 @@
         @for (item of recent; track $index ) {
 
         <a routerLink="/categories/details/{{ item.id }}" class="link">
-          <div
+          <!-- <div
             class="pic"
             style.background-image="url({{ item.imageUrl }})"
-          ></div>
+          ></div> -->
+          <img [src]="item.imageUrl" alt="" class="pic" />
         </a>
 
         }

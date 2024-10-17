@@ -9,10 +9,11 @@
   </button>
   <div class="detailsContainer">
     <div class="article-container">
-      <div
+      <img [src]="product.imageUrl" alt="" class="imageContainer" />
+      <!-- <div
         class="imageContainer"
-        style.background-image="url({{ product.imageUrl }})"
-      ></div>
+        style.background-image="url({{ }})"
+      ></div> -->
     </div>
 
     <div class="info">
@@ -20,7 +21,6 @@
         <h6>{{ product.description }}.</h6>
         <h6>US {{ product.price | currency }}</h6>
         <p>Category: {{ category }}</p>
-        <p>Created at: {{ product.createdAt | date }}</p>
       </div>
 
       <div class="chips">
@@ -113,7 +113,7 @@
             color="primary"
             (click)="handleAddToFavorites(product)"
           >
-            <mat-icon>favorite</mat-icon> Love this
+            Love this
           </button>
         </div>
       </div>
@@ -122,7 +122,6 @@
   <app-recent-open />
 </section>
 
-<app-footer></app-footer>
 @if(openRoom() === true){
 <section class="activeRoom">
   <div class="room">
@@ -146,3 +145,4 @@
   <app-certificate [openCertificate]="openCertificate" />
 </div>
 }
+<app-footer></app-footer>

@@ -4,5 +4,5 @@ export const environment={
     API_IMAGES: 'http://localhost:5095/api/ImageContoller/'
 }
 
-export const STABILITY_KEY = 'sk-mLRgVhkwi3Hfsg6ebKK31Olck2nniG9A2aBmagwSwmSHUz1K'
+export const STABILITY_KEY = 'sk-PfWa3u3lLhFD0yU7Zf3d41DqsS0zyY9cWP4rQPXheB7EzQBO'
 export const GENERATOR_API = 'https://api.stability.ai/v2beta/stable-image/generate/ultra';

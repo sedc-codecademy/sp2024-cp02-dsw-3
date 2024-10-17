@@ -14,7 +14,7 @@ import { Image } from '../../../../../types/image.interface';
 })
 export class RecentOpenComponent {
   appStore = inject(AppStore)
-  recent= this.appStore.recentOpen().reverse().slice(0,6)
+  recent= this.appStore.recentOpen().reverse().slice(0,5)
   constructor(){}
   ngOnInit(){
     

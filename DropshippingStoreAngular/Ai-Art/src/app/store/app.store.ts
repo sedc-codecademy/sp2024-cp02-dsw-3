@@ -3,9 +3,11 @@ import { Artist } from "../types/artist.interface";
 import { Image } from "../types/image.interface";
 import {patchState, signalStore, withComputed, withHooks, withMethods, withState} from '@ngrx/signals'
 import { SearchImagesQuery } from "../types/searchImagesQuery.interface";
+import { SafeUrl } from "@angular/platform-browser";
+import { ImageSafeUrl } from "../types/image.safeUrl";
 
 export interface AppStates{
-    products: Image[],
+    products: ImageSafeUrl[],
     searchTerm: string,
     pageNumber: number,
     totalPages: number,
@@ -14,16 +16,17 @@ export interface AppStates{
     isLoading: boolean,
     sortByPriceAsc: boolean ,
     artistNames: string[],
-    favorites: Image[],
-    cart: Image[]
+    favorites: ImageSafeUrl[],
+    cart: ImageSafeUrl[]
     stringifyCreationImage: string,
+    creationImageUrl: SafeUrl | undefined,
     selectedCategory: string | undefined;
     selectedArtist: string | undefined;
     isAuth: boolean,
     prompt: string,
     user: Artist | undefined,
     inStock: boolean | undefined,
-    recentOpen: Image[] 
+    recentOpen: ImageSafeUrl[] 
 }
 
 
@@ -46,14 +49,15 @@ const defaultState: AppStates = {
     inStock: undefined,
     isAuth: false,
     stringifyCreationImage: '',
-    recentOpen: []
+    recentOpen: [],
+    creationImageUrl: undefined
 }
 
 export const AppStore = signalStore(
     {providedIn: 'root'},
     withState(defaultState),
     withMethods((state)=>({
-        setProducts: (products: Image[])=>{patchState(state, {products})},
+        setProducts: (products: ImageSafeUrl[])=>{patchState(state, {products})},
         setSearch: (searchTerm: string)=>{patchState(state, {searchTerm, pageNumber:1})},
         setPage: (pageNumber: number)=>{patchState(state,{pageNumber})},
         setTotalPages:(totalPages:number)=>{patchState(state, {totalPages})},
@@ -63,31 +67,32 @@ export const AppStore = signalStore(
         setSortByPriceAsc: (sortByPriceAsc: boolean)=>{patchState(state, {sortByPriceAsc,  pageNumber:1})},
         setArtists: (artistNames: string[])=>{patchState(state,{artistNames})},
         setUser:(user: Artist | undefined)=>{patchState(state, {user})},
-        setRecentOpen: (recentOpen: Image)=>{
+        setCreationImageUrl:(creationImageUrl: SafeUrl | undefined)=>{patchState(state, {creationImageUrl})},
+        setRecentOpen: (recentOpen: ImageSafeUrl)=>{
             let items = state.recentOpen()
             
                 patchState(state, {recentOpen: [...items, recentOpen]})
             
         },
         resetRecentOpen: ()=>{patchState(state, {recentOpen: []})},
-        setFavorites: (image: Image)=>{ 
+        setFavorites: (image: ImageSafeUrl)=>{ 
                 patchState(state,{favorites: [...state.favorites(), image]})            
         },
-        removeFromFavorites:(images:Image[])=>{
+        removeFromFavorites:(images:ImageSafeUrl[])=>{
             patchState(state, {favorites:images})
         },
         resetFavorites: ()=>{
-            let fave:Image[] = []
+            let fave:ImageSafeUrl[] = []
             patchState(state, {favorites:fave})
         },
-        setCart: (image: Image)=>{ 
+        setCart: (image: ImageSafeUrl)=>{ 
                 patchState(state,{cart: [...state.cart(), image]})
         },
-        removeFromCart:(image:Image[])=>{
+        removeFromCart:(image:ImageSafeUrl[])=>{
             patchState(state, {cart:image})
         },
         resetCart: ()=>{
-            let fave:Image[] = []
+            let fave:ImageSafeUrl[] = []
             patchState(state, {cart:fave})
         },
         setInStock:(inStock: boolean | undefined)=>{patchState(state, {inStock,  pageNumber:1})},

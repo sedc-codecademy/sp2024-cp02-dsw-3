@@ -6,6 +6,8 @@ import { environment } from '../../environment';
 import { SearchImagesQuery } from '../types/searchImagesQuery.interface';
 import { ResponseApiCategories } from '../types/responseCategories.interface';
 import { ResponseAPIArtist } from '../types/getArtist.interface';
+import { ImageSafeUrl } from '../types/image.safeUrl';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 
@@ -19,7 +21,7 @@ export class CategoriesService {
   $favorites = this._favorites.asObservable()
   private imagesPath = environment.API_IMAGES
  
-  constructor(private readonly httpClient: HttpClient){ }
+  constructor(private readonly httpClient: HttpClient, private sanitizer:DomSanitizer){ }
   
 
   getImages(searchQuery: SearchImagesQuery = {}):Observable<ResponseApiCategories>{
@@ -45,7 +47,7 @@ export class CategoriesService {
   getArtist(){
     return this.httpClient.get<{users: ResponseAPIArtist[]}>(`${this.imagesPath}users`)
   }
-  handleProductCategory(item: Image){
+  handleProductCategory(item: ImageSafeUrl){
     let category
     switch (item.category) {
       case 0:
@@ -81,5 +83,50 @@ export class CategoriesService {
     }
     return category
     
+  }
+  mapProduct(product: Image){
+    if(product.imageUrl.charAt(0)=='d'){
+      let item :ImageSafeUrl = {
+        id: product.id,
+          description: product.description,
+          createdAt: product.createdAt,
+          category: product.category,
+          userId:product.userId,
+          price: product.price,
+          stock: product.stock,
+          boughtByUserId: product.boughtByUserId,
+          soldByUserId:product.soldByUserId,
+          imageUrl: this.sanitizer.bypassSecurityTrustUrl(product.imageUrl)
+      }
+      return item
+    }else{
+      return product as ImageSafeUrl
+    }
+
+  }
+  mapperSafeUrl(data: Image[]){
+    let items: ImageSafeUrl[] = []
+    for(let item of data){
+      if (item.imageUrl.charAt(0)=='d'){
+        
+        let test: ImageSafeUrl = {
+          id: item.id,
+          description: item.description,
+          createdAt: item.createdAt,
+          category: item.category,
+          userId:item.userId,
+          price: item.price,
+          stock: item.stock,
+          boughtByUserId: item.boughtByUserId,
+          soldByUserId:item.soldByUserId,
+          imageUrl: this.sanitizer.bypassSecurityTrustUrl(item.imageUrl)
+        }
+        items.push(test)
+      }else{
+        items.push(item)
+      }
+    }
+    console.log('items safe Url in service',items)
+    return items
   }
 }
