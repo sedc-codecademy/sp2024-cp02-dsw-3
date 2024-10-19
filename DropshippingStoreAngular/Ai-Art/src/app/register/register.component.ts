@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -24,6 +24,7 @@ export class RegisterComponent {
   passwordMissMatch: boolean = false;
   isPasswordVisible = false;
   isConfirmPasswordVisible = false;
+  errorMessage = signal('')
 
   constructor(
     private readonly authService: AuthService,
@@ -88,9 +89,13 @@ export class RegisterComponent {
       )
       .subscribe((response) => {
         console.log('Response from register', response);
-
+        this.errorMessage.set('')
         if (response) {
+          console.log(response)
           this.router.navigate(['/login']);
+        }else{
+          this.errorMessage.set('User with same user name or email already exist.')
+          
         }
       });
   }

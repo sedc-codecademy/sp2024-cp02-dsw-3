@@ -4,6 +4,14 @@
     <i class="fas fa-user-circle icon"></i>
     <h2>Create Account</h2>
     <a href="login">Already have an account? Login here!</a>
+
+    @if(errorMessage()){
+    <br />
+    <h6 style="color: #71499d; font-family: 'Montserrat', sans-serif">
+      {{ errorMessage() }}
+    </h6>
+
+    }
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
       <input
         type="text"
