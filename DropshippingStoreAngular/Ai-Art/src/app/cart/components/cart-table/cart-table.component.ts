@@ -6,11 +6,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { Image } from '../../../types/image.interface';
 import { AppStore } from '../../../store/app.store';
 import { NotificationService } from '../../../services/notification.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart-table',
   standalone: true,
-  imports: [CurrencyPipe, MatButtonModule, MatTableModule, MatIconModule],
+  imports: [CurrencyPipe, MatButtonModule, MatTableModule, MatIconModule, RouterLink],
   templateUrl: './cart-table.component.html',
   styleUrl: './cart-table.component.css'
 })

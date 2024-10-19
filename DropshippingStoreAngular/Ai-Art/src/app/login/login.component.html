@@ -4,6 +4,14 @@
     <i class="fas fa-user-circle icon"></i>
     <h2>Login</h2>
     <a routerLink="/register"> You don't have an account? Click here!</a>
+
+    @if(errorMessage()){
+    <br />
+    <h6 style="color: #71499d; font-family: 'Montserrat', sans-serif">
+      {{ errorMessage() }}
+    </h6>
+
+    }
     <form [formGroup]="loginForm" (ngSubmit)="submit()">
       <!-- Input for Username -->
       <input

@@ -9,28 +9,31 @@
   @for (item of appStore.favorites(); track $index) {
   <div class="medium">
     <div>
-      <img [src]="item.imageUrl" />
-      @if(item.stock){
+      <a routerLink="/categories/details/{{ item.id }}" class="link">
+        <img [src]="item.imageUrl" />
+      </a>
+    </div>
+    @if(item.stock){
+    <button
+      mat-icon-button
+      aria-label="Example icon button with a vertical three dot icon"
+      class="btn"
+      (click)="handleAddToCart(item)"
+    >
+      <mat-icon>add_shopping_cart</mat-icon>
+    </button>
+    }
+
+    <span>
       <button
         mat-icon-button
         aria-label="Example icon button with a vertical three dot icon"
-        class="btn"
-        (click)="handleAddToCart(item)"
+        (click)="handleRemoveFromFavorites(item)"
+        class="close"
       >
-        <mat-icon>add_shopping_cart</mat-icon>
-      </button>
-      }
-
-      <span>
-        <button
-          mat-icon-button
-          aria-label="Example icon button with a vertical three dot icon"
-          (click)="handleRemoveFromFavorites(item)"
-        >
-          <mat-icon>close</mat-icon>
-        </button></span
-      >
-    </div>
+        <mat-icon>close</mat-icon>
+      </button></span
+    >
   </div>
   }
 </div>

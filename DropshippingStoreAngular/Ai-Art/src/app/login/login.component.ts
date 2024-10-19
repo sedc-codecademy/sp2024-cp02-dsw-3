@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -33,6 +33,7 @@ import { FooterComponent } from '../footer/footer.component';
 export class LoginComponent {
   appStore = inject(AppStore)
   isPasswordVisible: boolean = false;
+  errorMessage =signal('');
   [x: string]: any;
 
   loginForm: FormGroup;
@@ -63,8 +64,12 @@ export class LoginComponent {
     this.authService.login(userName, password).subscribe((response) => {
       console.log(response);
       if (response?.token) {
+        this.errorMessage.set('')
         this.getLoggedUser(response.token)
         this.router.navigate(['/']);
+      }
+      else{
+        this.errorMessage.set('User name or password is invalid!')
       }
     });
   }

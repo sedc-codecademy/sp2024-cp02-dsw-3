@@ -10,6 +10,15 @@
     max-width: 100%;
       
 }
+
+.link{
+    text-decoration: none;
+    color: white;
+}
+.link:hover{
+    text-decoration: underline;
+    font-style: italic;
+}
 .tableContainer{max-width:80%}
 .tableHeader{
     /* font-size: 1.3em; */

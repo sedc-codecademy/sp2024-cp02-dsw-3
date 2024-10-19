@@ -4,7 +4,18 @@
   margin-top: 20px;
   margin-bottom: 50px;
 }
-
+.registerBtn{
+  margin-top: 20px;
+  width: 40%;
+  border-radius: 20px;
+  background-color: #6D4697;
+  height: 40px;
+  font-family: "Montserrat", sans-serif;
+  color: white;
+}
+.registerBtn:disabled{
+  background-color: gray;
+}
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #121212;

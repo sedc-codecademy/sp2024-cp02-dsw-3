@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import {
   ReactiveFormsModule,
   FormGroup,
@@ -6,8 +6,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { CommonModule } from '@angular/common';
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, MatButtonModule, MatFormFieldModule,MatInputModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
 })
@@ -24,6 +24,7 @@ export class RegisterComponent {
   passwordMissMatch: boolean = false;
   isPasswordVisible = false;
   isConfirmPasswordVisible = false;
+  errorMessage = signal('')
 
   constructor(
     private readonly authService: AuthService,
@@ -38,8 +39,8 @@ export class RegisterComponent {
     this.registerForm = new FormGroup({
       firstName: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(2)]),
       lastName: new FormControl('', [Validators.required, Validators.pattern(/^[A-Za-z]+$/), Validators.minLength(2)]),
-      userName: new FormControl('', [Validators.required, Validators.minLength(2)]),
-      email: new FormControl('', [Validators.required, Validators.email, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
+      userName: new FormControl('', [Validators.required, Validators.minLength(5)]),
+      email: new FormControl('', [Validators.required, Validators.pattern(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/)]),
       cardNo: new FormControl('', [Validators.required, Validators.minLength(16), Validators.maxLength(16),Validators.pattern(/^[0-9]\d*$/)]),
       expireDate: new FormControl('', [Validators.required, Validators.pattern(/^(11|12)\/24$|^(0[1-9]|10|11|12)\/2[5-9]$/)]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
@@ -48,7 +49,7 @@ export class RegisterComponent {
   }
 
   submit() {
-    if(!this.registerForm.valid){
+    if(this.registerForm.invalid){
       return
     }
     
@@ -88,9 +89,13 @@ export class RegisterComponent {
       )
       .subscribe((response) => {
         console.log('Response from register', response);
-
+        this.errorMessage.set('')
         if (response) {
+          console.log(response)
           this.router.navigate(['/login']);
+        }else{
+          this.errorMessage.set('User with same user name or email already exist.')
+          
         }
       });
   }
