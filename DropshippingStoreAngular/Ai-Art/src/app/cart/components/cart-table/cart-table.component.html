@@ -28,7 +28,9 @@
           Description
         </th>
         <td mat-cell *matCellDef="let element" class="details">
-          {{ element.description }}
+          <a routerLink="/categories/details/{{ element.id }}" class="link">{{
+            element.description
+          }}</a>
         </td>
       </ng-container>
 
